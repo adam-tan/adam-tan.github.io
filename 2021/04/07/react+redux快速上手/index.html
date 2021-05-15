@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>react+redux快速上手 | 稍纵即逝</title>
+  <meta name="keywords" content=" redux ">
+  <meta name="description" content="react+redux快速上手 | 稍纵即逝">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta property="og:type" content="website">
+<meta property="og:title" content="404">
+<meta property="og:url" content="https://coo2.top/404.html">
+<meta property="og:site_name" content="稍纵即逝">
+<meta property="og:locale" content="cn">
+<meta property="article:published_time" content="2020-04-07T08:01:07.000Z">
+<meta property="article:modified_time" content="2021-04-07T13:26:27.983Z">
+<meta property="article:author" content="tanjiajian">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>tanjiajian</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/adam-tan"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:1249118795@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=1249118795&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(13)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="react">
+                        
+                        react
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="前端">
+                        
+                        前端
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="算法">
+                        
+                        算法
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="规范">
+                        
+                        规范
+                        <small>(4)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="面试">
+                        
+                        面试
+                        <small>(3)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="13">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>redux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Typescript</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>模块化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>算法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>面试</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a id="top" class="All 面试 "
+           href="/2021/04/07/%E4%B8%AD%E9%AB%98%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/"
+           data-tag="面试"
+           data-author="" >
+            <span class="post-title" title="中高级前端面试题目收集（持续更新）">中高级前端面试题目收集（持续更新）</span>
+            <span class="post-date" title="2021-04-07 21:26:27">2021/04/07</span>
+        </a>
+        
+        <a  class="All 面试 "
+           href="/2021/04/07/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="移动端面试复习">移动端面试复习</span>
+            <span class="post-date" title="2021-04-07 21:26:27">2021/04/07</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2021/04/07/js%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="js常用算法面试题收集（持续更新）">js常用算法面试题收集（持续更新）</span>
+            <span class="post-date" title="2021-04-07 21:26:27">2021/04/07</span>
+        </a>
+        
+        <a  class="All 规范 "
+           href="/2021/04/07/API%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="API规范参考">API规范参考</span>
+            <span class="post-date" title="2021-04-07 21:26:27">2021/04/07</span>
+        </a>
+        
+        <a  class="All "
+           href="/2021/04/07/hexo%E4%BD%BF%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2021-04-07 21:26:27">2021/04/07</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2021/04/07/js%20%E5%B8%83%E5%B0%94%E5%80%BC%E8%BD%AC%E6%8D%A2%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E5%88%A4%E6%96%AD/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="js 布尔值转换和数据类型的简单判断">js 布尔值转换和数据类型的简单判断</span>
+            <span class="post-date" title="2021-04-07 21:26:27">2021/04/07</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2021/04/07/AMD%E3%80%81CMD%E3%80%81CommonJS%E4%BB%A5%E5%8F%8AUMD%E7%9A%84%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94/"
+           data-tag="模块化"
+           data-author="" >
+            <span class="post-title" title="AMD、CMD、CommonJS以及UMD的简单对比">AMD、CMD、CommonJS以及UMD的简单对比</span>
+            <span class="post-date" title="2021-04-07 21:26:27">2021/04/07</span>
+        </a>
+        
+        <a  class="All 规范 "
+           href="/2021/04/07/typescript/"
+           data-tag="Typescript"
+           data-author="" >
+            <span class="post-title" title="typescript">typescript</span>
+            <span class="post-date" title="2021-04-07 21:26:27">2021/04/07</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2021/04/07/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86js%E5%AE%9E%E7%8E%B0/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="二叉树深度优先遍历js实现">二叉树深度优先遍历js实现</span>
+            <span class="post-date" title="2021-04-07 21:26:27">2021/04/07</span>
+        </a>
+        
+        <a  class="All 规范 "
+           href="/2021/04/07/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前端项目注释规范参考">前端项目注释规范参考</span>
+            <span class="post-date" title="2021-04-07 21:26:27">2021/04/07</span>
+        </a>
+        
+        <a  class="All react "
+           href="/2021/04/07/react+redux%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/"
+           data-tag="redux"
+           data-author="" >
+            <span class="post-title" title="react+redux快速上手">react+redux快速上手</span>
+            <span class="post-date" title="2021-04-07 21:26:27">2021/04/07</span>
+        </a>
+        
+        <a  class="All 面试 "
+           href="/2020/04/07/2020%E9%9D%A2%E8%AF%95%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/"
+           data-tag="面试"
+           data-author="" >
+            <span class="post-title" title="2020面试个人总结（持续更新）">2020面试个人总结（持续更新）</span>
+            <span class="post-date" title="2020-04-07 10:17:50">2020/04/07</span>
+        </a>
+        
+        <a  class="All 规范 "
+           href="/2018/12/24/%E5%89%8D%E7%AB%AF%E8%87%AA%E6%B5%8B%E6%B5%81%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前端自测流程">前端自测流程</span>
+            <span class="post-date" title="2018-12-24 17:48:00">2018/12/24</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-react+redux快速上手" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">react+redux快速上手</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="react">react</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">redux</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2021-04-07 21:26:27'>2021-04-07 21:26</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#快速上手"><span class="toc-text">快速上手</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#代码结构"><span class="toc-text">代码结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据流向"><span class="toc-text">数据流向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何组装epics和reducer"><span class="toc-text">如何组装epics和reducer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rxjs实践"><span class="toc-text">rxjs实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实践Q-amp-A"><span class="toc-text">实践Q&amp;A</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Issues"><span class="toc-text">Issues</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#踩坑"><span class="toc-text">踩坑</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h1><p>这一部分简单介绍了支付后台(bm)项目的代码结构、基本写法，目的是让有一定react基础，但之前没有用过rx+redux+observable全家桶的人，在阅读后也能快速上手，写出符合要求的代码。</p>
+<h2 id="代码结构"><a href="#代码结构" class="headerlink" title="代码结构"></a>代码结构</h2><p>每一个页面都写在containers中，主要包括以下部分：<br>建议在一开始想好index.js要哪些东西，搭出架子并逐步完成，其余可按照如下顺序去写：</p>
+<ul>
+<li><p>constants.js<br>定义了包括actions的type在内的一系列常量</p>
+</li>
+<li><p>actions.js<br>export一系列小函数，每个函数都返回一个对象，格式为：</p>
+<pre><code class="js">{
+type: CONSTANTS,  //  引入constants中的常量作为type
+payload
+}</code></pre>
+</li>
+<li><p>reducer.js</p>
+</li>
+</ul>
+<p>定义了这个页面的state，以及接受到action时对state的同步操作。<br>所有的state都是immutable的，注意updateIn, update, set, concat等的用法。</p>
+<ul>
+<li>epics.js</li>
+</ul>
+<p>定义了这个页面的所有异步流，以流的方式接收异步action，并吐出同步的action。<br>用到了rxjs, 注意操作符的选择(switchMap, flatMap)和生成流(forkJoin, of)的操作符。</p>
+<ul>
+<li>selectors.js</li>
+</ul>
+<p>定义了所有的选择器，利用封装的createSelector方法，从$state中获取需要的selector。</p>
+<ul>
+<li>styled.js</li>
+</ul>
+<p>定义了DomWrapper为主的样式。利用了’styled-components’。</p>
+<ul>
+<li>index.js</li>
+</ul>
+<p>页面主体部分，有自己的state。接收所有的actions, selectors作为props。<br>所有其余的文件均在这里拼接：</p>
+<pre><code class="js">export default pipe(
+  connect(
+    createStructuredSelector({
+      $infos: $infos_,
+      $records: $records_,
+    }),
+    actions
+  ),
+  authViewWrapper
+)(HrCreateFailedPage)</code></pre>
+<h2 id="数据流向"><a href="#数据流向" class="headerlink" title="数据流向"></a>数据流向</h2><p>示意图如下：</p>
+<pre><code class="ascii">
++-----------------+    +-----------------------------------+
+|                 |    |                                   |
+|    component    |    |              component            |
+|                 |    |                                   |
++--------^--------+    +-----------------^-----------------+
+         |                               |
+         |                               |
++----------------------------------------------------------+
+|                                                          |
+|                          container                       |
+|                                                          |
++--------^-------------------------------+-----------------+
+         |                               |
+         |                               |
++--------+--------+    +-----------------v-----------------+
+|                 |    |                                   |
+|     selector_   |    |               action              |
+|                 |    |                                   |
++---+---------^---+    +-------+-------------------+-------+
+    |         |                |                   |
+    |         |                |                   |
++---v---------+---+    +-------v------+    +-------v-------+
+|                 |    |              |    |               |
+|     $state      &lt;----+    reducer   &lt;----+     epics$    |
+|                 |    |              |    |               |
++-----------------+    +--------------+    +---------------+
+</code></pre>
+<ul>
+<li><p>selector_： getter/computer var_</p>
+<ul>
+<li>val_ = createSelector( state_, (state) =&gt; state.val ) =&gt; val</li>
+</ul>
+</li>
+<li><p>store</p>
+<ul>
+<li>data =&gt; immutable 数据 + reducer setter (同步)</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>epics$: redux 和 redux-observe 结合 rxjs 异步 action var$</p>
+<ul>
+<li>epic(action$, state$).pipe(…).subscribe(store.dispatch)</li>
+</ul>
+</li>
+<li><p>container</p>
+<ul>
+<li>props =&gt; connect(state_ + action())/HOC</li>
+</ul>
+</li>
+<li><p>component</p>
+<ul>
+<li>data =&gt; props + component/el</li>
+</ul>
+</li>
+</ul>
+<h2 id="如何组装epics和reducer"><a href="#如何组装epics和reducer" class="headerlink" title="如何组装epics和reducer"></a>如何组装epics和reducer</h2><p>每个单独的epics都在root-epics中被引入，并combine成一个总体的epcis。所以不同页面的流，是同时存在，并起作用的。<br>每个reducer也是通过combineReducer方法(redux-immutable)组装成一个总的reducer的。但reducer是异步的。state也是异步的。</p>
+<pre><code class="js">// in  store.js
+const middlewares = [
+    epicMiddleware,
+    routerMiddleware(history),
+  ]
+  const enhancers = [
+    applyMiddleware(...middlewares),
+  ]
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+  const store = createStore(
+    createReducer(),
+    fromJS(initialState),
+    composeEnhancers(...enhancers),
+  )
+
+// in reducer.js
+export default function createReducer(asyncReducers) {
+  return combineReducers({
+    route: routeReducer,
+    ...asyncReducers,
+  })
+}</code></pre>
+<h2 id="rxjs实践"><a href="#rxjs实践" class="headerlink" title="rxjs实践"></a>rxjs实践</h2><p>get请求：</p>
+<pre><code class="js">const getUserInfos = actions$ =&gt; actions$.ofType(GET_USER_INFOS).pipe(
+  switchMap(({ username }) =&gt; request$(genFailedPaymentFilesUrl(), {
+    userInfo: username,
+    pageIndex: 1,
+    pageSize: 49,
+    scope: &#39;all&#39;,
+    status: 0,
+  }).pipe(
+    map(R.path([&#39;data&#39;])),
+    map(({ infos }) =&gt; ({
+      type: SET_USER_INFOS,
+      infos,
+    })),
+    catchError(catchError$),
+    takeUntil(actions$.ofType(LOCATION_CHANGE))
+  ))
+)</code></pre>
+<p>Post请求：</p>
+<pre><code class="js">const addRecord = actions$ =&gt; actions$.ofType(ADD_FAILED_FILE).pipe(
+  throttleTime(1000),   // 视情况而定，要看此时action还是同样的数据
+  throttle(() =&gt; requesting$(ADD_FAILED_FILE)),
+  flatMap(({ infoId, userInfo, reason }) =&gt; {
+    const data = new FormData()
+    data.set(&#39;reason&#39;, reason)
+    return request$
+      .post(genFailedPayUrl(infoId), data, {
+        &#39;Content-Type&#39;: &#39;multipart/form-data&#39;,
+      })
+      .pipe(
+        map(({ succeed }) =&gt; succeed
+          ? {
+            type: CONCAT_RECORDS,
+            infoId,
+            userInfo,
+            reason,
+          }
+          : { type: &#39;&#39; }),
+        catchError(catchError$),
+        finalize(() =&gt; requesting$(ADD_FAILED_FILE).next())
+      )
+  })
+)</code></pre>
+<p>concat多个action：</p>
+<pre><code class="js">const getProjects = actions$ =&gt; actions$.ofType(GET_PROJECTS).pipe(
+  switchMap(
+    ({ limit, offset, projectName }) =&gt; concat(of({ type: TOGGLE_LOADING }),
+      request$(&#39;/api/projects&#39;, {
+        limit, offset, projectName,
+      }).pipe(
+        map(({ data: { projectList, projectsCount } }) =&gt; (
+          { type: SET_PROJECTS, projects: projectList, projectsCount })),
+        takeUntil(actions$.ofType(LOCATION_CHANGE)),
+      ),
+      of({ type: TOGGLE_LOADING })),
+  ),
+  catchError(catchError$),
+)</code></pre>
+<p>在pipe中发出多个action：</p>
+<pre><code class="js">const exportReportStatus = actions$ =&gt; actions$.ofType(EXPORT_REPORT_STATUS).pipe(
+  switchMap(() =&gt; request$(genExprotReportStatus()).pipe(
+    map(throwSeverApiError),
+    map(R.path([&#39;data&#39;])),
+
+    switchMap((data) =&gt; {
+      const { tips } = data
+      if (data.available) { return of({ type: OFF_EXPORT_REPORT_LOADING }) }
+      return of({ type: ON_EXPORT_REPORT_LOADING }, { type: SET_TIPS, tips })
+    }),
+
+    catchError(catchError$),
+    takeUntil(actions$.ofType(LOCATION_CHANGE))
+  ))
+)</code></pre>
+<p>forJoin多个流：</p>
+<pre><code class="js">const finishPay = actions$ =&gt; actions$.ofType(FINISH_PAY).pipe(
+  switchMap(({ fileIds, tableData }) =&gt; concat(
+    of({ type: ON_LOADING, tip: &#39;正在完结支付&#39; }),
+    forkJoin(
+      ...R.map(item =&gt; request$.getByConfig({
+        url: genCompletPayUrl(item),
+        method: &#39;PUT&#39;,
+        timeout: 0,
+      })
+        .pipe(
+          map(throwSeverApiError),
+          catchError(catchError$),
+        ))(fileIds)
+    ).pipe(
+      map(R.map(data =&gt; throwSeverApiError(data))), //  forkJoin返回的是数组
+      map(R.path([&#39;data&#39;])),
+      map(() =&gt; ({
+        type: GET_LIST,
+        ...tableData,
+      })),
+      catchError(catchError$),
+      takeUntil(actions$.ofType(LOCATION_CHANGE)),
+    ),
+    of({ type: OFF_LOADING }),
+  ))
+)
+
+const submitLoginLdap = (actions$, state$) =&gt; actions$.ofType(SUBMIT_LOGIN_LDAP).pipe(
+  throttleTime(1000),
+  switchMap(() =&gt; {
+    const loginObj = {
+      username: username_(state$.value),
+      password: password_(state$.value),
+    }
+    return forkJoin(
+      request$.post(&#39;/api/login&#39;, loginObj),
+      request$.post(&#39;/auth-api/login&#39;, loginObj).pipe(catchError(catchError$))  // 单独抓每个流里的错误，不影响整体
+    ).pipe(
+      map(([v1, v2]) =&gt; ({ loginSucceed: R.path([&#39;data&#39;, &#39;success&#39;])(v1), tokenSucceed: R.path([&#39;result&#39;])(v2) })),
+      flatMap(({ loginSucceed, tokenSucceed }) =&gt; (loginSucceed &amp;&amp; tokenSucceed)
+        ? from([{ type: SET_CURRENT_AUTH_STATUS, auth: true }, { type: GET_CURRENT }]) : EMPTY),
+      catchError(catchError$)
+    )
+  })
+)
+</code></pre>
+<h2 id="实践Q-amp-A"><a href="#实践Q-amp-A" class="headerlink" title="实践Q&amp;A"></a>实践Q&amp;A</h2><ol>
+<li>index.js中的组件需要用原始js，但container拿到的Props是Immutable的，怎么办？</li>
+</ol>
+<ul>
+<li>immutableWrapper</li>
+<li>selector   更好，在selector中处理数据，可以避免在Index中逻辑过多。</li>
+</ul>
+<ol start="2">
+<li>多个container共享props/actions</li>
+</ol>
+<p>抽出共同的reducer/action/selector/constants 文件，并与自己的状态merge</p>
+<ol start="3">
+<li>container的render()如何避免重复渲染</li>
+</ol>
+<p>dom上绑定的事件尽量为func，而不是func()<br>注意，尽量写成() =&gt; {}的形成，否则可能会每次render都执行</p>
+<ol start="4">
+<li>rxjs不能写异步方法， 异步控制在哪里做？（多个异步控制，loading态度）</li>
+</ol>
+<p>rxjs通过吐出多个action来操作。<br>哪怕index.js里的方法是async的，await actions 也没有作用。因为actions只是发出事件，Pub-sub模式，处理流不是在这一步。</p>
+<ol start="5">
+<li><p>建议写一个功能的顺序：constants（定义常量） -&gt; action（定义操作） -&gt; reduce（数据操作修改）和selector（数据获取） -&gt; epics（定义异步操作，可同时发出相关操作 ）-&gt; index(调用action，写selector接收数据）</p>
+</li>
+<li><p>建议index文件中，功能函数在上，render渲染在最后，方便查看修改</p>
+</li>
+</ol>
+<h2 id="Issues"><a href="#Issues" class="headerlink" title="Issues"></a>Issues</h2><ol>
+<li>request$ &amp;&amp; catch-error$</li>
+</ol>
+<p>如何兼容服务器的各种报错，要不要在requset$中处理错误？</p>
+<ol start="2">
+<li>setState到底有多快？</li>
+</ol>
+<p>比如说，先setState({index: 1})， 再去做getList()</p>
+<pre><code class="js">getList = () {
+  const {index} = this.state
+  getList(index)  //异步方法
+}</code></pre>
+<p>参考：<a href="https://segmentfault.com/a/1190000016805467#articleHeader6" target="_blank" rel="noopener">https://segmentfault.com/a/1190000016805467#articleHeader6</a></p>
+<ol start="3">
+<li>throttle的问题</li>
+</ol>
+<p>上传回单的时候，如果迟迟不finalize（请求时间过长），则无法上传第二个回单？？即使指定了每次throttle的request$都是不同的值。</p>
+<h2 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h2><ol>
+<li>antd table word wrap</li>
+</ol>
+<p>控制css换行的是<code>word-break</code>属性, 取值为break-all, keep-all, break-word等。<br>但加上后，antd的table中仍然遇到了不换行的问题。后来发现，是因为文字容器为<code>button</code>，按钮不会换行，换成<code>span</code>后就正常换行了。</p>
+<ol start="2">
+<li>页面切换时，willUnMount和location_change事件的顺序</li>
+</ol>
+<p>先发生location_change, 再发生上一个页面的willunmount<br>注意不要在这两个事件钩子里撞action。</p>
+<ol start="3">
+<li>检查拼写，reducer和epic里的拼写确保一致。</li>
+</ol>
+<p>4.如何自己写上传文件？<br>一个container内部共享一个隐藏态的input，使用onInput事件而不是onChange事件，注意每次传完值后将value置为空字符串。</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">💰</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2017 tanjiajian
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>Help us with donation</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">alipay</label></span><span><label><input type="radio" name="pay" value="weixin">weixin</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
