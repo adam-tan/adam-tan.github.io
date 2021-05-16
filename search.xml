@@ -155,7 +155,7 @@ import * as module from &#39;./module&#39;;
 <li>客户端 ：RN/Weex、原生bridge</li>
 <li>移动端（微信公众号开发、小程序、移动端问题：1px问题、点击穿透、图片懒加载）</li>
 </ul>
-<h2 id="1、css可以继承的属性"><a href="#1、css可以继承的属性" class="headerlink" title="1、css可以继承的属性"></a>1、css可以继承的属性</h2><ul>
+<h2 id="css可以继承的属性"><a href="#css可以继承的属性" class="headerlink" title="css可以继承的属性"></a>css可以继承的属性</h2><ul>
 <li><p>常用的css可继承的属性：</p>
 <p>font：组合字体</p>
 <p>font-family：规定元素的字体系列</p>
@@ -185,7 +185,7 @@ import * as module from &#39;./module&#39;;
 <p>text-indent、text-align</p>
 </li>
 </ul>
-<h2 id="2、原型链的相关知识"><a href="#2、原型链的相关知识" class="headerlink" title="2、原型链的相关知识"></a>2、原型链的相关知识</h2><ul>
+<h2 id="原型链的相关知识"><a href="#原型链的相关知识" class="headerlink" title="原型链的相关知识"></a>原型链的相关知识</h2><ul>
 <li><strong>proto</strong>指向该对象的构造函数的原型对象。</li>
 <li><strong>prototype</strong>指向该方法的原型对象，<strong>Object.prototype</strong>只是一个普通对象(普通对象没有prototype属性，所以值是undefined)，它是js原型链的最顶端,它的<code>__proto__</code>是null(有<code>__proto__</code>属性，但值是null，因为这是原型链的最顶端)。</li>
 </ul>
@@ -199,10 +199,10 @@ import * as module from &#39;./module&#39;;
 </ul>
 <pre><code class="js">    // 函数对象
     function Person() {}
-        // 普通对象
-        var obj = {};
+  // 普通对象
+  var obj = {};
 
-        obj.__proto__ === Object.prototype;//true
+  obj.__proto__ === Object.prototype;//true
 
     obj.prototype === undefined;//true
 
@@ -210,13 +210,12 @@ import * as module from &#39;./module&#39;;
 
     Person.prototype !== undefined;//true</code></pre>
 <ul>
-<li>原型链是基于<code>__proto__</code>形成的，继承是通过prototype实现的。</li>
-</ul>
-<ul>
-<li>所有函数都有prototype属性，除了Function.prototype外，它是函数对象，但是没有prototype属性。<code>Function.prototype.prototype === undefined;//true</code></li>
-</ul>
-<ul>
-<li>函数也是对象，因为<code>Function.prototype.__proto__</code>指向Object.prototype。</li>
+<li><p>原型链是基于<code>__proto__</code>形成的，继承是通过prototype实现的。</p>
+</li>
+<li><p>所有函数都有prototype属性，除了Function.prototype外，它是函数对象，但是没有prototype属性。<code>Function.prototype.prototype === undefined;//true</code></p>
+</li>
+<li><p>函数也是对象，因为<code>Function.prototype.__proto__</code>指向Object.prototype。</p>
+</li>
 </ul>
 <pre><code class="js">    typeof Function.prototype.__proto__) === &quot;object&quot;;//true
     Function.prototype.__proto__=== Object.prototype;//true</code></pre>
@@ -224,7 +223,7 @@ import * as module from &#39;./module&#39;;
 <li><strong><code>instanceof</code></strong> <strong>运算符</strong>用于检测构造函数的 <code>prototype</code> 属性是否出现在某个实例对象的原型链(构造函数是不是对象new)</li>
 <li><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gdbszdheq1j310o0lgabp.jpg" alt="img"></li>
 </ul>
-<h2 id="3、cookie"><a href="#3、cookie" class="headerlink" title="3、cookie"></a>3、cookie</h2><ol>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><ol>
 <li>什么是cookie</li>
 </ol>
 <p>cookie是由服务器生成并保存在客户端的小型文本文件，它的优点是：</p>
@@ -244,17 +243,17 @@ import * as module from &#39;./module&#39;;
 <li>与session的区别</li>
 </ol>
 <p>session：服务端执行session机制时候会生成session的id值，客户端每次请求都会把这个id值放到http请求的头部发送给服务端，而这个id值在客户端会保存下来，保存的容器就是cookie(Session不一定必须依赖Cookie，也可以在url上)</p>
-<h2 id="4-node事件驱动模型"><a href="#4-node事件驱动模型" class="headerlink" title="4. node事件驱动模型"></a>4. node事件驱动模型</h2><p>关于线程： 除了你的代码是单线程，其余都是多线程（线程池），nodejs本身是事件驱动，一个io事件完成会被放到一个事件队列中，主线程负责轮询这个队列，然后执行相应的回调函数。</p>
+<h2 id="node事件驱动模型"><a href="#node事件驱动模型" class="headerlink" title="node事件驱动模型"></a>node事件驱动模型</h2><p>关于线程： 除了你的代码是单线程，其余都是多线程（线程池），nodejs本身是事件驱动，一个io事件完成会被放到一个事件队列中，主线程负责轮询这个队列，然后执行相应的回调函数。</p>
 <p><a href="https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/26" target="_blank" rel="noopener">参考1</a></p>
 <p><a href="http://www.ruanyifeng.com/blog/2018/02/node-event-loop.html" target="_blank" rel="noopener">参考2</a></p>
 <p><a href="https://nodejs.org/zh-cn/docs/guides/event-loop-timers-and-nexttick/" target="_blank" rel="noopener">Node.js 事件循环，定时器和 process.nextTick()</a> by node.js</p>
-<h2 id="5、clientWidth和offsetWidth宽度"><a href="#5、clientWidth和offsetWidth宽度" class="headerlink" title="5、clientWidth和offsetWidth宽度"></a>5、clientWidth和offsetWidth宽度</h2><p>ele.clientWidth = 宽度 + padding</p>
+<h2 id="clientWidth和offsetWidth宽度"><a href="#clientWidth和offsetWidth宽度" class="headerlink" title="clientWidth和offsetWidth宽度"></a>clientWidth和offsetWidth宽度</h2><p>ele.clientWidth = 宽度 + padding</p>
 <p>ele.offsetWidth = 宽度 + padding + border</p>
 <p> ele.scrollTop = 被卷去的上侧距离</p>
 <p> ele.scrollHeight = 自身实际的高度，可见部分加上不可见部分（不包括边框）</p>
 <p>ele.offsetTop = 当前元素相对于其 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetParent" target="_blank" rel="noopener"><code>offsetParent</code></a> 元素的顶部内边距的距离</p>
 <p>Ps：懒加载是利用图片的ele.offsetTop和父元素的scrollTop的差判断图片是否在屏幕范围内</p>
-<h2 id="6、线程和进程的差别"><a href="#6、线程和进程的差别" class="headerlink" title="6、线程和进程的差别"></a>6、线程和进程的差别</h2><h2 id="7、网络安全"><a href="#7、网络安全" class="headerlink" title="7、网络安全"></a>7、网络安全</h2><p><strong>常见Web漏洞及其防范</strong></p>
+<h2 id="线程和进程的差别"><a href="#线程和进程的差别" class="headerlink" title="线程和进程的差别"></a>线程和进程的差别</h2><h2 id="网络安全"><a href="#网络安全" class="headerlink" title="网络安全"></a>网络安全</h2><p><strong>常见Web漏洞及其防范</strong></p>
 <ul>
 <li>1.XSS(Cross Site Scripting)跨站脚本攻击<ul>
 <li>攻击方式：利用html的漏洞，让网页执行不存在的js代码，比如在评论里写进代码，用户浏览到当条评论就会执行此段代码</li>
@@ -262,7 +261,7 @@ import * as module from &#39;./module&#39;;
 </ul>
 </li>
 <li>2.CSRF（Cross-site request forgery）跨站请求伪造<ul>
-<li>方式：伪装成用户发请求，如劫持用户cookie获取请求，伪装成用户进行银行卡转账 </li>
+<li>方式：伪装成用户发请求，如劫持用户cookie获取请求，伪装成用户进行银行卡转账</li>
 <li>防范：通过HTTP的Referer字段验证请求是否来自信任网站</li>
 </ul>
 </li>
@@ -271,9 +270,9 @@ import * as module from &#39;./module&#39;;
 <li>5.非加密传输<br>防范：使用HTTPS(HTTPS原理：非对称加密交换密钥+对称加密数据+CA认证)</li>
 <li>6.CFS(Cross Frame Script跨框架脚本攻击)与Clickjacking(点击劫持)<br>防范：服务端header设置X-Frame-Options为SAMEORIGIN</li>
 </ul>
-<h2 id="8、http2和http1的区别"><a href="#8、http2和http1的区别" class="headerlink" title="8、http2和http1的区别"></a>8、http2和http1的区别</h2><h2 id="9、虚拟dom的原理"><a href="#9、虚拟dom的原理" class="headerlink" title="9、虚拟dom的原理"></a>9、虚拟dom的原理</h2><h2 id="10、如果要实现一个组件的动态加载，会用webpack的什么方法"><a href="#10、如果要实现一个组件的动态加载，会用webpack的什么方法" class="headerlink" title="10、如果要实现一个组件的动态加载，会用webpack的什么方法"></a>10、如果要实现一个组件的动态加载，会用webpack的什么方法</h2><h2 id="11、-组件库遇到的难点问题"><a href="#11、-组件库遇到的难点问题" class="headerlink" title="11、 组件库遇到的难点问题"></a>11、 组件库遇到的难点问题</h2><h2 id="12、ajax实现"><a href="#12、ajax实现" class="headerlink" title="12、ajax实现"></a>12、ajax实现</h2><h2 id="13、宏任务微任务"><a href="#13、宏任务微任务" class="headerlink" title="13、宏任务微任务"></a>13、宏任务微任务</h2><p>任务执行顺序： 同步任务、异步任务(顺序：微任务（promise，nextTick）、宏任务(setTimeout，setInterval、setImmediate))</p>
+<h2 id="http2和http1的区别"><a href="#http2和http1的区别" class="headerlink" title="http2和http1的区别"></a>http2和http1的区别</h2><h2 id="虚拟dom的原理"><a href="#虚拟dom的原理" class="headerlink" title="虚拟dom的原理"></a>虚拟dom的原理</h2><h2 id="如果要实现一个组件的动态加载，会用webpack的什么方法"><a href="#如果要实现一个组件的动态加载，会用webpack的什么方法" class="headerlink" title="如果要实现一个组件的动态加载，会用webpack的什么方法"></a>如果要实现一个组件的动态加载，会用webpack的什么方法</h2><h2 id="组件库遇到的难点问题"><a href="#组件库遇到的难点问题" class="headerlink" title="组件库遇到的难点问题"></a>组件库遇到的难点问题</h2><h2 id="ajax实现"><a href="#ajax实现" class="headerlink" title="ajax实现"></a>ajax实现</h2><h2 id="宏任务微任务"><a href="#宏任务微任务" class="headerlink" title="宏任务微任务"></a>宏任务微任务</h2><p>任务执行顺序： 同步任务、异步任务(顺序：微任务（promise，nextTick）、宏任务(setTimeout，setInterval、setImmediate))</p>
 <p>参考：<a href="https://juejin.im/post/5b498d245188251b193d4059#heading-6]" target="_blank" rel="noopener">宏任务与微任务</a></p>
-<h2 id="14、什么是reflow和repaint"><a href="#14、什么是reflow和repaint" class="headerlink" title="14、什么是reflow和repaint"></a>14、什么是reflow和repaint</h2><blockquote>
+<h2 id="什么是reflow和repaint"><a href="#什么是reflow和repaint" class="headerlink" title="什么是reflow和repaint"></a>什么是reflow和repaint</h2><blockquote>
 <p>repaint（重绘）：如果只是改变某个元素的背景色、文字颜色、边框颜色等等不影响它周围或内部布局的属性，将只会引起浏览器 repaint。repaint 的速度明显快于 reflow</p>
 <p>reflow（回流）：例如某个子元素样式发生改变，直接影响到了其父元素以及往上追溯很多祖先元素（包括兄弟元素），这个时候浏览器要重新去渲染这个子元素相关联的所有元素的过程称为回流。</p>
 </blockquote>
@@ -288,8 +287,8 @@ import * as module from &#39;./module&#39;;
 <p>7：计算offsetWidth和offsetHeight</p>
 <p>8：设置style属性</p>
 <p>相关扩展：<a href="https://www.zhihu.com/question/33629083" target="_blank" rel="noopener">在移动端使用transform: translate代替top left marg等做位移有好处么 ？</a></p>
-<h2 id="15、new做了什么"><a href="#15、new做了什么" class="headerlink" title="15、new做了什么"></a>15、new做了什么</h2><p>新建一个对象，并把this指向这个对象，同时使该对象继承函数的原型</p>
-<h2 id="16、内存泄露"><a href="#16、内存泄露" class="headerlink" title="16、内存泄露"></a>16、内存泄露</h2><ol>
+<h2 id="new做了什么"><a href="#new做了什么" class="headerlink" title="new做了什么"></a>new做了什么</h2><p>新建一个对象，并把this指向这个对象，同时使该对象继承函数的原型</p>
+<h2 id="内存泄露"><a href="#内存泄露" class="headerlink" title="内存泄露"></a>内存泄露</h2><ol>
 <li><p>意外的全局变量， 在JavaScript文件中添加<code>&#39;use strict&#39;</code>，开启严格模式</p>
 </li>
 <li><p>闭包</p>
@@ -301,17 +300,17 @@ import * as module from &#39;./module&#39;;
 <li><p>由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大</p>
 </li>
 <li><p>循环引用</p>
-<pre><code class="js">function handle () {
-    var element = document.getElementById(“testId”);
-      // 闭包
-    element.onclick = function (){
-        alert(element.id)
-    }
-}</code></pre>
-<p>闭包会持有外部传入的变量，因此闭包持有了element对象，而element对象通过onclick属性持有了闭包，因此两个对象相互持有，造成内存泄漏。</p>
-<p>Ps: 可以<a href="https://www.zhihu.com/question/31078912" target="_blank" rel="noopener">参考</a></p>
 </li>
 </ol>
+<pre><code class="js">   function handle () {
+       var element = document.getElementById(“testId”);
+      // 闭包
+       element.onclick = function (){
+           alert(element.id)
+       }
+   }</code></pre>
+<p>   闭包会持有外部传入的变量，因此闭包持有了element对象，而element对象通过onclick属性持有了闭包，因此两个对象相互持有，造成内存泄漏。</p>
+<p>   Ps: 可以<a href="https://www.zhihu.com/question/31078912" target="_blank" rel="noopener">参考</a></p>
 </li>
 <li><p>被遗忘的定时器和回调函数 在定时器完成工作的时候，手动清除定时器</p>
 </li>
@@ -321,7 +320,7 @@ import * as module from &#39;./module&#39;;
 </li>
 </ol>
 <p>参考 <a href="https://segmentfault.com/a/1190000020231307#item-5-5" target="_blank" rel="noopener">内存泄露</a></p>
-<h2 id="17、http-2-0对于http-1-x有哪些优点？"><a href="#17、http-2-0对于http-1-x有哪些优点？" class="headerlink" title="17、http 2.0对于http 1.x有哪些优点？"></a>17、http 2.0对于http 1.x有哪些优点？</h2><ol>
+<h2 id="http-2-0对于http-1-x有哪些优点？"><a href="#http-2-0对于http-1-x有哪些优点？" class="headerlink" title="http 2.0对于http 1.x有哪些优点？"></a>http 2.0对于http 1.x有哪些优点？</h2><ol>
 <li><p>多路复用，多个http请求复用一个连接</p>
 <blockquote>
 <p>HTTP2采用二进制格式传输，取代了HTTP1.x的文本格式，二进制格式解析更高效。<br>多路复用代替了HTTP1.x的序列和阻塞机制，所有的相同域名请求都通过同一个TCP连接并发完成。在HTTP1.x中，并发多个请求需要多个TCP连接，浏览器为了控制资源会有6-8个TCP连接都限制。<br>HTTP2中</p>
@@ -339,7 +338,7 @@ import * as module from &#39;./module&#39;;
 </li>
 </ol>
 <p><a href="https://www.zhihu.com/question/34074946" target="_blank" rel="noopener">参考</a></p>
-<h2 id="18、virtualDOM是什么"><a href="#18、virtualDOM是什么" class="headerlink" title="18、virtualDOM是什么"></a>18、virtualDOM是什么</h2><p>virtualDOM是DOM节点树的一个映射</p>
+<h2 id="virtualDOM是什么"><a href="#virtualDOM是什么" class="headerlink" title="virtualDOM是什么"></a>virtualDOM是什么</h2><p>virtualDOM是DOM节点树的一个映射</p>
 <p>使用原因：真实dom依赖环境，操作开销大，节点渲染频繁</p>
 <p>它的作用是，每次数据变化时，通过virtualDOM执行diff算法进行对比得到差异结果后，再一次性对DOM进行批量更新操作</p>
 <p>diff算法不是传统意义上的通过深度优先遍历DFS算法算法，它做了以下几点改进：</p>
@@ -357,7 +356,7 @@ import * as module from &#39;./module&#39;;
 </li>
 </ol>
 <p><a href="https://juejin.im/post/5d81eec56fb9a06add4e63ba" target="_blank" rel="noopener">参考</a></p>
-<h2 id="19、webpack性能优化汇总"><a href="#19、webpack性能优化汇总" class="headerlink" title="19、webpack性能优化汇总"></a>19、<a href="https://juejin.im/post/5dcc45136fb9a02b450c2818" target="_blank" rel="noopener">webpack性能优化汇总</a></h2><ol>
+<h2 id="webpack性能优化汇总"><a href="#webpack性能优化汇总" class="headerlink" title="webpack性能优化汇总"></a><a href="https://juejin.im/post/5dcc45136fb9a02b450c2818" target="_blank" rel="noopener">webpack性能优化汇总</a></h2><ol>
 <li><p>减少打包时间</p>
 <ol>
 <li>优化loader配置</li>
@@ -377,18 +376,18 @@ import * as module from &#39;./module&#39;;
 </li>
 </ol>
 <p><a href="https://juejin.im/post/5b652b036fb9a04fa01d616b#heading-16" target="_blank" rel="noopener">参考</a></p>
-<h2 id="20、组件设计原则"><a href="#20、组件设计原则" class="headerlink" title="20、组件设计原则"></a>20、组件设计原则</h2><ol>
+<h2 id="组件设计原则"><a href="#组件设计原则" class="headerlink" title="组件设计原则"></a>组件设计原则</h2><ol>
 <li>低耦合高内聚，</li>
 <li>分清业务组件和通用组件</li>
 <li>健壮性，保证能在各种场合适用</li>
 </ol>
-<h2 id="21、node中间件的原理"><a href="#21、node中间件的原理" class="headerlink" title="21、node中间件的原理"></a>21、node中间件的原理</h2><p>一个请求发送到服务器后，它的生命周期是 先收到request（请求），然后服务端处理，处理完了以后发送response（响应）回去</p>
+<h2 id="node中间件的原理"><a href="#node中间件的原理" class="headerlink" title="node中间件的原理"></a>node中间件的原理</h2><p>一个请求发送到服务器后，它的生命周期是 先收到request（请求），然后服务端处理，处理完了以后发送response（响应）回去</p>
 <p>app.use 加载用于处理http请求的middleware（中间件），当一个请求来的时候，会依次被这些 middlewares处理。</p>
 <p>中间件其是一个函数，在响应发送之前对请求进行一些操作</p>
 <p>这个函数有些不太一样，它还有一个next参数，而这个next也是一个函数，它表示函数数组中的下一个函数</p>
 <p>express内部维护一个函数数组，这个函数数组表示在发出响应之前要执行的所有函数，也就是中间件数组</p>
 <p>ps：<a href="https://cloud.tencent.com/developer/article/1467268" target="_blank" rel="noopener">koa与express的中间件机制揭秘</a> by 挥刀北上</p>
-<h2 id="22、http请求方式"><a href="#22、http请求方式" class="headerlink" title="22、http请求方式"></a>22、http请求方式</h2><table>
+<h2 id="http请求方式"><a href="#http请求方式" class="headerlink" title="http请求方式"></a>http请求方式</h2><table>
 <thead>
 <tr>
 <th>方法</th>
@@ -433,7 +432,7 @@ import * as module from &#39;./module&#39;;
 </tr>
 </tbody></table>
 <p><a href="https://juejin.im/entry/5b004085f265da0b886daf7c" target="_blank" rel="noopener">参考</a></p>
-<h2 id="23、关于-javascript-中的-this"><a href="#23、关于-javascript-中的-this" class="headerlink" title="23、关于 javascript 中的 this"></a>23、关于 javascript 中的 this</h2><p>javascript 中的 this 和 OO 语言（如：java、C#）的 this 有着比较大的差异。</p>
+<h2 id="关于-javascript-中的-this"><a href="#关于-javascript-中的-this" class="headerlink" title="关于 javascript 中的 this"></a>关于 javascript 中的 this</h2><p>javascript 中的 this 和 OO 语言（如：java、C#）的 this 有着比较大的差异。</p>
 <ul>
 <li>1 请说明下方代码片段中对于 this 的使用是否正确，不正确的话，问题在哪里，如何修改？</li>
 <li>2 写些小的代码片段说明一下你理解的 this。</li>
@@ -488,7 +487,7 @@ console.log(myName.name) //&#39;lili&#39;
 const func = () =&gt; { console.log(this) }
 func() //指向全局
 func.call(obj) //指向全局</code></pre>
-<h2 id="24、简述-HTTPS-的工作原理，如何实现的加密传输"><a href="#24、简述-HTTPS-的工作原理，如何实现的加密传输" class="headerlink" title="24、简述 HTTPS 的工作原理，如何实现的加密传输"></a>24、简述 HTTPS 的工作原理，如何实现的加密传输</h2><p>答：</p>
+<h2 id="简述-HTTPS-的工作原理，如何实现的加密传输"><a href="#简述-HTTPS-的工作原理，如何实现的加密传输" class="headerlink" title="简述 HTTPS 的工作原理，如何实现的加密传输"></a>简述 HTTPS 的工作原理，如何实现的加密传输</h2><p>答：</p>
 <p>简单描述下，https的是对网页整体内容进行加密，从而防止第三方恶意利用网站的加密传输技术</p>
 <p>一般用户请求https时：</p>
 <ul>
@@ -504,10 +503,10 @@ func.call(obj) //指向全局</code></pre>
 <li>为什么不直接使用公钥加密网页？因为网页往往较大，用公钥加密一般比较费时，而对称加密效率高但安全性低，故此选择了非对称加密和对称加密结合的方式进行</li>
 <li>为什么要加入随机key？随机key是最重要的钥匙，和客户端随机码、服务端随机码是明文传输不一样，它是唯一不会被中间人获取的key。</li>
 </ul>
-<h2 id="25、介绍一下-import-和-require-有什么区别"><a href="#25、介绍一下-import-和-require-有什么区别" class="headerlink" title="25、介绍一下 import 和 require 有什么区别"></a>25、介绍一下 import 和 require 有什么区别</h2><p>答：</p>
+<h2 id="介绍一下-import-和-require-有什么区别"><a href="#介绍一下-import-和-require-有什么区别" class="headerlink" title="介绍一下 import 和 require 有什么区别"></a>介绍一下 import 和 require 有什么区别</h2><p>答：</p>
 <p>import：es6的模块加载规范，可用于浏览器环境和node环境(需要babal)</p>
 <p>require：commonJS的加载规范，主要用于node环境</p>
-<h2 id="26、什么是事件捕获机制，DOM0和DOM2"><a href="#26、什么是事件捕获机制，DOM0和DOM2" class="headerlink" title="26、什么是事件捕获机制，DOM0和DOM2"></a>26、什么是事件捕获机制，DOM0和DOM2</h2><p>1、DOM0级事件</p>
+<h2 id="什么是事件捕获机制，DOM0和DOM2"><a href="#什么是事件捕获机制，DOM0和DOM2" class="headerlink" title="什么是事件捕获机制，DOM0和DOM2"></a>什么是事件捕获机制，DOM0和DOM2</h2><p>1、DOM0级事件</p>
 <p>就是直接通过 onclick 等方式实现相应的事件</p>
 <p>这说明 DOM0 级添加事件时，后面的事件会覆盖前面的事件，而 DOM2级则不会，多个事件都会执行；</p>
 <p>另外，DOM0级事件具有很好的跨浏览器优势，会以最快的速度绑定，但由于绑定速度太快，可能页面还未完全加载出来，以至于事件可能无法正常运行</p>
@@ -524,14 +523,14 @@ func.call(obj) //指向全局</code></pre>
 </ol>
 <p>即是事件捕获机制</p>
 <p><a href="https://www.cnblogs.com/Leophen/p/11405579.html" target="_blank" rel="noopener">参考</a></p>
-<h2 id="27、理解变量提升"><a href="#27、理解变量提升" class="headerlink" title="27、理解变量提升"></a>27、理解变量提升</h2><ol>
+<h2 id="理解变量提升"><a href="#理解变量提升" class="headerlink" title="理解变量提升"></a>理解变量提升</h2><ol>
 <li>变量函数都会提升</li>
 <li>函数声明提升(包括function(){}里面也算函数声明)</li>
 <li>变量声明提升，不会提升赋值</li>
 </ol>
 <p><a href="https://juejin.im/post/5d36b06af265da1ba84ad143#heading-3" target="_blank" rel="noopener">参考</a></p>
-<h2 id="26、前端模块化：CommonJS-AMD-CMD-ES6"><a href="#26、前端模块化：CommonJS-AMD-CMD-ES6" class="headerlink" title="26、前端模块化：CommonJS,AMD,CMD,ES6"></a>26、前端模块化：CommonJS,AMD,CMD,ES6</h2><p><a href="https://juejin.im/post/5aaa37c8f265da23945f365c" target="_blank" rel="noopener">参考</a></p>
-<h2 id="27、继承的几种方式"><a href="#27、继承的几种方式" class="headerlink" title="27、继承的几种方式"></a>27、继承的几种方式</h2><ol>
+<h2 id="前端模块化：CommonJS-AMD-CMD-ES6"><a href="#前端模块化：CommonJS-AMD-CMD-ES6" class="headerlink" title="前端模块化：CommonJS,AMD,CMD,ES6"></a>前端模块化：CommonJS,AMD,CMD,ES6</h2><p><a href="https://juejin.im/post/5aaa37c8f265da23945f365c" target="_blank" rel="noopener">参考</a></p>
+<h2 id="继承的几种方式"><a href="#继承的几种方式" class="headerlink" title="继承的几种方式"></a>继承的几种方式</h2><ol>
 <li><p>原型链继承 缺点：引用类型值的原型属性会被所有实例共享</p>
 <pre><code class="js">function Parent() {
     this.name = &#39;父亲&#39;; // 实例基本属性 (该属性，强调私有，不共享)
@@ -547,12 +546,9 @@ Child.prototype = new Parent() // 核心
 
 let boy1 = new Child()
 let boy2 = new Child()</code></pre>
+<p>补充：实际上所有类型的属性都会被共享，只不过值类型的属性，在修改时会在对象上新建属性覆盖，而值类型通过一些不改变原始地址的方式修改值时，所有实例都会被修改，因为此时实例记录的都是同一个原始地址</p>
+<img src="https://tva1.sinaimg.cn/large/00831rSTgy1gdhtsqldzsj30s80jw0v2.jpg" alt="image-20200330115542949" style="zoom:50%;" />
 </li>
-</ol>
-<p>   补充：实际上所有类型的属性都会被共享，只不过值类型的属性，在修改时会在对象上新建属性覆盖，而值类型通过一些不改变原始地址的方式修改值时，所有实例都会被修改，因为此时实例记录的都是同一个原始地址</p>
-   <img src="https://tva1.sinaimg.cn/large/00831rSTgy1gdhtsqldzsj30s80jw0v2.jpg" alt="image-20200330115542949" style="zoom:50%;" />
-
-<ol start="2">
 <li><p>借用构造函数继承 缺点：父类的方法不能复用,每次都要新建一次方法</p>
 <pre><code class="js">function Parent(name) {
     this.name = name; // 实例基本属性 (该属性，强调私有，不共享)
@@ -589,7 +585,7 @@ let boy2 = new Child(&#39;小明&#39;,&#39;orange&#39;)</code></pre>
 </li>
 </ol>
 <p><a href="https://segmentfault.com/a/1190000015216289#item-2-5" target="_blank" rel="noopener">参考</a></p>
-<h2 id="29、创建对象的几种方式"><a href="#29、创建对象的几种方式" class="headerlink" title="29、创建对象的几种方式"></a>29、创建对象的几种方式</h2><ol>
+<h2 id="创建对象的几种方式"><a href="#创建对象的几种方式" class="headerlink" title="创建对象的几种方式"></a>创建对象的几种方式</h2><ol>
 <li><p>Object对象函数和对象字面量</p>
 </li>
 <li><p>工厂模式</p>
@@ -599,13 +595,11 @@ let boy2 = new Child(&#39;小明&#39;,&#39;orange&#39;)</code></pre>
   let obj = new Object()
   obj.name = name
   obj.say = function(){
-        alert(&#39;say&#39;)
-    }
+  alert(&#39;say&#39;)
+ }
 }
 let person1 = preson(&#39;钟汉良&#39;)</code></pre>
 </li>
-</ol>
-<ol start="3">
 <li><p>原型链模式</p>
 <p>用类创造一个对象</p>
 <p>缺点：共享了方法属性</p>
@@ -623,8 +617,8 @@ let person1 = new preson()</code></pre>
 <pre><code class="js">function person(name) {
   this.name = name
   this.say = function(){
-        alert(&#39;say&#39;)
-    }
+  alert(&#39;say&#39;)
+ }
 }
 let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 </li>
@@ -632,19 +626,19 @@ let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 <pre><code class="js">function person(name) {
   this.name = name
   this.say = function(){
-        alert(&#39;say&#39;)
-    }
+  alert(&#39;say&#39;)
+ }
 }
 person.prototype = {
   constructor: person,
   say: function(){
-        alert(&#39;say&#39;)
-    }
+  alert(&#39;say&#39;)
+ }
 }
 let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 </li>
 </ol>
-<h2 id="30、vue组件通信的方式"><a href="#30、vue组件通信的方式" class="headerlink" title="30、vue组件通信的方式"></a>30、vue组件通信的方式</h2><ol>
+<h2 id="vue组件通信的方式"><a href="#vue组件通信的方式" class="headerlink" title="vue组件通信的方式"></a>vue组件通信的方式</h2><ol>
 <li><p>父组件向子组件</p>
 <blockquote>
 <p>props：从上往下传</p>
@@ -665,14 +659,14 @@ let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 </blockquote>
 </li>
 </ol>
-<h2 id="31、前端常用的设计模式"><a href="#31、前端常用的设计模式" class="headerlink" title="31、前端常用的设计模式"></a>31、前端常用的设计模式</h2><ol>
-<li><p>工厂模式 </p>
+<h2 id="前端常用的设计模式"><a href="#前端常用的设计模式" class="headerlink" title="前端常用的设计模式"></a>前端常用的设计模式</h2><ol>
+<li><p>工厂模式</p>
 <blockquote>
 <p>定义一个创建对象的接口，让其子类自己决定实例化哪一个工厂类，工厂模式使其创建过程延迟到子类进行</p>
 </blockquote>
 <p>例子：父类就像工厂生产自行车，可能会有轮子、把手、踩踏板、刹车，但是不同型号的自行车会有不同的东西如变速器，这些交给子类生产线复制</p>
 </li>
-<li><p>单例模式 </p>
+<li><p>单例模式</p>
 <blockquote>
 <p>一个单一的类，该类负责创建自己的对象，同时确保只有<strong>单个对象</strong>被创建，并提供一个访问它的全局访问点</p>
 </blockquote>
@@ -719,28 +713,28 @@ let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 </li>
 </ol>
 <p><a href="https://www.cnblogs.com/tugenhua0707/p/5198407.html" target="_blank" rel="noopener">Javascript设计模式详解</a></p>
-<h2 id="32、js设计模式"><a href="#32、js设计模式" class="headerlink" title="32、js设计模式"></a>32、js设计模式</h2><ol>
-<li><p>单一职责原则 </p>
+<h2 id="js设计模式"><a href="#js设计模式" class="headerlink" title="js设计模式"></a>js设计模式</h2><ol>
+<li><p>单一职责原则</p>
 <blockquote>
 <p>单一职责原则，一个类只提供一种功能，不要存在过多导致类变化的原因。</p>
 </blockquote>
 </li>
-<li><p>开放封闭原则 </p>
+<li><p>开放封闭原则</p>
 <blockquote>
 <p>类，方法等应当对其扩展开放，对其修改封闭</p>
 </blockquote>
 </li>
-<li><p>里氏替换原则 </p>
+<li><p>里氏替换原则</p>
 <blockquote>
 <p>子类必须能够替换它们的基类。</p>
 </blockquote>
 </li>
-<li><p>依赖倒置原则 </p>
+<li><p>依赖倒置原则</p>
 <blockquote>
 <p>高层次的模块不应该依赖于低层次的模块，他们都应该依赖于抽象。抽象不应该依赖于具体实现，具体实现应该依赖于抽象。</p>
 </blockquote>
 </li>
-<li><p>接口分离原则 </p>
+<li><p>接口分离原则</p>
 <blockquote>
 <p>使用多个专门的接口来取代一个统一的接口</p>
 </blockquote>
@@ -751,7 +745,7 @@ let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 </blockquote>
 </li>
 </ol>
-<h2 id="32、amqp"><a href="#32、amqp" class="headerlink" title="32、amqp"></a>32、<a href="https://juejin.im/post/5dfc93a5f265da339b500273" target="_blank" rel="noopener">amqp</a></h2><h2 id="33、高性能建站指南"><a href="#33、高性能建站指南" class="headerlink" title="33、高性能建站指南"></a>33、高性能建站指南</h2><ol>
+<h2 id="amqp"><a href="#amqp" class="headerlink" title="amqp"></a><a href="https://juejin.im/post/5dfc93a5f265da339b500273" target="_blank" rel="noopener">amqp</a></h2><h2 id="高性能建站指南"><a href="#高性能建站指南" class="headerlink" title="高性能建站指南"></a>高性能建站指南</h2><ol>
 <li>减少http请求 方式：合并css、js文件，使用精灵图</li>
 <li>使用cdn加快加载速度</li>
 <li>开启浏览器缓存</li>
@@ -759,7 +753,7 @@ let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 <li>js放底部，防止其阻塞资源并行加载，不能并行加载的原因是保证js的顺序</li>
 <li>开启服务器gzip压缩</li>
 </ol>
-<h2 id="34、块级格式化上下文"><a href="#34、块级格式化上下文" class="headerlink" title="34、块级格式化上下文"></a>34、块级格式化上下文</h2><p>BFC(Block formatting context)直译为”块级格式化上下文”。它是一个独立的渲染区域，只有Block-level box参与,</p>
+<h2 id="块级格式化上下文"><a href="#块级格式化上下文" class="headerlink" title="块级格式化上下文"></a>块级格式化上下文</h2><p>BFC(Block formatting context)直译为”块级格式化上下文”。它是一个独立的渲染区域，只有Block-level box参与,</p>
 <p>哪些情况会产生BFC:</p>
 <ol>
 <li><p>根元素</p>
@@ -780,7 +774,7 @@ let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 <li>浮动元素不重叠</li>
 <li>用来实现两列自适应布局</li>
 </ul>
-<h2 id="35、CSS-百分比参照问题"><a href="#35、CSS-百分比参照问题" class="headerlink" title="35、CSS 百分比参照问题"></a>35、CSS 百分比参照问题</h2><ul>
+<h2 id="CSS-百分比参照问题"><a href="#CSS-百分比参照问题" class="headerlink" title="CSS 百分比参照问题"></a>CSS 百分比参照问题</h2><ul>
 <li><p>参照父元素<strong>宽度</strong>的元素：padding <strong>margin</strong> width text-indent</p>
 </li>
 <li><p>参照父元素高度的元素：height</p>
@@ -790,7 +784,7 @@ let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 <li><p>特殊：相对定位的时候，top(bottom) left(right)参照的是父元素的内容区域的高度与宽度，而绝对定位的时候参照的是最近的定位元素包含padding的高度与宽度</p>
 </li>
 </ul>
-<h2 id="35、React-组件的生命周期方法"><a href="#35、React-组件的生命周期方法" class="headerlink" title="35、React 组件的生命周期方法"></a>35、React 组件的生命周期方法</h2><p>一些最重要的生命周期方法是：</p>
+<h2 id="React-组件的生命周期方法"><a href="#React-组件的生命周期方法" class="headerlink" title="React 组件的生命周期方法"></a>React 组件的生命周期方法</h2><p>一些最重要的生命周期方法是：</p>
 <ol>
 <li><strong><em>componentWillMount**</em></strong>()** – 在渲染之前执行，在客户端和服务器端都会执行。</li>
 <li><strong><em>componentDidMount**</em></strong>()** – 仅在第一次渲染后在客户端执行。</li>
@@ -800,7 +794,7 @@ let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 <li><strong><em>componentDidUpdate**</em></strong>()** – 在渲染发生后立即调用。</li>
 <li><strong><em>componentWillUnmount**</em></strong>()** – 从 DOM 卸载组件后调用。用于清理内存空间。</li>
 </ol>
-<h2 id="36、-Node-的-Event-Loop-6个阶段"><a href="#36、-Node-的-Event-Loop-6个阶段" class="headerlink" title="36、 Node 的 Event Loop: 6个阶段"></a>36、 Node 的 Event Loop: 6个阶段</h2><ul>
+<h2 id="Node-的-Event-Loop-6个阶段"><a href="#Node-的-Event-Loop-6个阶段" class="headerlink" title="Node 的 Event Loop: 6个阶段"></a>Node 的 Event Loop: 6个阶段</h2><ul>
 <li><p>timer 阶段: 执行到期的<code>setTimeout / setInterval</code>队列回调</p>
 </li>
 <li><p>I/O 阶段: 执行上轮循环残流的<code>callback</code></p>
@@ -831,12 +825,13 @@ let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 <li><p>close callbacks</p>
 </li>
 </ul>
-<h2 id="37、H5移动端兼容问题"><a href="#37、H5移动端兼容问题" class="headerlink" title="37、H5移动端兼容问题"></a>37、<a href="https://segmentfault.com/a/1190000015131445" target="_blank" rel="noopener">H5移动端兼容问题</a></h2><h2 id="38、异步加载JS的方式有哪些？"><a href="#38、异步加载JS的方式有哪些？" class="headerlink" title="38、异步加载JS的方式有哪些？"></a>38、异步加载JS的方式有哪些？</h2><ul>
+<h2 id="浏览器与Node的事件循环-Event-Loop-有何区别"><a href="#浏览器与Node的事件循环-Event-Loop-有何区别" class="headerlink" title="浏览器与Node的事件循环(Event Loop)有何区别"></a><a href="https://blog.fundebug.com/2019/01/15/diffrences-of-browser-and-node-in-event-loop/" target="_blank" rel="noopener">浏览器与Node的事件循环(Event Loop)有何区别</a></h2><p>node跟浏览器端相差比较大，timers 阶段有几个 setTimeout/setInterval 都会依次执行，并不像浏览器端，每执行一个宏任务后就去执行一个微任务</p>
+<h2 id="H5移动端兼容问题"><a href="#H5移动端兼容问题" class="headerlink" title="H5移动端兼容问题"></a><a href="https://segmentfault.com/a/1190000015131445" target="_blank" rel="noopener">H5移动端兼容问题</a></h2><h2 id="异步加载JS的方式有哪些？"><a href="#异步加载JS的方式有哪些？" class="headerlink" title="异步加载JS的方式有哪些？"></a>异步加载JS的方式有哪些？</h2><ul>
 <li>defer：浏览器解析完成后执行，defer之间保证执行顺序</li>
 <li><code>async</code>：尽快执行，阻塞解析，不保证顺序</li>
 <li>创建<code>script</code>，在onload后，插入到<code>DOM</code>中，加载完毕后<code>callBcak</code></li>
 </ul>
-<h2 id="39、判断js数据类型的方法"><a href="#39、判断js数据类型的方法" class="headerlink" title="39、判断js数据类型的方法"></a>39、判断js数据类型的方法</h2><ol>
+<h2 id="判断js数据类型的方法"><a href="#判断js数据类型的方法" class="headerlink" title="判断js数据类型的方法"></a>判断js数据类型的方法</h2><ol>
 <li><p>typeof</p>
 <ul>
 <li>对于基本类型，除 null 以外，均可以返回正确的结果。</li>
@@ -856,7 +851,7 @@ let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 </li>
 </ol>
 <p><a href="https://www.cnblogs.com/onepixel/p/5126046.html" target="_blank" rel="noopener">参考</a></p>
-<h2 id="40、Proxy和defineProperty"><a href="#40、Proxy和defineProperty" class="headerlink" title="40、Proxy和defineProperty"></a>40、Proxy和defineProperty</h2><ul>
+<h2 id="Proxy和defineProperty"><a href="#Proxy和defineProperty" class="headerlink" title="Proxy和defineProperty"></a>Proxy和defineProperty</h2><ul>
 <li><p><strong>Object.defineProperty</strong> ：该方法可以在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回这个对象</p>
 <pre><code class="js">var obj = {};
 Object.defineProperty(obj, &quot;num&quot;, {
@@ -868,8 +863,6 @@ Object.defineProperty(obj, &quot;num&quot;, {
 //  对象 obj 拥有属性 num，值为 1
 </code></pre>
 </li>
-</ul>
-<ul>
 <li><p><strong>proxy</strong> ：控制和修改Object的基本行为, 比起defindProperty可以重定义更多的行为，除了 get 和 set 之外，proxy 可以拦截多达 13 种操作</p>
 <pre><code class="js">var proxy = new Proxy(target, handler);
 /* new Proxy()表示生成一个Proxy实例
@@ -879,11 +872,11 @@ handler参数也是一个对象，用来定制拦截行为。*/
 </li>
 </ul>
 <p>参考：<a href="https://juejin.im/post/5be4f7cfe51d453339084530#heading-4" target="_blank" rel="noopener">ES6 系列之 defineProperty 与 proxy</a></p>
-<h2 id="40、作用域提升"><a href="#40、作用域提升" class="headerlink" title="40、作用域提升"></a>40、作用域提升</h2><ol>
+<h2 id="作用域提升"><a href="#作用域提升" class="headerlink" title="作用域提升"></a>作用域提升</h2><ol>
 <li><em>变量声明、函数声明都会被提升到作用域顶处；</em></li>
 <li>当出现相同名称时，优先级为：<strong>变量声明(foo#1) &gt; 函数声明(foo#2) &gt; 变量赋值(foo#3)*</strong></li>
 </ol>
-<h2 id="41、页面性能指标"><a href="#41、页面性能指标" class="headerlink" title="41、页面性能指标"></a>41、页面性能指标</h2><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gdhtsdka5bj31pc0n6ti1.jpg" alt="蚂蚁金服如何把前端性能监控做到极致?"></p>
+<h2 id="页面性能指标"><a href="#页面性能指标" class="headerlink" title="页面性能指标"></a>页面性能指标</h2><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gdhtsdka5bj31pc0n6ti1.jpg" alt="蚂蚁金服如何把前端性能监控做到极致?"></p>
 <p>页面加载时长是被清晰的标在这个页面的底部的。它是指 DOM <code>load</code> 事件触发完成，它的优点有：</p>
 <ul>
 <li>原生 API；</li>
@@ -896,9 +889,9 @@ handler参数也是一个对象，用来定制拦截行为。*/
 <li>易受特殊情况影响。</li>
 </ul>
 <p>为了解决这个问题，W3C 的工作小组引入了首次渲染 / 首次内容渲染。首次渲染是指第⼀个非网页背景像素渲染，⾸次内容渲染是指第一个⽂本、图像、背景图片或非白色 canvas/SVG 渲染。</p>
-<p>相关： </p>
+<p>相关：</p>
 <p><a href="https://www.cnblogs.com/xiaohuochai/p/9182710.html" target="_blank" rel="noopener">使用chrome开发者工具中的performance面板解决性能瓶颈</a></p>
-<h2 id="42、渲染树的形成原理"><a href="#42、渲染树的形成原理" class="headerlink" title="42、渲染树的形成原理"></a>42、<a href="https://juejin.im/post/5da2f4f7f265da5b8a516502#heading-7" target="_blank" rel="noopener">渲染树的形成原理</a></h2><blockquote>
+<h2 id="渲染树的形成原理"><a href="#渲染树的形成原理" class="headerlink" title="渲染树的形成原理"></a><a href="https://juejin.im/post/5da2f4f7f265da5b8a516502#heading-7" target="_blank" rel="noopener">渲染树的形成原理</a></h2><blockquote>
 <p>注意点:</p>
 <ol>
 <li>CSS解析可以与DOM解析同进行</li>
