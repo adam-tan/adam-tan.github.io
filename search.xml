@@ -1,133 +1,358 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>AMD、CMD、CommonJS以及UMD的简单对比</title>
-    <url>/2021/04/07/AMD%E3%80%81CMD%E3%80%81CommonJS%E4%BB%A5%E5%8F%8AUMD%E7%9A%84%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94/</url>
-    <content><![CDATA[<h2 id="AMD、CMD、CommonJS以及UMD的简单对比"><a href="#AMD、CMD、CommonJS以及UMD的简单对比" class="headerlink" title="AMD、CMD、CommonJS以及UMD的简单对比"></a>AMD、CMD、CommonJS以及UMD的简单对比</h2><h3 id="一、AMD"><a href="#一、AMD" class="headerlink" title="一、AMD"></a>一、AMD</h3><p>为浏览器环境设计的， 所以是异步模块加载定义的</p>
-<ul>
-<li>加载模块</li>
+    <title>typescript</title>
+    <url>/2021/04/07/typescript/</url>
+    <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>本篇文章主要是为了给让大家了解下Typescript</p>
+<p>这里将会讲到大家关心的几个问题，简单先简绍了几个与js不同的ts的语法，来探讨ts和传统js的区别</p>
+<p>然后从网络上收集整理了一些使用和不使用ts的意见，探讨我们应不应该使用ts，以及ts的适用场景</p>
+<p>@[TOC]  </p>
+<h3 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h3><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>JavaScript 的超集</li>
+<li>增加了静态类型系统</li>
+<li>为大型软件开发而设计的</li>
+<li>最终编译产生 JavaScript</li>
 </ul>
-<p>AMD采用require()语句加载模块，但是不同于CommonJS，它要求两个参数：</p>
-<pre><code class="js"> 　　require([module], callback);</code></pre>
-<p>第一个参数[module]，是一个数组，里面的成员就是要加载的模块；第二个参数callback，则是加载成功之后的回调函数。</p>
-<ul>
-<li>定义模块</li>
-</ul>
-<p>模块通过 <code>define</code> 函数定义在闭包中，格式如下：</p>
-<pre><code class="js">define(id?: String, dependencies?: String[], factory: Function|Object)</code></pre>
-<p><code>id</code> 是模块的名字，它是可选的参数。</p>
-<p><code>dependencies</code> 指定了所要依赖的模块列表，它是一个数组，也是可选的参数，每个依赖的模块的输出将作为参数一次传入 <code>factory</code> 中。如果没有指定 <code>dependencies</code>，那么它的默认值是 <code>[&quot;require&quot;, &quot;exports&quot;, &quot;module&quot;]</code>。</p>
-<p><code>factory</code> 是最后一个参数，它包裹了模块的具体实现，它是一个函数或者对象。如果是函数，那么它的返回值就是模块的输出接口或值。</p>
-<p>用例：</p>
-<p>定义一个名为 <code>myModule</code> 的模块，它依赖 <code>jQuery</code> 模块：</p>
-<pre><code class="js">define(&#39;myModule&#39;, [&#39;jquery&#39;], function($) {
-    // $ 是 jquery 模块的输出
-    $(&#39;body&#39;).text(&#39;hello world&#39;);
-});
-// 使用
-require([&#39;myModule&#39;], function(myModule) {});</code></pre>
-<p>二、CMD</p>
-<p>和AMD同样是异步加载</p>
-<ul>
-<li><p>加载模块</p>
-<p>分为三种：</p>
-<p>requirea(name)；name为模块名</p>
-<p>require.async(name, callback)；异步加载 ，callback为加载后执行函数</p>
-<p>require.resolve(name);不加载模块，仅仅将短串解析成完整路径</p>
-</li>
-<li><p>模块定义</p>
-<p>分为define(factory)和define(name，deps，factory)</p>
-<pre><code class="js">// define(factory)
-define(function(require, exports, module) { 
-  // 模块代码 
-}); 
+<h4 id="安装-TypeScript"><a href="#安装-TypeScript" class="headerlink" title="安装 TypeScript"></a>安装 TypeScript</h4><p>执行<code>npm install -g typescript</code></p>
+<p>然后就可以在任何地方编译ts文件<code>tsc holle.ts</code></p>
+<h4 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h4><p>将下面代码复制到<code>hello.ts</code>中, 其中使用 : 指定变量的类型</p>
+<pre><code class="javascript">function sayHello(person: string) {
+    return &#39;Hello, &#39; + person;
+}
 
-// define(name，deps，factory)
-define(&#39;hello&#39;, [&#39;jquery&#39;], function(require, exports, module) { 
-  // 模块代码 
-}); </code></pre>
-</li>
-<li><p>和AMD异同</p>
-<p>CMD 推崇依赖就近，AMD 推崇依赖前置</p>
-<pre><code class="js">// CMD
-define(function(require, exports, module) {   
-    var a = require(&#39;./a&#39;)   
-    a.doSomething()    
-    var b = require(&#39;./b&#39;)   
-    b.doSomething()    
-    ... 
-})
-// AMD 
-define([&#39;./a&#39;, &#39;./b&#39;], function(a, b) {  // 依赖必须一开始就写好
-    a.doSomething()
-    ...
-    b.doSomething()
-    ...
-}) </code></pre>
-</li>
-</ul>
-<h2 id="三、CommonJS"><a href="#三、CommonJS" class="headerlink" title="三、CommonJS"></a>三、CommonJS</h2><p>​    以服务器为第一原则发展，同步加载</p>
-<ul>
-<li><p>加载</p>
-<pre><code class="js">const package = require(&#39;module-name&#39;)</code></pre>
-</li>
-<li><p>导出</p>
-<p>导出一个值</p>
-<pre><code class="js">module.exports = value</code></pre>
-<p>导出多个值</p>
-<pre><code class="js">exports.a = 1
-exports.b = 2
-exports.c = 3</code></pre>
-</li>
-</ul>
-<h2 id="四、UMD"><a href="#四、UMD" class="headerlink" title="四、UMD"></a>四、UMD</h2><p>umd是CommonJS和AMD结合的产物，是一个跨平台的解决方案。</p>
-<p>UMD先判断是否支持Node.js的模块（exports）是否存在，存在则使用Node.js模块模式。再判断是否支持AMD（define是否存在），存在则使用AMD方式加载模块。</p>
-<h2 id="五、ES-module"><a href="#五、ES-module" class="headerlink" title="五、ES module"></a>五、ES module</h2><pre><code class="js">// 报错1
-export 1;
-// 报错2
-const m = 1;
-export m;
+let user = &#39;Tom&#39;;
+console.log(sayHello(user));
+</code></pre>
+<p>然后执行</p>
+<p><code>tsc holle.ts</code>、</p>
+<p>这时候会生成一个编译好的文件<code>hello.js</code>：</p>
+<pre><code class="javascript">function sayHello(person) {
+    return &#39;Hello, &#39; + person;
+}
+var user = &#39;Tom&#39;;
+console.log(sayHello(user));</code></pre>
+<h4 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h4><p>编译下段代码</p>
+<pre><code class="javascript">// holle.ts
+function sayHello(person: string) {
+    return &#39;Hello, &#39; + person;
+}
 
-// 接口名与模块内部变量之间，建立了一一对应的关系
-// 写法1
-export const m = 1;
-// 写法2
-const m = 1；
-export { m };
-// 写法3
-const m = 1；
-export { m as module };
-</code></pre>
-<pre><code class="js">// 类似于对象解构
-// module.js
-export const m = 1;
-// index.js
-// 注意，这里的m得和被加载的模块输出的接口名对应
-import { m } from &#39;./module&#39;;
-// 若是想为输入的变量取名
-import { m as m1 }  &#39;./module&#39;;
-// 值得注意的是，import是编译阶段，所以不能动态加载，比如下面写法是错误的。因为&#39;a&#39; + &#39;b&#39;在运行阶段才能取到值，运行阶段在编译阶段之后
-import { &#39;a&#39; + &#39;b&#39; } from &#39;./module&#39;;
-// 若是只是想运行被加载的模块，如下
-// 值得注意的是，即使加载两次也只是运行一次
-import &#39;./module&#39;;
-// 整体加载
-import * as module from &#39;./module&#39;;
-</code></pre>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://zhaoda.net/webpack-handbook/amd.html" target="_blank" rel="noopener">AMD 规范</a></li>
-<li><a href="[http://www.ruanyifeng.com/blog/2012/11/require_js.html](http://www.ruanyifeng.com/blog/2012/11/require_js.html)">Javascript模块化编程（二）：require.js的用法</a></li>
-<li><a href="https://blog.csdn.net/mm_hello11/article/details/78958334" target="_blank" rel="noopener">amd和cmd规范的区别</a></li>
-<li><a href="https://github.com/seajs/seajs/issues/242" target="_blank" rel="noopener">cmd官方规范</a></li>
-<li><a href="https://github.com/amdjs/amdjs-api/wiki/AMD" target="_blank" rel="noopener">amd官方规范</a></li>
-<li><a href="https://juejin.im/post/5b7d2f45e51d4538826f4c28" target="_blank" rel="noopener">AMD , CMD, CommonJS，ES Module，UMD</a></li>
+let user = [0, 1, 2];
+console.log(sayHello(user));</code></pre>
+<p>编译器报错</p>
+<pre><code class="javascript">index.ts(6,22): error TS2345: Argument of type &#39;number[]&#39; is not assignable to parameter of type &#39;string&#39;.</code></pre>
+<p><strong>因为TypeScript 编译的时候会进行静态检查，如果发现有错误，就会报错</strong></p>
+<p>但注意，即使报错，也会生成相应的js文件</p>
+<h3 id="二、与js异同"><a href="#二、与js异同" class="headerlink" title="二、与js异同"></a>二、与js异同</h3><h4 id="1、变量声明"><a href="#1、变量声明" class="headerlink" title="1、变量声明"></a>1、变量声明</h4><p>和es6一样，有let和const</p>
+<h4 id="2、基础数据类型"><a href="#2、基础数据类型" class="headerlink" title="2、基础数据类型"></a>2、基础数据类型</h4><p>bool、number、string、undefined、arr、obj都有<br>不同的：</p>
+<ul>
+<li>元组</li>
+</ul>
+<blockquote>
+<p>允许表示一个已知元素数量和类型的数组</p>
+</blockquote>
+<pre><code class="javascript">// Declare a tuple type
+let x: [string, number];
+// Initialize it
+x = [&#39;hello&#39;, 10]; // OK</code></pre>
+<ul>
+<li>枚举</li>
+</ul>
+<blockquote>
+<p>像C#等其它语言一样，使用枚举类型可以为一组数值赋予友好的名字。</p>
+</blockquote>
+<pre><code class="javascript">enum Color {Red, Green, Blue}
+let c: Color = Color.Green;</code></pre>
+<ul>
+<li>Any</li>
+</ul>
+<pre><code class="javascript">let notSure: any = 4;
+notSure = &quot;maybe a string instead&quot;;
+notSure = false; // okay, definitely a boolean</code></pre>
+<blockquote>
+<p>还不清楚类型的变量指定一个类型</p>
+</blockquote>
+<ul>
+<li>Void</li>
+</ul>
+<blockquote>
+<p>void类型像是与any类型相反，它表示没有任何类型。</p>
+</blockquote>
+<pre><code class="javascript">function warnUser(): void {
+    console.log(&quot;This is my warning message&quot;);
+}</code></pre>
+<ul>
+<li>never</li>
+</ul>
+<blockquote>
+<p>表示的是那些永不存在的值的类型。</p>
+</blockquote>
+<pre><code class="javascript">// 返回never的函数必须存在无法达到的终点
+function error(message: string): never {
+    throw new Error(message);
+}
+
+// 推断的返回值类型为never
+function fail() {
+    return error(&quot;Something failed&quot;);
+}
+
+// 返回never的函数必须存在无法达到的终点
+function infiniteLoop(): never {
+    while (true) {
+    }
+}</code></pre>
+<ul>
+<li>类型断言</li>
+</ul>
+<blockquote>
+<p>&lt; &gt;表示， 通常这会发生在你清楚地知道一个实体具有比它现有类型更确切的类型。</p>
+</blockquote>
+<pre><code class="javascript">et someValue: any = &quot;this is a string&quot;;
+
+let strLength: number = (&lt;string&gt;someValue).length;</code></pre>
+<ul>
+<li>多种类型(联合类型)</li>
+</ul>
+<blockquote>
+<p>可以用|隔开，比如number | string表示可以是number或string类型</p>
+</blockquote>
+<h4 id="3-接口"><a href="#3-接口" class="headerlink" title="3. 接口"></a>3. 接口</h4><p>TypeScript的核心原则之一是对值所具有的结构进行类型检查，接口的作用就是为这些类型命名和为你的代码或第三方代码定义契约。</p>
+<ul>
+<li>简单的接口</li>
+</ul>
+<blockquote>
+<p>定义传入的参数</p>
+</blockquote>
+<pre><code class="javascript">interface LabelledValue {
+  label: string;
+}
+
+function printLabel(labelledObj: LabelledValue) {
+  console.log(labelledObj.label);
+}
+
+let myObj = {size: 10, label: &quot;Size 10 Object&quot;};
+printLabel(myObj);</code></pre>
+<ul>
+<li>可选接口</li>
+</ul>
+<blockquote>
+<p>参数可选</p>
+</blockquote>
+<pre><code class="javascript"> interface SquareConfig {
+  color?: string;
+  width?: number;
+}</code></pre>
+<ul>
+<li>只读属性</li>
+</ul>
+<blockquote>
+<p>传入参数只读</p>
+</blockquote>
+<pre><code class="javascript">interface Point {
+    readonly x: number;
+    readonly y: number;
+}
+
+let p1: Point = { x: 10, y: 20 };
+p1.x = 5; // error!</code></pre>
+<ul>
+<li>描述函数</li>
+</ul>
+<blockquote>
+<p>定义函数输入输出</p>
+</blockquote>
+<pre><code class="javascript">interface SearchFunc {
+  (source: string, subString: string): boolean;
+}
+
+let mySearch: SearchFunc;
+mySearch = function(source: string, subString: string) {
+  let result = source.search(subString);
+  return result &gt; -1;
+}</code></pre>
+<ul>
+<li>实现接口</li>
+</ul>
+<blockquote>
+<p>在类中实现接口</p>
+</blockquote>
+<pre><code class="javascript">interface ClockInterface {
+    currentTime: Date;
+    setTime(d: Date);
+}
+
+class Clock implements ClockInterface {
+    currentTime: Date;
+    setTime(d: Date) {
+        this.currentTime = d;
+    }
+    constructor(h: number, m: number) { }
+}</code></pre>
+<ul>
+<li>继承接口</li>
+</ul>
+<pre><code class="javascript">interface Shape {
+    color: string;
+}
+
+interface PenStroke {
+    penWidth: number;
+}
+
+interface Square extends Shape, PenStroke {
+    sideLength: number;
+}
+
+let square = &lt;Square&gt;{};
+square.color = &quot;blue&quot;;
+square.sideLength = 10;
+square.penWidth = 5.0;</code></pre>
+<h4 id="4-类"><a href="#4-类" class="headerlink" title="4. 类"></a>4. 类</h4><p>定义了一件事物的抽象特点，包含它的属性和方法</p>
+<p>面向对象（OOP）的三大特性：封装、继承、多态</p>
+<p>对象实例通过new生成</p>
+<ul>
+<li>封装</li>
+</ul>
+<blockquote>
+<p>将对数据的操作细节隐藏起来，只暴露对外的接口。外界调用端不需要（也不可能）知道细节，就能通过对外提供的接口来访问该对象，同时也保证了外界无法任意更改对象内部的数据</p>
+</blockquote>
+<ul>
+<li>多态</li>
+</ul>
+<blockquote>
+<p>由继承而产生了相关的不同的类，对同一个方法可以有不同的响应。比如 Cat 和 Dog 都继承自 Animal，但是分别实现了自己的 eat 方法。此时针对某一个实例，我们无需了解它是 Cat 还是 Dog，就可以直接调用 eat 方法，程序会自动判断出来应该如何执行 eat</p>
+</blockquote>
+<ul>
+<li>继承</li>
+</ul>
+<blockquote>
+<p>子类继承父类，子类除了拥有父类的所有特性外，还有一些更具体的特性</p>
+</blockquote>
+<pre><code>class Animal {
+    move(distanceInMeters: number = 0) {
+        console.log(`Animal moved ${distanceInMeters}m.`);
+    }
+}
+
+class Dog extends Animal {
+    bark() {
+        console.log(&#39;Woof! Woof!&#39;);
+    }
+}
+
+const dog = new Dog();
+dog.bark();
+dog.move(10);
+dog.bark();</code></pre><ul>
+<li>存取器（getter &amp; setter)</li>
+</ul>
+<blockquote>
+<p>用以改变属性的读取和赋值行为</p>
+</blockquote>
+<ul>
+<li>修饰符（Modifiers)</li>
+</ul>
+<blockquote>
+<p>修饰符是一些关键字，用于限定成员或类型的性质。如  public 和 private</p>
+</blockquote>
+<ul>
+<li>抽象类（Abstract Class）</li>
+</ul>
+<blockquote>
+<p>抽象类是供其他类继承的基类，抽象类不允许被实例化。抽象类中的抽象方法必须在子类中被实现<br>这个和接口有点像，有兴趣可以看下<a href="https://www.jianshu.com/p/038f0b356e9a" target="_blank" rel="noopener">接口和抽象类的区别</a></p>
+</blockquote>
+<h4 id="5-泛型"><a href="#5-泛型" class="headerlink" title="5. 泛型"></a>5. 泛型</h4><p>在像C#和Java这样的语言中，可以使用泛型来创建可重用的组件，一个组件可以支持多种类型的数据。</p>
+<pre><code class="javascript">// 使用泛型前
+function identity(arg: number): number {
+    return arg;
+}
+// 使用泛型后
+function identity&lt;T&gt;(arg: T): T {
+    return arg;
+}</code></pre>
+<p>T帮助我们捕获用户传入的类型，使用后再返回类型T的值</p>
+<h4 id="6-使用第三方模块"><a href="#6-使用第三方模块" class="headerlink" title="6.使用第三方模块"></a>6.使用第三方模块</h4><ul>
+<li>需要相应的声明文件（.d.ts文件）</li>
+</ul>
+<blockquote>
+<p> 一般情况下在 TypeScript 中是不能”直接“使用 npm 上的模块</p>
+</blockquote>
+<blockquote>
+<p>不是使用 TypeScript 编写的模块，也可以通过手动编写声明文件来兼容 TypeScript。</p>
+</blockquote>
+<ul>
+<li>通过 npm install @types/xxx 来安装模块声明文件</li>
+</ul>
+<blockquote>
+<p>TypeScript 官方建立了一个名叫 DefinitelyTyped 的仓库，任何人都可以通过 GitHub 在上面修改或者新增 npm 模块的声明文件</p>
+</blockquote>
+<h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p>还有其他类型就不一一详细介绍了，具体可以参照<a href="https://www.tslang.cn/docs/home.html" target="_blank" rel="noopener">官方文档(中文版)</a></p>
+<h3 id="三、使用与不使用的理由"><a href="#三、使用与不使用的理由" class="headerlink" title="三、使用与不使用的理由"></a>三、使用与不使用的理由</h3><h4 id="1-不使用的理由"><a href="#1-不使用的理由" class="headerlink" title="1. 不使用的理由"></a>1. 不使用的理由</h4><ul>
+<li>npm装上的那些xxxjs库都是没有任何类型信息的</li>
+</ul>
+<blockquote>
+<p>（只能使用诸如definitelytyped之类的ts定义库）</p>
+</blockquote>
+<ul>
+<li>TS+框架会有很多坑</li>
+</ul>
+<blockquote>
+<ul>
+<li>比如 ：immutable.js + Typescript 坑很多</li>
+<li>必须学习框架+全家桶的各种暴露出来的d.ts</li>
+<li>TS彻底替代babel会出问题,比如不能享受babel-plugin-import这种按需引入的Babel插件了</li>
+</ul>
+</blockquote>
+<ul>
+<li>虽然声称可以在任何场景下替代JS，但前提是有良好的框架支撑</li>
+</ul>
+<blockquote>
+<ul>
+<li>vue2.5以前对TS的支持不是特别好，但Vue本身支持不错,周边那些东西缺没那么好 GitHub： 2K</li>
+<li>react 和 Angular 本身和周边支持良好 ，GitHub： 11K 和 10K</li>
+</ul>
+</blockquote>
+<ul>
+<li>语法检测和ESlint部分重复</li>
+</ul>
+<p>总结，项目不大，后期不用维护的项目没有必要使用，项目主要依赖库要对TS支持良好，冷门的小项目没有必要用TS</p>
+<h4 id="2-使用的理由"><a href="#2-使用的理由" class="headerlink" title="2. 使用的理由"></a>2. 使用的理由</h4><ul>
+<li><p>侦测错误，提供了一套强类型的规范，统一团队代码风格，更方便准确地检查错误</p>
+</li>
+<li><p>在项目初期就进行，类型注释，和接口定义，方便指导开发，</p>
+</li>
+<li><p>文档，新人来了也可以直接看文档接手项目</p>
+</li>
+</ul>
+<blockquote>
+<p>抽象，前端圈子里有这么一个流行语『自从用了Typescript之后,再也不想用JavaScript了』</p>
+</blockquote>
+<ul>
+<li><p>静态类型语言，在编译的时候就能发现问题</p>
+</li>
+<li><p>方便代码重构</p>
+</li>
+</ul>
+<blockquote>
+<p>比如初期定义了一个string，但项目进行到一半说要改成number，如果普通的js，改一个不会报错，eslint则不会识别没有执行到文件的类型错误，而在TS强类型在编译器检验下，在编译时进行类型分析，改一个，其他需要改动的地方无可型盾</p>
+</blockquote>
+<ul>
+<li>antd使用的是TS</li>
+</ul>
+<p>总结，这些特点还是挺诱人的，大型项目可以使用，总体来说，学习成本有，但熟悉过es6的人来说，门槛不算太高，比较类似java的风格。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://www.jianshu.com/p/103933b7c2b4" target="_blank" rel="noopener">Typescript基础入门</a></li>
+<li><a href="https://juejin.im/post/59c46bc86fb9a00a4636f939" target="_blank" rel="noopener">Tyepscript体系调研报告</a></li>
+<li><a href="http://taobaofed.org/blog/2017/03/09/head-first-typescript/" target="_blank" rel="noopener">认识 TypeScript</a></li>
 </ul>
 ]]></content>
       <categories>
-        <category>前端</category>
+        <category>规范</category>
       </categories>
       <tags>
-        <tag>模块化</tag>
+        <tag>Typescript</tag>
       </tags>
   </entry>
   <entry>
@@ -1252,358 +1477,133 @@ console.log(sort([43, 9, 5, 22, 32, 1]))  // [1, 5, 9, 22, 32, 43]</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>typescript</title>
-    <url>/2021/04/07/typescript/</url>
-    <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>本篇文章主要是为了给让大家了解下Typescript</p>
-<p>这里将会讲到大家关心的几个问题，简单先简绍了几个与js不同的ts的语法，来探讨ts和传统js的区别</p>
-<p>然后从网络上收集整理了一些使用和不使用ts的意见，探讨我们应不应该使用ts，以及ts的适用场景</p>
-<p>@[TOC]  </p>
-<h3 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h3><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
-<li>JavaScript 的超集</li>
-<li>增加了静态类型系统</li>
-<li>为大型软件开发而设计的</li>
-<li>最终编译产生 JavaScript</li>
+    <title>AMD、CMD、CommonJS以及UMD的简单对比</title>
+    <url>/2021/04/07/AMD%E3%80%81CMD%E3%80%81CommonJS%E4%BB%A5%E5%8F%8AUMD%E7%9A%84%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94/</url>
+    <content><![CDATA[<h2 id="AMD、CMD、CommonJS以及UMD的简单对比"><a href="#AMD、CMD、CommonJS以及UMD的简单对比" class="headerlink" title="AMD、CMD、CommonJS以及UMD的简单对比"></a>AMD、CMD、CommonJS以及UMD的简单对比</h2><h3 id="一、AMD"><a href="#一、AMD" class="headerlink" title="一、AMD"></a>一、AMD</h3><p>为浏览器环境设计的， 所以是异步模块加载定义的</p>
+<ul>
+<li>加载模块</li>
 </ul>
-<h4 id="安装-TypeScript"><a href="#安装-TypeScript" class="headerlink" title="安装 TypeScript"></a>安装 TypeScript</h4><p>执行<code>npm install -g typescript</code></p>
-<p>然后就可以在任何地方编译ts文件<code>tsc holle.ts</code></p>
-<h4 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h4><p>将下面代码复制到<code>hello.ts</code>中, 其中使用 : 指定变量的类型</p>
-<pre><code class="javascript">function sayHello(person: string) {
-    return &#39;Hello, &#39; + person;
-}
+<p>AMD采用require()语句加载模块，但是不同于CommonJS，它要求两个参数：</p>
+<pre><code class="js"> 　　require([module], callback);</code></pre>
+<p>第一个参数[module]，是一个数组，里面的成员就是要加载的模块；第二个参数callback，则是加载成功之后的回调函数。</p>
+<ul>
+<li>定义模块</li>
+</ul>
+<p>模块通过 <code>define</code> 函数定义在闭包中，格式如下：</p>
+<pre><code class="js">define(id?: String, dependencies?: String[], factory: Function|Object)</code></pre>
+<p><code>id</code> 是模块的名字，它是可选的参数。</p>
+<p><code>dependencies</code> 指定了所要依赖的模块列表，它是一个数组，也是可选的参数，每个依赖的模块的输出将作为参数一次传入 <code>factory</code> 中。如果没有指定 <code>dependencies</code>，那么它的默认值是 <code>[&quot;require&quot;, &quot;exports&quot;, &quot;module&quot;]</code>。</p>
+<p><code>factory</code> 是最后一个参数，它包裹了模块的具体实现，它是一个函数或者对象。如果是函数，那么它的返回值就是模块的输出接口或值。</p>
+<p>用例：</p>
+<p>定义一个名为 <code>myModule</code> 的模块，它依赖 <code>jQuery</code> 模块：</p>
+<pre><code class="js">define(&#39;myModule&#39;, [&#39;jquery&#39;], function($) {
+    // $ 是 jquery 模块的输出
+    $(&#39;body&#39;).text(&#39;hello world&#39;);
+});
+// 使用
+require([&#39;myModule&#39;], function(myModule) {});</code></pre>
+<p>二、CMD</p>
+<p>和AMD同样是异步加载</p>
+<ul>
+<li><p>加载模块</p>
+<p>分为三种：</p>
+<p>requirea(name)；name为模块名</p>
+<p>require.async(name, callback)；异步加载 ，callback为加载后执行函数</p>
+<p>require.resolve(name);不加载模块，仅仅将短串解析成完整路径</p>
+</li>
+<li><p>模块定义</p>
+<p>分为define(factory)和define(name，deps，factory)</p>
+<pre><code class="js">// define(factory)
+define(function(require, exports, module) { 
+  // 模块代码 
+}); 
 
-let user = &#39;Tom&#39;;
-console.log(sayHello(user));
+// define(name，deps，factory)
+define(&#39;hello&#39;, [&#39;jquery&#39;], function(require, exports, module) { 
+  // 模块代码 
+}); </code></pre>
+</li>
+<li><p>和AMD异同</p>
+<p>CMD 推崇依赖就近，AMD 推崇依赖前置</p>
+<pre><code class="js">// CMD
+define(function(require, exports, module) {   
+    var a = require(&#39;./a&#39;)   
+    a.doSomething()    
+    var b = require(&#39;./b&#39;)   
+    b.doSomething()    
+    ... 
+})
+// AMD 
+define([&#39;./a&#39;, &#39;./b&#39;], function(a, b) {  // 依赖必须一开始就写好
+    a.doSomething()
+    ...
+    b.doSomething()
+    ...
+}) </code></pre>
+</li>
+</ul>
+<h2 id="三、CommonJS"><a href="#三、CommonJS" class="headerlink" title="三、CommonJS"></a>三、CommonJS</h2><p>​    以服务器为第一原则发展，同步加载</p>
+<ul>
+<li><p>加载</p>
+<pre><code class="js">const package = require(&#39;module-name&#39;)</code></pre>
+</li>
+<li><p>导出</p>
+<p>导出一个值</p>
+<pre><code class="js">module.exports = value</code></pre>
+<p>导出多个值</p>
+<pre><code class="js">exports.a = 1
+exports.b = 2
+exports.c = 3</code></pre>
+</li>
+</ul>
+<h2 id="四、UMD"><a href="#四、UMD" class="headerlink" title="四、UMD"></a>四、UMD</h2><p>umd是CommonJS和AMD结合的产物，是一个跨平台的解决方案。</p>
+<p>UMD先判断是否支持Node.js的模块（exports）是否存在，存在则使用Node.js模块模式。再判断是否支持AMD（define是否存在），存在则使用AMD方式加载模块。</p>
+<h2 id="五、ES-module"><a href="#五、ES-module" class="headerlink" title="五、ES module"></a>五、ES module</h2><pre><code class="js">// 报错1
+export 1;
+// 报错2
+const m = 1;
+export m;
+
+// 接口名与模块内部变量之间，建立了一一对应的关系
+// 写法1
+export const m = 1;
+// 写法2
+const m = 1；
+export { m };
+// 写法3
+const m = 1；
+export { m as module };
 </code></pre>
-<p>然后执行</p>
-<p><code>tsc holle.ts</code>、</p>
-<p>这时候会生成一个编译好的文件<code>hello.js</code>：</p>
-<pre><code class="javascript">function sayHello(person) {
-    return &#39;Hello, &#39; + person;
-}
-var user = &#39;Tom&#39;;
-console.log(sayHello(user));</code></pre>
-<h4 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h4><p>编译下段代码</p>
-<pre><code class="javascript">// holle.ts
-function sayHello(person: string) {
-    return &#39;Hello, &#39; + person;
-}
-
-let user = [0, 1, 2];
-console.log(sayHello(user));</code></pre>
-<p>编译器报错</p>
-<pre><code class="javascript">index.ts(6,22): error TS2345: Argument of type &#39;number[]&#39; is not assignable to parameter of type &#39;string&#39;.</code></pre>
-<p><strong>因为TypeScript 编译的时候会进行静态检查，如果发现有错误，就会报错</strong></p>
-<p>但注意，即使报错，也会生成相应的js文件</p>
-<h3 id="二、与js异同"><a href="#二、与js异同" class="headerlink" title="二、与js异同"></a>二、与js异同</h3><h4 id="1、变量声明"><a href="#1、变量声明" class="headerlink" title="1、变量声明"></a>1、变量声明</h4><p>和es6一样，有let和const</p>
-<h4 id="2、基础数据类型"><a href="#2、基础数据类型" class="headerlink" title="2、基础数据类型"></a>2、基础数据类型</h4><p>bool、number、string、undefined、arr、obj都有<br>不同的：</p>
-<ul>
-<li>元组</li>
-</ul>
-<blockquote>
-<p>允许表示一个已知元素数量和类型的数组</p>
-</blockquote>
-<pre><code class="javascript">// Declare a tuple type
-let x: [string, number];
-// Initialize it
-x = [&#39;hello&#39;, 10]; // OK</code></pre>
-<ul>
-<li>枚举</li>
-</ul>
-<blockquote>
-<p>像C#等其它语言一样，使用枚举类型可以为一组数值赋予友好的名字。</p>
-</blockquote>
-<pre><code class="javascript">enum Color {Red, Green, Blue}
-let c: Color = Color.Green;</code></pre>
-<ul>
-<li>Any</li>
-</ul>
-<pre><code class="javascript">let notSure: any = 4;
-notSure = &quot;maybe a string instead&quot;;
-notSure = false; // okay, definitely a boolean</code></pre>
-<blockquote>
-<p>还不清楚类型的变量指定一个类型</p>
-</blockquote>
-<ul>
-<li>Void</li>
-</ul>
-<blockquote>
-<p>void类型像是与any类型相反，它表示没有任何类型。</p>
-</blockquote>
-<pre><code class="javascript">function warnUser(): void {
-    console.log(&quot;This is my warning message&quot;);
-}</code></pre>
-<ul>
-<li>never</li>
-</ul>
-<blockquote>
-<p>表示的是那些永不存在的值的类型。</p>
-</blockquote>
-<pre><code class="javascript">// 返回never的函数必须存在无法达到的终点
-function error(message: string): never {
-    throw new Error(message);
-}
-
-// 推断的返回值类型为never
-function fail() {
-    return error(&quot;Something failed&quot;);
-}
-
-// 返回never的函数必须存在无法达到的终点
-function infiniteLoop(): never {
-    while (true) {
-    }
-}</code></pre>
-<ul>
-<li>类型断言</li>
-</ul>
-<blockquote>
-<p>&lt; &gt;表示， 通常这会发生在你清楚地知道一个实体具有比它现有类型更确切的类型。</p>
-</blockquote>
-<pre><code class="javascript">et someValue: any = &quot;this is a string&quot;;
-
-let strLength: number = (&lt;string&gt;someValue).length;</code></pre>
-<ul>
-<li>多种类型(联合类型)</li>
-</ul>
-<blockquote>
-<p>可以用|隔开，比如number | string表示可以是number或string类型</p>
-</blockquote>
-<h4 id="3-接口"><a href="#3-接口" class="headerlink" title="3. 接口"></a>3. 接口</h4><p>TypeScript的核心原则之一是对值所具有的结构进行类型检查，接口的作用就是为这些类型命名和为你的代码或第三方代码定义契约。</p>
-<ul>
-<li>简单的接口</li>
-</ul>
-<blockquote>
-<p>定义传入的参数</p>
-</blockquote>
-<pre><code class="javascript">interface LabelledValue {
-  label: string;
-}
-
-function printLabel(labelledObj: LabelledValue) {
-  console.log(labelledObj.label);
-}
-
-let myObj = {size: 10, label: &quot;Size 10 Object&quot;};
-printLabel(myObj);</code></pre>
-<ul>
-<li>可选接口</li>
-</ul>
-<blockquote>
-<p>参数可选</p>
-</blockquote>
-<pre><code class="javascript"> interface SquareConfig {
-  color?: string;
-  width?: number;
-}</code></pre>
-<ul>
-<li>只读属性</li>
-</ul>
-<blockquote>
-<p>传入参数只读</p>
-</blockquote>
-<pre><code class="javascript">interface Point {
-    readonly x: number;
-    readonly y: number;
-}
-
-let p1: Point = { x: 10, y: 20 };
-p1.x = 5; // error!</code></pre>
-<ul>
-<li>描述函数</li>
-</ul>
-<blockquote>
-<p>定义函数输入输出</p>
-</blockquote>
-<pre><code class="javascript">interface SearchFunc {
-  (source: string, subString: string): boolean;
-}
-
-let mySearch: SearchFunc;
-mySearch = function(source: string, subString: string) {
-  let result = source.search(subString);
-  return result &gt; -1;
-}</code></pre>
-<ul>
-<li>实现接口</li>
-</ul>
-<blockquote>
-<p>在类中实现接口</p>
-</blockquote>
-<pre><code class="javascript">interface ClockInterface {
-    currentTime: Date;
-    setTime(d: Date);
-}
-
-class Clock implements ClockInterface {
-    currentTime: Date;
-    setTime(d: Date) {
-        this.currentTime = d;
-    }
-    constructor(h: number, m: number) { }
-}</code></pre>
-<ul>
-<li>继承接口</li>
-</ul>
-<pre><code class="javascript">interface Shape {
-    color: string;
-}
-
-interface PenStroke {
-    penWidth: number;
-}
-
-interface Square extends Shape, PenStroke {
-    sideLength: number;
-}
-
-let square = &lt;Square&gt;{};
-square.color = &quot;blue&quot;;
-square.sideLength = 10;
-square.penWidth = 5.0;</code></pre>
-<h4 id="4-类"><a href="#4-类" class="headerlink" title="4. 类"></a>4. 类</h4><p>定义了一件事物的抽象特点，包含它的属性和方法</p>
-<p>面向对象（OOP）的三大特性：封装、继承、多态</p>
-<p>对象实例通过new生成</p>
-<ul>
-<li>封装</li>
-</ul>
-<blockquote>
-<p>将对数据的操作细节隐藏起来，只暴露对外的接口。外界调用端不需要（也不可能）知道细节，就能通过对外提供的接口来访问该对象，同时也保证了外界无法任意更改对象内部的数据</p>
-</blockquote>
-<ul>
-<li>多态</li>
-</ul>
-<blockquote>
-<p>由继承而产生了相关的不同的类，对同一个方法可以有不同的响应。比如 Cat 和 Dog 都继承自 Animal，但是分别实现了自己的 eat 方法。此时针对某一个实例，我们无需了解它是 Cat 还是 Dog，就可以直接调用 eat 方法，程序会自动判断出来应该如何执行 eat</p>
-</blockquote>
-<ul>
-<li>继承</li>
-</ul>
-<blockquote>
-<p>子类继承父类，子类除了拥有父类的所有特性外，还有一些更具体的特性</p>
-</blockquote>
-<pre><code>class Animal {
-    move(distanceInMeters: number = 0) {
-        console.log(`Animal moved ${distanceInMeters}m.`);
-    }
-}
-
-class Dog extends Animal {
-    bark() {
-        console.log(&#39;Woof! Woof!&#39;);
-    }
-}
-
-const dog = new Dog();
-dog.bark();
-dog.move(10);
-dog.bark();</code></pre><ul>
-<li>存取器（getter &amp; setter)</li>
-</ul>
-<blockquote>
-<p>用以改变属性的读取和赋值行为</p>
-</blockquote>
-<ul>
-<li>修饰符（Modifiers)</li>
-</ul>
-<blockquote>
-<p>修饰符是一些关键字，用于限定成员或类型的性质。如  public 和 private</p>
-</blockquote>
-<ul>
-<li>抽象类（Abstract Class）</li>
-</ul>
-<blockquote>
-<p>抽象类是供其他类继承的基类，抽象类不允许被实例化。抽象类中的抽象方法必须在子类中被实现<br>这个和接口有点像，有兴趣可以看下<a href="https://www.jianshu.com/p/038f0b356e9a" target="_blank" rel="noopener">接口和抽象类的区别</a></p>
-</blockquote>
-<h4 id="5-泛型"><a href="#5-泛型" class="headerlink" title="5. 泛型"></a>5. 泛型</h4><p>在像C#和Java这样的语言中，可以使用泛型来创建可重用的组件，一个组件可以支持多种类型的数据。</p>
-<pre><code class="javascript">// 使用泛型前
-function identity(arg: number): number {
-    return arg;
-}
-// 使用泛型后
-function identity&lt;T&gt;(arg: T): T {
-    return arg;
-}</code></pre>
-<p>T帮助我们捕获用户传入的类型，使用后再返回类型T的值</p>
-<h4 id="6-使用第三方模块"><a href="#6-使用第三方模块" class="headerlink" title="6.使用第三方模块"></a>6.使用第三方模块</h4><ul>
-<li>需要相应的声明文件（.d.ts文件）</li>
-</ul>
-<blockquote>
-<p> 一般情况下在 TypeScript 中是不能”直接“使用 npm 上的模块</p>
-</blockquote>
-<blockquote>
-<p>不是使用 TypeScript 编写的模块，也可以通过手动编写声明文件来兼容 TypeScript。</p>
-</blockquote>
-<ul>
-<li>通过 npm install @types/xxx 来安装模块声明文件</li>
-</ul>
-<blockquote>
-<p>TypeScript 官方建立了一个名叫 DefinitelyTyped 的仓库，任何人都可以通过 GitHub 在上面修改或者新增 npm 模块的声明文件</p>
-</blockquote>
-<h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p>还有其他类型就不一一详细介绍了，具体可以参照<a href="https://www.tslang.cn/docs/home.html" target="_blank" rel="noopener">官方文档(中文版)</a></p>
-<h3 id="三、使用与不使用的理由"><a href="#三、使用与不使用的理由" class="headerlink" title="三、使用与不使用的理由"></a>三、使用与不使用的理由</h3><h4 id="1-不使用的理由"><a href="#1-不使用的理由" class="headerlink" title="1. 不使用的理由"></a>1. 不使用的理由</h4><ul>
-<li>npm装上的那些xxxjs库都是没有任何类型信息的</li>
-</ul>
-<blockquote>
-<p>（只能使用诸如definitelytyped之类的ts定义库）</p>
-</blockquote>
-<ul>
-<li>TS+框架会有很多坑</li>
-</ul>
-<blockquote>
-<ul>
-<li>比如 ：immutable.js + Typescript 坑很多</li>
-<li>必须学习框架+全家桶的各种暴露出来的d.ts</li>
-<li>TS彻底替代babel会出问题,比如不能享受babel-plugin-import这种按需引入的Babel插件了</li>
-</ul>
-</blockquote>
-<ul>
-<li>虽然声称可以在任何场景下替代JS，但前提是有良好的框架支撑</li>
-</ul>
-<blockquote>
-<ul>
-<li>vue2.5以前对TS的支持不是特别好，但Vue本身支持不错,周边那些东西缺没那么好 GitHub： 2K</li>
-<li>react 和 Angular 本身和周边支持良好 ，GitHub： 11K 和 10K</li>
-</ul>
-</blockquote>
-<ul>
-<li>语法检测和ESlint部分重复</li>
-</ul>
-<p>总结，项目不大，后期不用维护的项目没有必要使用，项目主要依赖库要对TS支持良好，冷门的小项目没有必要用TS</p>
-<h4 id="2-使用的理由"><a href="#2-使用的理由" class="headerlink" title="2. 使用的理由"></a>2. 使用的理由</h4><ul>
-<li><p>侦测错误，提供了一套强类型的规范，统一团队代码风格，更方便准确地检查错误</p>
-</li>
-<li><p>在项目初期就进行，类型注释，和接口定义，方便指导开发，</p>
-</li>
-<li><p>文档，新人来了也可以直接看文档接手项目</p>
-</li>
-</ul>
-<blockquote>
-<p>抽象，前端圈子里有这么一个流行语『自从用了Typescript之后,再也不想用JavaScript了』</p>
-</blockquote>
-<ul>
-<li><p>静态类型语言，在编译的时候就能发现问题</p>
-</li>
-<li><p>方便代码重构</p>
-</li>
-</ul>
-<blockquote>
-<p>比如初期定义了一个string，但项目进行到一半说要改成number，如果普通的js，改一个不会报错，eslint则不会识别没有执行到文件的类型错误，而在TS强类型在编译器检验下，在编译时进行类型分析，改一个，其他需要改动的地方无可型盾</p>
-</blockquote>
-<ul>
-<li>antd使用的是TS</li>
-</ul>
-<p>总结，这些特点还是挺诱人的，大型项目可以使用，总体来说，学习成本有，但熟悉过es6的人来说，门槛不算太高，比较类似java的风格。</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
-<li><a href="https://www.jianshu.com/p/103933b7c2b4" target="_blank" rel="noopener">Typescript基础入门</a></li>
-<li><a href="https://juejin.im/post/59c46bc86fb9a00a4636f939" target="_blank" rel="noopener">Tyepscript体系调研报告</a></li>
-<li><a href="http://taobaofed.org/blog/2017/03/09/head-first-typescript/" target="_blank" rel="noopener">认识 TypeScript</a></li>
+<pre><code class="js">// 类似于对象解构
+// module.js
+export const m = 1;
+// index.js
+// 注意，这里的m得和被加载的模块输出的接口名对应
+import { m } from &#39;./module&#39;;
+// 若是想为输入的变量取名
+import { m as m1 }  &#39;./module&#39;;
+// 值得注意的是，import是编译阶段，所以不能动态加载，比如下面写法是错误的。因为&#39;a&#39; + &#39;b&#39;在运行阶段才能取到值，运行阶段在编译阶段之后
+import { &#39;a&#39; + &#39;b&#39; } from &#39;./module&#39;;
+// 若是只是想运行被加载的模块，如下
+// 值得注意的是，即使加载两次也只是运行一次
+import &#39;./module&#39;;
+// 整体加载
+import * as module from &#39;./module&#39;;
+</code></pre>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://zhaoda.net/webpack-handbook/amd.html" target="_blank" rel="noopener">AMD 规范</a></li>
+<li><a href="[http://www.ruanyifeng.com/blog/2012/11/require_js.html](http://www.ruanyifeng.com/blog/2012/11/require_js.html)">Javascript模块化编程（二）：require.js的用法</a></li>
+<li><a href="https://blog.csdn.net/mm_hello11/article/details/78958334" target="_blank" rel="noopener">amd和cmd规范的区别</a></li>
+<li><a href="https://github.com/seajs/seajs/issues/242" target="_blank" rel="noopener">cmd官方规范</a></li>
+<li><a href="https://github.com/amdjs/amdjs-api/wiki/AMD" target="_blank" rel="noopener">amd官方规范</a></li>
+<li><a href="https://juejin.im/post/5b7d2f45e51d4538826f4c28" target="_blank" rel="noopener">AMD , CMD, CommonJS，ES Module，UMD</a></li>
 </ul>
 ]]></content>
       <categories>
-        <category>规范</category>
+        <category>前端</category>
       </categories>
       <tags>
-        <tag>Typescript</tag>
+        <tag>模块化</tag>
       </tags>
   </entry>
   <entry>
@@ -1924,21 +1924,21 @@ lastOrder(tree)</code></pre>
 <h3 id="4-15-字节跳动一面"><a href="#4-15-字节跳动一面" class="headerlink" title="4.15 字节跳动一面"></a>4.15 字节跳动一面</h3><ol>
 <li><p>代码题，说下列代码打印的参数</p>
 <pre><code class="js">(function (){
-    &quot;use strict&quot;
-    var name = &#39;csdn&#39;
-    var obj = {
-      name: &#39;bbc&#39;,
-      fun: {
+ &quot;use strict&quot;
+ var name = &#39;csdn&#39;
+ var obj = {
+   name: &#39;bbc&#39;,
+   fun: {
       fun1: function() {
-          console.log(this.name)
+       console.log(this.name)
       },
       fun2: () =&gt; {
         console.log(this.name)
       }
-        }
-    }
-    obj.fun.fun1() 
-    obj.fun.fun2() 
+  }
+ }
+ obj.fun.fun1() 
+ obj.fun.fun2() 
 })()
 
 </code></pre>
