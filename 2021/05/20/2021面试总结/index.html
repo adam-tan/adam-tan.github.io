@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>404 | 稍纵即逝</title>
+  <title>2021面试总结 | 稍纵即逝</title>
   <meta name="keywords" content="">
-  <meta name="description" content="404 | 稍纵即逝">
+  <meta name="description" content="2021面试总结 | 稍纵即逝">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="404">
@@ -396,9 +396,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <article id="post-2021面试总结" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">404</h1>
+        <h1 class="article-title">2021面试总结</h1>
     
     <div class="article-meta">
         
@@ -408,7 +408,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-04-07 21:26:27'>2020-04-07 16:01</time>
+            发布时间 : <time class="date" title='最后更新: 2021-05-20 23:23:36'>2021-05-20 22:00</time>
         
     </div>
     <div class="article-meta">
@@ -441,7 +441,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#字节跳动-一面"><span class="toc-text">字节跳动 一面</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -457,7 +457,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="字节跳动-一面"><a href="#字节跳动-一面" class="headerlink" title="字节跳动 一面"></a>字节跳动 一面</h3><p>时隔一年，再次收到字节跳动的面试邀请，心里还是有些忐忑的，给自己准备了四五天的时间刷了下算法题，迎来了又一次面试，记录下面试的问题吧</p>
+<ul>
+<li>第一自我介绍</li>
+</ul>
+<p>这个没啥好说，面试的必备流程，但是第一影响很重要，伟大的教员曾经说过，我们需要在战略上藐视敌人，战术上重视敌人，要时刻提醒自己，不能忽视面试的每一个环节。<br>关于要说什么，这里提给大家几点思路：第一，简短说下自己过往经历，第二，重点描述下跟这个岗位相关的经历，想下怎么才能让别人觉得你适合这个岗位，第三，展现风格，无论是自嘲还是讲笑话，都无所谓，重点是突出你跟别人不一样的东西。</p>
+<ul>
+<li>怎么做的组件库</li>
+</ul>
+<p>根据简历问的问题，过往简历有做过组件库，这类问题，比较开放，主要从，为什么做，解决那些问题，怎么做开始回答，中间会涉及面试官层层深入，往往关键问题答不好会减分，所以提醒大家写简历要谨慎啊，不要写自己不了解的项目</p>
+<ul>
+<li>怎么抽离表单服务</li>
+</ul>
+<p>同上，中间涉及问题有，怎么存储表单，怎么解决多表单引用，怎么解决表单组件关联以及实现细节</p>
+<ul>
+<li>react的setState的同步异步机制</li>
+</ul>
+<p>具体可以参考 <a href="https://segmentfault.com/a/1190000016805467#articleHeader6" target="_blank" rel="noopener">setState机制</a></p>
+<ul>
+<li>把[{id: 1},{id: 2, pid: 1}] 变成树的形式，如[{id: 1,child: [ {id: 2} ]}]</li>
+</ul>
+<p>我提出的是在一次遍历用map以父节点pid为key记录子节点id，在此循环遇到没有pid的加入树数组，这样就得到带子节点的map，和所有树的头节点，然后递归遍历，用map把子节点加上去，<br>这样做时间复杂度是O(2n) 空间复杂度小于O(2n)，优点是可以记录层级，更优解法可参考以下，第一种解法</p>
+<p><a href="https://segmentfault.com/a/1190000017214328" target="_blank" rel="noopener">扁平数组变成树的结构</a></p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
     </div>
