@@ -33,9 +33,6 @@ function createTree () {
     else tree.push(data[i]) 
   }
 
-  console.log(&#39;map&#39;, map)
-  console.log(&#39;tree&#39;, tree)
-
   // 递归加上子元素
   function visitAddTree(tree) {
     if(!tree) return

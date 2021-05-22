@@ -408,7 +408,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2021-05-22 11:38:18'>2021-05-20 22:00</time>
+            Created At : <time class="date" title='Updated At: 2021-05-22 11:41:30'>2021-05-20 22:00</time>
         
     </div>
     <div class="article-meta">
@@ -486,9 +486,6 @@ function createTree () {
     if(data[i].pid) map[data[i].pid] = map[data[i].pid] ? [...map[data[i].pid], data[i]] : [data[i]]
     else tree.push(data[i]) 
   }
-
-  console.log(&#39;map&#39;, map)
-  console.log(&#39;tree&#39;, tree)
 
   // 递归加上子元素
   function visitAddTree(tree) {
