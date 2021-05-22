@@ -24,6 +24,39 @@
 <li>把[{id: 1},{id: 2, pid: 1}] 变成树的形式，如[{id: 1,child: [ {id: 2} ]}]</li>
 </ul>
 <p>我提出的是在一次遍历用map以父节点pid为key记录子节点id，在此循环遇到没有pid的加入树数组，这样就得到带子节点的map，和所有树的头节点，然后递归遍历，用map把子节点加上去，<br>这样做时间复杂度是O(2n) 空间复杂度小于O(2n)，优点是可以记录层级，更优解法可参考以下，第一种解法</p>
+<pre><code class="js">let data = [ {id: 1}, {id: 2, pid: 1}, {id: 3}, {id: 4, pid: 2}, {id: 5, pid: 3}]
+function createTree () {
+  // 建立map，并初始化树数组
+  let map = {}, tree = []
+  for(let i = 0; i &lt; data.length; i++) {
+    if(data[i].pid) map[data[i].pid] = map[data[i].pid] ? [...map[data[i].pid], data[i]] : [data[i]]
+    else tree.push(data[i]) 
+  }
+
+  console.log(&#39;map&#39;, map)
+  console.log(&#39;tree&#39;, tree)
+
+  // 递归加上子元素
+  function visitAddTree(tree) {
+    if(!tree) return
+    for(let i = 0; i &lt; tree.length; i++) {
+      console.log(&#39;for item map-i&#39;,tree[i], map[tree[i]])
+      // 有子元素,加上去
+      pidKey = tree[i].id
+      if(map[pidKey]) {
+        tree[i].child = map[pidKey]
+        visitAddTree(tree.child)
+      }
+    }
+  }
+
+  visitAddTree(tree)
+
+  return tree
+}
+
+const res = createTree(data)
+console.log(res)</code></pre>
 <p><a href="https://segmentfault.com/a/1190000017214328" target="_blank" rel="noopener">扁平数组变成树的结构</a></p>
 ]]></content>
   </entry>
