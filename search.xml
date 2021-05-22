@@ -23,23 +23,23 @@
 <ul>
 <li>把[{id: 1},{id: 2, pid: 1}] 变成树的形式，如[{id: 1,child: [ {id: 2} ]}]</li>
 </ul>
-<p>我提出的是在一次遍历用map以父节点pid为key记录子节点id，在此循环遇到没有pid的加入树数组，这样就得到带子节点的map，和所有树的头节点，然后递归遍历，用map把子节点加上去，<br>这样做时间复杂度是O(2n) 空间复杂度小于O(2n)，优点是可以记录层级，更优解法可参考以下，第一种解法</p>
+<p>我提出的是在一次遍历用map以父节点pid为key记录子节点id，在此循环遇到没有pid的加入树数组，这样就得到带子节点的map，和所有树的头节点，然后递归遍历，用map把子节点加上去，<br>这样做时间复杂度是O(2n) 空间复杂度小于O(2n)（n的map记录空间+小于n的递归空间 ），优点是可以记录层级，缺点是数据量大层级深可能带来递归栈溢出：</p>
 <pre><code class="js">let data = [ {id: 1}, {id: 2, pid: 1}, {id: 3}, {id: 4, pid: 2}, {id: 5, pid: 3}]
-function createTree () {
-  // 建立map，并初始化树数组
+function createTree (data) {
   let map = {}, tree = []
+  // 建立map，并初始化树数组
   for(let i = 0; i &lt; data.length; i++) {
-    if(data[i].pid) map[data[i].pid] = map[data[i].pid] ? [...map[data[i].pid], data[i]] : [data[i]]
-    else tree.push(data[i]) 
+    const node = data[i]
+    if(node.pid) map[node.pid] = map[node.pid] ? [...map[node.pid], node] : [node]
+    else tree.push(node) 
   }
 
   // 递归加上子元素
   function visitAddTree(tree) {
     if(!tree) return
     for(let i = 0; i &lt; tree.length; i++) {
-      console.log(&#39;for item map-i&#39;,tree[i], map[tree[i]])
+      const pidKey = tree[i].id
       // 有子元素,加上去
-      pidKey = tree[i].id
       if(map[pidKey]) {
         tree[i].child = map[pidKey]
         visitAddTree(tree.child)
@@ -48,6 +48,32 @@ function createTree () {
   }
 
   visitAddTree(tree)
+
+  return tree
+}
+
+const res = createTree(data)
+console.log(res)</code></pre>
+<p>不用考虑节点的层级关系的话，可以得到一个更优的解决方法，同样新建个map，然后以id为key，值为id自身的节点，然后循环得出map表，之后，再进行一次循环，把没有父节点直接入树数组，有父节点的，从map表找到父节点加入其child，循环结束返回树数组，即可得到树形数组了<br>时间复杂度是时间复杂度是O(2n) 空间复杂度O(n)，降低了一点空间复杂度，而且没有递归栈溢出的可能</p>
+<pre><code class="js">let data = [ {id: 1}, {id: 2, pid: 1}, {id: 3}, {id: 4, pid: 2}, {id: 5, pid: 3}]
+function createTree (data) {
+  let map = {}, tree = []
+  // 建立map，并初始化树数组
+  for(let i = 0; i &lt; data.length; i++) {
+    const node = data[i]
+    map[node.id] = node
+  }
+
+  // 通过map找到父元素，并将当前元素加入其child
+  for(let i = 0; i &lt; data.length; i++) {
+   const node = data[i]
+    if(node.pid) {
+      pNode = map[node.pid]
+      pNode.child = pNode.child ? [...pNode.child, node] : [node]
+    } else {
+      tree.push(node)
+    }
+  }
 
   return tree
 }
