@@ -1,559 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2021面试总结</title>
-    <url>/2021/05/20/2021%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h3 id="字节跳动-一面"><a href="#字节跳动-一面" class="headerlink" title="字节跳动 一面"></a>字节跳动 一面</h3><p>时隔一年，再次收到字节跳动的面试邀请，心里还是有些忐忑的，给自己准备了四五天的时间刷了下算法题，迎来了又一次面试，记录下面试的问题吧</p>
-<ul>
-<li>第一自我介绍</li>
-</ul>
-<p>这个没啥好说，面试的必备流程，但是第一影响很重要，伟大的教员曾经说过，我们需要在战略上藐视敌人，战术上重视敌人，要时刻提醒自己，不能忽视面试的每一个环节。<br>关于要说什么，这里提给大家几点思路：第一，简短说下自己过往经历，第二，重点描述下跟这个岗位相关的经历，想下怎么才能让别人觉得你适合这个岗位，第三，展现风格，无论是自嘲还是讲笑话，都无所谓，重点是突出你跟别人不一样的东西。</p>
-<ul>
-<li>怎么做的组件库</li>
-</ul>
-<p>根据简历问的问题，过往简历有做过组件库，这类问题，比较开放，主要从，为什么做，解决那些问题，怎么做开始回答，中间会涉及面试官层层深入，往往关键问题答不好会减分，所以提醒大家写简历要谨慎啊，不要写自己不了解的项目</p>
-<ul>
-<li>怎么抽离表单服务</li>
-</ul>
-<p>同上，中间涉及问题有，怎么存储表单，怎么解决多表单引用，怎么解决表单组件关联以及实现细节</p>
-<ul>
-<li>react的setState的同步异步机制</li>
-</ul>
-<p>具体可以参考 <a href="https://segmentfault.com/a/1190000016805467#articleHeader6" target="_blank" rel="noopener">setState机制</a></p>
-<ul>
-<li>把[{id: 1},{id: 2, pid: 1}] 变成树的形式，如[{id: 1,child: [ {id: 2} ]}]</li>
-</ul>
-<p>我提出的是在一次遍历用map以父节点pid为key记录子节点id，在此循环遇到没有pid的加入树数组，这样就得到带子节点的map，和所有树的头节点，然后递归遍历，用map把子节点加上去，<br>这样做时间复杂度是O(2n) 空间复杂度小于O(2n)（n的map记录空间+小于n的递归空间 ），优点是可以记录层级，缺点是数据量大层级深可能带来递归栈溢出：</p>
-<pre><code class="js">let data = [ {id: 1}, {id: 2, pid: 1}, {id: 3}, {id: 4, pid: 2}, {id: 5, pid: 3}]
-function createTree (data) {
-  let map = {}, tree = []
-  // 建立map，并初始化树数组
-  for(let i = 0; i &lt; data.length; i++) {
-    const node = data[i]
-    if(node.pid) map[node.pid] = map[node.pid] ? [...map[node.pid], node] : [node]
-    else tree.push(node) 
-  }
-
-  // 递归加上子元素
-  function visitAddTree(tree) {
-    if(!tree) return
-    for(let i = 0; i &lt; tree.length; i++) {
-      const pidKey = tree[i].id
-      // 有子元素,加上去
-      if(map[pidKey]) {
-        tree[i].child = map[pidKey]
-        visitAddTree(tree.child)
-      }
-    }
-  }
-
-  visitAddTree(tree)
-
-  return tree
-}
-
-const res = createTree(data)
-console.log(res)</code></pre>
-<p>不用考虑节点的层级关系的话，可以得到一个更优的解决方法，同样新建个map，然后以id为key，值为id自身的节点，然后循环得出map表，之后，再进行一次循环，把没有父节点直接入树数组，有父节点的，从map表找到父节点加入其child，循环结束返回树数组，即可得到树形数组了<br>时间复杂度是时间复杂度是O(2n) 空间复杂度O(n)，降低了一点空间复杂度，而且没有递归栈溢出的可能</p>
-<pre><code class="js">let data = [ {id: 1}, {id: 2, pid: 1}, {id: 3}, {id: 4, pid: 2}, {id: 5, pid: 3}]
-function createTree (data) {
-  let map = {}, tree = []
-  // 建立map，并初始化树数组
-  for(let i = 0; i &lt; data.length; i++) {
-    const node = data[i]
-    map[node.id] = node
-  }
-
-  // 通过map找到父元素，并将当前元素加入其child
-  for(let i = 0; i &lt; data.length; i++) {
-   const node = data[i]
-    if(node.pid) {
-      pNode = map[node.pid]
-      pNode.child = pNode.child ? [...pNode.child, node] : [node]
-    } else {
-      tree.push(node)
-    }
-  }
-
-  return tree
-}
-
-const res = createTree(data)
-console.log(res)</code></pre>
-<p><a href="https://segmentfault.com/a/1190000017214328" target="_blank" rel="noopener">扁平数组变成树的结构</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>js 布尔值转换和数据类型的简单判断</title>
-    <url>/2021/04/07/js%20%E5%B8%83%E5%B0%94%E5%80%BC%E8%BD%AC%E6%8D%A2%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E5%88%A4%E6%96%AD/</url>
-    <content><![CDATA[<h1 id="js-布尔值转换和数据类型的简单判断"><a href="#js-布尔值转换和数据类型的简单判断" class="headerlink" title="js 布尔值转换和数据类型的简单判断"></a>js 布尔值转换和数据类型的简单判断</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
-<p>通常情况下js的布尔值转换和数据类型判断是一个比较容易犯错的问题，现在我们结合对照表来简单梳理一下</p>
-</blockquote>
-<h3 id="一、js-布尔值转换"><a href="#一、js-布尔值转换" class="headerlink" title="一、js 布尔值转换"></a>一、js 布尔值转换</h3><h4 id="一、-的情况下转换"><a href="#一、-的情况下转换" class="headerlink" title="一、==的情况下转换"></a>一、==的情况下转换</h4><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Equality" target="_blank" rel="noopener">参考</a></p>
-<h4 id="二、数据类型和布尔值的转换"><a href="#二、数据类型和布尔值的转换" class="headerlink" title="二、数据类型和布尔值的转换"></a>二、数据类型和布尔值的转换</h4><table>
-<thead>
-<tr>
-<th align="center">数据类型</th>
-<th align="center">能转换为true</th>
-<th align="center">能转化为false</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">boolean</td>
-<td align="center">ture</td>
-<td align="center">false</td>
-</tr>
-<tr>
-<td align="center">string</td>
-<td align="center">任何非空字符</td>
-<td align="center">“”</td>
-</tr>
-<tr>
-<td align="center">number</td>
-<td align="center">任何非零数字值</td>
-<td align="center">0和NaN</td>
-</tr>
-<tr>
-<td align="center">obj</td>
-<td align="center">任何对象</td>
-<td align="center">null</td>
-</tr>
-<tr>
-<td align="center">undefined</td>
-<td align="center">—</td>
-<td align="center">undefined</td>
-</tr>
-<tr>
-<td align="center">arr</td>
-<td align="center">任何数组</td>
-<td align="center">null</td>
-</tr>
-</tbody></table>
-<h3 id="三、判断数据类型的方法"><a href="#三、判断数据类型的方法" class="headerlink" title="三、判断数据类型的方法"></a>三、判断数据类型的方法</h3><h4 id="1、typeof"><a href="#1、typeof" class="headerlink" title="1、typeof"></a>1、typeof</h4><table>
-<thead>
-<tr>
-<th align="center">数据类型</th>
-<th align="center">typeof结果</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">string</td>
-<td align="center">string</td>
-</tr>
-<tr>
-<td align="center">number</td>
-<td align="center">number</td>
-</tr>
-<tr>
-<td align="center">booleam</td>
-<td align="center">boolean</td>
-</tr>
-<tr>
-<td align="center">undefind</td>
-<td align="center">undefind</td>
-</tr>
-<tr>
-<td align="center">functuon</td>
-<td align="center">function</td>
-</tr>
-<tr>
-<td align="center">obj</td>
-<td align="center">obj</td>
-</tr>
-<tr>
-<td align="center">null</td>
-<td align="center">obj</td>
-</tr>
-<tr>
-<td align="center">arr</td>
-<td align="center">obj</td>
-</tr>
-</tbody></table>
-<p>用法：</p>
-<pre><code>typeof()  // 适合判断除null外的基本数据类型，不适合判断obj、arr、function等引用类型</code></pre><h4 id="2、instanceof"><a href="#2、instanceof" class="headerlink" title="2、instanceof"></a>2、instanceof</h4><p>用法:</p>
-<pre><code>obj instanceof Object  // true
-arr instanceof Array //true
-pattern instanceof RegExp //true</code></pre><p> 注意事项以及适用范围：</p>
-<ul>
-<li>引用用类型所有值都是obj的事例，所以所以引用类型instanceof Object都为ture</li>
-<li>可以判断是否为引用类型，或者是否为数组</li>
-</ul>
-<p>缺点：</p>
-<p>instanceof会从原型链一直往上查找，假如有个obj的继承的原型是Array，此时<code>obj instanceof Array</code>为true，显示是错的</p>
-<h4 id="3、toString方法"><a href="#3、toString方法" class="headerlink" title="3、toString方法"></a>3、toString方法</h4><p>用法</p>
-<pre><code class="js">Object.prototype.toString.call([]) // [Object Array]</code></pre>
-<p>判断数据类型最优的方法</p>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>二叉树深度优先遍历js实现</title>
-    <url>/2021/04/07/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86js%E5%AE%9E%E7%8E%B0/</url>
-    <content><![CDATA[<h3 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h3><blockquote>
-<p>二叉树是数据结构算法的重要知识点，今天我们用js来实现下二叉树的深度优先遍历</p>
-</blockquote>
-<p>首先，生成一个二叉树</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdtk9xb44qj30k80ia0tf.jpg" alt="Jietu20200414-201926@2x" style="zoom:50%;" />
-
-<pre><code class="js">/*
-二叉树
-*/
-var tree = {
-  value: 1,
-  left: {
-    value: 2,
-    left: {
-      value: 4
-    }
-  },
-  right: {
-    value: 3,
-    left: {
-      value: 5,
-      left: {
-        value: 7
-      },
-      right: {
-        value: 8
-      }
-    },
-    right: {
-      value: 6
-    }
-  }
-}</code></pre>
-<h3 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h3><ul>
-<li>递归</li>
-</ul>
-<pre><code class="js">function preOrder(node) {
-  if(node != null) {
-    console.log(node.value)
-    preOrder(node.left)
-    preOrder(node.right)
-  } 
-}</code></pre>
-<ul>
-<li>非递归</li>
-</ul>
-<pre><code class="js">
-function preOrder(root) {
-        let stack = [];
-        let pNode = root;
-        while (pNode != null || !stack.length == 0) {
-            if (pNode != null) {
-                console.log(pNode.value+&quot;  &quot;);
-                stack.push(pNode);
-                pNode = pNode.left;
-            } else { //pNode == null &amp;&amp; !stack.isEmpty()
-                node = stack.pop();
-                pNode = node.right;
-            }
-        }
-    }
-preOrder(tree)
-
-</code></pre>
-<h3 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h3><ul>
-<li>递归</li>
-</ul>
-<pre><code class="js">function preOrder(node) {
-  if(node != null) {
-    preOrder(node.left)
-    console.log(node.value)
-    preOrder(node.right)
-  } 
-}</code></pre>
-<ul>
-<li>非递归</li>
-</ul>
-<pre><code class="js">function midOrder(root) {
-        let stack = [];
-        let pNode = root;
-        while (pNode != null || !stack.length == 0) {
-            if (pNode != null) {
-                stack.push(pNode);
-                pNode = pNode.left;
-            } else { //pNode == null &amp;&amp; !stack.isEmpty()
-                node = stack.pop();
-        console.log(pNode.value+&quot;  &quot;);
-                pNode = node.right;
-            }
-        }
-    }
-midOrder(tree)</code></pre>
-<h3 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h3><ul>
-<li>递归</li>
-</ul>
-<pre><code class="js">function preOrder(node) {
-  if(node != null) {
-    preOrder(node.left)
-    preOrder(node.right)
-    console.log(node.value)
-  } 
-}</code></pre>
-<ul>
-<li>非递归</li>
-</ul>
-<pre><code class="js">
-
-var lastOrder = (root) =&gt; {
-    let result = []
-    let stack = []
-    let node = root
-    while(node != null || stack.length != 0){
-        if(node != null) {
-            result.unshift(node.value)
-            stack.push(node)
-            node = node.right
-        }else{
-            node = stack.pop()
-            //console.log(node.value)
-            node = node.left
-        }
-    }
-    return result
-
-}
-lastOrder(tree)</code></pre>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>API规范参考</title>
-    <url>/2021/04/07/API%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
-    <content><![CDATA[<h1 id="API规范"><a href="#API规范" class="headerlink" title="API规范"></a>API规范</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
-<li><p>RESTful API是目前比较成熟的一套互联网应用程序的API设计理论,它遵循资源导向的设计方式。<br>它有三个主要要素：资源，集合和 URLs。</p>
-<ul>
-<li>资源具有数据，嵌套，和一些操作方法。  </li>
-<li>一组资源称为一个集合。  </li>
-<li>URL标识资源或集合的线上位置。  </li>
-</ul>
-</li>
-</ul>
-<h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><h4 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a>命名规则</h4><ul>
-<li>使用kebab-case（短横线分割）的URL<blockquote>
-<p>例子：<code>/api/be/project-config</code></p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p>在查询字符串或资源字段中使用camelCase模式。</p>
-<blockquote>
-<p>例子：<code>/api/be/meeting-config/projectUid=1453</code></p>
-</blockquote>
-</li>
-<li><p>URLs里面请尽量少用动词</p>
-<blockquote>
-<p>因为如果您为每个资源操作使用一个动词，您很快就会维护一个很大的URL列表，而且没有一致的使用模式，这会使开发人员难以学习。此外，我们还要使用动词做别的事情。<br>错误例子：<code>/api/be/project-config/create/list</code><br><code>/api/be/project-config/users/addName</code></p>
-</blockquote>
-</li>
-<li><p>为非资源型请求使用动词。在这种情况下，您的API并不需要返回任何资源。而是去执行一个操作(除CRUD操作）并返回执行结果。</p>
-<blockquote>
-<p> 例子：<code>/api.github.com/_private/browser/star</code>  点赞操作</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li>资源命名区分单复数<blockquote>
-<p>文档(Document)类型的资源用名词(短语)单数命名（<em>如一篇文章<code>https://api/article</code></em>）<br>  集合(Collection)类型的资源用名词(短语)复数命名（<em>如文章列表<code>https://api/articles</code></em>）</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="操作表示"><a href="#操作表示" class="headerlink" title="操作表示"></a>操作表示</h4><ul>
-<li><p>HTTP方法来操作CRUD功能</p>
-<blockquote>
-</blockquote>
-<p>  GET:          查询—–查询资源<br>  POST:        创建—-创建一些新的资源或者子资源<br>  PUT:         更新全部—-更新一个存在的资源（提供全部信息）<br>  PATCH:       更新部分—-更新现有资源。它只更新所提供的字段，不管其他字段<br>  DELETE:   删除—–删除一个存在的资源</p>
-<p>  例子：</p>
-<blockquote>
-<p> GET /zoos：列出所有动物园<br>  POST /zoos：新建一个动物园<br>  GET /zoos/ID：获取某个指定动物园的信息<br>  PUT /zoos/ID：更新某个指定动物园的信息（提供该动物园的全部信息）<br>  PATCH /zoos/ID：更新某个指定动物园的信息（提供该动物园的部分信息）<br>  DELETE /zoos/ID：删除某个动物园<br>  GET /zoos/ID/animals：列出某个指定动物园的所有动物<br>  DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物  </p>
-</blockquote>
-<p>  附：<a href="https://segmentfault.com/q/1010000005685904" target="_blank" rel="noopener">pacth与put的区别</a></p>
-</li>
-<li><p>如果记录数量很多，服务器不可能都将它们返回给用户。API应该提供参数，过滤返回结果。</p>
-<p>  下面是一些常见的参数。</p>
-<blockquote>
-<p><code>?limit=10</code>：指定返回记录的数量<br>  <code>?offset=10</code>：指定返回记录的开始位置。<br>  <code>?page=2&amp;per_page=100</code>：指定第几页，以及每页的记录数。<br>  <code>?sortby=name&amp;order=asc</code>：指定返回结果按照哪个属性排序，以及排序顺序。<br>  <code>?producy_type=1</code>：指定筛选条件</p>
-</blockquote>
-</li>
-</ul>
-<p>​    </p>
-<h4 id="关系表示"><a href="#关系表示" class="headerlink" title="关系表示"></a>关系表示</h4><ul>
-<li><p>对于嵌套资源，在URL体现关系。  同时避免层级过深。<br>例如，使用id将员工与公司联系起来。  </p>
-<blockquote>
-<p><code>GET /schools/2/students</code> , 应该从学校2得到所有学生的名单<br> <code>GET /schools/2/students/31</code> , 应该得到学生31的详细信息，且此学生属于学校2<br> <code>DELETE /schools/2/students/31</code> , 应删除属于学校2的学生31<br> <code>PUT /schools/2/students/31</code>, 应该更新学生31的信息<br> <code>POST /schools</code> , 应该创建一所新学校，并返回创建的新学校的细节。在集合URL上使用POST  </p>
-</blockquote>
-<p> 但是如 <code>GET /zoos/1/areas/3/animals/4</code><br> 尽量使用查询参数代替路径中的实体导航，如<code>GET/animals?zoo=1&amp;area=3</code></p>
-<p> 附：<a href="https://blog.csdn.net/xcc_2269861428/article/details/80433382" target="_blank" rel="noopener">post请求和get请求的区别</a>  </p>
-</li>
-</ul>
-<ul>
-<li>如有迭代版本（v1,v2,v3），使用简单的序数表示版本。并将其移到URL的左侧，使其具有最高的范围表述：<blockquote>
-<p><code>http://api.domain.com/v1/schools/3/students</code>    </p>
-</blockquote>
-</li>
-</ul>
-<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
-<li><p>Response不要包装，body 直接就是数据，</p>
-<blockquote>
-<p>错误例子：<code>{
- &quot;success&quot;:true，
- &quot;data&quot;:{&quot;id&quot;:1,&quot;name&quot;:&quot;xiaotuan&quot;},
-}</code></p>
-</blockquote>
-</li>
-<li><p>Service/DAO层方法命名规约</p>
-<blockquote>
-<p>   1) 获取单个对象的方法用get做前缀。<br>   2) 获取多个对象的方法用list做前缀。<br>   3) 获取统计值的方法用count做前缀。<br>   4) 插入的方法用save/insert做前缀。<br>   5) 删除的方法用remove/delete做前缀。<br>   6) 修改的方法用update做前缀。   </p>
-</blockquote>
-</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><h3 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h3><ul>
-<li><a href="http://wangwei.info/about-rest-api/" target="_blank" rel="noopener">REST接口设计规范</a></li>
-<li><a href="https://gumutianqi1.gitbooks.io/specification-doc/content/specification-doc/restful_api.html" target="_blank" rel="noopener">API接口规范</a></li>
-<li><a href="https://github.com/elsewhencode/project-guidelines" target="_blank" rel="noopener"> A set of best practices for JavaScript projects</a></li>
-</ul>
-<h3 id="github网站页面的部分API参考"><a href="#github网站页面的部分API参考" class="headerlink" title="github网站页面的部分API参考"></a>github网站页面的部分API参考</h3><blockquote>
-<p><a href="https://github.com/ant-design/ant-design" target="_blank" rel="noopener">https://github.com/ant-design/ant-design</a></p>
-</blockquote>
-<ul>
-<li><p>请求star数量 <code>https://api.github.com/_private/browser/stats</code>  </p>
-</li>
-<li><p>用户资料卡 <code>https://github.com/hovercards?user_id=7264444&amp;subject=33</code>  </p>
-</li>
-<li><p>star <code>https://github.com/ant-design/ant-design/star</code>  </p>
-</li>
-<li><p>unstar <code>https://github.com/ant-design/ant-design/unstar</code></p>
-</li>
-<li><p>Issues功能  <code>https://github.com/ant-design/ant-design/issues?_pjax=%23js-repo-pjax-container</code></p>
-</li>
-<li><p>查询功能 <code>https://github.com/ant-design/ant-design/search/count?q=d%27d%27d&amp;type=Commits&amp;unscoped_q=d%27d%27d</code></p>
-</li>
-<li><p>更新设置 <code>https://github.com/newsletter_preference</code></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>规范</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>js常用算法面试题收集（持续更新）</title>
-    <url>/2021/04/07/js%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="js常用算法面试题收集"><a href="#js常用算法面试题收集" class="headerlink" title="js常用算法面试题收集"></a>js常用算法面试题收集</h2><h4 id="1-统计一个字符出现的最高频率？"><a href="#1-统计一个字符出现的最高频率？" class="headerlink" title="1.统计一个字符出现的最高频率？"></a>1.统计一个字符出现的最高频率？</h4><pre><code class="js">let str = &#39;asdfghjklaqwertyuiopiaia&#39;;
-function statistics(str){
-  const strArr = [...str]
-  let obj = {}
-  // 统计字符数
-  strArr.forEach((i) =&gt;{
-    obj[i] = obj[i] == undefined ? 0 :  ++obj[i]
-  })
-  // 求最大值
-  return Object.keys(obj)
-    .sort((i, r) =&gt; obj[r] - obj[i])[0] //降序排列
-}
-console.log(statistics(str))    // a
-</code></pre>
-<h4 id="2-数组去重"><a href="#2-数组去重" class="headerlink" title="2.数组去重"></a>2.数组去重</h4><ul>
-<li>ruduce 方法</li>
-</ul>
-<pre><code class="js">let arr = [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;1&#39;, &#39;a&#39;, &#39;b&#39;, &#39;b&#39;]
-function duplicate() {
-    return arr.reduce((r,v) =&gt; r.indexOf(v) &gt; -1 ? r : [...r, v], [])  
-}
-console.log(duplicate())
-</code></pre>
-<ul>
-<li>forEach</li>
-</ul>
-<pre><code class="js">let arr = [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;1&#39;, &#39;a&#39;, &#39;b&#39;, &#39;b&#39;]
-const unique = arr =&gt; {
-    let obj = {}
-    arr.forEach(value =&gt; {
-        obj[value] = 0
-    })
-    return Object.keys(obj)
-}
-console.log(unique(arr))  // [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;a&#39;,&#39;b&#39;]</code></pre>
-<ul>
-<li>filter</li>
-</ul>
-<pre><code class="js">let arr = [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;1&#39;, &#39;a&#39;, &#39;b&#39;, &#39;b&#39;]
-const unique = arr =&gt; {
-    return arr.filter((ele, index, array) =&gt; {
-        return index === array.indexOf(ele)
-    })
-}
-console.log(unique(arr))  // [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;a&#39;,&#39;b&#39;]</code></pre>
-<ul>
-<li>set</li>
-</ul>
-<pre><code class="js">let arr = [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;1&#39;, &#39;a&#39;, &#39;b&#39;, &#39;b&#39;]
-const unique = arr =&gt; {
-    return new [...Set(arr)]
-}
-console.log(unique(arr))  // [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;a&#39;,&#39;b&#39;]</code></pre>
-<h4 id="3、翻转字符串"><a href="#3、翻转字符串" class="headerlink" title="3、翻转字符串"></a>3、翻转字符串</h4><pre><code class="js">let str = &#39;holle word&#39;
-const reverseStr = str =&gt; {
-  return [...str].reverse().join(&#39;&#39;)
-}
-console.log(reverseStr(str))</code></pre>
-<h4 id="4、数组中最大差值"><a href="#4、数组中最大差值" class="headerlink" title="4、数组中最大差值"></a>4、数组中最大差值</h4><pre><code class="js">let arr = [2,44,22,8,9]
-const different = arr =&gt; {
-  let sortArr = arr.sort((i,r) =&gt; i-r)
-  return sortArr[sortArr.length - 1] - sortArr[0]
-}
-console.log(different(arr))</code></pre>
-<h4 id="5、不借助临时变量，进行两个整数的交换"><a href="#5、不借助临时变量，进行两个整数的交换" class="headerlink" title="5、不借助临时变量，进行两个整数的交换"></a>5、不借助临时变量，进行两个整数的交换</h4><ul>
-<li>数组解构</li>
-</ul>
-<pre><code class="js">let a = 2,
-    b = 3;
-    [b,a] = [a,b]
-    console.log(a,b)   // 3 2</code></pre>
-<ul>
-<li>算术运算（加减）</li>
-</ul>
-<pre><code class="js">let a = 2,
-    b = 3;
-const swop = (a, b) =&gt; {
-    b = b - a;
-    a = a + b;
-    b = a - b;
-    return [a,b];
-}
-console.log(swop(2,3)) // [3,2]</code></pre>
-<h4 id="6、冒泡排序"><a href="#6、冒泡排序" class="headerlink" title="6、冒泡排序"></a>6、冒泡排序</h4><pre><code class="js">let arr = [43, 32, 1, 5, 9, 22];
-const sort = arr =&gt; {
-    arr.forEach((v, i) =&gt; {
-        for (let j = i + 1; j &lt; arr.length; j++) {
-            if (arr[i] &gt; arr[j]) {
-                [arr[i],arr[j]] = [arr[j],arr[i]]
-            }
-            console.log(arr)
-        }
-    })
-    return arr
-}
-console.log(sort([43, 9, 5, 22, 32, 1]))  // [1, 5, 9, 22, 32, 43]</code></pre>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>AMD、CMD、CommonJS以及UMD的简单对比</title>
-    <url>/2021/04/07/AMD%E3%80%81CMD%E3%80%81CommonJS%E4%BB%A5%E5%8F%8AUMD%E7%9A%84%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94/</url>
+    <url>/2022/02/18/AMD%E3%80%81CMD%E3%80%81CommonJS%E4%BB%A5%E5%8F%8AUMD%E7%9A%84%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94/</url>
     <content><![CDATA[<h2 id="AMD、CMD、CommonJS以及UMD的简单对比"><a href="#AMD、CMD、CommonJS以及UMD的简单对比" class="headerlink" title="AMD、CMD、CommonJS以及UMD的简单对比"></a>AMD、CMD、CommonJS以及UMD的简单对比</h2><h3 id="一、AMD"><a href="#一、AMD" class="headerlink" title="一、AMD"></a>一、AMD</h3><p>为浏览器环境设计的， 所以是异步模块加载定义的</p>
 <ul>
 <li>加载模块</li>
@@ -682,8 +131,708 @@ import * as module from &#39;./module&#39;;
       </tags>
   </entry>
   <entry>
+    <title>API规范参考</title>
+    <url>/2022/02/18/API%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
+    <content><![CDATA[<h1 id="API规范"><a href="#API规范" class="headerlink" title="API规范"></a>API规范</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li><p>RESTful API是目前比较成熟的一套互联网应用程序的API设计理论,它遵循资源导向的设计方式。<br>它有三个主要要素：资源，集合和 URLs。</p>
+<ul>
+<li>资源具有数据，嵌套，和一些操作方法。  </li>
+<li>一组资源称为一个集合。  </li>
+<li>URL标识资源或集合的线上位置。  </li>
+</ul>
+</li>
+</ul>
+<h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><h4 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a>命名规则</h4><ul>
+<li>使用kebab-case（短横线分割）的URL<blockquote>
+<p>例子：<code>/api/be/project-config</code></p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>在查询字符串或资源字段中使用camelCase模式。</p>
+<blockquote>
+<p>例子：<code>/api/be/meeting-config/projectUid=1453</code></p>
+</blockquote>
+</li>
+<li><p>URLs里面请尽量少用动词</p>
+<blockquote>
+<p>因为如果您为每个资源操作使用一个动词，您很快就会维护一个很大的URL列表，而且没有一致的使用模式，这会使开发人员难以学习。此外，我们还要使用动词做别的事情。<br>错误例子：<code>/api/be/project-config/create/list</code><br><code>/api/be/project-config/users/addName</code></p>
+</blockquote>
+</li>
+<li><p>为非资源型请求使用动词。在这种情况下，您的API并不需要返回任何资源。而是去执行一个操作(除CRUD操作）并返回执行结果。</p>
+<blockquote>
+<p> 例子：<code>/api.github.com/_private/browser/star</code>  点赞操作</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>资源命名区分单复数<blockquote>
+<p>文档(Document)类型的资源用名词(短语)单数命名（<em>如一篇文章<code>https://api/article</code></em>）<br>  集合(Collection)类型的资源用名词(短语)复数命名（<em>如文章列表<code>https://api/articles</code></em>）</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="操作表示"><a href="#操作表示" class="headerlink" title="操作表示"></a>操作表示</h4><ul>
+<li><p>HTTP方法来操作CRUD功能</p>
+<blockquote>
+</blockquote>
+<p>  GET:          查询—–查询资源<br>  POST:        创建—-创建一些新的资源或者子资源<br>  PUT:         更新全部—-更新一个存在的资源（提供全部信息）<br>  PATCH:       更新部分—-更新现有资源。它只更新所提供的字段，不管其他字段<br>  DELETE:   删除—–删除一个存在的资源</p>
+<p>  例子：</p>
+<blockquote>
+<p> GET /zoos：列出所有动物园<br>  POST /zoos：新建一个动物园<br>  GET /zoos/ID：获取某个指定动物园的信息<br>  PUT /zoos/ID：更新某个指定动物园的信息（提供该动物园的全部信息）<br>  PATCH /zoos/ID：更新某个指定动物园的信息（提供该动物园的部分信息）<br>  DELETE /zoos/ID：删除某个动物园<br>  GET /zoos/ID/animals：列出某个指定动物园的所有动物<br>  DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物  </p>
+</blockquote>
+<p>  附：<a href="https://segmentfault.com/q/1010000005685904" target="_blank" rel="noopener">pacth与put的区别</a></p>
+</li>
+<li><p>如果记录数量很多，服务器不可能都将它们返回给用户。API应该提供参数，过滤返回结果。</p>
+<p>  下面是一些常见的参数。</p>
+<blockquote>
+<p><code>?limit=10</code>：指定返回记录的数量<br>  <code>?offset=10</code>：指定返回记录的开始位置。<br>  <code>?page=2&amp;per_page=100</code>：指定第几页，以及每页的记录数。<br>  <code>?sortby=name&amp;order=asc</code>：指定返回结果按照哪个属性排序，以及排序顺序。<br>  <code>?producy_type=1</code>：指定筛选条件</p>
+</blockquote>
+</li>
+</ul>
+<p>​    </p>
+<h4 id="关系表示"><a href="#关系表示" class="headerlink" title="关系表示"></a>关系表示</h4><ul>
+<li><p>对于嵌套资源，在URL体现关系。  同时避免层级过深。<br>例如，使用id将员工与公司联系起来。  </p>
+<blockquote>
+<p><code>GET /schools/2/students</code> , 应该从学校2得到所有学生的名单<br> <code>GET /schools/2/students/31</code> , 应该得到学生31的详细信息，且此学生属于学校2<br> <code>DELETE /schools/2/students/31</code> , 应删除属于学校2的学生31<br> <code>PUT /schools/2/students/31</code>, 应该更新学生31的信息<br> <code>POST /schools</code> , 应该创建一所新学校，并返回创建的新学校的细节。在集合URL上使用POST  </p>
+</blockquote>
+<p> 但是如 <code>GET /zoos/1/areas/3/animals/4</code><br> 尽量使用查询参数代替路径中的实体导航，如<code>GET/animals?zoo=1&amp;area=3</code></p>
+<p> 附：<a href="https://blog.csdn.net/xcc_2269861428/article/details/80433382" target="_blank" rel="noopener">post请求和get请求的区别</a>  </p>
+</li>
+</ul>
+<ul>
+<li>如有迭代版本（v1,v2,v3），使用简单的序数表示版本。并将其移到URL的左侧，使其具有最高的范围表述：<blockquote>
+<p><code>http://api.domain.com/v1/schools/3/students</code>    </p>
+</blockquote>
+</li>
+</ul>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
+<li><p>Response不要包装，body 直接就是数据，</p>
+<blockquote>
+<p>错误例子：<code>{
+ &quot;success&quot;:true，
+ &quot;data&quot;:{&quot;id&quot;:1,&quot;name&quot;:&quot;xiaotuan&quot;},
+}</code></p>
+</blockquote>
+</li>
+<li><p>Service/DAO层方法命名规约</p>
+<blockquote>
+<p>   1) 获取单个对象的方法用get做前缀。<br>   2) 获取多个对象的方法用list做前缀。<br>   3) 获取统计值的方法用count做前缀。<br>   4) 插入的方法用save/insert做前缀。<br>   5) 删除的方法用remove/delete做前缀。<br>   6) 修改的方法用update做前缀。   </p>
+</blockquote>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><h3 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h3><ul>
+<li><a href="http://wangwei.info/about-rest-api/" target="_blank" rel="noopener">REST接口设计规范</a></li>
+<li><a href="https://gumutianqi1.gitbooks.io/specification-doc/content/specification-doc/restful_api.html" target="_blank" rel="noopener">API接口规范</a></li>
+<li><a href="https://github.com/elsewhencode/project-guidelines" target="_blank" rel="noopener"> A set of best practices for JavaScript projects</a></li>
+</ul>
+<h3 id="github网站页面的部分API参考"><a href="#github网站页面的部分API参考" class="headerlink" title="github网站页面的部分API参考"></a>github网站页面的部分API参考</h3><blockquote>
+<p><a href="https://github.com/ant-design/ant-design" target="_blank" rel="noopener">https://github.com/ant-design/ant-design</a></p>
+</blockquote>
+<ul>
+<li><p>请求star数量 <code>https://api.github.com/_private/browser/stats</code>  </p>
+</li>
+<li><p>用户资料卡 <code>https://github.com/hovercards?user_id=7264444&amp;subject=33</code>  </p>
+</li>
+<li><p>star <code>https://github.com/ant-design/ant-design/star</code>  </p>
+</li>
+<li><p>unstar <code>https://github.com/ant-design/ant-design/unstar</code></p>
+</li>
+<li><p>Issues功能  <code>https://github.com/ant-design/ant-design/issues?_pjax=%23js-repo-pjax-container</code></p>
+</li>
+<li><p>查询功能 <code>https://github.com/ant-design/ant-design/search/count?q=d%27d%27d&amp;type=Commits&amp;unscoped_q=d%27d%27d</code></p>
+</li>
+<li><p>更新设置 <code>https://github.com/newsletter_preference</code></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>规范</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2022/02/18/hexo%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>js 布尔值转换和数据类型的简单判断</title>
+    <url>/2022/02/18/js%20%E5%B8%83%E5%B0%94%E5%80%BC%E8%BD%AC%E6%8D%A2%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E5%88%A4%E6%96%AD/</url>
+    <content><![CDATA[<h1 id="js-布尔值转换和数据类型的简单判断"><a href="#js-布尔值转换和数据类型的简单判断" class="headerlink" title="js 布尔值转换和数据类型的简单判断"></a>js 布尔值转换和数据类型的简单判断</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
+<p>通常情况下js的布尔值转换和数据类型判断是一个比较容易犯错的问题，现在我们结合对照表来简单梳理一下</p>
+</blockquote>
+<h3 id="一、js-布尔值转换"><a href="#一、js-布尔值转换" class="headerlink" title="一、js 布尔值转换"></a>一、js 布尔值转换</h3><h4 id="一、-的情况下转换"><a href="#一、-的情况下转换" class="headerlink" title="一、==的情况下转换"></a>一、==的情况下转换</h4><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Equality" target="_blank" rel="noopener">参考</a></p>
+<h4 id="二、数据类型和布尔值的转换"><a href="#二、数据类型和布尔值的转换" class="headerlink" title="二、数据类型和布尔值的转换"></a>二、数据类型和布尔值的转换</h4><table>
+<thead>
+<tr>
+<th align="center">数据类型</th>
+<th align="center">能转换为true</th>
+<th align="center">能转化为false</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">boolean</td>
+<td align="center">ture</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="center">string</td>
+<td align="center">任何非空字符</td>
+<td align="center">“”</td>
+</tr>
+<tr>
+<td align="center">number</td>
+<td align="center">任何非零数字值</td>
+<td align="center">0和NaN</td>
+</tr>
+<tr>
+<td align="center">obj</td>
+<td align="center">任何对象</td>
+<td align="center">null</td>
+</tr>
+<tr>
+<td align="center">undefined</td>
+<td align="center">—</td>
+<td align="center">undefined</td>
+</tr>
+<tr>
+<td align="center">arr</td>
+<td align="center">任何数组</td>
+<td align="center">null</td>
+</tr>
+</tbody></table>
+<h3 id="三、判断数据类型的方法"><a href="#三、判断数据类型的方法" class="headerlink" title="三、判断数据类型的方法"></a>三、判断数据类型的方法</h3><h4 id="1、typeof"><a href="#1、typeof" class="headerlink" title="1、typeof"></a>1、typeof</h4><table>
+<thead>
+<tr>
+<th align="center">数据类型</th>
+<th align="center">typeof结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">string</td>
+<td align="center">string</td>
+</tr>
+<tr>
+<td align="center">number</td>
+<td align="center">number</td>
+</tr>
+<tr>
+<td align="center">booleam</td>
+<td align="center">boolean</td>
+</tr>
+<tr>
+<td align="center">undefind</td>
+<td align="center">undefind</td>
+</tr>
+<tr>
+<td align="center">functuon</td>
+<td align="center">function</td>
+</tr>
+<tr>
+<td align="center">obj</td>
+<td align="center">obj</td>
+</tr>
+<tr>
+<td align="center">null</td>
+<td align="center">obj</td>
+</tr>
+<tr>
+<td align="center">arr</td>
+<td align="center">obj</td>
+</tr>
+</tbody></table>
+<p>用法：</p>
+<pre><code>typeof()  // 适合判断除null外的基本数据类型，不适合判断obj、arr、function等引用类型</code></pre><h4 id="2、instanceof"><a href="#2、instanceof" class="headerlink" title="2、instanceof"></a>2、instanceof</h4><p>用法:</p>
+<pre><code>obj instanceof Object  // true
+arr instanceof Array //true
+pattern instanceof RegExp //true</code></pre><p> 注意事项以及适用范围：</p>
+<ul>
+<li>引用用类型所有值都是obj的事例，所以所以引用类型instanceof Object都为ture</li>
+<li>可以判断是否为引用类型，或者是否为数组</li>
+</ul>
+<p>缺点：</p>
+<p>instanceof会从原型链一直往上查找，假如有个obj的继承的原型是Array，此时<code>obj instanceof Array</code>为true，显示是错的</p>
+<h4 id="3、toString方法"><a href="#3、toString方法" class="headerlink" title="3、toString方法"></a>3、toString方法</h4><p>用法</p>
+<pre><code class="js">Object.prototype.toString.call([]) // [Object Array]</code></pre>
+<p>判断数据类型最优的方法</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>js常用算法面试题收集（持续更新）</title>
+    <url>/2022/02/18/js%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="js常用算法面试题收集"><a href="#js常用算法面试题收集" class="headerlink" title="js常用算法面试题收集"></a>js常用算法面试题收集</h2><h4 id="1-统计一个字符出现的最高频率？"><a href="#1-统计一个字符出现的最高频率？" class="headerlink" title="1.统计一个字符出现的最高频率？"></a>1.统计一个字符出现的最高频率？</h4><pre><code class="js">let str = &#39;asdfghjklaqwertyuiopiaia&#39;;
+function statistics(str){
+  const strArr = [...str]
+  let obj = {}
+  // 统计字符数
+  strArr.forEach((i) =&gt;{
+    obj[i] = obj[i] == undefined ? 0 :  ++obj[i]
+  })
+  // 求最大值
+  return Object.keys(obj)
+    .sort((i, r) =&gt; obj[r] - obj[i])[0] //降序排列
+}
+console.log(statistics(str))    // a
+</code></pre>
+<h4 id="2-数组去重"><a href="#2-数组去重" class="headerlink" title="2.数组去重"></a>2.数组去重</h4><ul>
+<li>ruduce 方法</li>
+</ul>
+<pre><code class="js">let arr = [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;1&#39;, &#39;a&#39;, &#39;b&#39;, &#39;b&#39;]
+function duplicate() {
+    return arr.reduce((r,v) =&gt; r.indexOf(v) &gt; -1 ? r : [...r, v], [])  
+}
+console.log(duplicate())
+</code></pre>
+<ul>
+<li>forEach</li>
+</ul>
+<pre><code class="js">let arr = [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;1&#39;, &#39;a&#39;, &#39;b&#39;, &#39;b&#39;]
+const unique = arr =&gt; {
+    let obj = {}
+    arr.forEach(value =&gt; {
+        obj[value] = 0
+    })
+    return Object.keys(obj)
+}
+console.log(unique(arr))  // [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;a&#39;,&#39;b&#39;]</code></pre>
+<ul>
+<li>filter</li>
+</ul>
+<pre><code class="js">let arr = [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;1&#39;, &#39;a&#39;, &#39;b&#39;, &#39;b&#39;]
+const unique = arr =&gt; {
+    return arr.filter((ele, index, array) =&gt; {
+        return index === array.indexOf(ele)
+    })
+}
+console.log(unique(arr))  // [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;a&#39;,&#39;b&#39;]</code></pre>
+<ul>
+<li>set</li>
+</ul>
+<pre><code class="js">let arr = [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;1&#39;, &#39;a&#39;, &#39;b&#39;, &#39;b&#39;]
+const unique = arr =&gt; {
+    return new [...Set(arr)]
+}
+console.log(unique(arr))  // [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;a&#39;,&#39;b&#39;]</code></pre>
+<h4 id="3、翻转字符串"><a href="#3、翻转字符串" class="headerlink" title="3、翻转字符串"></a>3、翻转字符串</h4><pre><code class="js">let str = &#39;holle word&#39;
+const reverseStr = str =&gt; {
+  return [...str].reverse().join(&#39;&#39;)
+}
+console.log(reverseStr(str))</code></pre>
+<h4 id="4、数组中最大差值"><a href="#4、数组中最大差值" class="headerlink" title="4、数组中最大差值"></a>4、数组中最大差值</h4><pre><code class="js">let arr = [2,44,22,8,9]
+const different = arr =&gt; {
+  let sortArr = arr.sort((i,r) =&gt; i-r)
+  return sortArr[sortArr.length - 1] - sortArr[0]
+}
+console.log(different(arr))</code></pre>
+<h4 id="5、不借助临时变量，进行两个整数的交换"><a href="#5、不借助临时变量，进行两个整数的交换" class="headerlink" title="5、不借助临时变量，进行两个整数的交换"></a>5、不借助临时变量，进行两个整数的交换</h4><ul>
+<li>数组解构</li>
+</ul>
+<pre><code class="js">let a = 2,
+    b = 3;
+    [b,a] = [a,b]
+    console.log(a,b)   // 3 2</code></pre>
+<ul>
+<li>算术运算（加减）</li>
+</ul>
+<pre><code class="js">let a = 2,
+    b = 3;
+const swop = (a, b) =&gt; {
+    b = b - a;
+    a = a + b;
+    b = a - b;
+    return [a,b];
+}
+console.log(swop(2,3)) // [3,2]</code></pre>
+<h4 id="6、冒泡排序"><a href="#6、冒泡排序" class="headerlink" title="6、冒泡排序"></a>6、冒泡排序</h4><pre><code class="js">let arr = [43, 32, 1, 5, 9, 22];
+const sort = arr =&gt; {
+    arr.forEach((v, i) =&gt; {
+        for (let j = i + 1; j &lt; arr.length; j++) {
+            if (arr[i] &gt; arr[j]) {
+                [arr[i],arr[j]] = [arr[j],arr[i]]
+            }
+            console.log(arr)
+        }
+    })
+    return arr
+}
+console.log(sort([43, 9, 5, 22, 32, 1]))  // [1, 5, 9, 22, 32, 43]</code></pre>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>typescript</title>
+    <url>/2022/02/18/typescript/</url>
+    <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>本篇文章主要是为了给让大家了解下Typescript</p>
+<p>这里将会讲到大家关心的几个问题，简单先简绍了几个与js不同的ts的语法，来探讨ts和传统js的区别</p>
+<p>然后从网络上收集整理了一些使用和不使用ts的意见，探讨我们应不应该使用ts，以及ts的适用场景</p>
+<p>@[TOC]  </p>
+<h3 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h3><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>JavaScript 的超集</li>
+<li>增加了静态类型系统</li>
+<li>为大型软件开发而设计的</li>
+<li>最终编译产生 JavaScript</li>
+</ul>
+<h4 id="安装-TypeScript"><a href="#安装-TypeScript" class="headerlink" title="安装 TypeScript"></a>安装 TypeScript</h4><p>执行<code>npm install -g typescript</code></p>
+<p>然后就可以在任何地方编译ts文件<code>tsc holle.ts</code></p>
+<h4 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h4><p>将下面代码复制到<code>hello.ts</code>中, 其中使用 : 指定变量的类型</p>
+<pre><code class="javascript">function sayHello(person: string) {
+    return &#39;Hello, &#39; + person;
+}
+
+let user = &#39;Tom&#39;;
+console.log(sayHello(user));
+</code></pre>
+<p>然后执行</p>
+<p><code>tsc holle.ts</code>、</p>
+<p>这时候会生成一个编译好的文件<code>hello.js</code>：</p>
+<pre><code class="javascript">function sayHello(person) {
+    return &#39;Hello, &#39; + person;
+}
+var user = &#39;Tom&#39;;
+console.log(sayHello(user));</code></pre>
+<h4 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h4><p>编译下段代码</p>
+<pre><code class="javascript">// holle.ts
+function sayHello(person: string) {
+    return &#39;Hello, &#39; + person;
+}
+
+let user = [0, 1, 2];
+console.log(sayHello(user));</code></pre>
+<p>编译器报错</p>
+<pre><code class="javascript">index.ts(6,22): error TS2345: Argument of type &#39;number[]&#39; is not assignable to parameter of type &#39;string&#39;.</code></pre>
+<p><strong>因为TypeScript 编译的时候会进行静态检查，如果发现有错误，就会报错</strong></p>
+<p>但注意，即使报错，也会生成相应的js文件</p>
+<h3 id="二、与js异同"><a href="#二、与js异同" class="headerlink" title="二、与js异同"></a>二、与js异同</h3><h4 id="1、变量声明"><a href="#1、变量声明" class="headerlink" title="1、变量声明"></a>1、变量声明</h4><p>和es6一样，有let和const</p>
+<h4 id="2、基础数据类型"><a href="#2、基础数据类型" class="headerlink" title="2、基础数据类型"></a>2、基础数据类型</h4><p>bool、number、string、undefined、arr、obj都有<br>不同的：</p>
+<ul>
+<li>元组</li>
+</ul>
+<blockquote>
+<p>允许表示一个已知元素数量和类型的数组</p>
+</blockquote>
+<pre><code class="javascript">// Declare a tuple type
+let x: [string, number];
+// Initialize it
+x = [&#39;hello&#39;, 10]; // OK</code></pre>
+<ul>
+<li>枚举</li>
+</ul>
+<blockquote>
+<p>像C#等其它语言一样，使用枚举类型可以为一组数值赋予友好的名字。</p>
+</blockquote>
+<pre><code class="javascript">enum Color {Red, Green, Blue}
+let c: Color = Color.Green;</code></pre>
+<ul>
+<li>Any</li>
+</ul>
+<pre><code class="javascript">let notSure: any = 4;
+notSure = &quot;maybe a string instead&quot;;
+notSure = false; // okay, definitely a boolean</code></pre>
+<blockquote>
+<p>还不清楚类型的变量指定一个类型</p>
+</blockquote>
+<ul>
+<li>Void</li>
+</ul>
+<blockquote>
+<p>void类型像是与any类型相反，它表示没有任何类型。</p>
+</blockquote>
+<pre><code class="javascript">function warnUser(): void {
+    console.log(&quot;This is my warning message&quot;);
+}</code></pre>
+<ul>
+<li>never</li>
+</ul>
+<blockquote>
+<p>表示的是那些永不存在的值的类型。</p>
+</blockquote>
+<pre><code class="javascript">// 返回never的函数必须存在无法达到的终点
+function error(message: string): never {
+    throw new Error(message);
+}
+
+// 推断的返回值类型为never
+function fail() {
+    return error(&quot;Something failed&quot;);
+}
+
+// 返回never的函数必须存在无法达到的终点
+function infiniteLoop(): never {
+    while (true) {
+    }
+}</code></pre>
+<ul>
+<li>类型断言</li>
+</ul>
+<blockquote>
+<p>&lt; &gt;表示， 通常这会发生在你清楚地知道一个实体具有比它现有类型更确切的类型。</p>
+</blockquote>
+<pre><code class="javascript">et someValue: any = &quot;this is a string&quot;;
+
+let strLength: number = (&lt;string&gt;someValue).length;</code></pre>
+<ul>
+<li>多种类型(联合类型)</li>
+</ul>
+<blockquote>
+<p>可以用|隔开，比如number | string表示可以是number或string类型</p>
+</blockquote>
+<h4 id="3-接口"><a href="#3-接口" class="headerlink" title="3. 接口"></a>3. 接口</h4><p>TypeScript的核心原则之一是对值所具有的结构进行类型检查，接口的作用就是为这些类型命名和为你的代码或第三方代码定义契约。</p>
+<ul>
+<li>简单的接口</li>
+</ul>
+<blockquote>
+<p>定义传入的参数</p>
+</blockquote>
+<pre><code class="javascript">interface LabelledValue {
+  label: string;
+}
+
+function printLabel(labelledObj: LabelledValue) {
+  console.log(labelledObj.label);
+}
+
+let myObj = {size: 10, label: &quot;Size 10 Object&quot;};
+printLabel(myObj);</code></pre>
+<ul>
+<li>可选接口</li>
+</ul>
+<blockquote>
+<p>参数可选</p>
+</blockquote>
+<pre><code class="javascript"> interface SquareConfig {
+  color?: string;
+  width?: number;
+}</code></pre>
+<ul>
+<li>只读属性</li>
+</ul>
+<blockquote>
+<p>传入参数只读</p>
+</blockquote>
+<pre><code class="javascript">interface Point {
+    readonly x: number;
+    readonly y: number;
+}
+
+let p1: Point = { x: 10, y: 20 };
+p1.x = 5; // error!</code></pre>
+<ul>
+<li>描述函数</li>
+</ul>
+<blockquote>
+<p>定义函数输入输出</p>
+</blockquote>
+<pre><code class="javascript">interface SearchFunc {
+  (source: string, subString: string): boolean;
+}
+
+let mySearch: SearchFunc;
+mySearch = function(source: string, subString: string) {
+  let result = source.search(subString);
+  return result &gt; -1;
+}</code></pre>
+<ul>
+<li>实现接口</li>
+</ul>
+<blockquote>
+<p>在类中实现接口</p>
+</blockquote>
+<pre><code class="javascript">interface ClockInterface {
+    currentTime: Date;
+    setTime(d: Date);
+}
+
+class Clock implements ClockInterface {
+    currentTime: Date;
+    setTime(d: Date) {
+        this.currentTime = d;
+    }
+    constructor(h: number, m: number) { }
+}</code></pre>
+<ul>
+<li>继承接口</li>
+</ul>
+<pre><code class="javascript">interface Shape {
+    color: string;
+}
+
+interface PenStroke {
+    penWidth: number;
+}
+
+interface Square extends Shape, PenStroke {
+    sideLength: number;
+}
+
+let square = &lt;Square&gt;{};
+square.color = &quot;blue&quot;;
+square.sideLength = 10;
+square.penWidth = 5.0;</code></pre>
+<h4 id="4-类"><a href="#4-类" class="headerlink" title="4. 类"></a>4. 类</h4><p>定义了一件事物的抽象特点，包含它的属性和方法</p>
+<p>面向对象（OOP）的三大特性：封装、继承、多态</p>
+<p>对象实例通过new生成</p>
+<ul>
+<li>封装</li>
+</ul>
+<blockquote>
+<p>将对数据的操作细节隐藏起来，只暴露对外的接口。外界调用端不需要（也不可能）知道细节，就能通过对外提供的接口来访问该对象，同时也保证了外界无法任意更改对象内部的数据</p>
+</blockquote>
+<ul>
+<li>多态</li>
+</ul>
+<blockquote>
+<p>由继承而产生了相关的不同的类，对同一个方法可以有不同的响应。比如 Cat 和 Dog 都继承自 Animal，但是分别实现了自己的 eat 方法。此时针对某一个实例，我们无需了解它是 Cat 还是 Dog，就可以直接调用 eat 方法，程序会自动判断出来应该如何执行 eat</p>
+</blockquote>
+<ul>
+<li>继承</li>
+</ul>
+<blockquote>
+<p>子类继承父类，子类除了拥有父类的所有特性外，还有一些更具体的特性</p>
+</blockquote>
+<pre><code>class Animal {
+    move(distanceInMeters: number = 0) {
+        console.log(`Animal moved ${distanceInMeters}m.`);
+    }
+}
+
+class Dog extends Animal {
+    bark() {
+        console.log(&#39;Woof! Woof!&#39;);
+    }
+}
+
+const dog = new Dog();
+dog.bark();
+dog.move(10);
+dog.bark();</code></pre><ul>
+<li>存取器（getter &amp; setter)</li>
+</ul>
+<blockquote>
+<p>用以改变属性的读取和赋值行为</p>
+</blockquote>
+<ul>
+<li>修饰符（Modifiers)</li>
+</ul>
+<blockquote>
+<p>修饰符是一些关键字，用于限定成员或类型的性质。如  public 和 private</p>
+</blockquote>
+<ul>
+<li>抽象类（Abstract Class）</li>
+</ul>
+<blockquote>
+<p>抽象类是供其他类继承的基类，抽象类不允许被实例化。抽象类中的抽象方法必须在子类中被实现<br>这个和接口有点像，有兴趣可以看下<a href="https://www.jianshu.com/p/038f0b356e9a" target="_blank" rel="noopener">接口和抽象类的区别</a></p>
+</blockquote>
+<h4 id="5-泛型"><a href="#5-泛型" class="headerlink" title="5. 泛型"></a>5. 泛型</h4><p>在像C#和Java这样的语言中，可以使用泛型来创建可重用的组件，一个组件可以支持多种类型的数据。</p>
+<pre><code class="javascript">// 使用泛型前
+function identity(arg: number): number {
+    return arg;
+}
+// 使用泛型后
+function identity&lt;T&gt;(arg: T): T {
+    return arg;
+}</code></pre>
+<p>T帮助我们捕获用户传入的类型，使用后再返回类型T的值</p>
+<h4 id="6-使用第三方模块"><a href="#6-使用第三方模块" class="headerlink" title="6.使用第三方模块"></a>6.使用第三方模块</h4><ul>
+<li>需要相应的声明文件（.d.ts文件）</li>
+</ul>
+<blockquote>
+<p> 一般情况下在 TypeScript 中是不能”直接“使用 npm 上的模块</p>
+</blockquote>
+<blockquote>
+<p>不是使用 TypeScript 编写的模块，也可以通过手动编写声明文件来兼容 TypeScript。</p>
+</blockquote>
+<ul>
+<li>通过 npm install @types/xxx 来安装模块声明文件</li>
+</ul>
+<blockquote>
+<p>TypeScript 官方建立了一个名叫 DefinitelyTyped 的仓库，任何人都可以通过 GitHub 在上面修改或者新增 npm 模块的声明文件</p>
+</blockquote>
+<h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p>还有其他类型就不一一详细介绍了，具体可以参照<a href="https://www.tslang.cn/docs/home.html" target="_blank" rel="noopener">官方文档(中文版)</a></p>
+<h3 id="三、使用与不使用的理由"><a href="#三、使用与不使用的理由" class="headerlink" title="三、使用与不使用的理由"></a>三、使用与不使用的理由</h3><h4 id="1-不使用的理由"><a href="#1-不使用的理由" class="headerlink" title="1. 不使用的理由"></a>1. 不使用的理由</h4><ul>
+<li>npm装上的那些xxxjs库都是没有任何类型信息的</li>
+</ul>
+<blockquote>
+<p>（只能使用诸如definitelytyped之类的ts定义库）</p>
+</blockquote>
+<ul>
+<li>TS+框架会有很多坑</li>
+</ul>
+<blockquote>
+<ul>
+<li>比如 ：immutable.js + Typescript 坑很多</li>
+<li>必须学习框架+全家桶的各种暴露出来的d.ts</li>
+<li>TS彻底替代babel会出问题,比如不能享受babel-plugin-import这种按需引入的Babel插件了</li>
+</ul>
+</blockquote>
+<ul>
+<li>虽然声称可以在任何场景下替代JS，但前提是有良好的框架支撑</li>
+</ul>
+<blockquote>
+<ul>
+<li>vue2.5以前对TS的支持不是特别好，但Vue本身支持不错,周边那些东西缺没那么好 GitHub： 2K</li>
+<li>react 和 Angular 本身和周边支持良好 ，GitHub： 11K 和 10K</li>
+</ul>
+</blockquote>
+<ul>
+<li>语法检测和ESlint部分重复</li>
+</ul>
+<p>总结，项目不大，后期不用维护的项目没有必要使用，项目主要依赖库要对TS支持良好，冷门的小项目没有必要用TS</p>
+<h4 id="2-使用的理由"><a href="#2-使用的理由" class="headerlink" title="2. 使用的理由"></a>2. 使用的理由</h4><ul>
+<li><p>侦测错误，提供了一套强类型的规范，统一团队代码风格，更方便准确地检查错误</p>
+</li>
+<li><p>在项目初期就进行，类型注释，和接口定义，方便指导开发，</p>
+</li>
+<li><p>文档，新人来了也可以直接看文档接手项目</p>
+</li>
+</ul>
+<blockquote>
+<p>抽象，前端圈子里有这么一个流行语『自从用了Typescript之后,再也不想用JavaScript了』</p>
+</blockquote>
+<ul>
+<li><p>静态类型语言，在编译的时候就能发现问题</p>
+</li>
+<li><p>方便代码重构</p>
+</li>
+</ul>
+<blockquote>
+<p>比如初期定义了一个string，但项目进行到一半说要改成number，如果普通的js，改一个不会报错，eslint则不会识别没有执行到文件的类型错误，而在TS强类型在编译器检验下，在编译时进行类型分析，改一个，其他需要改动的地方无可型盾</p>
+</blockquote>
+<ul>
+<li>antd使用的是TS</li>
+</ul>
+<p>总结，这些特点还是挺诱人的，大型项目可以使用，总体来说，学习成本有，但熟悉过es6的人来说，门槛不算太高，比较类似java的风格。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://www.jianshu.com/p/103933b7c2b4" target="_blank" rel="noopener">Typescript基础入门</a></li>
+<li><a href="https://juejin.im/post/59c46bc86fb9a00a4636f939" target="_blank" rel="noopener">Tyepscript体系调研报告</a></li>
+<li><a href="http://taobaofed.org/blog/2017/03/09/head-first-typescript/" target="_blank" rel="noopener">认识 TypeScript</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>规范</category>
+      </categories>
+      <tags>
+        <tag>Typescript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>中高级前端面试题目收集（持续更新）</title>
-    <url>/2021/04/07/%E4%B8%AD%E9%AB%98%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
+    <url>/2022/02/18/%E4%B8%AD%E9%AB%98%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
     <content><![CDATA[<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><blockquote>
 <p>这里进行了一些常用面试题目的搜集，可供面试前参考，先罗列一遍，后期打算再进行分类整理</p>
 </blockquote>
@@ -1458,8 +1607,191 @@ handler参数也是一个对象，用来定制拦截行为。*/
       </tags>
   </entry>
   <entry>
+    <title>二叉树深度优先遍历js实现</title>
+    <url>/2022/02/18/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86js%E5%AE%9E%E7%8E%B0/</url>
+    <content><![CDATA[<h3 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h3><blockquote>
+<p>二叉树是数据结构算法的重要知识点，今天我们用js来实现下二叉树的深度优先遍历</p>
+</blockquote>
+<p>首先，生成一个二叉树</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdtk9xb44qj30k80ia0tf.jpg" alt="Jietu20200414-201926@2x" style="zoom:50%;" />
+
+<pre><code class="js">/*
+二叉树
+*/
+var tree = {
+  value: 1,
+  left: {
+    value: 2,
+    left: {
+      value: 4
+    }
+  },
+  right: {
+    value: 3,
+    left: {
+      value: 5,
+      left: {
+        value: 7
+      },
+      right: {
+        value: 8
+      }
+    },
+    right: {
+      value: 6
+    }
+  }
+}</code></pre>
+<h3 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h3><ul>
+<li>递归</li>
+</ul>
+<pre><code class="js">function preOrder(node) {
+  if(node != null) {
+    console.log(node.value)
+    preOrder(node.left)
+    preOrder(node.right)
+  } 
+}</code></pre>
+<ul>
+<li>非递归</li>
+</ul>
+<pre><code class="js">
+function preOrder(root) {
+        let stack = [];
+        let pNode = root;
+        while (pNode != null || !stack.length == 0) {
+            if (pNode != null) {
+                console.log(pNode.value+&quot;  &quot;);
+                stack.push(pNode);
+                pNode = pNode.left;
+            } else { //pNode == null &amp;&amp; !stack.isEmpty()
+                node = stack.pop();
+                pNode = node.right;
+            }
+        }
+    }
+preOrder(tree)
+
+</code></pre>
+<h3 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h3><ul>
+<li>递归</li>
+</ul>
+<pre><code class="js">function preOrder(node) {
+  if(node != null) {
+    preOrder(node.left)
+    console.log(node.value)
+    preOrder(node.right)
+  } 
+}</code></pre>
+<ul>
+<li>非递归</li>
+</ul>
+<pre><code class="js">function midOrder(root) {
+        let stack = [];
+        let pNode = root;
+        while (pNode != null || !stack.length == 0) {
+            if (pNode != null) {
+                stack.push(pNode);
+                pNode = pNode.left;
+            } else { //pNode == null &amp;&amp; !stack.isEmpty()
+                node = stack.pop();
+        console.log(pNode.value+&quot;  &quot;);
+                pNode = node.right;
+            }
+        }
+    }
+midOrder(tree)</code></pre>
+<h3 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h3><ul>
+<li>递归</li>
+</ul>
+<pre><code class="js">function preOrder(node) {
+  if(node != null) {
+    preOrder(node.left)
+    preOrder(node.right)
+    console.log(node.value)
+  } 
+}</code></pre>
+<ul>
+<li>非递归</li>
+</ul>
+<pre><code class="js">
+
+var lastOrder = (root) =&gt; {
+    let result = []
+    let stack = []
+    let node = root
+    while(node != null || stack.length != 0){
+        if(node != null) {
+            result.unshift(node.value)
+            stack.push(node)
+            node = node.right
+        }else{
+            node = stack.pop()
+            //console.log(node.value)
+            node = node.left
+        }
+    }
+    return result
+
+}
+lastOrder(tree)</code></pre>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前端项目注释规范参考</title>
+    <url>/2022/02/18/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
+    <content><![CDATA[<h2 id="注释规范初稿"><a href="#注释规范初稿" class="headerlink" title="注释规范初稿"></a>注释规范初稿</h2><ul>
+<li><p><strong>强制</strong>  </p>
+<ol>
+<li><p>方法的注释必须使用 JsDoc 规范，使用/<em>*内容</em>/格式，不得使用 // xxx方式。</p>
+</li>
+<li><p>所有的公用方法(包括接口中的方法)必须要用 Javadoc 注释、除了返回值、参数、 异常说明外，还必须指出该方法做什么事情，实现什么功能。</p>
+</li>
+<li><p>所有的公用方法都必须添加创建者和创建日期</p>
+</li>
+<li><p>方法内部单行注释，在被注释语句上方另起一行，使用//注释。方法内部多行注释<br> 使用/* */注释，注意与代码对齐。  </p>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p><strong>推荐</strong>  </p>
+<ol start="5">
+<li><p>与其“半吊子”英文来注释，不如用中文注释把问题说清楚。专有名词与关键字保持 英文原文即可。</p>
+<blockquote>
+<p>反例:“TCP 连接超时”解释成“传输控制协议连接超时”，理解反而费脑筋。  </p>
+</blockquote>
+</li>
+<li><p>代码修改的同时，注释也要进行相应的修改，尤其是参数、返回值、异常、核心逻辑 等的修改。</p>
+<blockquote>
+<p>说明:代码与注释更新不同步，就像路网与导航软件更新不同步一样，如果导航软件严重滞后， 就失去了导航的意义。  </p>
+</blockquote>
+</li>
+<li><p>对于注释的要求:第一、能够准确反应设计思想和代码逻辑;第二、能够描述业务含义，使别的程序员能够迅速了解到代码背后的信息。  </p>
+<blockquote>
+<p>完全没有注释的大段代码对于阅读者形同 天书，注释是给自己看的，即使隔很长时间，也能清晰理解当时的思路;注释也是给继任者看 的，使其能够快速接替自己的工作。</p>
+</blockquote>
+</li>
+<li><p>好的命名、代码结构是自解释的，注释力求精简准确、表达到位。避免出现注释的<br>一个极端:过多过滥的注释</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/han-1034683568/p/7680354.html" target="_blank" rel="noopener">阿里巴巴java开发手册</a></p>
+]]></content>
+      <categories>
+        <category>规范</category>
+      </categories>
+  </entry>
+  <entry>
     <title>移动端面试复习</title>
-    <url>/2021/04/07/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/</url>
+    <url>/2022/02/18/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/</url>
     <content><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
 <p>最近在很多面试中都问到移动端的问题，暴露了我平时工作中对移动端经验不足的问题，但是天赋不够能力来凑，通过一些面试准备还是能够能混过关的，我希望在这里以问题为导向，探究下移动端的一些问题</p>
 </blockquote>
@@ -1539,418 +1871,30 @@ handler参数也是一个对象，用来定制拦截行为。*/
       </categories>
   </entry>
   <entry>
-    <title>前端项目注释规范参考</title>
-    <url>/2021/04/07/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
-    <content><![CDATA[<h2 id="注释规范初稿"><a href="#注释规范初稿" class="headerlink" title="注释规范初稿"></a>注释规范初稿</h2><ul>
-<li><p><strong>强制</strong>  </p>
-<ol>
-<li><p>方法的注释必须使用 JsDoc 规范，使用/<em>*内容</em>/格式，不得使用 // xxx方式。</p>
-</li>
-<li><p>所有的公用方法(包括接口中的方法)必须要用 Javadoc 注释、除了返回值、参数、 异常说明外，还必须指出该方法做什么事情，实现什么功能。</p>
-</li>
-<li><p>所有的公用方法都必须添加创建者和创建日期</p>
-</li>
-<li><p>方法内部单行注释，在被注释语句上方另起一行，使用//注释。方法内部多行注释<br> 使用/* */注释，注意与代码对齐。  </p>
-</li>
-</ol>
-</li>
-</ul>
+    <title>2021面试总结</title>
+    <url>/2021/05/20/2021%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="字节跳动-一面"><a href="#字节跳动-一面" class="headerlink" title="字节跳动 一面"></a>字节跳动 一面</h3><p>时隔一年，再次收到字节跳动的面试邀请，心里还是有些忐忑的，给自己准备了四五天的时间刷了下算法题，迎来了又一次面试，记录下面试的问题吧</p>
 <ul>
-<li><p><strong>推荐</strong>  </p>
-<ol start="5">
-<li><p>与其“半吊子”英文来注释，不如用中文注释把问题说清楚。专有名词与关键字保持 英文原文即可。</p>
-<blockquote>
-<p>反例:“TCP 连接超时”解释成“传输控制协议连接超时”，理解反而费脑筋。  </p>
-</blockquote>
-</li>
-<li><p>代码修改的同时，注释也要进行相应的修改，尤其是参数、返回值、异常、核心逻辑 等的修改。</p>
-<blockquote>
-<p>说明:代码与注释更新不同步，就像路网与导航软件更新不同步一样，如果导航软件严重滞后， 就失去了导航的意义。  </p>
-</blockquote>
-</li>
-<li><p>对于注释的要求:第一、能够准确反应设计思想和代码逻辑;第二、能够描述业务含义，使别的程序员能够迅速了解到代码背后的信息。  </p>
-<blockquote>
-<p>完全没有注释的大段代码对于阅读者形同 天书，注释是给自己看的，即使隔很长时间，也能清晰理解当时的思路;注释也是给继任者看 的，使其能够快速接替自己的工作。</p>
-</blockquote>
-</li>
-<li><p>好的命名、代码结构是自解释的，注释力求精简准确、表达到位。避免出现注释的<br>一个极端:过多过滥的注释</p>
-</li>
-</ol>
-</li>
+<li>第一自我介绍</li>
 </ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/han-1034683568/p/7680354.html" target="_blank" rel="noopener">阿里巴巴java开发手册</a></p>
-]]></content>
-      <categories>
-        <category>规范</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>typescript</title>
-    <url>/2021/04/07/typescript/</url>
-    <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>本篇文章主要是为了给让大家了解下Typescript</p>
-<p>这里将会讲到大家关心的几个问题，简单先简绍了几个与js不同的ts的语法，来探讨ts和传统js的区别</p>
-<p>然后从网络上收集整理了一些使用和不使用ts的意见，探讨我们应不应该使用ts，以及ts的适用场景</p>
-<p>@[TOC]  </p>
-<h3 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h3><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
-<li>JavaScript 的超集</li>
-<li>增加了静态类型系统</li>
-<li>为大型软件开发而设计的</li>
-<li>最终编译产生 JavaScript</li>
-</ul>
-<h4 id="安装-TypeScript"><a href="#安装-TypeScript" class="headerlink" title="安装 TypeScript"></a>安装 TypeScript</h4><p>执行<code>npm install -g typescript</code></p>
-<p>然后就可以在任何地方编译ts文件<code>tsc holle.ts</code></p>
-<h4 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h4><p>将下面代码复制到<code>hello.ts</code>中, 其中使用 : 指定变量的类型</p>
-<pre><code class="javascript">function sayHello(person: string) {
-    return &#39;Hello, &#39; + person;
-}
-
-let user = &#39;Tom&#39;;
-console.log(sayHello(user));
-</code></pre>
-<p>然后执行</p>
-<p><code>tsc holle.ts</code>、</p>
-<p>这时候会生成一个编译好的文件<code>hello.js</code>：</p>
-<pre><code class="javascript">function sayHello(person) {
-    return &#39;Hello, &#39; + person;
-}
-var user = &#39;Tom&#39;;
-console.log(sayHello(user));</code></pre>
-<h4 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h4><p>编译下段代码</p>
-<pre><code class="javascript">// holle.ts
-function sayHello(person: string) {
-    return &#39;Hello, &#39; + person;
-}
-
-let user = [0, 1, 2];
-console.log(sayHello(user));</code></pre>
-<p>编译器报错</p>
-<pre><code class="javascript">index.ts(6,22): error TS2345: Argument of type &#39;number[]&#39; is not assignable to parameter of type &#39;string&#39;.</code></pre>
-<p><strong>因为TypeScript 编译的时候会进行静态检查，如果发现有错误，就会报错</strong></p>
-<p>但注意，即使报错，也会生成相应的js文件</p>
-<h3 id="二、与js异同"><a href="#二、与js异同" class="headerlink" title="二、与js异同"></a>二、与js异同</h3><h4 id="1、变量声明"><a href="#1、变量声明" class="headerlink" title="1、变量声明"></a>1、变量声明</h4><p>和es6一样，有let和const</p>
-<h4 id="2、基础数据类型"><a href="#2、基础数据类型" class="headerlink" title="2、基础数据类型"></a>2、基础数据类型</h4><p>bool、number、string、undefined、arr、obj都有<br>不同的：</p>
+<p>这个没啥好说，面试的必备流程，但是第一影响很重要，伟大的教员曾经说过，我们需要在战略上藐视敌人，战术上重视敌人，要时刻提醒自己，不能忽视面试的每一个环节。<br>关于要说什么，这里提给大家几点思路：第一，简短说下自己过往经历，第二，重点描述下跟这个岗位相关的经历，想下怎么才能让别人觉得你适合这个岗位，第三，展现风格，无论是自嘲还是讲笑话，都无所谓，重点是突出你跟别人不一样的东西。</p>
 <ul>
-<li>元组</li>
+<li>怎么做的组件库</li>
 </ul>
-<blockquote>
-<p>允许表示一个已知元素数量和类型的数组</p>
-</blockquote>
-<pre><code class="javascript">// Declare a tuple type
-let x: [string, number];
-// Initialize it
-x = [&#39;hello&#39;, 10]; // OK</code></pre>
+<p>根据简历问的问题，过往简历有做过组件库，这类问题，比较开放，主要从，为什么做，解决那些问题，怎么做开始回答，中间会涉及面试官层层深入，往往关键问题答不好会减分，所以提醒大家写简历要谨慎啊，不要写自己不了解的项目</p>
 <ul>
-<li>枚举</li>
+<li>怎么抽离表单服务</li>
 </ul>
-<blockquote>
-<p>像C#等其它语言一样，使用枚举类型可以为一组数值赋予友好的名字。</p>
-</blockquote>
-<pre><code class="javascript">enum Color {Red, Green, Blue}
-let c: Color = Color.Green;</code></pre>
+<p>同上，中间涉及问题有，怎么存储表单，怎么解决多表单引用，怎么解决表单组件关联以及实现细节</p>
 <ul>
-<li>Any</li>
+<li>react的setState的同步异步机制</li>
 </ul>
-<pre><code class="javascript">let notSure: any = 4;
-notSure = &quot;maybe a string instead&quot;;
-notSure = false; // okay, definitely a boolean</code></pre>
-<blockquote>
-<p>还不清楚类型的变量指定一个类型</p>
-</blockquote>
+<p>具体可以参考 <a href="https://segmentfault.com/a/1190000016805467#articleHeader6" target="_blank" rel="noopener">setState机制</a></p>
 <ul>
-<li>Void</li>
+<li>把[{id: 1},{id: 2, pid: 1}] 变成树的形式，如[{id: 1,child: [ {id: 2} ]}]</li>
 </ul>
-<blockquote>
-<p>void类型像是与any类型相反，它表示没有任何类型。</p>
-</blockquote>
-<pre><code class="javascript">function warnUser(): void {
-    console.log(&quot;This is my warning message&quot;);
-}</code></pre>
-<ul>
-<li>never</li>
-</ul>
-<blockquote>
-<p>表示的是那些永不存在的值的类型。</p>
-</blockquote>
-<pre><code class="javascript">// 返回never的函数必须存在无法达到的终点
-function error(message: string): never {
-    throw new Error(message);
-}
-
-// 推断的返回值类型为never
-function fail() {
-    return error(&quot;Something failed&quot;);
-}
-
-// 返回never的函数必须存在无法达到的终点
-function infiniteLoop(): never {
-    while (true) {
-    }
-}</code></pre>
-<ul>
-<li>类型断言</li>
-</ul>
-<blockquote>
-<p>&lt; &gt;表示， 通常这会发生在你清楚地知道一个实体具有比它现有类型更确切的类型。</p>
-</blockquote>
-<pre><code class="javascript">et someValue: any = &quot;this is a string&quot;;
-
-let strLength: number = (&lt;string&gt;someValue).length;</code></pre>
-<ul>
-<li>多种类型(联合类型)</li>
-</ul>
-<blockquote>
-<p>可以用|隔开，比如number | string表示可以是number或string类型</p>
-</blockquote>
-<h4 id="3-接口"><a href="#3-接口" class="headerlink" title="3. 接口"></a>3. 接口</h4><p>TypeScript的核心原则之一是对值所具有的结构进行类型检查，接口的作用就是为这些类型命名和为你的代码或第三方代码定义契约。</p>
-<ul>
-<li>简单的接口</li>
-</ul>
-<blockquote>
-<p>定义传入的参数</p>
-</blockquote>
-<pre><code class="javascript">interface LabelledValue {
-  label: string;
-}
-
-function printLabel(labelledObj: LabelledValue) {
-  console.log(labelledObj.label);
-}
-
-let myObj = {size: 10, label: &quot;Size 10 Object&quot;};
-printLabel(myObj);</code></pre>
-<ul>
-<li>可选接口</li>
-</ul>
-<blockquote>
-<p>参数可选</p>
-</blockquote>
-<pre><code class="javascript"> interface SquareConfig {
-  color?: string;
-  width?: number;
-}</code></pre>
-<ul>
-<li>只读属性</li>
-</ul>
-<blockquote>
-<p>传入参数只读</p>
-</blockquote>
-<pre><code class="javascript">interface Point {
-    readonly x: number;
-    readonly y: number;
-}
-
-let p1: Point = { x: 10, y: 20 };
-p1.x = 5; // error!</code></pre>
-<ul>
-<li>描述函数</li>
-</ul>
-<blockquote>
-<p>定义函数输入输出</p>
-</blockquote>
-<pre><code class="javascript">interface SearchFunc {
-  (source: string, subString: string): boolean;
-}
-
-let mySearch: SearchFunc;
-mySearch = function(source: string, subString: string) {
-  let result = source.search(subString);
-  return result &gt; -1;
-}</code></pre>
-<ul>
-<li>实现接口</li>
-</ul>
-<blockquote>
-<p>在类中实现接口</p>
-</blockquote>
-<pre><code class="javascript">interface ClockInterface {
-    currentTime: Date;
-    setTime(d: Date);
-}
-
-class Clock implements ClockInterface {
-    currentTime: Date;
-    setTime(d: Date) {
-        this.currentTime = d;
-    }
-    constructor(h: number, m: number) { }
-}</code></pre>
-<ul>
-<li>继承接口</li>
-</ul>
-<pre><code class="javascript">interface Shape {
-    color: string;
-}
-
-interface PenStroke {
-    penWidth: number;
-}
-
-interface Square extends Shape, PenStroke {
-    sideLength: number;
-}
-
-let square = &lt;Square&gt;{};
-square.color = &quot;blue&quot;;
-square.sideLength = 10;
-square.penWidth = 5.0;</code></pre>
-<h4 id="4-类"><a href="#4-类" class="headerlink" title="4. 类"></a>4. 类</h4><p>定义了一件事物的抽象特点，包含它的属性和方法</p>
-<p>面向对象（OOP）的三大特性：封装、继承、多态</p>
-<p>对象实例通过new生成</p>
-<ul>
-<li>封装</li>
-</ul>
-<blockquote>
-<p>将对数据的操作细节隐藏起来，只暴露对外的接口。外界调用端不需要（也不可能）知道细节，就能通过对外提供的接口来访问该对象，同时也保证了外界无法任意更改对象内部的数据</p>
-</blockquote>
-<ul>
-<li>多态</li>
-</ul>
-<blockquote>
-<p>由继承而产生了相关的不同的类，对同一个方法可以有不同的响应。比如 Cat 和 Dog 都继承自 Animal，但是分别实现了自己的 eat 方法。此时针对某一个实例，我们无需了解它是 Cat 还是 Dog，就可以直接调用 eat 方法，程序会自动判断出来应该如何执行 eat</p>
-</blockquote>
-<ul>
-<li>继承</li>
-</ul>
-<blockquote>
-<p>子类继承父类，子类除了拥有父类的所有特性外，还有一些更具体的特性</p>
-</blockquote>
-<pre><code>class Animal {
-    move(distanceInMeters: number = 0) {
-        console.log(`Animal moved ${distanceInMeters}m.`);
-    }
-}
-
-class Dog extends Animal {
-    bark() {
-        console.log(&#39;Woof! Woof!&#39;);
-    }
-}
-
-const dog = new Dog();
-dog.bark();
-dog.move(10);
-dog.bark();</code></pre><ul>
-<li>存取器（getter &amp; setter)</li>
-</ul>
-<blockquote>
-<p>用以改变属性的读取和赋值行为</p>
-</blockquote>
-<ul>
-<li>修饰符（Modifiers)</li>
-</ul>
-<blockquote>
-<p>修饰符是一些关键字，用于限定成员或类型的性质。如  public 和 private</p>
-</blockquote>
-<ul>
-<li>抽象类（Abstract Class）</li>
-</ul>
-<blockquote>
-<p>抽象类是供其他类继承的基类，抽象类不允许被实例化。抽象类中的抽象方法必须在子类中被实现<br>这个和接口有点像，有兴趣可以看下<a href="https://www.jianshu.com/p/038f0b356e9a" target="_blank" rel="noopener">接口和抽象类的区别</a></p>
-</blockquote>
-<h4 id="5-泛型"><a href="#5-泛型" class="headerlink" title="5. 泛型"></a>5. 泛型</h4><p>在像C#和Java这样的语言中，可以使用泛型来创建可重用的组件，一个组件可以支持多种类型的数据。</p>
-<pre><code class="javascript">// 使用泛型前
-function identity(arg: number): number {
-    return arg;
-}
-// 使用泛型后
-function identity&lt;T&gt;(arg: T): T {
-    return arg;
-}</code></pre>
-<p>T帮助我们捕获用户传入的类型，使用后再返回类型T的值</p>
-<h4 id="6-使用第三方模块"><a href="#6-使用第三方模块" class="headerlink" title="6.使用第三方模块"></a>6.使用第三方模块</h4><ul>
-<li>需要相应的声明文件（.d.ts文件）</li>
-</ul>
-<blockquote>
-<p> 一般情况下在 TypeScript 中是不能”直接“使用 npm 上的模块</p>
-</blockquote>
-<blockquote>
-<p>不是使用 TypeScript 编写的模块，也可以通过手动编写声明文件来兼容 TypeScript。</p>
-</blockquote>
-<ul>
-<li>通过 npm install @types/xxx 来安装模块声明文件</li>
-</ul>
-<blockquote>
-<p>TypeScript 官方建立了一个名叫 DefinitelyTyped 的仓库，任何人都可以通过 GitHub 在上面修改或者新增 npm 模块的声明文件</p>
-</blockquote>
-<h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p>还有其他类型就不一一详细介绍了，具体可以参照<a href="https://www.tslang.cn/docs/home.html" target="_blank" rel="noopener">官方文档(中文版)</a></p>
-<h3 id="三、使用与不使用的理由"><a href="#三、使用与不使用的理由" class="headerlink" title="三、使用与不使用的理由"></a>三、使用与不使用的理由</h3><h4 id="1-不使用的理由"><a href="#1-不使用的理由" class="headerlink" title="1. 不使用的理由"></a>1. 不使用的理由</h4><ul>
-<li>npm装上的那些xxxjs库都是没有任何类型信息的</li>
-</ul>
-<blockquote>
-<p>（只能使用诸如definitelytyped之类的ts定义库）</p>
-</blockquote>
-<ul>
-<li>TS+框架会有很多坑</li>
-</ul>
-<blockquote>
-<ul>
-<li>比如 ：immutable.js + Typescript 坑很多</li>
-<li>必须学习框架+全家桶的各种暴露出来的d.ts</li>
-<li>TS彻底替代babel会出问题,比如不能享受babel-plugin-import这种按需引入的Babel插件了</li>
-</ul>
-</blockquote>
-<ul>
-<li>虽然声称可以在任何场景下替代JS，但前提是有良好的框架支撑</li>
-</ul>
-<blockquote>
-<ul>
-<li>vue2.5以前对TS的支持不是特别好，但Vue本身支持不错,周边那些东西缺没那么好 GitHub： 2K</li>
-<li>react 和 Angular 本身和周边支持良好 ，GitHub： 11K 和 10K</li>
-</ul>
-</blockquote>
-<ul>
-<li>语法检测和ESlint部分重复</li>
-</ul>
-<p>总结，项目不大，后期不用维护的项目没有必要使用，项目主要依赖库要对TS支持良好，冷门的小项目没有必要用TS</p>
-<h4 id="2-使用的理由"><a href="#2-使用的理由" class="headerlink" title="2. 使用的理由"></a>2. 使用的理由</h4><ul>
-<li><p>侦测错误，提供了一套强类型的规范，统一团队代码风格，更方便准确地检查错误</p>
-</li>
-<li><p>在项目初期就进行，类型注释，和接口定义，方便指导开发，</p>
-</li>
-<li><p>文档，新人来了也可以直接看文档接手项目</p>
-</li>
-</ul>
-<blockquote>
-<p>抽象，前端圈子里有这么一个流行语『自从用了Typescript之后,再也不想用JavaScript了』</p>
-</blockquote>
-<ul>
-<li><p>静态类型语言，在编译的时候就能发现问题</p>
-</li>
-<li><p>方便代码重构</p>
-</li>
-</ul>
-<blockquote>
-<p>比如初期定义了一个string，但项目进行到一半说要改成number，如果普通的js，改一个不会报错，eslint则不会识别没有执行到文件的类型错误，而在TS强类型在编译器检验下，在编译时进行类型分析，改一个，其他需要改动的地方无可型盾</p>
-</blockquote>
-<ul>
-<li>antd使用的是TS</li>
-</ul>
-<p>总结，这些特点还是挺诱人的，大型项目可以使用，总体来说，学习成本有，但熟悉过es6的人来说，门槛不算太高，比较类似java的风格。</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
-<li><a href="https://www.jianshu.com/p/103933b7c2b4" target="_blank" rel="noopener">Typescript基础入门</a></li>
-<li><a href="https://juejin.im/post/59c46bc86fb9a00a4636f939" target="_blank" rel="noopener">Tyepscript体系调研报告</a></li>
-<li><a href="http://taobaofed.org/blog/2017/03/09/head-first-typescript/" target="_blank" rel="noopener">认识 TypeScript</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>规范</category>
-      </categories>
-      <tags>
-        <tag>Typescript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2021/04/07/hexo%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>我提出的是在一次遍历用map以父节点pid为key记录子节点id，在此循环遇到没有pid的加入树数组，这样就得到带子节点的map，和所有树的头节点，然后递归遍历，用map把子节点加上去，<br>这样做时间复杂度是O(2n) 空间复杂度小于O(2n)，优点是可以记录层级，更优解法可参考以下，第一种解法</p>
+<p><a href="https://segmentfault.com/a/1190000017214328" target="_blank" rel="noopener">扁平数组变成树的结构</a></p>
 ]]></content>
   </entry>
   <entry>
