@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>AMD、CMD、CommonJS以及UMD的简单对比</title>
-    <url>/2022/02/18/AMD%E3%80%81CMD%E3%80%81CommonJS%E4%BB%A5%E5%8F%8AUMD%E7%9A%84%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94/</url>
+    <url>/2022/02/19/AMD%E3%80%81CMD%E3%80%81CommonJS%E4%BB%A5%E5%8F%8AUMD%E7%9A%84%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94/</url>
     <content><![CDATA[<h2 id="AMD、CMD、CommonJS以及UMD的简单对比"><a href="#AMD、CMD、CommonJS以及UMD的简单对比" class="headerlink" title="AMD、CMD、CommonJS以及UMD的简单对比"></a>AMD、CMD、CommonJS以及UMD的简单对比</h2><h3 id="一、AMD"><a href="#一、AMD" class="headerlink" title="一、AMD"></a>一、AMD</h3><p>为浏览器环境设计的， 所以是异步模块加载定义的</p>
 <ul>
 <li>加载模块</li>
@@ -132,7 +132,7 @@ import * as module from &#39;./module&#39;;
   </entry>
   <entry>
     <title>API规范参考</title>
-    <url>/2022/02/18/API%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
+    <url>/2022/02/19/API%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
     <content><![CDATA[<h1 id="API规范"><a href="#API规范" class="headerlink" title="API规范"></a>API规范</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
 <li><p>RESTful API是目前比较成熟的一套互联网应用程序的API设计理论,它遵循资源导向的设计方式。<br>它有三个主要要素：资源，集合和 URLs。</p>
 <ul>
@@ -251,7 +251,7 @@ import * as module from &#39;./module&#39;;
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/2022/02/18/hexo%E4%BD%BF%E7%94%A8/</url>
+    <url>/2022/02/19/hexo%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
@@ -265,13 +265,13 @@ import * as module from &#39;./module&#39;;
   </entry>
   <entry>
     <title>hexo自动 部署</title>
-    <url>/2022/02/18/hexo%E8%87%AA%E5%8A%A8%20%E9%83%A8%E7%BD%B2/</url>
+    <url>/2022/02/19/hexo%E8%87%AA%E5%8A%A8%20%E9%83%A8%E7%BD%B2/</url>
     <content><![CDATA[<p>参考 <a href="https://blog.ctftools.com/2021/07/newpost-18/#3-3-%E5%8F%91%E5%B8%83%E5%88%B0-github-pages" target="_blank" rel="noopener">https://blog.ctftools.com/2021/07/newpost-18/#3-3-%E5%8F%91%E5%B8%83%E5%88%B0-github-pages</a></p>
 ]]></content>
   </entry>
   <entry>
     <title>js 布尔值转换和数据类型的简单判断</title>
-    <url>/2022/02/18/js%20%E5%B8%83%E5%B0%94%E5%80%BC%E8%BD%AC%E6%8D%A2%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E5%88%A4%E6%96%AD/</url>
+    <url>/2022/02/19/js%20%E5%B8%83%E5%B0%94%E5%80%BC%E8%BD%AC%E6%8D%A2%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E5%88%A4%E6%96%AD/</url>
     <content><![CDATA[<h1 id="js-布尔值转换和数据类型的简单判断"><a href="#js-布尔值转换和数据类型的简单判断" class="headerlink" title="js 布尔值转换和数据类型的简单判断"></a>js 布尔值转换和数据类型的简单判断</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
 <p>通常情况下js的布尔值转换和数据类型判断是一个比较容易犯错的问题，现在我们结合对照表来简单梳理一下</p>
 </blockquote>
@@ -376,7 +376,7 @@ pattern instanceof RegExp //true</code></pre><p> 注意事项以及适用范围�
   </entry>
   <entry>
     <title>js常用算法面试题收集（持续更新）</title>
-    <url>/2022/02/18/js%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
+    <url>/2022/02/19/js%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
     <content><![CDATA[<h2 id="js常用算法面试题收集"><a href="#js常用算法面试题收集" class="headerlink" title="js常用算法面试题收集"></a>js常用算法面试题收集</h2><h4 id="1-统计一个字符出现的最高频率？"><a href="#1-统计一个字符出现的最高频率？" class="headerlink" title="1.统计一个字符出现的最高频率？"></a>1.统计一个字符出现的最高频率？</h4><pre><code class="js">let str = &#39;asdfghjklaqwertyuiopiaia&#39;;
 function statistics(str){
   const strArr = [...str]
@@ -483,7 +483,7 @@ console.log(sort([43, 9, 5, 22, 32, 1]))  // [1, 5, 9, 22, 32, 43]</code></pre>
   </entry>
   <entry>
     <title>typescript</title>
-    <url>/2022/02/18/typescript/</url>
+    <url>/2022/02/19/typescript/</url>
     <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>本篇文章主要是为了给让大家了解下Typescript</p>
 <p>这里将会讲到大家关心的几个问题，简单先简绍了几个与js不同的ts的语法，来探讨ts和传统js的区别</p>
 <p>然后从网络上收集整理了一些使用和不使用ts的意见，探讨我们应不应该使用ts，以及ts的适用场景</p>
@@ -838,7 +838,7 @@ function identity&lt;T&gt;(arg: T): T {
   </entry>
   <entry>
     <title>中高级前端面试题目收集（持续更新）</title>
-    <url>/2022/02/18/%E4%B8%AD%E9%AB%98%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
+    <url>/2022/02/19/%E4%B8%AD%E9%AB%98%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
     <content><![CDATA[<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><blockquote>
 <p>这里进行了一些常用面试题目的搜集，可供面试前参考，先罗列一遍，后期打算再进行分类整理</p>
 </blockquote>
@@ -1614,7 +1614,7 @@ handler参数也是一个对象，用来定制拦截行为。*/
   </entry>
   <entry>
     <title>二叉树深度优先遍历js实现</title>
-    <url>/2022/02/18/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86js%E5%AE%9E%E7%8E%B0/</url>
+    <url>/2022/02/19/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86js%E5%AE%9E%E7%8E%B0/</url>
     <content><![CDATA[<h3 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h3><blockquote>
 <p>二叉树是数据结构算法的重要知识点，今天我们用js来实现下二叉树的深度优先遍历</p>
 </blockquote>
@@ -1751,7 +1751,7 @@ lastOrder(tree)</code></pre>
   </entry>
   <entry>
     <title>前端项目注释规范参考</title>
-    <url>/2022/02/18/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
+    <url>/2022/02/19/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
     <content><![CDATA[<h2 id="注释规范初稿"><a href="#注释规范初稿" class="headerlink" title="注释规范初稿"></a>注释规范初稿</h2><ul>
 <li><p><strong>强制</strong>  </p>
 <ol>
@@ -1797,7 +1797,7 @@ lastOrder(tree)</code></pre>
   </entry>
   <entry>
     <title>移动端面试复习</title>
-    <url>/2022/02/18/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/</url>
+    <url>/2022/02/19/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/</url>
     <content><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
 <p>最近在很多面试中都问到移动端的问题，暴露了我平时工作中对移动端经验不足的问题，但是天赋不够能力来凑，通过一些面试准备还是能够能混过关的，我希望在这里以问题为导向，探究下移动端的一些问题</p>
 </blockquote>
