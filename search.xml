@@ -1,8 +1,272 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>二叉树深度优先遍历js实现</title>
+    <url>/2022/03/01/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86js%E5%AE%9E%E7%8E%B0/</url>
+    <content><![CDATA[<h3 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h3><blockquote>
+<p>二叉树是数据结构算法的重要知识点，今天我们用js来实现下二叉树的深度优先遍历</p>
+</blockquote>
+<p>首先，生成一个二叉树</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdtk9xb44qj30k80ia0tf.jpg" alt="Jietu20200414-201926@2x" style="zoom:50%;" />
+
+<pre><code class="js">/*
+二叉树
+*/
+var tree = {
+  value: 1,
+  left: {
+    value: 2,
+    left: {
+      value: 4
+    }
+  },
+  right: {
+    value: 3,
+    left: {
+      value: 5,
+      left: {
+        value: 7
+      },
+      right: {
+        value: 8
+      }
+    },
+    right: {
+      value: 6
+    }
+  }
+}</code></pre>
+<h3 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h3><ul>
+<li>递归</li>
+</ul>
+<pre><code class="js">function preOrder(node) {
+  if(node != null) {
+    console.log(node.value)
+    preOrder(node.left)
+    preOrder(node.right)
+  } 
+}</code></pre>
+<ul>
+<li>非递归</li>
+</ul>
+<pre><code class="js">
+function preOrder(root) {
+        let stack = [];
+        let pNode = root;
+        while (pNode != null || !stack.length == 0) {
+            if (pNode != null) {
+                console.log(pNode.value+&quot;  &quot;);
+                stack.push(pNode);
+                pNode = pNode.left;
+            } else { //pNode == null &amp;&amp; !stack.isEmpty()
+                node = stack.pop();
+                pNode = node.right;
+            }
+        }
+    }
+preOrder(tree)
+
+</code></pre>
+<h3 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h3><ul>
+<li>递归</li>
+</ul>
+<pre><code class="js">function preOrder(node) {
+  if(node != null) {
+    preOrder(node.left)
+    console.log(node.value)
+    preOrder(node.right)
+  } 
+}</code></pre>
+<ul>
+<li>非递归</li>
+</ul>
+<pre><code class="js">function midOrder(root) {
+        let stack = [];
+        let pNode = root;
+        while (pNode != null || !stack.length == 0) {
+            if (pNode != null) {
+                stack.push(pNode);
+                pNode = pNode.left;
+            } else { //pNode == null &amp;&amp; !stack.isEmpty()
+                node = stack.pop();
+        console.log(pNode.value+&quot;  &quot;);
+                pNode = node.right;
+            }
+        }
+    }
+midOrder(tree)</code></pre>
+<h3 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h3><ul>
+<li>递归</li>
+</ul>
+<pre><code class="js">function preOrder(node) {
+  if(node != null) {
+    preOrder(node.left)
+    preOrder(node.right)
+    console.log(node.value)
+  } 
+}</code></pre>
+<ul>
+<li>非递归</li>
+</ul>
+<pre><code class="js">
+
+var lastOrder = (root) =&gt; {
+    let result = []
+    let stack = []
+    let node = root
+    while(node != null || stack.length != 0){
+        if(node != null) {
+            result.unshift(node.value)
+            stack.push(node)
+            node = node.right
+        }else{
+            node = stack.pop()
+            //console.log(node.value)
+            node = node.left
+        }
+    }
+    return result
+
+}
+lastOrder(tree)</code></pre>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前端项目注释规范参考</title>
+    <url>/2022/03/01/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
+    <content><![CDATA[<h2 id="注释规范初稿"><a href="#注释规范初稿" class="headerlink" title="注释规范初稿"></a>注释规范初稿</h2><ul>
+<li><p><strong>强制</strong>  </p>
+<ol>
+<li><p>方法的注释必须使用 JsDoc 规范，使用/<em>*内容</em>/格式，不得使用 // xxx方式。</p>
+</li>
+<li><p>所有的公用方法(包括接口中的方法)必须要用 Javadoc 注释、除了返回值、参数、 异常说明外，还必须指出该方法做什么事情，实现什么功能。</p>
+</li>
+<li><p>所有的公用方法都必须添加创建者和创建日期</p>
+</li>
+<li><p>方法内部单行注释，在被注释语句上方另起一行，使用//注释。方法内部多行注释<br> 使用/* */注释，注意与代码对齐。  </p>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p><strong>推荐</strong>  </p>
+<ol start="5">
+<li><p>与其“半吊子”英文来注释，不如用中文注释把问题说清楚。专有名词与关键字保持 英文原文即可。</p>
+<blockquote>
+<p>反例:“TCP 连接超时”解释成“传输控制协议连接超时”，理解反而费脑筋。  </p>
+</blockquote>
+</li>
+<li><p>代码修改的同时，注释也要进行相应的修改，尤其是参数、返回值、异常、核心逻辑 等的修改。</p>
+<blockquote>
+<p>说明:代码与注释更新不同步，就像路网与导航软件更新不同步一样，如果导航软件严重滞后， 就失去了导航的意义。  </p>
+</blockquote>
+</li>
+<li><p>对于注释的要求:第一、能够准确反应设计思想和代码逻辑;第二、能够描述业务含义，使别的程序员能够迅速了解到代码背后的信息。  </p>
+<blockquote>
+<p>完全没有注释的大段代码对于阅读者形同 天书，注释是给自己看的，即使隔很长时间，也能清晰理解当时的思路;注释也是给继任者看 的，使其能够快速接替自己的工作。</p>
+</blockquote>
+</li>
+<li><p>好的命名、代码结构是自解释的，注释力求精简准确、表达到位。避免出现注释的<br>一个极端:过多过滥的注释</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/han-1034683568/p/7680354.html" target="_blank" rel="noopener">阿里巴巴java开发手册</a></p>
+]]></content>
+      <categories>
+        <category>规范</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>移动端面试复习</title>
+    <url>/2022/03/01/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/</url>
+    <content><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
+<p>最近在很多面试中都问到移动端的问题，暴露了我平时工作中对移动端经验不足的问题，但是天赋不够能力来凑，通过一些面试准备还是能够能混过关的，我希望在这里以问题为导向，探究下移动端的一些问题</p>
+</blockquote>
+<h2 id="一、移动端和pc端的区别"><a href="#一、移动端和pc端的区别" class="headerlink" title="一、移动端和pc端的区别"></a>一、移动端和pc端的区别</h2><ol>
+<li>兼容性不同： pc向下考虑IE兼容，移动端更多考虑是手机兼容，如一些手机屏幕大小和分辨率的兼容</li>
+<li>部分事件不同：移动端多出触屏事件，没有hover事件</li>
+<li>部分场景不同：移动端手机软键盘</li>
+<li>布局要求不同：移动端往往要求做到自适应</li>
+<li>平台区别：移动端可能要依托小程序、微信公众号平台进行开发，pc端比较纯粹</li>
+<li>性能要求不同：移动端对首屏加载速度，用户响应延迟、渲染性能、动画帧率要求比较高</li>
+</ol>
+<h2 id="二、点击穿透问题"><a href="#二、点击穿透问题" class="headerlink" title="二、点击穿透问题"></a>二、点击穿透问题</h2><p>  假如页面上有两个元素A和B。</p>
+<p>  B元素在A元素之上。</p>
+<p>  我们在B元素的touchstart事件上注册了一个回调函数，该回调函数的作用是隐藏B元素。</p>
+<p>  我们发现，当我们点击B元素，B元素被隐藏了，随后，A元素触发了click事件。</p>
+<p>  原因： 这是因为在移动端浏览器，事件执行的顺序是touchstart &gt; touchend &gt; click。而click事件有300ms的延迟，当touchstart事件把B元素隐藏之后，隔了300ms，浏览器触发了click事件，但是此时B元素不见了，所以该事件被派发到了A元素身上。如果A元素是一个链接，那此时页面就会意外地跳转。</p>
+<p>  解决方案：</p>
+<ol>
+<li>只用touch，简单完美</li>
+<li>只用click，副作用大</li>
+<li>tap后延迟350ms再隐藏mask</li>
+<li>禁用缩放</li>
+<li>更改默认视窗宽度为自适应</li>
+<li>引入插件，如：<a href="https://zhuanlan.zhihu.com/p/66845055" target="_blank" rel="noopener">fastClick</a></li>
+</ol>
+<p>  <strong>移动端300ms点击延迟</strong>：</p>
+<blockquote>
+<p>移动端300ms点击延迟由来：</p>
+<p>苹果公司在发布首款 iPhone 前夕，遇到一个问题：当时的网站都是为大屏幕设备所设计的。于是苹果的工程师们做了一些约定，应对 iPhone 这种小屏幕浏览桌面端站点的问题。</p>
+<p>这当中最出名的，当属双击缩放(double tap to zoom)，这也是会有上述 300 毫秒延迟的主要原因。</p>
+</blockquote>
+<p>  解决方案：</p>
+<ol>
+<li><p><strong>禁用缩放</strong></p>
+<p>在meta加入以下信息，表明页面不可缩放，从而可以移动端浏览器自动禁掉默认300ms点击延迟</p>
+<pre><code class="js">&lt;meta name=&quot;viewport&quot; content=&quot;user-scalable=no&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1,maximum-scale=1&quot;&gt;</code></pre>
+<p><strong>缺点：</strong>完全禁用缩放影响用户体验</p>
+</li>
+<li><p><strong>更改默认的视口宽度</strong></p>
+<p>一开始，为了让桌面站点能在移动端浏览器正常显示，移动端浏览器默认的视口宽度并不等于设备浏览器视窗宽度，通常是设固定值980px。现在我们可以通过以下标签来设置视口宽度为设备宽度。</p>
+<pre><code class="js">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</code></pre>
+<p>如果能够识别出一个网站是响应式的网站，那么移动端浏览器就可以自动禁掉默认的双击缩放行为并且去掉300ms的点击延迟。如果设置了上述<code>meta</code>标签，那浏览器就可以认为该网站已经对移动端做过了适配和优化，就无需双击缩放操作了。</p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/touch-action" target="_blank" rel="noopener">touch-action</a></p>
+<p>CSS属性 <strong><code>touch-action</code></strong> 用于设置触摸屏用户如何操纵元素的区域(例如，浏览器内置的缩放功能)。</p>
+<p>最常见的用法是禁用元素（及其不可滚动的后代）上的所有手势，以使用自己提供的拖放和缩放行为（如地图或游戏表面）。如：</p>
+<pre><code class="css">#map {
+  touch-action: none;
+}</code></pre>
+</li>
+</ol>
+<p><a href="https://juejin.im/post/5b3cc9836fb9a04f9a5cb0e0" target="_blank" rel="noopener">参考</a></p>
+<h2 id="三、移动端软键盘弹窗影响布局怎么解决"><a href="#三、移动端软键盘弹窗影响布局怎么解决" class="headerlink" title="三、移动端软键盘弹窗影响布局怎么解决"></a>三、移动端软键盘弹窗影响布局怎么解决</h2><ol>
+<li><p>当在移动端按钮position:fixed;底部bottom:0;</p>
+<p>固定在底部的按钮会被系统自带的键盘挤上去，占用输入框位置,如下</p>
+<img src="https://tva1.sinaimg.cn/large/00831rSTgy1gdk62smds2j308r0fiab5.jpg" alt="preview" style="zoom:50%;" />
+
+<p>解决：通过resize() 方法触发 resize 事件，当唤起键盘页面高度小于未唤起键盘页面高度时，取消fixed</p>
+</li>
+<li><p>安卓端，移动端页面输入底部被键盘遮挡问题</p>
+<p>解决：</p>
+<ul>
+<li><p>通过 <code>window.onresize</code> 监听页面大小变化，然后通过 <code>window.scrollTo</code> 使页面滚动到所需位置</p>
+</li>
+<li><p>通过 <code>Element.scrollIntoView()</code></p>
+</li>
+<li><p>通过 <code>Element.scrollIntoViewIfNeeded()</code></p>
+<p><a href="[https://dclcats.github.io/2017/08/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%A1%B5%E9%9D%A2%E8%BE%93%E5%85%A5%E5%BA%95%E9%83%A8%E8%A2%AB%E9%94%AE%E7%9B%98%E9%81%AE%E6%8C%A1%E9%97%AE%E9%A2%98/](https://dclcats.github.io/2017/08/17/移动端页面输入底部被键盘遮挡问题/)">参考</a></p>
+</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+  </entry>
+  <entry>
     <title>AMD、CMD、CommonJS以及UMD的简单对比</title>
-    <url>/2022/02/24/AMD%E3%80%81CMD%E3%80%81CommonJS%E4%BB%A5%E5%8F%8AUMD%E7%9A%84%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94/</url>
+    <url>/2022/03/01/AMD%E3%80%81CMD%E3%80%81CommonJS%E4%BB%A5%E5%8F%8AUMD%E7%9A%84%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94/</url>
     <content><![CDATA[<h2 id="AMD、CMD、CommonJS以及UMD的简单对比"><a href="#AMD、CMD、CommonJS以及UMD的简单对比" class="headerlink" title="AMD、CMD、CommonJS以及UMD的简单对比"></a>AMD、CMD、CommonJS以及UMD的简单对比</h2><h3 id="一、AMD"><a href="#一、AMD" class="headerlink" title="一、AMD"></a>一、AMD</h3><p>为浏览器环境设计的， 所以是异步模块加载定义的</p>
 <ul>
 <li>加载模块</li>
@@ -132,7 +396,7 @@ import * as module from &#39;./module&#39;;
   </entry>
   <entry>
     <title>API规范参考</title>
-    <url>/2022/02/24/API%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
+    <url>/2022/03/01/API%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
     <content><![CDATA[<h1 id="API规范"><a href="#API规范" class="headerlink" title="API规范"></a>API规范</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
 <li><p>RESTful API是目前比较成熟的一套互联网应用程序的API设计理论,它遵循资源导向的设计方式。<br>它有三个主要要素：资源，集合和 URLs。</p>
 <ul>
@@ -251,7 +515,7 @@ import * as module from &#39;./module&#39;;
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/2022/02/24/hexo%E4%BD%BF%E7%94%A8/</url>
+    <url>/2022/03/01/hexo%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
@@ -265,13 +529,13 @@ import * as module from &#39;./module&#39;;
   </entry>
   <entry>
     <title>hexo自动 部署</title>
-    <url>/2022/02/24/hexo%E8%87%AA%E5%8A%A8%20%E9%83%A8%E7%BD%B2/</url>
+    <url>/2022/03/01/hexo%E8%87%AA%E5%8A%A8%20%E9%83%A8%E7%BD%B2/</url>
     <content><![CDATA[<p>参考 <a href="https://blog.ctftools.com/2021/07/newpost-18/#3-3-%E5%8F%91%E5%B8%83%E5%88%B0-github-pages" target="_blank" rel="noopener">https://blog.ctftools.com/2021/07/newpost-18/#3-3-%E5%8F%91%E5%B8%83%E5%88%B0-github-pages</a></p>
 ]]></content>
   </entry>
   <entry>
     <title>js 布尔值转换和数据类型的简单判断</title>
-    <url>/2022/02/24/js%20%E5%B8%83%E5%B0%94%E5%80%BC%E8%BD%AC%E6%8D%A2%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E5%88%A4%E6%96%AD/</url>
+    <url>/2022/03/01/js%20%E5%B8%83%E5%B0%94%E5%80%BC%E8%BD%AC%E6%8D%A2%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E5%88%A4%E6%96%AD/</url>
     <content><![CDATA[<h1 id="js-布尔值转换和数据类型的简单判断"><a href="#js-布尔值转换和数据类型的简单判断" class="headerlink" title="js 布尔值转换和数据类型的简单判断"></a>js 布尔值转换和数据类型的简单判断</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
 <p>通常情况下js的布尔值转换和数据类型判断是一个比较容易犯错的问题，现在我们结合对照表来简单梳理一下</p>
 </blockquote>
@@ -376,7 +640,7 @@ pattern instanceof RegExp //true</code></pre><p> 注意事项以及适用范围�
   </entry>
   <entry>
     <title>js常用算法面试题收集（持续更新）</title>
-    <url>/2022/02/24/js%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
+    <url>/2022/03/01/js%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
     <content><![CDATA[<h2 id="js常用算法面试题收集"><a href="#js常用算法面试题收集" class="headerlink" title="js常用算法面试题收集"></a>js常用算法面试题收集</h2><h4 id="1-统计一个字符出现的最高频率？"><a href="#1-统计一个字符出现的最高频率？" class="headerlink" title="1.统计一个字符出现的最高频率？"></a>1.统计一个字符出现的最高频率？</h4><pre><code class="js">let str = &#39;asdfghjklaqwertyuiopiaia&#39;;
 function statistics(str){
   const strArr = [...str]
@@ -473,6 +737,39 @@ const sort = arr =&gt; {
     return arr
 }
 console.log(sort([43, 9, 5, 22, 32, 1]))  // [1, 5, 9, 22, 32, 43]</code></pre>
+<h4 id="7、分割数组"><a href="#7、分割数组" class="headerlink" title="7、分割数组"></a>7、分割数组</h4><p>题目：给一个形如<code>[&#39;&#39;, 1, 2, &#39;&#39;, &#39;&#39;, 6, 7, 8]</code>的数组，里面需要分割成<code>[[1,2], [6,7,8]]</code>的形式</p>
+<pre><code class="js">// 分割&#39; &#39;,双指针法
+function separate(arr) {
+  let pre = 0 //前节点
+  let cur = 0 // 当前节点
+  let res = []
+  let _arr = [...arr.slice(0), &#39;&#39;] //加入一个&#39;&#39;,作为结尾，兼容结尾为数字的情况
+
+  while(cur &lt; _arr.length) {
+    // 前后节点一致的情况，遇到&#39;&#39;跳过
+    if(_arr[pre] === &#39;&#39; &amp;&amp; _arr[cur] === &#39;&#39;) { 
+      pre++
+      cur++
+      continue
+    }
+        // 前后节点不一致的情况一，都不为空串，只移动cur，相当于记录pre
+    if(_arr[pre] !== &#39;&#39; &amp;&amp; _arr[cur] !== &#39;&#39;) {
+      cur++
+      continue
+    }
+    // 前后节点不一致的情况二，cur遇到空串，表示到了分割点，加入区间[)到数组
+    if(_arr[pre] !== &#39;&#39; &amp;&amp; _arr[cur] === &quot;&quot;) {
+      res.push(_arr.slice(pre, cur))
+      cur++
+      pre = cur
+    }
+  }
+
+  return res
+}
+
+console.log(separate([&#39;&#39;, 1, 2, &#39;&#39;, &#39;&#39;, 6, 7, 8]))
+console.log(separate([0, 1, 2, &#39;&#39;, &#39;&#39;, 6, 7, &#39;&#39;]))</code></pre>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -483,7 +780,7 @@ console.log(sort([43, 9, 5, 22, 32, 1]))  // [1, 5, 9, 22, 32, 43]</code></pre>
   </entry>
   <entry>
     <title>typescript</title>
-    <url>/2022/02/24/typescript/</url>
+    <url>/2022/03/01/typescript/</url>
     <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>本篇文章主要是为了给让大家了解下Typescript</p>
 <p>这里将会讲到大家关心的几个问题，简单先简绍了几个与js不同的ts的语法，来探讨ts和传统js的区别</p>
 <p>然后从网络上收集整理了一些使用和不使用ts的意见，探讨我们应不应该使用ts，以及ts的适用场景</p>
@@ -838,17 +1135,19 @@ function identity&lt;T&gt;(arg: T): T {
   </entry>
   <entry>
     <title>中高级前端面试题目收集（持续更新）</title>
-    <url>/2022/02/24/%E4%B8%AD%E9%AB%98%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
-    <content><![CDATA[<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><blockquote>
+    <url>/2022/03/01/%E4%B8%AD%E9%AB%98%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
 <p>这里进行了一些常用面试题目的搜集，可供面试前参考，先罗列一遍，后期打算再进行分类整理</p>
+<p>学习一个东西，需要带有目的、带有问题去学，不能为了学而学</p>
 </blockquote>
-<h3 id="知识树"><a href="#知识树" class="headerlink" title="知识树"></a>知识树</h3><p>之前每次面试前，看一篇自己的总结面试题，感觉很好，但是每次这样效果太低下，一个个题目看，然后再进行回想，每个题目在你脑中渐渐形成一个孤立的荒岛，为了加快效率，希望大家<strong>构建自己的知识体系</strong></p>
+<h2 id="知识树"><a href="#知识树" class="headerlink" title="知识树"></a>知识树</h2><p>之前每次面试前，看一篇自己的总结面试题，感觉很好，但是每次这样效果太低下，一个个题目看，然后再进行回想，每个题目在你脑中渐渐形成一个孤立的荒岛，为了加快效率，希望大家<strong>构建自己的知识体系</strong></p>
 <p>接下来，我自己罗列下前端知识体系，每次面试前根据知识体系回想回想一遍，把知识联系起来，形成一棵树，然后再用具体题目去充实上面的每个子树吧</p>
 <ul>
-<li>浏览器相关 （加载过程、三级缓存、浏览器缓存、垃圾回收）</li>
+<li>浏览器相关 （加载过程、三级缓存、浏览器缓存、垃圾回收、<a href="https://juejin.cn/post/6844904016325902344#heading-13" target="_blank" rel="noopener">v8垃圾回收</a>、<a href="https://juejin.cn/post/6844903638238756878#heading-4" target="_blank" rel="noopener">事件循环</a> <a href="https://zhuanlan.zhihu.com/p/33058983" target="_blank" rel="noopener">其他参考</a>、<a href="https://segmentfault.com/a/1190000018935873" target="_blank" rel="noopener">Ajax</a>）</li>
 <li>网络 （tcp三次握手四次挥手、http、https握手过程、网络五层协议、XSS/CSRF/sql注入等网络安全问题）</li>
-<li>js （类型判断、原型链、this指向、异步函数、继承、设计模式、设计原则、es6）</li>
-<li>css （BFC、清除浮动、居中、css3实现三角形、主题切换方案）</li>
+<li>js （类型判断、原型链、this指向、异步函数、继承、设计模式、设计原则、es6、<a href="https://github.com/mqyqingfeng/Blog/issues/155" target="_blank" rel="noopener">浮点数</a>、Promise）</li>
+<li>css （BFC、清除浮动、居中、css3实现三角形、主题切换方案、<a href="https://zhuanlan.zhihu.com/p/41604775" target="_blank" rel="noopener">css选择器权重</a>、<a href="https://segmentfault.com/a/1190000010780991" target="_blank" rel="noopener">css3</a>、<a href="https://segmentfault.com/a/1190000012739764" target="_blank" rel="noopener">浮动</a>）</li>
 <li>html （语义化、canvas、空标签有哪些）</li>
 <li>node.js （express、koa洋葱模型、eventEmitter的实现、事件循环、微任务与宏任务、async awiat、错误处理、pm2的使用、docker的使用）</li>
 <li>Vue （<a href="https://juejin.cn/post/6844903479044112391" target="_blank" rel="noopener">双向绑定的原理</a>、v-model的原理、vue-router的实现、vuex的实现、vue3.0的新特性）</li>
@@ -861,6 +1160,7 @@ function identity&lt;T&gt;(arg: T): T {
 <li>客户端 ：RN/Weex、原生bridge</li>
 <li>移动端（微信公众号开发、小程序、移动端问题：1px问题、点击穿透、图片懒加载）</li>
 </ul>
+<p>资料：<a href="https://bytedance.feishu.cn/base/app8Ok6k9qafpMkgyRbfgxeEnet?table=tblEnSV2PNAajtWE&view=vewJHSwJVd" target="_blank" rel="noopener">字节飞书面试题</a></p>
 <h2 id="css可以继承的属性"><a href="#css可以继承的属性" class="headerlink" title="css可以继承的属性"></a>css可以继承的属性</h2><ul>
 <li><p>常用的css可继承的属性：</p>
 <p>font：组合字体</p>
@@ -891,12 +1191,14 @@ function identity&lt;T&gt;(arg: T): T {
 <p>text-indent、text-align</p>
 </li>
 </ul>
-<h2 id="原型链的相关知识"><a href="#原型链的相关知识" class="headerlink" title="原型链的相关知识"></a>原型链的相关知识</h2><ul>
-<li><strong>proto</strong>指向该对象的构造函数的原型对象。</li>
-<li><strong>prototype</strong>指向该方法的原型对象，<strong>Object.prototype</strong>只是一个普通对象(普通对象没有prototype属性，所以值是undefined)，它是js原型链的最顶端,它的<code>__proto__</code>是null(有<code>__proto__</code>属性，但值是null，因为这是原型链的最顶端)。</li>
+<h2 id="原型链的相关知识"><a href="#原型链的相关知识" class="headerlink" title="原型链的相关知识"></a>原型链的相关知识</h2><p><img src="https://cdn.jsdelivr.net/gh/adam-tan/markdown-image/img/IMG_20220225-175614012.png" alt="图 1">  </p>
+<ul>
+<li>那什么是原型？你可以这样理解：每一个JavaScript对象(null除外)在创建的时候就会与之关联另一个对象，这个对象就是我们所说的原型，每一个对象都会从原型”继承”属性。也可以说是实例原型。特殊情况：函数对象，如果Object、Function，此时他们既有<strong>proto</strong>也有prototype，而且原型为函数<br><img src="https://cdn.jsdelivr.net/gh/adam-tan/markdown-image/img/IMG_20220225-181204622.png" alt="原型为函数 1"></li>
+<li><strong>proto</strong>指向该对象的原型，也同时是其构造函数的原型。</li>
+<li><strong>prototype</strong>指向该函数的原型，<strong>Object.prototype</strong>指向一个普通对象(普通对象没有prototype属性，所以值是undefined)，它是js原型链的最顶端,它的<code>__proto__</code>是null(有<code>__proto__</code>属性，但值是null，因为这是原型链的最顶端)。所以Object.prototype没有原型 。</li>
 </ul>
 <pre><code class="js">  Object.prototype.__proto__=== null;//true
-  Object.prototype.prototype === undefied;//true</code></pre>
+  Object.prototype.prototype === undefied;//true 对象没有prototype,除非是函数对象</code></pre>
 <ul>
 <li>在js中如果A对象是由B函数构造的，那么<code>A.__proto__ === B.prototype</code>。javascript中对象是由Object创建的，函数是由Function创建的。</li>
 <li><strong>内置的Object</strong>其实是一个函数对象，它是由Function创建的。<code>Object.__proto__ === Function.prototype;</code></li>
@@ -926,8 +1228,11 @@ function identity&lt;T&gt;(arg: T): T {
 <pre><code class="js">    typeof Function.prototype.__proto__) === &quot;object&quot;;//true
     Function.prototype.__proto__=== Object.prototype;//true</code></pre>
 <ul>
-<li><strong><code>instanceof</code></strong> <strong>运算符</strong>用于检测构造函数的 <code>prototype</code> 属性是否出现在某个实例对象的原型链(构造函数是不是对象new)</li>
-<li><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gdbszdheq1j310o0lgabp.jpg" alt="img"></li>
+<li><p><strong><code>instanceof</code></strong> <strong>运算符</strong>用于检测构造函数的 <code>prototype</code> 属性是否出现在某个实例对象的原型链(构造函数是不是对象new)</p>
+</li>
+<li><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gdbszdheq1j310o0lgabp.jpg" alt="img"></p>
+<p><a href="https://github.com/mqyqingfeng/Blog/issues/2" target="_blank" rel="noopener">可参考</a></p>
+</li>
 </ul>
 <h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><ol>
 <li>什么是cookie</li>
@@ -949,10 +1254,66 @@ function identity&lt;T&gt;(arg: T): T {
 <li>与session的区别</li>
 </ol>
 <p>session：服务端执行session机制时候会生成session的id值，客户端每次请求都会把这个id值放到http请求的头部发送给服务端，而这个id值在客户端会保存下来，保存的容器就是cookie(Session不一定必须依赖Cookie，也可以在url上)</p>
-<h2 id="node事件驱动模型"><a href="#node事件驱动模型" class="headerlink" title="node事件驱动模型"></a>node事件驱动模型</h2><p>关于线程： 除了你的代码是单线程，其余都是多线程（线程池），nodejs本身是事件驱动，一个io事件完成会被放到一个事件队列中，主线程负责轮询这个队列，然后执行相应的回调函数。</p>
+<h2 id="node事件驱动模型"><a href="#node事件驱动模型" class="headerlink" title="node事件驱动模型"></a>node事件驱动模型</h2><p><img src="https://cdn.jsdelivr.net/gh/adam-tan/markdown-image/img/IMG_20220228-165123938.png" alt="图 3">  </p>
+<p>关于线程： 除了你的代码是单线程，其余都是多线程（线程池），nodejs本身是事件驱动，一个io事件完成会被放到一个事件队列中，主线程负责轮询这个队列，然后执行相应的回调函数。</p>
 <p><a href="https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/26" target="_blank" rel="noopener">参考1</a></p>
 <p><a href="http://www.ruanyifeng.com/blog/2018/02/node-event-loop.html" target="_blank" rel="noopener">参考2</a></p>
 <p><a href="https://nodejs.org/zh-cn/docs/guides/event-loop-timers-and-nexttick/" target="_blank" rel="noopener">Node.js 事件循环，定时器和 process.nextTick()</a> by node.js</p>
+<h3 id="process-nextTick"><a href="#process-nextTick" class="headerlink" title="process.nextTick"></a>process.nextTick</h3><p><code>process.nextTick</code>这个名字有点误导，它是在本轮循环执行的，而且是所有异步任务里面最快执行的。</p>
+<p><img src="https://www.ruanyifeng.com/blogimg/asset/2018/bg2018022302.png" alt="img"></p>
+<p>Node 执行完所有同步任务，接下来就会执行<code>process.nextTick</code>的任务队列。</p>
+<p><strong>微任务和宏任务在Node的执行顺序</strong></p>
+<p>Node 10以前：</p>
+<ul>
+<li>执行完一个阶段的所有任务</li>
+<li>执行完nextTick队列里面的内容</li>
+<li>然后执行完微任务队列的内容</li>
+</ul>
+<p>Node 11以后：<br>和浏览器的行为统一了，都是每执行一个宏任务就执行完微任务队列。</p>
+<h3 id="setImmediate-对比-setTimeout"><a href="#setImmediate-对比-setTimeout" class="headerlink" title="setImmediate() 对比 setTimeout()"></a><code>setImmediate()</code> 对比 <code>setTimeout()</code></h3><p><code>setImmediate()</code> 和 <code>setTimeout()</code> 很类似，但是基于被调用的时机，他们也有不同表现。</p>
+<ul>
+<li><code>setImmediate()</code> 设计为一旦在当前 <strong>轮询</strong> 阶段完成， 就执行脚本。</li>
+<li><code>setTimeout()</code> 在最小阈值（ms 单位）过后运行脚本。</li>
+</ul>
+<p>执行计时器的顺序将根据调用它们的上下文而异。如果二者都从主模块内调用，则计时器将受进程性能的约束（这可能会受到计算机上其他正在运行应用程序的影响）。</p>
+<p>例如，如果运行以下不在 I/O 周期（即主模块）内的脚本(可以理解为<strong>初始化时</strong>)，则执行两个计时器的顺序是非确定性的，因为它受进程性能的约束：</p>
+<blockquote>
+<p>当 Node.js 启动后，它会初始化事件循环，处理已提供的输入脚本（或丢入 <a href="https://nodejs.org/api/repl.html#repl_repl" target="_blank" rel="noopener">REPL</a>，本文不涉及到），它可能会调用一些异步的 API、调度定时器，或者调用 <code>process.nextTick()</code>，然后开始处理事件循环。</p>
+</blockquote>
+<pre><code class="js">// timeout_vs_immediate.js
+setTimeout(() =&gt; {
+  console.log(&#39;timeout&#39;);
+}, 0);
+
+setImmediate(() =&gt; {
+  console.log(&#39;immediate&#39;);
+});
+$ node timeout_vs_immediate.js
+timeout
+immediate
+
+$ node timeout_vs_immediate.js
+immediate
+timeout</code></pre>
+<p>但是，如果你把这两个函数放入一个 I/O 循环内调用，setImmediate 总是被优先调用：</p>
+<pre><code class="js">// timeout_vs_immediate.js
+const fs = require(&#39;fs&#39;);
+
+fs.readFile(__filename, () =&gt; {
+  setTimeout(() =&gt; {
+    console.log(&#39;timeout&#39;);
+  }, 0);
+  setImmediate(() =&gt; {
+    console.log(&#39;immediate&#39;);
+  });
+});
+$ node timeout_vs_immediate.js
+immediate
+timeout
+
+$ node timeout_vs_immediate.js
+immediate
+timeout</code></pre>
 <h2 id="clientWidth和offsetWidth宽度"><a href="#clientWidth和offsetWidth宽度" class="headerlink" title="clientWidth和offsetWidth宽度"></a>clientWidth和offsetWidth宽度</h2><p>ele.clientWidth = 宽度 + padding</p>
 <p>ele.offsetWidth = 宽度 + padding + border</p>
 <p> ele.scrollTop = 被卷去的上侧距离</p>
@@ -976,7 +1337,7 @@ function identity&lt;T&gt;(arg: T): T {
 <li>5.非加密传输<br>防范：使用HTTPS(HTTPS原理：非对称加密交换密钥+对称加密数据+CA认证)</li>
 <li>6.CFS(Cross Frame Script跨框架脚本攻击)与Clickjacking(点击劫持)<br>防范：服务端header设置X-Frame-Options为SAMEORIGIN</li>
 </ul>
-<h2 id="http2和http1的区别"><a href="#http2和http1的区别" class="headerlink" title="http2和http1的区别"></a>http2和http1的区别</h2><h2 id="虚拟dom的原理"><a href="#虚拟dom的原理" class="headerlink" title="虚拟dom的原理"></a>虚拟dom的原理</h2><h2 id="如果要实现一个组件的动态加载，会用webpack的什么方法"><a href="#如果要实现一个组件的动态加载，会用webpack的什么方法" class="headerlink" title="如果要实现一个组件的动态加载，会用webpack的什么方法"></a>如果要实现一个组件的动态加载，会用webpack的什么方法</h2><h2 id="组件库遇到的难点问题"><a href="#组件库遇到的难点问题" class="headerlink" title="组件库遇到的难点问题"></a>组件库遇到的难点问题</h2><h2 id="ajax实现"><a href="#ajax实现" class="headerlink" title="ajax实现"></a>ajax实现</h2><h2 id="宏任务微任务"><a href="#宏任务微任务" class="headerlink" title="宏任务微任务"></a>宏任务微任务</h2><p>任务执行顺序： 同步任务、异步任务(顺序：微任务（promise，nextTick）、宏任务(setTimeout，setInterval、setImmediate))</p>
+<h2 id="http2和http1的区别"><a href="#http2和http1的区别" class="headerlink" title="http2和http1的区别"></a>http2和http1的区别</h2><h2 id="虚拟dom的原理"><a href="#虚拟dom的原理" class="headerlink" title="虚拟dom的原理"></a>虚拟dom的原理</h2><h2 id="如果要实现一个组件的动态加载，会用webpack的什么方法"><a href="#如果要实现一个组件的动态加载，会用webpack的什么方法" class="headerlink" title="如果要实现一个组件的动态加载，会用webpack的什么方法"></a>如果要实现一个组件的动态加载，会用webpack的什么方法</h2><h2 id="ajax实现"><a href="#ajax实现" class="headerlink" title="ajax实现"></a><a href="https://segmentfault.com/a/1190000018935873" target="_blank" rel="noopener">ajax实现</a></h2><h2 id="宏任务微任务"><a href="#宏任务微任务" class="headerlink" title="宏任务微任务"></a>宏任务微任务</h2><p>任务执行顺序： 同步任务、异步任务(顺序：微任务（promise，nextTick）、宏任务(setTimeout，setInterval、setImmediate))</p>
 <p>参考：<a href="https://juejin.im/post/5b498d245188251b193d4059#heading-6]" target="_blank" rel="noopener">宏任务与微任务</a></p>
 <h2 id="什么是reflow和repaint"><a href="#什么是reflow和repaint" class="headerlink" title="什么是reflow和repaint"></a>什么是reflow和repaint</h2><blockquote>
 <p>repaint（重绘）：如果只是改变某个元素的背景色、文字颜色、边框颜色等等不影响它周围或内部布局的属性，将只会引起浏览器 repaint。repaint 的速度明显快于 reflow</p>
@@ -994,6 +1355,41 @@ function identity&lt;T&gt;(arg: T): T {
 <p>8：设置style属性</p>
 <p>相关扩展：<a href="https://www.zhihu.com/question/33629083" target="_blank" rel="noopener">在移动端使用transform: translate代替top left marg等做位移有好处么 ？</a></p>
 <h2 id="new做了什么"><a href="#new做了什么" class="headerlink" title="new做了什么"></a>new做了什么</h2><p>新建一个对象，并把this指向这个对象，同时使该对象继承函数的原型</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new" target="_blank" rel="noopener">参考</a></p>
+<h2 id="new的模拟实现"><a href="#new的模拟实现" class="headerlink" title="new的模拟实现"></a>new的模拟实现</h2><pre><code class="js">function parent(name) {
+    this.name = name
+
+    return {
+        name: &#39;刘&#39;
+    }
+}
+
+parent.prototype.car = &#39;bigCar&#39;
+
+child = new parent(&#39;张&#39;)
+
+console.log(&#39;child&#39;, child)
+
+// 模拟实现
+
+function _new() {
+
+    const  constructor = [].slice.call(arguments, 0, 1)[0]
+
+    const arg = [].slice.call(arguments, 1)
+
+    const obj = new Object()
+
+    const ret = constructor.apply(obj, arg)
+
+    obj.__proto__ = constructor.prototype
+
+    return  ret instanceof Object ? ret : obj
+}
+
+child1 = _new(parent, &#39;林&#39;)
+
+console.log(&#39;child1&#39;, child1)</code></pre>
 <h2 id="内存泄露"><a href="#内存泄露" class="headerlink" title="内存泄露"></a>内存泄露</h2><ol>
 <li><p>意外的全局变量， 在JavaScript文件中添加<code>&#39;use strict&#39;</code>，开启严格模式</p>
 </li>
@@ -1291,6 +1687,7 @@ let boy2 = new Child(&#39;小明&#39;,&#39;orange&#39;)</code></pre>
 </li>
 </ol>
 <p><a href="https://segmentfault.com/a/1190000015216289#item-2-5" target="_blank" rel="noopener">参考</a></p>
+<p><a href="https://github.com/mqyqingfeng/Blog/issues/16" target="_blank" rel="noopener">参考2</a></p>
 <h2 id="创建对象的几种方式"><a href="#创建对象的几种方式" class="headerlink" title="创建对象的几种方式"></a>创建对象的几种方式</h2><ol>
 <li><p>Object对象函数和对象字面量</p>
 </li>
@@ -1478,7 +1875,7 @@ let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 <li>同一个 BFC 下外边距会发生重叠</li>
 <li>计算高度时浮动的元素参与计算（清除浮动）</li>
 <li>浮动元素不重叠</li>
-<li>用来实现两列自适应布局</li>
+<li>用来实现<a href="https://juejin.cn/post/6844903817104850952#heading-4" target="_blank" rel="noopener">两列自适应布局</a></li>
 </ul>
 <h2 id="CSS-百分比参照问题"><a href="#CSS-百分比参照问题" class="headerlink" title="CSS 百分比参照问题"></a>CSS 百分比参照问题</h2><ul>
 <li><p>参照父元素<strong>宽度</strong>的元素：padding <strong>margin</strong> width text-indent</p>
@@ -1582,6 +1979,7 @@ handler参数也是一个对象，用来定制拦截行为。*/
 <li><em>变量声明、函数声明都会被提升到作用域顶处；</em></li>
 <li>当出现相同名称时，优先级为：<strong>变量声明(foo#1) &gt; 函数声明(foo#2) &gt; 变量赋值(foo#3)*</strong></li>
 </ol>
+<p><a href="https://github.com/mqyqingfeng/Blog/issues/5" target="_blank" rel="noopener">参考</a></p>
 <h2 id="页面性能指标"><a href="#页面性能指标" class="headerlink" title="页面性能指标"></a>页面性能指标</h2><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gdhtsdka5bj31pc0n6ti1.jpg" alt="蚂蚁金服如何把前端性能监控做到极致?"></p>
 <p>页面加载时长是被清晰的标在这个页面的底部的。它是指 DOM <code>load</code> 事件触发完成，它的优点有：</p>
 <ul>
@@ -1604,277 +2002,67 @@ handler参数也是一个对象，用来定制拦截行为。*/
 <li>如果只有 CSS 和 HTML 的页面，CSS 不会影响 DOM 树的创建，但是如果页面中还有 JavaScript，结论就不一样了。</li>
 </ol>
 </blockquote>
-]]></content>
+<h2 id="Promise-all-和Promise-race模拟实现"><a href="#Promise-all-和Promise-race模拟实现" class="headerlink" title="Promise.all()和Promise.race模拟实现"></a>Promise.all()和Promise.race模拟实现</h2><ol>
+<li><p>Promise.all()</p>
+<pre><code class="js">
+function promiseAll(arg = []) {
+    return new Promise((resolve, reject) =&gt; {
+        let timer = 0
+        const rets = new Array(arg.length)
+
+        for(let i = 0; i &lt; arg.length; i++) {
+                   // Promise.resolve 为了兼容 arg中存在不是Promise的数   
+            Promise.resolve(arg[i]).then((res) =&gt; {
+                rets[i] = res
+                timer++
+                     // 重点，在最后一个完成事执行resolve，最终返回[]
+                if(timer === arg.length) resovle(rets)
+            }).catch(e =&gt; reject(e))
+        }
+    })
+}
+
+promiseAll([Promise.resolve(1), Promise.resolve(2), 3]).then((res) =&gt; console.log(res))
+// promiseAll([Promise.resolve(1), Promise.reject(2), 3, () =&gt; 4]).then((res) =&gt; console.log(res))</code></pre>
+</li>
+<li><p>Promise.race()</p>
+<pre><code class="js">function promiseRace(arg = []) {
+  return new Promise((resolve, reject) =&gt; {
+    for(let i = 0; i &lt; arg.length; i++) {
+      Promise.resolve(arg[i]).then(res =&gt; {
+             // 有返回直接返回   
+        resolve(res)
+      }).catch(e =&gt; reject(e))
+    }
+  })
+}
+
+promiseRace([new Promise(res =&gt; setTimeout(()=&gt; res(1), 100)), new Promise(res =&gt; setTimeout(()=&gt; res(2), 200))])
+  .then((res) =&gt; console.log(res))</code></pre>
+<p>关于Promise的更多实现可<a href="https://juejin.cn/post/6844904063570542599#heading-4" target="_blank" rel="noopener">参考</a>（此文章，实现有些许冗余）</p>
+</li>
+</ol>
+<p>Generators原理</p>
+<p>通过利用闭包，保存生成器函数的上下文，并对生成器函数进行包装添加next方法，似的对next的调用进入到状态机里，而实现next对生成器里面代码的暂停恢复控制。</p>
+<p>简单的实例：</p>
+<pre><code class="js">function* example() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+var iter=example();
+iter.next();//{value:1，done:false}
+iter.next();//{value:2，done:false}
+iter.next();//{value:3，done:false}
+iter.next();//{value:undefined，done:true}</code></pre>
+<p><a href="http://www.alloyteam.com/2016/02/generators-in-depth/" target="_blank" rel="noopener">参考</a></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
       <categories>
         <category>面试</category>
       </categories>
       <tags>
         <tag>面试</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>二叉树深度优先遍历js实现</title>
-    <url>/2022/02/24/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86js%E5%AE%9E%E7%8E%B0/</url>
-    <content><![CDATA[<h3 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h3><blockquote>
-<p>二叉树是数据结构算法的重要知识点，今天我们用js来实现下二叉树的深度优先遍历</p>
-</blockquote>
-<p>首先，生成一个二叉树</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdtk9xb44qj30k80ia0tf.jpg" alt="Jietu20200414-201926@2x" style="zoom:50%;" />
-
-<pre><code class="js">/*
-二叉树
-*/
-var tree = {
-  value: 1,
-  left: {
-    value: 2,
-    left: {
-      value: 4
-    }
-  },
-  right: {
-    value: 3,
-    left: {
-      value: 5,
-      left: {
-        value: 7
-      },
-      right: {
-        value: 8
-      }
-    },
-    right: {
-      value: 6
-    }
-  }
-}</code></pre>
-<h3 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h3><ul>
-<li>递归</li>
-</ul>
-<pre><code class="js">function preOrder(node) {
-  if(node != null) {
-    console.log(node.value)
-    preOrder(node.left)
-    preOrder(node.right)
-  } 
-}</code></pre>
-<ul>
-<li>非递归</li>
-</ul>
-<pre><code class="js">
-function preOrder(root) {
-        let stack = [];
-        let pNode = root;
-        while (pNode != null || !stack.length == 0) {
-            if (pNode != null) {
-                console.log(pNode.value+&quot;  &quot;);
-                stack.push(pNode);
-                pNode = pNode.left;
-            } else { //pNode == null &amp;&amp; !stack.isEmpty()
-                node = stack.pop();
-                pNode = node.right;
-            }
-        }
-    }
-preOrder(tree)
-
-</code></pre>
-<h3 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h3><ul>
-<li>递归</li>
-</ul>
-<pre><code class="js">function preOrder(node) {
-  if(node != null) {
-    preOrder(node.left)
-    console.log(node.value)
-    preOrder(node.right)
-  } 
-}</code></pre>
-<ul>
-<li>非递归</li>
-</ul>
-<pre><code class="js">function midOrder(root) {
-        let stack = [];
-        let pNode = root;
-        while (pNode != null || !stack.length == 0) {
-            if (pNode != null) {
-                stack.push(pNode);
-                pNode = pNode.left;
-            } else { //pNode == null &amp;&amp; !stack.isEmpty()
-                node = stack.pop();
-        console.log(pNode.value+&quot;  &quot;);
-                pNode = node.right;
-            }
-        }
-    }
-midOrder(tree)</code></pre>
-<h3 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h3><ul>
-<li>递归</li>
-</ul>
-<pre><code class="js">function preOrder(node) {
-  if(node != null) {
-    preOrder(node.left)
-    preOrder(node.right)
-    console.log(node.value)
-  } 
-}</code></pre>
-<ul>
-<li>非递归</li>
-</ul>
-<pre><code class="js">
-
-var lastOrder = (root) =&gt; {
-    let result = []
-    let stack = []
-    let node = root
-    while(node != null || stack.length != 0){
-        if(node != null) {
-            result.unshift(node.value)
-            stack.push(node)
-            node = node.right
-        }else{
-            node = stack.pop()
-            //console.log(node.value)
-            node = node.left
-        }
-    }
-    return result
-
-}
-lastOrder(tree)</code></pre>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>前端项目注释规范参考</title>
-    <url>/2022/02/24/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
-    <content><![CDATA[<h2 id="注释规范初稿"><a href="#注释规范初稿" class="headerlink" title="注释规范初稿"></a>注释规范初稿</h2><ul>
-<li><p><strong>强制</strong>  </p>
-<ol>
-<li><p>方法的注释必须使用 JsDoc 规范，使用/<em>*内容</em>/格式，不得使用 // xxx方式。</p>
-</li>
-<li><p>所有的公用方法(包括接口中的方法)必须要用 Javadoc 注释、除了返回值、参数、 异常说明外，还必须指出该方法做什么事情，实现什么功能。</p>
-</li>
-<li><p>所有的公用方法都必须添加创建者和创建日期</p>
-</li>
-<li><p>方法内部单行注释，在被注释语句上方另起一行，使用//注释。方法内部多行注释<br> 使用/* */注释，注意与代码对齐。  </p>
-</li>
-</ol>
-</li>
-</ul>
-<ul>
-<li><p><strong>推荐</strong>  </p>
-<ol start="5">
-<li><p>与其“半吊子”英文来注释，不如用中文注释把问题说清楚。专有名词与关键字保持 英文原文即可。</p>
-<blockquote>
-<p>反例:“TCP 连接超时”解释成“传输控制协议连接超时”，理解反而费脑筋。  </p>
-</blockquote>
-</li>
-<li><p>代码修改的同时，注释也要进行相应的修改，尤其是参数、返回值、异常、核心逻辑 等的修改。</p>
-<blockquote>
-<p>说明:代码与注释更新不同步，就像路网与导航软件更新不同步一样，如果导航软件严重滞后， 就失去了导航的意义。  </p>
-</blockquote>
-</li>
-<li><p>对于注释的要求:第一、能够准确反应设计思想和代码逻辑;第二、能够描述业务含义，使别的程序员能够迅速了解到代码背后的信息。  </p>
-<blockquote>
-<p>完全没有注释的大段代码对于阅读者形同 天书，注释是给自己看的，即使隔很长时间，也能清晰理解当时的思路;注释也是给继任者看 的，使其能够快速接替自己的工作。</p>
-</blockquote>
-</li>
-<li><p>好的命名、代码结构是自解释的，注释力求精简准确、表达到位。避免出现注释的<br>一个极端:过多过滥的注释</p>
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/han-1034683568/p/7680354.html" target="_blank" rel="noopener">阿里巴巴java开发手册</a></p>
-]]></content>
-      <categories>
-        <category>规范</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>移动端面试复习</title>
-    <url>/2022/02/24/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/</url>
-    <content><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
-<p>最近在很多面试中都问到移动端的问题，暴露了我平时工作中对移动端经验不足的问题，但是天赋不够能力来凑，通过一些面试准备还是能够能混过关的，我希望在这里以问题为导向，探究下移动端的一些问题</p>
-</blockquote>
-<h2 id="一、移动端和pc端的区别"><a href="#一、移动端和pc端的区别" class="headerlink" title="一、移动端和pc端的区别"></a>一、移动端和pc端的区别</h2><ol>
-<li>兼容性不同： pc向下考虑IE兼容，移动端更多考虑是手机兼容，如一些手机屏幕大小和分辨率的兼容</li>
-<li>部分事件不同：移动端多出触屏事件，没有hover事件</li>
-<li>部分场景不同：移动端手机软键盘</li>
-<li>布局要求不同：移动端往往要求做到自适应</li>
-<li>平台区别：移动端可能要依托小程序、微信公众号平台进行开发，pc端比较纯粹</li>
-<li>性能要求不同：移动端对首屏加载速度，用户响应延迟、渲染性能、动画帧率要求比较高</li>
-</ol>
-<h2 id="二、点击穿透问题"><a href="#二、点击穿透问题" class="headerlink" title="二、点击穿透问题"></a>二、点击穿透问题</h2><p>  假如页面上有两个元素A和B。</p>
-<p>  B元素在A元素之上。</p>
-<p>  我们在B元素的touchstart事件上注册了一个回调函数，该回调函数的作用是隐藏B元素。</p>
-<p>  我们发现，当我们点击B元素，B元素被隐藏了，随后，A元素触发了click事件。</p>
-<p>  原因： 这是因为在移动端浏览器，事件执行的顺序是touchstart &gt; touchend &gt; click。而click事件有300ms的延迟，当touchstart事件把B元素隐藏之后，隔了300ms，浏览器触发了click事件，但是此时B元素不见了，所以该事件被派发到了A元素身上。如果A元素是一个链接，那此时页面就会意外地跳转。</p>
-<p>  解决方案：</p>
-<ol>
-<li>只用touch，简单完美</li>
-<li>只用click，副作用大</li>
-<li>tap后延迟350ms再隐藏mask</li>
-<li>禁用缩放</li>
-<li>更改默认视窗宽度为自适应</li>
-<li>引入插件，如：<a href="https://zhuanlan.zhihu.com/p/66845055" target="_blank" rel="noopener">fastClick</a></li>
-</ol>
-<p>  <strong>移动端300ms点击延迟</strong>：</p>
-<blockquote>
-<p>移动端300ms点击延迟由来：</p>
-<p>苹果公司在发布首款 iPhone 前夕，遇到一个问题：当时的网站都是为大屏幕设备所设计的。于是苹果的工程师们做了一些约定，应对 iPhone 这种小屏幕浏览桌面端站点的问题。</p>
-<p>这当中最出名的，当属双击缩放(double tap to zoom)，这也是会有上述 300 毫秒延迟的主要原因。</p>
-</blockquote>
-<p>  解决方案：</p>
-<ol>
-<li><p><strong>禁用缩放</strong></p>
-<p>在meta加入以下信息，表明页面不可缩放，从而可以移动端浏览器自动禁掉默认300ms点击延迟</p>
-<pre><code class="js">&lt;meta name=&quot;viewport&quot; content=&quot;user-scalable=no&quot;&gt;
-&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1,maximum-scale=1&quot;&gt;</code></pre>
-<p><strong>缺点：</strong>完全禁用缩放影响用户体验</p>
-</li>
-<li><p><strong>更改默认的视口宽度</strong></p>
-<p>一开始，为了让桌面站点能在移动端浏览器正常显示，移动端浏览器默认的视口宽度并不等于设备浏览器视窗宽度，通常是设固定值980px。现在我们可以通过以下标签来设置视口宽度为设备宽度。</p>
-<pre><code class="js">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</code></pre>
-<p>如果能够识别出一个网站是响应式的网站，那么移动端浏览器就可以自动禁掉默认的双击缩放行为并且去掉300ms的点击延迟。如果设置了上述<code>meta</code>标签，那浏览器就可以认为该网站已经对移动端做过了适配和优化，就无需双击缩放操作了。</p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/touch-action" target="_blank" rel="noopener">touch-action</a></p>
-<p>CSS属性 <strong><code>touch-action</code></strong> 用于设置触摸屏用户如何操纵元素的区域(例如，浏览器内置的缩放功能)。</p>
-<p>最常见的用法是禁用元素（及其不可滚动的后代）上的所有手势，以使用自己提供的拖放和缩放行为（如地图或游戏表面）。如：</p>
-<pre><code class="css">#map {
-  touch-action: none;
-}</code></pre>
-</li>
-</ol>
-<p><a href="https://juejin.im/post/5b3cc9836fb9a04f9a5cb0e0" target="_blank" rel="noopener">参考</a></p>
-<h2 id="三、移动端软键盘弹窗影响布局怎么解决"><a href="#三、移动端软键盘弹窗影响布局怎么解决" class="headerlink" title="三、移动端软键盘弹窗影响布局怎么解决"></a>三、移动端软键盘弹窗影响布局怎么解决</h2><ol>
-<li><p>当在移动端按钮position:fixed;底部bottom:0;</p>
-<p>固定在底部的按钮会被系统自带的键盘挤上去，占用输入框位置,如下</p>
-<img src="https://tva1.sinaimg.cn/large/00831rSTgy1gdk62smds2j308r0fiab5.jpg" alt="preview" style="zoom:50%;" />
-
-<p>解决：通过resize() 方法触发 resize 事件，当唤起键盘页面高度小于未唤起键盘页面高度时，取消fixed</p>
-</li>
-<li><p>安卓端，移动端页面输入底部被键盘遮挡问题</p>
-<p>解决：</p>
-<ul>
-<li><p>通过 <code>window.onresize</code> 监听页面大小变化，然后通过 <code>window.scrollTo</code> 使页面滚动到所需位置</p>
-</li>
-<li><p>通过 <code>Element.scrollIntoView()</code></p>
-</li>
-<li><p>通过 <code>Element.scrollIntoViewIfNeeded()</code></p>
-<p><a href="[https://dclcats.github.io/2017/08/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%A1%B5%E9%9D%A2%E8%BE%93%E5%85%A5%E5%BA%95%E9%83%A8%E8%A2%AB%E9%94%AE%E7%9B%98%E9%81%AE%E6%8C%A1%E9%97%AE%E9%A2%98/](https://dclcats.github.io/2017/08/17/移动端页面输入底部被键盘遮挡问题/)">参考</a></p>
-</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
   </entry>
   <entry>
     <title>2021面试总结</title>
