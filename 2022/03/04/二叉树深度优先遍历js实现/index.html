@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>about | 稍纵即逝</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="about | 稍纵即逝">
+  <title>二叉树深度优先遍历js实现 | 稍纵即逝</title>
+  <meta name="keywords" content=" 算法 ">
+  <meta name="description" content="二叉树深度优先遍历js实现 | 稍纵即逝">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="404">
@@ -412,19 +412,34 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <article id="post-二叉树深度优先遍历js实现" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">about</h1>
+        <h1 class="article-title">二叉树深度优先遍历js实现</h1>
     
     <div class="article-meta">
         
         
         
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="算法">算法</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">算法</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2022-03-04 16:15:42'>2020-02-29 16:57</time>
+            Created At : <time class="date" title='Updated At: 2022-03-04 16:15:42'>2022-03-04 16:15</time>
         
     </div>
     <div class="article-meta">
@@ -457,7 +472,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#导读"><span class="toc-text">导读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前序遍历"><span class="toc-text">前序遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中序遍历"><span class="toc-text">中序遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#后序遍历"><span class="toc-text">后序遍历</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -473,7 +488,133 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h3><blockquote>
+<p>二叉树是数据结构算法的重要知识点，今天我们用js来实现下二叉树的深度优先遍历</p>
+</blockquote>
+<p>首先，生成一个二叉树</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdtk9xb44qj30k80ia0tf.jpg" alt="Jietu20200414-201926@2x" style="zoom:50%;" />
+
+<pre><code class="js">/*
+二叉树
+*/
+var tree = {
+  value: 1,
+  left: {
+    value: 2,
+    left: {
+      value: 4
+    }
+  },
+  right: {
+    value: 3,
+    left: {
+      value: 5,
+      left: {
+        value: 7
+      },
+      right: {
+        value: 8
+      }
+    },
+    right: {
+      value: 6
+    }
+  }
+}</code></pre>
+<h3 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h3><ul>
+<li>递归</li>
+</ul>
+<pre><code class="js">function preOrder(node) {
+  if(node != null) {
+    console.log(node.value)
+    preOrder(node.left)
+    preOrder(node.right)
+  } 
+}</code></pre>
+<ul>
+<li>非递归</li>
+</ul>
+<pre><code class="js">
+function preOrder(root) {
+        let stack = [];
+        let pNode = root;
+        while (pNode != null || !stack.length == 0) {
+            if (pNode != null) {
+                console.log(pNode.value+&quot;  &quot;);
+                stack.push(pNode);
+                pNode = pNode.left;
+            } else { //pNode == null &amp;&amp; !stack.isEmpty()
+                node = stack.pop();
+                pNode = node.right;
+            }
+        }
+    }
+preOrder(tree)
+
+</code></pre>
+<h3 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h3><ul>
+<li>递归</li>
+</ul>
+<pre><code class="js">function preOrder(node) {
+  if(node != null) {
+    preOrder(node.left)
+    console.log(node.value)
+    preOrder(node.right)
+  } 
+}</code></pre>
+<ul>
+<li>非递归</li>
+</ul>
+<pre><code class="js">function midOrder(root) {
+        let stack = [];
+        let pNode = root;
+        while (pNode != null || !stack.length == 0) {
+            if (pNode != null) {
+                stack.push(pNode);
+                pNode = pNode.left;
+            } else { //pNode == null &amp;&amp; !stack.isEmpty()
+                node = stack.pop();
+        console.log(pNode.value+&quot;  &quot;);
+                pNode = node.right;
+            }
+        }
+    }
+midOrder(tree)</code></pre>
+<h3 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h3><ul>
+<li>递归</li>
+</ul>
+<pre><code class="js">function preOrder(node) {
+  if(node != null) {
+    preOrder(node.left)
+    preOrder(node.right)
+    console.log(node.value)
+  } 
+}</code></pre>
+<ul>
+<li>非递归</li>
+</ul>
+<pre><code class="js">
+
+var lastOrder = (root) =&gt; {
+    let result = []
+    let stack = []
+    let node = root
+    while(node != null || stack.length != 0){
+        if(node != null) {
+            result.unshift(node.value)
+            stack.push(node)
+            node = node.right
+        }else{
+            node = stack.pop()
+            //console.log(node.value)
+            node = node.left
+        }
+    }
+    return result
+
+}
+lastOrder(tree)</code></pre>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1249118795@qq.com </span>
     </div>

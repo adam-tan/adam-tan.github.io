@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>about | 稍纵即逝</title>
+  <title>js 布尔值转换和数据类型的简单判断 | 稍纵即逝</title>
   <meta name="keywords" content="">
-  <meta name="description" content="about | 稍纵即逝">
+  <meta name="description" content="js 布尔值转换和数据类型的简单判断 | 稍纵即逝">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="404">
@@ -412,19 +412,27 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <article id="post-js 布尔值转换和数据类型的简单判断" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">about</h1>
+        <h1 class="article-title">js 布尔值转换和数据类型的简单判断</h1>
     
     <div class="article-meta">
         
         
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="前端">前端</a>
+            
+        </span>
         
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2022-03-04 16:15:42'>2020-02-29 16:57</time>
+            Created At : <time class="date" title='Updated At: 2022-03-04 16:15:42'>2022-03-04 16:15</time>
         
     </div>
     <div class="article-meta">
@@ -457,7 +465,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#js-布尔值转换和数据类型的简单判断"><span class="toc-text">js 布尔值转换和数据类型的简单判断</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-text">引言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、js-布尔值转换"><span class="toc-text">一、js 布尔值转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、-的情况下转换"><span class="toc-text">一、&#x3D;&#x3D;的情况下转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、数据类型和布尔值的转换"><span class="toc-text">二、数据类型和布尔值的转换</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、判断数据类型的方法"><span class="toc-text">三、判断数据类型的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、typeof"><span class="toc-text">1、typeof</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、instanceof"><span class="toc-text">2、instanceof</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、toString方法"><span class="toc-text">3、toString方法</span></a></li></ol></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -473,7 +481,104 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="js-布尔值转换和数据类型的简单判断"><a href="#js-布尔值转换和数据类型的简单判断" class="headerlink" title="js 布尔值转换和数据类型的简单判断"></a>js 布尔值转换和数据类型的简单判断</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
+<p>通常情况下js的布尔值转换和数据类型判断是一个比较容易犯错的问题，现在我们结合对照表来简单梳理一下</p>
+</blockquote>
+<h3 id="一、js-布尔值转换"><a href="#一、js-布尔值转换" class="headerlink" title="一、js 布尔值转换"></a>一、js 布尔值转换</h3><h4 id="一、-的情况下转换"><a href="#一、-的情况下转换" class="headerlink" title="一、==的情况下转换"></a>一、==的情况下转换</h4><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Equality" target="_blank" rel="noopener">参考</a></p>
+<h4 id="二、数据类型和布尔值的转换"><a href="#二、数据类型和布尔值的转换" class="headerlink" title="二、数据类型和布尔值的转换"></a>二、数据类型和布尔值的转换</h4><table>
+<thead>
+<tr>
+<th align="center">数据类型</th>
+<th align="center">能转换为true</th>
+<th align="center">能转化为false</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">boolean</td>
+<td align="center">ture</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="center">string</td>
+<td align="center">任何非空字符</td>
+<td align="center">“”</td>
+</tr>
+<tr>
+<td align="center">number</td>
+<td align="center">任何非零数字值</td>
+<td align="center">0和NaN</td>
+</tr>
+<tr>
+<td align="center">obj</td>
+<td align="center">任何对象</td>
+<td align="center">null</td>
+</tr>
+<tr>
+<td align="center">undefined</td>
+<td align="center">—</td>
+<td align="center">undefined</td>
+</tr>
+<tr>
+<td align="center">arr</td>
+<td align="center">任何数组</td>
+<td align="center">null</td>
+</tr>
+</tbody></table>
+<h3 id="三、判断数据类型的方法"><a href="#三、判断数据类型的方法" class="headerlink" title="三、判断数据类型的方法"></a>三、判断数据类型的方法</h3><h4 id="1、typeof"><a href="#1、typeof" class="headerlink" title="1、typeof"></a>1、typeof</h4><table>
+<thead>
+<tr>
+<th align="center">数据类型</th>
+<th align="center">typeof结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">string</td>
+<td align="center">string</td>
+</tr>
+<tr>
+<td align="center">number</td>
+<td align="center">number</td>
+</tr>
+<tr>
+<td align="center">booleam</td>
+<td align="center">boolean</td>
+</tr>
+<tr>
+<td align="center">undefind</td>
+<td align="center">undefind</td>
+</tr>
+<tr>
+<td align="center">functuon</td>
+<td align="center">function</td>
+</tr>
+<tr>
+<td align="center">obj</td>
+<td align="center">obj</td>
+</tr>
+<tr>
+<td align="center">null</td>
+<td align="center">obj</td>
+</tr>
+<tr>
+<td align="center">arr</td>
+<td align="center">obj</td>
+</tr>
+</tbody></table>
+<p>用法：</p>
+<pre><code>typeof()  // 适合判断除null外的基本数据类型，不适合判断obj、arr、function等引用类型</code></pre><h4 id="2、instanceof"><a href="#2、instanceof" class="headerlink" title="2、instanceof"></a>2、instanceof</h4><p>用法:</p>
+<pre><code>obj instanceof Object  // true
+arr instanceof Array //true
+pattern instanceof RegExp //true</code></pre><p> 注意事项以及适用范围：</p>
+<ul>
+<li>引用用类型所有值都是obj的事例，所以所以引用类型instanceof Object都为ture</li>
+<li>可以判断是否为引用类型，或者是否为数组</li>
+</ul>
+<p>缺点：</p>
+<p>instanceof会从原型链一直往上查找，假如有个obj的继承的原型是Array，此时<code>obj instanceof Array</code>为true，显示是错的</p>
+<h4 id="3、toString方法"><a href="#3、toString方法" class="headerlink" title="3、toString方法"></a>3、toString方法</h4><p>用法</p>
+<pre><code class="js">Object.prototype.toString.call([]) // [Object Array]</code></pre>
+<p>判断数据类型最优的方法</p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1249118795@qq.com </span>
     </div>

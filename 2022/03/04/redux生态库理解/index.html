@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>about | 稍纵即逝</title>
+  <title>redux生态库理解 | 稍纵即逝</title>
   <meta name="keywords" content="">
-  <meta name="description" content="about | 稍纵即逝">
+  <meta name="description" content="redux生态库理解 | 稍纵即逝">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="404">
@@ -412,9 +412,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <article id="post-redux生态库理解" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">about</h1>
+        <h1 class="article-title">redux生态库理解</h1>
     
     <div class="article-meta">
         
@@ -424,7 +424,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2022-03-04 16:15:42'>2020-02-29 16:57</time>
+            Created At : <time class="date" title='Updated At: 2022-03-04 16:15:42'>2022-03-04 16:15</time>
         
     </div>
     <div class="article-meta">
@@ -457,7 +457,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#redux生态库理解"><span class="toc-text">redux生态库理解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#redux"><span class="toc-text">redux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reselect"><span class="toc-text">reselect</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redux-sage"><span class="toc-text">redux-sage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#seamless-immutable"><span class="toc-text">seamless-immutable</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#API"><span class="toc-text">API</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redux-persist"><span class="toc-text">redux-persist</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ramda"><span class="toc-text">ramda</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -473,7 +473,53 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="redux生态库理解"><a href="#redux生态库理解" class="headerlink" title="redux生态库理解"></a>redux生态库理解</h1><h3 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h3><p>状态管理库</p>
+<ul>
+<li>store：全局状态数据（一般是不可变的数据）</li>
+<li>action：记录操作（type）和操作值（payload）的对象</li>
+<li>reducer： 接收 state 和 action，并返回新的 state 的函数</li>
+</ul>
+<p>参考：<a href="https://www.redux.org.cn/docs/introduction/PriorArt.html" target="_blank" rel="noopener">https://www.redux.org.cn/docs/introduction/PriorArt.html</a></p>
+<h3 id="reselect"><a href="#reselect" class="headerlink" title="reselect"></a>reselect</h3><p>选择对应的部分store</p>
+<h3 id="redux-sage"><a href="#redux-sage" class="headerlink" title="redux-sage"></a>redux-sage</h3><p>一个以redux中间件形式存在的库，更加优雅的管理异步操作（Side Effect：<strong>异步网络请求</strong>、<strong>本地读取 localStorage/Cookie</strong> 等外界操作）</p>
+<p>通过createStore将store和sage关联起来</p>
+<ul>
+<li>Effect：一个简单的对象，这个对象包含了一些给 middleware 解释执行的信息。（调用某些异步函数，发起一个 action 到 store，等等）</li>
+<li>put： 这个函数用于创建 dispatch Effect</li>
+</ul>
+<p><img src="https://pic4.zhimg.com/v2-9697122f53bb1c92a9c455c1b0e5d22f_r.jpg" alt="preview"></p>
+<p>参考：<a href="https://zhuanlan.zhihu.com/p/35437092" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/35437092</a></p>
+<p>中文文档： <a href="https://redux-saga-in-chinese.js.org/" target="_blank" rel="noopener">https://redux-saga-in-chinese.js.org/</a></p>
+<h3 id="seamless-immutable"><a href="#seamless-immutable" class="headerlink" title="seamless-immutable"></a>seamless-immutable</h3><p>定义不可变的对象</p>
+<p>每次修改都会返回一个新的对象</p>
+<p>用树的方式存储数据，从而达到复用和高效更新</p>
+<p>使用自带api操作数据，方法内置在prototype</p>
+<h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><ul>
+<li>set(key, value) 设置值<ul>
+<li>key: String</li>
+<li>value: <any></li>
+</ul>
+</li>
+<li>setIn([key, key2 … ], value) 设置嵌套对象里的值</li>
+<li>get(key, value)</li>
+<li>getIn([key, key2 …], value)</li>
+<li>merge(obj || [obj, … ], config) 两个对象合并<ul>
+<li>obj: Object</li>
+<li>[obj, … ] : Array</li>
+<li>config: Object 合并设置，比如: <code>{deep: true} // 深度合并</code></li>
+</ul>
+</li>
+<li>isImmutable</li>
+<li>asMutable</li>
+<li>update(key, fn) 用函数操作更新<ul>
+<li>key: String</li>
+<li>fn: function 返回更新值value</li>
+</ul>
+</li>
+<li>updateIn([key, key2 … ], fn) 用函数操作嵌套对象的更新</li>
+</ul>
+<p>github仓库：<a href="https://github.com/rtfeldman/seamless-immutable" target="_blank" rel="noopener">https://github.com/rtfeldman/seamless-immutable</a></p>
+<h3 id="redux-persist"><a href="#redux-persist" class="headerlink" title="redux-persist"></a>redux-persist</h3><h3 id="ramda"><a href="#ramda" class="headerlink" title="ramda"></a>ramda</h3>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1249118795@qq.com </span>
     </div>
