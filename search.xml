@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>AMD、CMD、CommonJS以及UMD的简单对比</title>
-    <url>/2022/03/04/AMD%E3%80%81CMD%E3%80%81CommonJS%E4%BB%A5%E5%8F%8AUMD%E7%9A%84%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94/</url>
+    <url>/2022/03/09/AMD%E3%80%81CMD%E3%80%81CommonJS%E4%BB%A5%E5%8F%8AUMD%E7%9A%84%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94/</url>
     <content><![CDATA[<h2 id="AMD、CMD、CommonJS以及UMD的简单对比"><a href="#AMD、CMD、CommonJS以及UMD的简单对比" class="headerlink" title="AMD、CMD、CommonJS以及UMD的简单对比"></a>AMD、CMD、CommonJS以及UMD的简单对比</h2><h3 id="一、AMD"><a href="#一、AMD" class="headerlink" title="一、AMD"></a>一、AMD</h3><p>为浏览器环境设计的， 所以是异步模块加载定义的</p>
 <ul>
 <li>加载模块</li>
@@ -132,7 +132,7 @@ import * as module from &#39;./module&#39;;
   </entry>
   <entry>
     <title>API规范参考</title>
-    <url>/2022/03/04/API%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
+    <url>/2022/03/09/API%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
     <content><![CDATA[<h1 id="API规范"><a href="#API规范" class="headerlink" title="API规范"></a>API规范</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
 <li><p>RESTful API是目前比较成熟的一套互联网应用程序的API设计理论,它遵循资源导向的设计方式。<br>它有三个主要要素：资源，集合和 URLs。</p>
 <ul>
@@ -251,7 +251,7 @@ import * as module from &#39;./module&#39;;
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/2022/03/04/hexo%E4%BD%BF%E7%94%A8/</url>
+    <url>/2022/03/09/hexo%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
@@ -265,13 +265,13 @@ import * as module from &#39;./module&#39;;
   </entry>
   <entry>
     <title>hexo自动 部署</title>
-    <url>/2022/03/04/hexo%E8%87%AA%E5%8A%A8%20%E9%83%A8%E7%BD%B2/</url>
+    <url>/2022/03/09/hexo%E8%87%AA%E5%8A%A8%20%E9%83%A8%E7%BD%B2/</url>
     <content><![CDATA[<p>参考 <a href="https://blog.ctftools.com/2021/07/newpost-18/#3-3-%E5%8F%91%E5%B8%83%E5%88%B0-github-pages" target="_blank" rel="noopener">https://blog.ctftools.com/2021/07/newpost-18/#3-3-%E5%8F%91%E5%B8%83%E5%88%B0-github-pages</a></p>
 ]]></content>
   </entry>
   <entry>
     <title>js 布尔值转换和数据类型的简单判断</title>
-    <url>/2022/03/04/js%20%E5%B8%83%E5%B0%94%E5%80%BC%E8%BD%AC%E6%8D%A2%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E5%88%A4%E6%96%AD/</url>
+    <url>/2022/03/09/js%20%E5%B8%83%E5%B0%94%E5%80%BC%E8%BD%AC%E6%8D%A2%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E5%88%A4%E6%96%AD/</url>
     <content><![CDATA[<h1 id="js-布尔值转换和数据类型的简单判断"><a href="#js-布尔值转换和数据类型的简单判断" class="headerlink" title="js 布尔值转换和数据类型的简单判断"></a>js 布尔值转换和数据类型的简单判断</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
 <p>通常情况下js的布尔值转换和数据类型判断是一个比较容易犯错的问题，现在我们结合对照表来简单梳理一下</p>
 </blockquote>
@@ -369,6 +369,10 @@ pattern instanceof RegExp //true</code></pre><p> 注意事项以及适用范围�
 <h4 id="3、toString方法"><a href="#3、toString方法" class="headerlink" title="3、toString方法"></a>3、toString方法</h4><p>用法</p>
 <pre><code class="js">Object.prototype.toString.call([]) // [Object Array]</code></pre>
 <p>判断数据类型最优的方法</p>
+<h5 id="4、其他判断"><a href="#4、其他判断" class="headerlink" title="4、其他判断"></a>4、其他判断</h5><ul>
+<li>Array.isArray 是否是数组</li>
+<li>Number.isNaN 是否为NaN。tip：另外一个方法判断NaN，如果a=NaN 则 a !== ajic</li>
+</ul>
 ]]></content>
       <categories>
         <category>前端</category>
@@ -376,7 +380,7 @@ pattern instanceof RegExp //true</code></pre><p> 注意事项以及适用范围�
   </entry>
   <entry>
     <title>js常用算法面试题收集（持续更新）</title>
-    <url>/2022/03/04/js%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
+    <url>/2022/03/09/js%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
     <content><![CDATA[<h2 id="js常用算法面试题收集"><a href="#js常用算法面试题收集" class="headerlink" title="js常用算法面试题收集"></a>js常用算法面试题收集</h2><h4 id="1-统计一个字符出现的最高频率？"><a href="#1-统计一个字符出现的最高频率？" class="headerlink" title="1.统计一个字符出现的最高频率？"></a>1.统计一个字符出现的最高频率？</h4><pre><code class="js">let str = &#39;asdfghjklaqwertyuiopiaia&#39;;
 function statistics(str){
   const strArr = [...str]
@@ -516,7 +520,7 @@ console.log(separate([0, 1, 2, &#39;&#39;, &#39;&#39;, 6, 7, &#39;&#39;]))</code
   </entry>
   <entry>
     <title>redux生态库理解</title>
-    <url>/2022/03/04/redux%E7%94%9F%E6%80%81%E5%BA%93%E7%90%86%E8%A7%A3/</url>
+    <url>/2022/03/09/redux%E7%94%9F%E6%80%81%E5%BA%93%E7%90%86%E8%A7%A3/</url>
     <content><![CDATA[<h1 id="redux生态库理解"><a href="#redux生态库理解" class="headerlink" title="redux生态库理解"></a>redux生态库理解</h1><h3 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h3><p>状态管理库</p>
 <ul>
 <li>store：全局状态数据（一般是不可变的数据）</li>
@@ -567,7 +571,7 @@ console.log(separate([0, 1, 2, &#39;&#39;, &#39;&#39;, 6, 7, &#39;&#39;]))</code
   </entry>
   <entry>
     <title>typescript</title>
-    <url>/2022/03/04/typescript/</url>
+    <url>/2022/03/09/typescript/</url>
     <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>本篇文章主要是为了给让大家了解下Typescript</p>
 <p>这里将会讲到大家关心的几个问题，简单先简绍了几个与js不同的ts的语法，来探讨ts和传统js的区别</p>
 <p>然后从网络上收集整理了一些使用和不使用ts的意见，探讨我们应不应该使用ts，以及ts的适用场景</p>
@@ -922,7 +926,7 @@ function identity&lt;T&gt;(arg: T): T {
   </entry>
   <entry>
     <title>中高级前端面试题目收集（持续更新）</title>
-    <url>/2022/03/04/%E4%B8%AD%E9%AB%98%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
+    <url>/2022/03/09/%E4%B8%AD%E9%AB%98%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
     <content><![CDATA[<p>[TOC]</p>
 <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
 <p>这里进行了一些常用面试题目的搜集，可供面试前参考，先罗列一遍，后期打算再进行分类整理</p>
@@ -937,9 +941,9 @@ function identity&lt;T&gt;(arg: T): T {
 <li>css （BFC、清除浮动、居中、css3实现三角形、主题切换方案、<a href="https://zhuanlan.zhihu.com/p/41604775" target="_blank" rel="noopener">css选择器权重</a>、<a href="https://segmentfault.com/a/1190000010780991" target="_blank" rel="noopener">css3</a>、<a href="https://segmentfault.com/a/1190000012739764" target="_blank" rel="noopener">浮动</a>）</li>
 <li>html （语义化、canvas、空标签有哪些）</li>
 <li>node.js （express、koa洋葱模型、eventEmitter的实现、事件循环、微任务与宏任务、async awiat、错误处理、pm2的使用、docker的使用）</li>
-<li>Vue （<a href="https://juejin.cn/post/6844903479044112391" target="_blank" rel="noopener">双向绑定的原理</a>、v-model的原理、vue-router的实现、vuex的实现、vue3.0的新特性）</li>
+<li>Vue （双向绑定的原理 （<a href="https://juejin.cn/post/6844903479044112391" target="_blank" rel="noopener">1</a>、<a href="https://juejin.cn/post/6844903869730799629#heading-10" target="_blank" rel="noopener">2</a>）、v-model的原理、vue-router的实现、vuex的实现、vue3.0的新特性）</li>
 <li>React （vue和react的区别、react的函数式组件、immutable、redux实现、React16的新特性、hook的使用、生命周期）</li>
-<li>前端性能优化 （方案、性能监控）</li>
+<li><a href="https://alienzhou.com/projects/fe-performance-journey/5-subresources/" target="_blank" rel="noopener">前端性能优化</a> （方案、性能监控）</li>
 <li>webpack （配置、各种loader、原理、性能优化：多线程打包、代码分割、按需加载）</li>
 <li>基础算法 （排序、链表、数、队列、栈）</li>
 <li>git （命令、cli、rebase用法）</li>
@@ -1418,6 +1422,11 @@ func.call(obj) //指向全局</code></pre>
 <li>变量声明提升，不会提升赋值</li>
 </ol>
 <p><a href="https://juejin.im/post/5d36b06af265da1ba84ad143#heading-3" target="_blank" rel="noopener">参考</a></p>
+<h2 id="作用域提升"><a href="#作用域提升" class="headerlink" title="作用域提升"></a>作用域提升</h2><ol>
+<li><em>变量声明、函数声明都会被提升到作用域顶处；</em></li>
+<li>当出现相同名称时，优先级为：<strong>变量声明(foo#1) &gt; 函数声明(foo#2) &gt; 变量赋值(foo#3)*</strong></li>
+</ol>
+<p><a href="https://github.com/mqyqingfeng/Blog/issues/5" target="_blank" rel="noopener">参考</a></p>
 <h2 id="前端模块化：CommonJS-AMD-CMD-ES6"><a href="#前端模块化：CommonJS-AMD-CMD-ES6" class="headerlink" title="前端模块化：CommonJS,AMD,CMD,ES6"></a>前端模块化：CommonJS,AMD,CMD,ES6</h2><p><a href="https://juejin.im/post/5aaa37c8f265da23945f365c" target="_blank" rel="noopener">参考</a></p>
 <h2 id="继承的几种方式"><a href="#继承的几种方式" class="headerlink" title="继承的几种方式"></a>继承的几种方式</h2><ol>
 <li><p>原型链继承 缺点：引用类型值的原型属性会被所有实例共享</p>
@@ -1603,7 +1612,7 @@ let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 </li>
 </ol>
 <p><a href="https://www.cnblogs.com/tugenhua0707/p/5198407.html" target="_blank" rel="noopener">Javascript设计模式详解</a></p>
-<h2 id="js设计模式"><a href="#js设计模式" class="headerlink" title="js设计模式"></a>js设计模式</h2><ol>
+<h2 id="js设计原则"><a href="#js设计原则" class="headerlink" title="js设计原则"></a>js设计原则</h2><ol>
 <li><p>单一职责原则</p>
 <blockquote>
 <p>单一职责原则，一个类只提供一种功能，不要存在过多导致类变化的原因。</p>
@@ -1665,14 +1674,11 @@ let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 <li>用来实现<a href="https://juejin.cn/post/6844903817104850952#heading-4" target="_blank" rel="noopener">两列自适应布局</a></li>
 </ul>
 <h2 id="CSS-百分比参照问题"><a href="#CSS-百分比参照问题" class="headerlink" title="CSS 百分比参照问题"></a>CSS 百分比参照问题</h2><ul>
-<li><p>参照父元素<strong>宽度</strong>的元素：padding <strong>margin</strong> width text-indent</p>
-</li>
-<li><p>参照父元素高度的元素：height</p>
-</li>
-<li><p>参照父元素属性:font-size line-height</p>
-</li>
-<li><p>特殊：相对定位的时候，top(bottom) left(right)参照的是父元素的内容区域的高度与宽度，而绝对定位的时候参照的是最近的定位元素包含padding的高度与宽度</p>
-</li>
+<li>参照父元素<strong>宽度</strong>的元素：padding <strong>margin</strong> width text-indent</li>
+<li>参照父元素高度的元素：height</li>
+<li>参照父元素属性:font-size line-height</li>
+<li>参照transform-box（可能为当前元素）属性：transform: translate(30%, 50%);</li>
+<li>特殊：相对定位的时候，top(bottom) left(right)参照的是父元素的内容区域的高度与宽度，而绝对定位的时候参照的是最近的定位元素包含padding的高度与宽度</li>
 </ul>
 <h2 id="React-组件的生命周期方法"><a href="#React-组件的生命周期方法" class="headerlink" title="React 组件的生命周期方法"></a>React 组件的生命周期方法</h2><p>一些最重要的生命周期方法是：</p>
 <ol>
@@ -1762,11 +1768,6 @@ handler参数也是一个对象，用来定制拦截行为。*/
 </li>
 </ul>
 <p>参考：<a href="https://juejin.im/post/5be4f7cfe51d453339084530#heading-4" target="_blank" rel="noopener">ES6 系列之 defineProperty 与 proxy</a></p>
-<h2 id="作用域提升"><a href="#作用域提升" class="headerlink" title="作用域提升"></a>作用域提升</h2><ol>
-<li><em>变量声明、函数声明都会被提升到作用域顶处；</em></li>
-<li>当出现相同名称时，优先级为：<strong>变量声明(foo#1) &gt; 函数声明(foo#2) &gt; 变量赋值(foo#3)*</strong></li>
-</ol>
-<p><a href="https://github.com/mqyqingfeng/Blog/issues/5" target="_blank" rel="noopener">参考</a></p>
 <h2 id="页面性能指标"><a href="#页面性能指标" class="headerlink" title="页面性能指标"></a>页面性能指标</h2><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gdhtsdka5bj31pc0n6ti1.jpg" alt="蚂蚁金服如何把前端性能监控做到极致?"></p>
 <p>页面加载时长是被清晰的标在这个页面的底部的。它是指 DOM <code>load</code> 事件触发完成，它的优点有：</p>
 <ul>
@@ -1843,12 +1844,54 @@ iter.next();//{value:2，done:false}
 iter.next();//{value:3，done:false}
 iter.next();//{value:undefined，done:true}</code></pre>
 <p><a href="http://www.alloyteam.com/2016/02/generators-in-depth/" target="_blank" rel="noopener">参考</a></p>
-<h1 id="webpack-中-loader-和-plugin-的区别是什么"><a href="#webpack-中-loader-和-plugin-的区别是什么" class="headerlink" title="webpack 中 loader 和 plugin 的区别是什么"></a>webpack 中 loader 和 plugin 的区别是什么</h1><ul>
+<h2 id="webpack-中-loader-和-plugin-的区别是什么"><a href="#webpack-中-loader-和-plugin-的区别是什么" class="headerlink" title="webpack 中 loader 和 plugin 的区别是什么"></a>webpack 中 loader 和 plugin 的区别是什么</h2><ul>
 <li><p>loader，它是一个转换器，将A文件进行编译成B文件，比如：将A.less转换为A.css，单纯的文件转换过程。</p>
 </li>
 <li><p>plugin是一个扩展器，它丰富了webpack本身，针对是loader结束后，webpack打包的整个过程，它并不直接操作文件，而是基于事件机制工作，会监听webpack打包过程中的某些节点，执行广泛的任务</p>
 </li>
 </ul>
+<h2 id="Vue-中的-computed-是如何实现的"><a href="#Vue-中的-computed-是如何实现的" class="headerlink" title="Vue 中的 computed 是如何实现的"></a>Vue 中的 computed 是如何实现的</h2><p>computed本身是通过代理的方式代理到组件实例上的，所以读取计算属性的时候，执行的是一个内部的getter，而不是用户定义的方法。</p>
+<p>computed内部实现了一个惰性的watcher，在实例化的时候不会去求值，其内部通过dirty属性标记计算属性是否需要重新求值。当computed依赖的任一状态（不一定是return中的）发生变化，都会通知这个惰性watcher，让它把dirty属性设置为true。所以，当再次读取这个计算属性的时候，就会重新去求值。</p>
+<p><a href="https://ustbhuangyi.github.io/vue-analysis/v2/reactive/computed-watcher.html#computed" target="_blank" rel="noopener">参考</a></p>
+<h2 id="css优先级"><a href="#css优先级" class="headerlink" title="css优先级"></a>css优先级</h2><p>!important &gt; 内联 &gt; id &gt; class（=伪类、属性选择器） &gt; 标签选择器（=伪元素）</p>
+<p><a href="https://zhuanlan.zhihu.com/p/41604775" target="_blank" rel="noopener">参考</a></p>
+<h2 id="如何修复输出值中的-undefined-？-阿里"><a href="#如何修复输出值中的-undefined-？-阿里" class="headerlink" title="如何修复输出值中的 undefined ？(阿里)"></a>如何修复输出值中的 undefined ？(阿里)</h2><pre><code class="javascript">function LateBloomer(){
+    this.petalCount = Math.ceil(Math.random()*2 + 1);
+}
+LateBloomer.prototype.bloom = function(){
+    window.setTimeout(this.declare, 1000);
+}
+LateBloomer.prototype.declare = function(){
+    console.log(&#39;I am a beautiful flower with &#39; + this.petalCount + &#39; petals&#39;);
+}
+var flower = new LateBloomer();
+flower.bloom();</code></pre>
+<h2 id="this指向"><a href="#this指向" class="headerlink" title="this指向"></a>this指向</h2><p>区别：</p>
+<p><strong>普通函数中的this:</strong></p>
+<ol>
+<li><p>this总是代表它的直接调用者, 例如 obj.func ,那么func中的this就是obj</p>
+</li>
+<li><p>在默认情况(非严格模式下,未使用 ‘use strict’),没找到直接调用者,则this指的是 window</p>
+</li>
+<li><p>在严格模式下,没有直接调用者的函数中的this是 undefined</p>
+</li>
+<li><p>使用call,apply,bind(ES5新增)绑定的,this指的是 绑定的对象</p>
+</li>
+</ol>
+<p><strong>箭头函数中的this</strong></p>
+<ol>
+<li>默认指向在定义它时,它所处的对象,而不是执行时的对象, 定义它的时候,可能环境是window（即继承父级的this）</li>
+<li>call,apply,bind不改变this指向</li>
+</ol>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this" target="_blank" rel="noopener">参考</a></p>
+<h2 id="vue-nextTick实现"><a href="#vue-nextTick实现" class="headerlink" title="vue nextTick实现"></a>vue nextTick实现</h2><p>注意：dom的更新是同步的，前一步更新后一步就能拿到结果，所以nextTick能获取dom操作后的结果</p>
+<p><a href="https://ustbhuangyi.github.io/vue-analysis/v2/reactive/next-tick.html#js-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6" target="_blank" rel="noopener">参考</a></p>
+<h2 id="redux简述"><a href="#redux简述" class="headerlink" title="redux简述"></a>redux简述</h2><p>生成一个使用action变更的state，使用reduer进行管理（传入state和action返回一个新的state）</p>
+<h2 id="react-hook"><a href="#react-hook" class="headerlink" title="react hook"></a>react hook</h2><ul>
+<li>useEffect怎么替代componentDidMount，可以第二个参数传入[],如：<code>useEffect(()=&gt; {}, [])</code></li>
+</ul>
+<p><a href="https://zh-hans.reactjs.org/docs/hooks-intro.html" target="_blank" rel="noopener">参考</a></p>
+<h2 id="webpack异步加载原理"><a href="#webpack异步加载原理" class="headerlink" title="webpack异步加载原理"></a>webpack异步加载原理</h2><p><a href="https://blog.csdn.net/ywl570717586/article/details/79034322?ops_request_misc=&request_id=&biz_id=102&utm_term=webpack%20%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-79034322.first_rank_v2_pc_rank_v29&spm=1018.2226.3001.4187" target="_blank" rel="noopener">参考</a></p>
 ]]></content>
       <categories>
         <category>面试</category>
@@ -1859,7 +1902,7 @@ iter.next();//{value:undefined，done:true}</code></pre>
   </entry>
   <entry>
     <title>二叉树深度优先遍历js实现</title>
-    <url>/2022/03/04/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86js%E5%AE%9E%E7%8E%B0/</url>
+    <url>/2022/03/09/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86js%E5%AE%9E%E7%8E%B0/</url>
     <content><![CDATA[<h3 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h3><blockquote>
 <p>二叉树是数据结构算法的重要知识点，今天我们用js来实现下二叉树的深度优先遍历</p>
 </blockquote>
@@ -1996,7 +2039,7 @@ lastOrder(tree)</code></pre>
   </entry>
   <entry>
     <title>前端项目注释规范参考</title>
-    <url>/2022/03/04/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
+    <url>/2022/03/09/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
     <content><![CDATA[<h2 id="注释规范初稿"><a href="#注释规范初稿" class="headerlink" title="注释规范初稿"></a>注释规范初稿</h2><ul>
 <li><p><strong>强制</strong>  </p>
 <ol>
@@ -2042,7 +2085,7 @@ lastOrder(tree)</code></pre>
   </entry>
   <entry>
     <title>排序算法</title>
-    <url>/2022/03/04/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
+    <url>/2022/03/09/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><pre><code class="js">function sort(nums, l, r) {
    if(r - l &lt;= 0) return
    let pivot = partition1(nums, l, r)
@@ -2160,7 +2203,7 @@ function sort2(nums) {
   </entry>
   <entry>
     <title>移动端面试复习</title>
-    <url>/2022/03/04/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/</url>
+    <url>/2022/03/09/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/</url>
     <content><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
 <p>最近在很多面试中都问到移动端的问题，暴露了我平时工作中对移动端经验不足的问题，但是天赋不够能力来凑，通过一些面试准备还是能够能混过关的，我希望在这里以问题为导向，探究下移动端的一些问题</p>
 </blockquote>
@@ -2241,7 +2284,7 @@ function sort2(nums) {
   </entry>
   <entry>
     <title>策略模式</title>
-    <url>/2022/03/04/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</url>
+    <url>/2022/03/09/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><h3 id="一个表单验证的例子"><a href="#一个表单验证的例子" class="headerlink" title="一个表单验证的例子"></a>一个表单验证的例子</h3><p>给一个html页面，带一个form表单</p>
 <pre><code class="html">&lt;form id=&#39;login-form&#39; action=&quot;&quot; method=&quot;post&quot;&gt;
     &lt;label for=&quot;account&quot;&gt;手机号&lt;/label&gt;
