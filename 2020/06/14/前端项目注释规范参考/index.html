@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>前端项目注释规范参考 | 稍纵即逝</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="前端项目注释规范参考 | 稍纵即逝">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta property="og:type" content="website">
+<meta property="og:title" content="404">
+<meta property="og:url" content="https://coo2.top/404.html">
+<meta property="og:site_name" content="稍纵即逝">
+<meta property="og:locale" content="cn">
+<meta property="article:published_time" content="2020-04-07T08:01:07.000Z">
+<meta property="article:modified_time" content="2022-03-11T03:22:37.009Z">
+<meta property="article:author" content="tanjiajian">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/tjj.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/tjj.jpg"/>
+</a>
+<div class="author">
+    <span>tanjiajian</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/adam-tan"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:1249118795@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=1249118795&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(15)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="前端">
+                        
+                        前端
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="算法">
+                        
+                        算法
+                        <small>(3)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="规范">
+                        
+                        规范
+                        <small>(4)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="面试">
+                        
+                        面试
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="15">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Typescript</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>模块化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>算法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>面试</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a id="top" class="All 面试 "
+           href="/2019/12/24/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/"
+           data-tag="面试"
+           data-author="" >
+            <span class="post-title" title="前端面试题目收集（持续更新）">前端面试题目收集（持续更新）</span>
+            <span class="post-date" title="2019-12-24 15:48:00">2019/12/24</span>
+        </a>
+        
+        <a  class="All "
+           href="/2022/03/11/hexo%E8%87%AA%E5%8A%A8%20%E9%83%A8%E7%BD%B2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="hexo自动 部署">hexo自动 部署</span>
+            <span class="post-date" title="2022-03-11 11:22:37">2022/03/11</span>
+        </a>
+        
+        <a  class="All "
+           href="/2022/03/11/%E6%80%8E%E6%A0%B7%E7%90%86%E8%A7%A3redux%E7%94%9F%E6%80%81%E5%BA%93%EF%BC%9F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="怎样理解redux生态库？">怎样理解redux生态库？</span>
+            <span class="post-date" title="2022-03-11 11:22:37">2022/03/11</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2022/03/11/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="排序算法">排序算法</span>
+            <span class="post-date" title="2022-03-11 11:22:37">2022/03/11</span>
+        </a>
+        
+        <a  class="All 面试 "
+           href="/2022/03/11/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="移动端面试复习">移动端面试复习</span>
+            <span class="post-date" title="2022-03-11 11:22:37">2022/03/11</span>
+        </a>
+        
+        <a  class="All "
+           href="/2022/03/11/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="策略模式">策略模式</span>
+            <span class="post-date" title="2022-03-11 11:22:37">2022/03/11</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2021/07/03/js%20%E5%B8%83%E5%B0%94%E5%80%BC%E8%BD%AC%E6%8D%A2%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E5%88%A4%E6%96%AD/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="js 布尔值转换和数据类型的简单判断">js 布尔值转换和数据类型的简单判断</span>
+            <span class="post-date" title="2021-07-03 22:33:00">2021/07/03</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2021/03/04/%E6%80%8E%E6%A0%B7%E7%94%A8js%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%EF%BC%9F/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="怎样用js实现二叉树遍历？">怎样用js实现二叉树遍历？</span>
+            <span class="post-date" title="2021-03-04 18:34:00">2021/03/04</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/09/03/js%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="js常用算法面试题收集（持续更新）">js常用算法面试题收集（持续更新）</span>
+            <span class="post-date" title="2020-09-03 17:11:00">2020/09/03</span>
+        </a>
+        
+        <a  class="All 规范 "
+           href="/2020/08/03/typescript/"
+           data-tag="Typescript"
+           data-author="" >
+            <span class="post-title" title="typescript">typescript</span>
+            <span class="post-date" title="2020-08-03 12:13:00">2020/08/03</span>
+        </a>
+        
+        <a  class="All 规范 "
+           href="/2020/06/14/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前端项目注释规范参考">前端项目注释规范参考</span>
+            <span class="post-date" title="2020-06-14 16:00:00">2020/06/14</span>
+        </a>
+        
+        <a  class="All 规范 "
+           href="/2020/04/03/API%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="API规范参考">API规范参考</span>
+            <span class="post-date" title="2020-04-03 22:33:00">2020/04/03</span>
+        </a>
+        
+        <a  class="All "
+           href="/2020/04/03/hexo%E4%BD%BF%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2020-04-03 22:33:00">2020/04/03</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2020/03/02/AMD%E3%80%81CMD%E3%80%81CommonJS%E4%BB%A5%E5%8F%8AUMD%E7%9A%84%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94/"
+           data-tag="模块化"
+           data-author="" >
+            <span class="post-title" title="AMD、CMD、CommonJS以及UMD的简单对比">AMD、CMD、CommonJS以及UMD的简单对比</span>
+            <span class="post-date" title="2020-03-02 21:03:00">2020/03/02</span>
+        </a>
+        
+        <a  class="All 规范 "
+           href="/2018/12/24/%E5%89%8D%E7%AB%AF%E8%87%AA%E6%B5%8B%E6%B5%81%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前端自测流程">前端自测流程</span>
+            <span class="post-date" title="2018-12-24 17:48:00">2018/12/24</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-前端项目注释规范参考" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">前端项目注释规范参考</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="规范">规范</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2022-03-11 11:22:37'>2020-06-14 16:00</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#注释规范初稿"><span class="toc-text">注释规范初稿</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="注释规范初稿"><a href="#注释规范初稿" class="headerlink" title="注释规范初稿"></a>注释规范初稿</h2><ul>
+<li><p><strong>强制</strong>  </p>
+<ol>
+<li><p>方法的注释必须使用 JsDoc 规范，使用/<em>*内容</em>/格式，不得使用 // xxx方式。</p>
+</li>
+<li><p>所有的公用方法(包括接口中的方法)必须要用 Javadoc 注释、除了返回值、参数、 异常说明外，还必须指出该方法做什么事情，实现什么功能。</p>
+</li>
+<li><p>所有的公用方法都必须添加创建者和创建日期</p>
+</li>
+<li><p>方法内部单行注释，在被注释语句上方另起一行，使用//注释。方法内部多行注释<br> 使用/* */注释，注意与代码对齐。  </p>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p><strong>推荐</strong>  </p>
+<ol start="5">
+<li><p>与其“半吊子”英文来注释，不如用中文注释把问题说清楚。专有名词与关键字保持 英文原文即可。</p>
+<blockquote>
+<p>反例:“TCP 连接超时”解释成“传输控制协议连接超时”，理解反而费脑筋。  </p>
+</blockquote>
+</li>
+<li><p>代码修改的同时，注释也要进行相应的修改，尤其是参数、返回值、异常、核心逻辑 等的修改。</p>
+<blockquote>
+<p>说明:代码与注释更新不同步，就像路网与导航软件更新不同步一样，如果导航软件严重滞后， 就失去了导航的意义。  </p>
+</blockquote>
+</li>
+<li><p>对于注释的要求:第一、能够准确反应设计思想和代码逻辑;第二、能够描述业务含义，使别的程序员能够迅速了解到代码背后的信息。  </p>
+<blockquote>
+<p>完全没有注释的大段代码对于阅读者形同 天书，注释是给自己看的，即使隔很长时间，也能清晰理解当时的思路;注释也是给继任者看 的，使其能够快速接替自己的工作。</p>
+<ol start="8">
+<li>好的命名、代码结构是自解释的，注释力求精简准确、表达到位。避免出现注释的<br>一个极端:过多过滥的注释</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/han-1034683568/p/7680354.html" target="_blank" rel="noopener">阿里巴巴java开发手册</a></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1249118795@qq.com </span>
+    </div>
+</article>
+
+
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: '82a6fcaf7cba18f76843',
+            clientSecret: '26bace5e3f3042d51108e0ac7400afb6fe450660',
+            repo: 'adam-tan.github.io',
+            owner: 'adam-tan',
+            admin: ['adam-tan'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10),
+            proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2017 tanjiajian
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

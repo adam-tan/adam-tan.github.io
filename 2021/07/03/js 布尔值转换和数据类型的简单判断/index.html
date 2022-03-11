@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>js 布尔值转换和数据类型的简单判断 | 稍纵即逝</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="js 布尔值转换和数据类型的简单判断 | 稍纵即逝">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta property="og:type" content="website">
+<meta property="og:title" content="404">
+<meta property="og:url" content="https://coo2.top/404.html">
+<meta property="og:site_name" content="稍纵即逝">
+<meta property="og:locale" content="cn">
+<meta property="article:published_time" content="2020-04-07T08:01:07.000Z">
+<meta property="article:modified_time" content="2022-03-11T03:22:37.009Z">
+<meta property="article:author" content="tanjiajian">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/tjj.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/tjj.jpg"/>
+</a>
+<div class="author">
+    <span>tanjiajian</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/adam-tan"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:1249118795@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=1249118795&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(15)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="前端">
+                        
+                        前端
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="算法">
+                        
+                        算法
+                        <small>(3)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="规范">
+                        
+                        规范
+                        <small>(4)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="面试">
+                        
+                        面试
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="15">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Typescript</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>模块化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>算法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>面试</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a id="top" class="All 面试 "
+           href="/2019/12/24/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/"
+           data-tag="面试"
+           data-author="" >
+            <span class="post-title" title="前端面试题目收集（持续更新）">前端面试题目收集（持续更新）</span>
+            <span class="post-date" title="2019-12-24 15:48:00">2019/12/24</span>
+        </a>
+        
+        <a  class="All "
+           href="/2022/03/11/hexo%E8%87%AA%E5%8A%A8%20%E9%83%A8%E7%BD%B2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="hexo自动 部署">hexo自动 部署</span>
+            <span class="post-date" title="2022-03-11 11:22:37">2022/03/11</span>
+        </a>
+        
+        <a  class="All "
+           href="/2022/03/11/%E6%80%8E%E6%A0%B7%E7%90%86%E8%A7%A3redux%E7%94%9F%E6%80%81%E5%BA%93%EF%BC%9F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="怎样理解redux生态库？">怎样理解redux生态库？</span>
+            <span class="post-date" title="2022-03-11 11:22:37">2022/03/11</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2022/03/11/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="排序算法">排序算法</span>
+            <span class="post-date" title="2022-03-11 11:22:37">2022/03/11</span>
+        </a>
+        
+        <a  class="All 面试 "
+           href="/2022/03/11/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="移动端面试复习">移动端面试复习</span>
+            <span class="post-date" title="2022-03-11 11:22:37">2022/03/11</span>
+        </a>
+        
+        <a  class="All "
+           href="/2022/03/11/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="策略模式">策略模式</span>
+            <span class="post-date" title="2022-03-11 11:22:37">2022/03/11</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2021/07/03/js%20%E5%B8%83%E5%B0%94%E5%80%BC%E8%BD%AC%E6%8D%A2%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E5%88%A4%E6%96%AD/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="js 布尔值转换和数据类型的简单判断">js 布尔值转换和数据类型的简单判断</span>
+            <span class="post-date" title="2021-07-03 22:33:00">2021/07/03</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2021/03/04/%E6%80%8E%E6%A0%B7%E7%94%A8js%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%EF%BC%9F/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="怎样用js实现二叉树遍历？">怎样用js实现二叉树遍历？</span>
+            <span class="post-date" title="2021-03-04 18:34:00">2021/03/04</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/09/03/js%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="js常用算法面试题收集（持续更新）">js常用算法面试题收集（持续更新）</span>
+            <span class="post-date" title="2020-09-03 17:11:00">2020/09/03</span>
+        </a>
+        
+        <a  class="All 规范 "
+           href="/2020/08/03/typescript/"
+           data-tag="Typescript"
+           data-author="" >
+            <span class="post-title" title="typescript">typescript</span>
+            <span class="post-date" title="2020-08-03 12:13:00">2020/08/03</span>
+        </a>
+        
+        <a  class="All 规范 "
+           href="/2020/06/14/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前端项目注释规范参考">前端项目注释规范参考</span>
+            <span class="post-date" title="2020-06-14 16:00:00">2020/06/14</span>
+        </a>
+        
+        <a  class="All 规范 "
+           href="/2020/04/03/API%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="API规范参考">API规范参考</span>
+            <span class="post-date" title="2020-04-03 22:33:00">2020/04/03</span>
+        </a>
+        
+        <a  class="All "
+           href="/2020/04/03/hexo%E4%BD%BF%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2020-04-03 22:33:00">2020/04/03</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2020/03/02/AMD%E3%80%81CMD%E3%80%81CommonJS%E4%BB%A5%E5%8F%8AUMD%E7%9A%84%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94/"
+           data-tag="模块化"
+           data-author="" >
+            <span class="post-title" title="AMD、CMD、CommonJS以及UMD的简单对比">AMD、CMD、CommonJS以及UMD的简单对比</span>
+            <span class="post-date" title="2020-03-02 21:03:00">2020/03/02</span>
+        </a>
+        
+        <a  class="All 规范 "
+           href="/2018/12/24/%E5%89%8D%E7%AB%AF%E8%87%AA%E6%B5%8B%E6%B5%81%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前端自测流程">前端自测流程</span>
+            <span class="post-date" title="2018-12-24 17:48:00">2018/12/24</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-js 布尔值转换和数据类型的简单判断" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">js 布尔值转换和数据类型的简单判断</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="前端">前端</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2022-03-11 11:22:37'>2021-07-03 22:33</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#js-布尔值转换和数据类型的简单判断"><span class="toc-text">js 布尔值转换和数据类型的简单判断</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-text">引言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、js-布尔值转换"><span class="toc-text">一、js 布尔值转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、-的情况下转换"><span class="toc-text">一、&#x3D;&#x3D;的情况下转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、数据类型和布尔值的转换"><span class="toc-text">二、数据类型和布尔值的转换</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、判断数据类型的方法"><span class="toc-text">三、判断数据类型的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、typeof"><span class="toc-text">1、typeof</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、instanceof"><span class="toc-text">2、instanceof</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、toString方法"><span class="toc-text">3、toString方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4、其他判断"><span class="toc-text">4、其他判断</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="js-布尔值转换和数据类型的简单判断"><a href="#js-布尔值转换和数据类型的简单判断" class="headerlink" title="js 布尔值转换和数据类型的简单判断"></a>js 布尔值转换和数据类型的简单判断</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
+<p>通常情况下js的布尔值转换和数据类型判断是一个比较容易犯错的问题，现在我们结合对照表来简单梳理一下</p>
+</blockquote>
+<h3 id="一、js-布尔值转换"><a href="#一、js-布尔值转换" class="headerlink" title="一、js 布尔值转换"></a>一、js 布尔值转换</h3><h4 id="一、-的情况下转换"><a href="#一、-的情况下转换" class="headerlink" title="一、==的情况下转换"></a>一、==的情况下转换</h4><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Equality" target="_blank" rel="noopener">参考</a></p>
+<h4 id="二、数据类型和布尔值的转换"><a href="#二、数据类型和布尔值的转换" class="headerlink" title="二、数据类型和布尔值的转换"></a>二、数据类型和布尔值的转换</h4><table>
+<thead>
+<tr>
+<th align="center">数据类型</th>
+<th align="center">能转换为true</th>
+<th align="center">能转化为false</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">boolean</td>
+<td align="center">ture</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="center">string</td>
+<td align="center">任何非空字符</td>
+<td align="center">“”</td>
+</tr>
+<tr>
+<td align="center">number</td>
+<td align="center">任何非零数字值</td>
+<td align="center">0和NaN</td>
+</tr>
+<tr>
+<td align="center">obj</td>
+<td align="center">任何对象</td>
+<td align="center">null</td>
+</tr>
+<tr>
+<td align="center">undefined</td>
+<td align="center">—</td>
+<td align="center">undefined</td>
+</tr>
+<tr>
+<td align="center">arr</td>
+<td align="center">任何数组</td>
+<td align="center">null</td>
+</tr>
+</tbody></table>
+<h3 id="三、判断数据类型的方法"><a href="#三、判断数据类型的方法" class="headerlink" title="三、判断数据类型的方法"></a>三、判断数据类型的方法</h3><h4 id="1、typeof"><a href="#1、typeof" class="headerlink" title="1、typeof"></a>1、typeof</h4><table>
+<thead>
+<tr>
+<th align="center">数据类型</th>
+<th align="center">typeof结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">string</td>
+<td align="center">string</td>
+</tr>
+<tr>
+<td align="center">number</td>
+<td align="center">number</td>
+</tr>
+<tr>
+<td align="center">booleam</td>
+<td align="center">boolean</td>
+</tr>
+<tr>
+<td align="center">undefind</td>
+<td align="center">undefind</td>
+</tr>
+<tr>
+<td align="center">functuon</td>
+<td align="center">function</td>
+</tr>
+<tr>
+<td align="center">obj</td>
+<td align="center">obj</td>
+</tr>
+<tr>
+<td align="center">null</td>
+<td align="center">obj</td>
+</tr>
+<tr>
+<td align="center">arr</td>
+<td align="center">obj</td>
+</tr>
+</tbody></table>
+<p>用法：</p>
+<pre><code>typeof()  // 适合判断除null外的基本数据类型，不适合判断obj、arr、function等引用类型</code></pre><h4 id="2、instanceof"><a href="#2、instanceof" class="headerlink" title="2、instanceof"></a>2、instanceof</h4><p>用法:</p>
+<pre><code>obj instanceof Object  // true
+arr instanceof Array //true
+pattern instanceof RegExp //true</code></pre><p> 注意事项以及适用范围：</p>
+<ul>
+<li>引用用类型所有值都是obj的事例，所以所以引用类型instanceof Object都为ture</li>
+<li>可以判断是否为引用类型，或者是否为数组</li>
+</ul>
+<p>缺点：</p>
+<p>instanceof会从原型链一直往上查找，假如有个obj的继承的原型是Array，此时<code>obj instanceof Array</code>为true，显示是错的</p>
+<h4 id="3、toString方法"><a href="#3、toString方法" class="headerlink" title="3、toString方法"></a>3、toString方法</h4><p>用法</p>
+<pre><code class="js">Object.prototype.toString.call([]) // [Object Array]</code></pre>
+<p>判断数据类型最优的方法</p>
+<h5 id="4、其他判断"><a href="#4、其他判断" class="headerlink" title="4、其他判断"></a>4、其他判断</h5><ul>
+<li>Array.isArray 是否是数组</li>
+<li>Number.isNaN 是否为NaN。tip：另外一个方法判断NaN，如果a=NaN 则 a !== ajic</li>
+</ul>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1249118795@qq.com </span>
+    </div>
+</article>
+
+
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: '82a6fcaf7cba18f76843',
+            clientSecret: '26bace5e3f3042d51108e0ac7400afb6fe450660',
+            repo: 'adam-tan.github.io',
+            owner: 'adam-tan',
+            admin: ['adam-tan'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10),
+            proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2017 tanjiajian
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

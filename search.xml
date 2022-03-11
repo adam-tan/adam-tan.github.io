@@ -1,277 +1,402 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>AMD、CMD、CommonJS以及UMD的简单对比</title>
-    <url>/2022/03/09/AMD%E3%80%81CMD%E3%80%81CommonJS%E4%BB%A5%E5%8F%8AUMD%E7%9A%84%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94/</url>
-    <content><![CDATA[<h2 id="AMD、CMD、CommonJS以及UMD的简单对比"><a href="#AMD、CMD、CommonJS以及UMD的简单对比" class="headerlink" title="AMD、CMD、CommonJS以及UMD的简单对比"></a>AMD、CMD、CommonJS以及UMD的简单对比</h2><h3 id="一、AMD"><a href="#一、AMD" class="headerlink" title="一、AMD"></a>一、AMD</h3><p>为浏览器环境设计的， 所以是异步模块加载定义的</p>
-<ul>
-<li>加载模块</li>
-</ul>
-<p>AMD采用require()语句加载模块，但是不同于CommonJS，它要求两个参数：</p>
-<pre><code class="js"> 　　require([module], callback);</code></pre>
-<p>第一个参数[module]，是一个数组，里面的成员就是要加载的模块；第二个参数callback，则是加载成功之后的回调函数。</p>
-<ul>
-<li>定义模块</li>
-</ul>
-<p>模块通过 <code>define</code> 函数定义在闭包中，格式如下：</p>
-<pre><code class="js">define(id?: String, dependencies?: String[], factory: Function|Object)</code></pre>
-<p><code>id</code> 是模块的名字，它是可选的参数。</p>
-<p><code>dependencies</code> 指定了所要依赖的模块列表，它是一个数组，也是可选的参数，每个依赖的模块的输出将作为参数一次传入 <code>factory</code> 中。如果没有指定 <code>dependencies</code>，那么它的默认值是 <code>[&quot;require&quot;, &quot;exports&quot;, &quot;module&quot;]</code>。</p>
-<p><code>factory</code> 是最后一个参数，它包裹了模块的具体实现，它是一个函数或者对象。如果是函数，那么它的返回值就是模块的输出接口或值。</p>
-<p>用例：</p>
-<p>定义一个名为 <code>myModule</code> 的模块，它依赖 <code>jQuery</code> 模块：</p>
-<pre><code class="js">define(&#39;myModule&#39;, [&#39;jquery&#39;], function($) {
-    // $ 是 jquery 模块的输出
-    $(&#39;body&#39;).text(&#39;hello world&#39;);
-});
-// 使用
-require([&#39;myModule&#39;], function(myModule) {});</code></pre>
-<p>二、CMD</p>
-<p>和AMD同样是异步加载</p>
-<ul>
-<li><p>加载模块</p>
-<p>分为三种：</p>
-<p>requirea(name)；name为模块名</p>
-<p>require.async(name, callback)；异步加载 ，callback为加载后执行函数</p>
-<p>require.resolve(name);不加载模块，仅仅将短串解析成完整路径</p>
-</li>
-<li><p>模块定义</p>
-<p>分为define(factory)和define(name，deps，factory)</p>
-<pre><code class="js">// define(factory)
-define(function(require, exports, module) { 
-  // 模块代码 
-}); 
-
-// define(name，deps，factory)
-define(&#39;hello&#39;, [&#39;jquery&#39;], function(require, exports, module) { 
-  // 模块代码 
-}); </code></pre>
-</li>
-<li><p>和AMD异同</p>
-<p>CMD 推崇依赖就近，AMD 推崇依赖前置</p>
-<pre><code class="js">// CMD
-define(function(require, exports, module) {   
-    var a = require(&#39;./a&#39;)   
-    a.doSomething()    
-    var b = require(&#39;./b&#39;)   
-    b.doSomething()    
-    ... 
-})
-// AMD 
-define([&#39;./a&#39;, &#39;./b&#39;], function(a, b) {  // 依赖必须一开始就写好
-    a.doSomething()
-    ...
-    b.doSomething()
-    ...
-}) </code></pre>
-</li>
-</ul>
-<h2 id="三、CommonJS"><a href="#三、CommonJS" class="headerlink" title="三、CommonJS"></a>三、CommonJS</h2><p>​    以服务器为第一原则发展，同步加载</p>
-<ul>
-<li><p>加载</p>
-<pre><code class="js">const package = require(&#39;module-name&#39;)</code></pre>
-</li>
-<li><p>导出</p>
-<p>导出一个值</p>
-<pre><code class="js">module.exports = value</code></pre>
-<p>导出多个值</p>
-<pre><code class="js">exports.a = 1
-exports.b = 2
-exports.c = 3</code></pre>
-</li>
-</ul>
-<h2 id="四、UMD"><a href="#四、UMD" class="headerlink" title="四、UMD"></a>四、UMD</h2><p>umd是CommonJS和AMD结合的产物，是一个跨平台的解决方案。</p>
-<p>UMD先判断是否支持Node.js的模块（exports）是否存在，存在则使用Node.js模块模式。再判断是否支持AMD（define是否存在），存在则使用AMD方式加载模块。</p>
-<h2 id="五、ES-module"><a href="#五、ES-module" class="headerlink" title="五、ES module"></a>五、ES module</h2><pre><code class="js">// 报错1
-export 1;
-// 报错2
-const m = 1;
-export m;
-
-// 接口名与模块内部变量之间，建立了一一对应的关系
-// 写法1
-export const m = 1;
-// 写法2
-const m = 1；
-export { m };
-// 写法3
-const m = 1；
-export { m as module };
-</code></pre>
-<pre><code class="js">// 类似于对象解构
-// module.js
-export const m = 1;
-// index.js
-// 注意，这里的m得和被加载的模块输出的接口名对应
-import { m } from &#39;./module&#39;;
-// 若是想为输入的变量取名
-import { m as m1 }  &#39;./module&#39;;
-// 值得注意的是，import是编译阶段，所以不能动态加载，比如下面写法是错误的。因为&#39;a&#39; + &#39;b&#39;在运行阶段才能取到值，运行阶段在编译阶段之后
-import { &#39;a&#39; + &#39;b&#39; } from &#39;./module&#39;;
-// 若是只是想运行被加载的模块，如下
-// 值得注意的是，即使加载两次也只是运行一次
-import &#39;./module&#39;;
-// 整体加载
-import * as module from &#39;./module&#39;;
-</code></pre>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://zhaoda.net/webpack-handbook/amd.html" target="_blank" rel="noopener">AMD 规范</a></li>
-<li><a href="[http://www.ruanyifeng.com/blog/2012/11/require_js.html](http://www.ruanyifeng.com/blog/2012/11/require_js.html)">Javascript模块化编程（二）：require.js的用法</a></li>
-<li><a href="https://blog.csdn.net/mm_hello11/article/details/78958334" target="_blank" rel="noopener">amd和cmd规范的区别</a></li>
-<li><a href="https://github.com/seajs/seajs/issues/242" target="_blank" rel="noopener">cmd官方规范</a></li>
-<li><a href="https://github.com/amdjs/amdjs-api/wiki/AMD" target="_blank" rel="noopener">amd官方规范</a></li>
-<li><a href="https://juejin.im/post/5b7d2f45e51d4538826f4c28" target="_blank" rel="noopener">AMD , CMD, CommonJS，ES Module，UMD</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-      <tags>
-        <tag>模块化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>API规范参考</title>
-    <url>/2022/03/09/API%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
-    <content><![CDATA[<h1 id="API规范"><a href="#API规范" class="headerlink" title="API规范"></a>API规范</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
-<li><p>RESTful API是目前比较成熟的一套互联网应用程序的API设计理论,它遵循资源导向的设计方式。<br>它有三个主要要素：资源，集合和 URLs。</p>
-<ul>
-<li>资源具有数据，嵌套，和一些操作方法。  </li>
-<li>一组资源称为一个集合。  </li>
-<li>URL标识资源或集合的线上位置。  </li>
-</ul>
-</li>
-</ul>
-<h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><h4 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a>命名规则</h4><ul>
-<li>使用kebab-case（短横线分割）的URL<blockquote>
-<p>例子：<code>/api/be/project-config</code></p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p>在查询字符串或资源字段中使用camelCase模式。</p>
-<blockquote>
-<p>例子：<code>/api/be/meeting-config/projectUid=1453</code></p>
-</blockquote>
-</li>
-<li><p>URLs里面请尽量少用动词</p>
-<blockquote>
-<p>因为如果您为每个资源操作使用一个动词，您很快就会维护一个很大的URL列表，而且没有一致的使用模式，这会使开发人员难以学习。此外，我们还要使用动词做别的事情。<br>错误例子：<code>/api/be/project-config/create/list</code><br><code>/api/be/project-config/users/addName</code></p>
-</blockquote>
-</li>
-<li><p>为非资源型请求使用动词。在这种情况下，您的API并不需要返回任何资源。而是去执行一个操作(除CRUD操作）并返回执行结果。</p>
-<blockquote>
-<p> 例子：<code>/api.github.com/_private/browser/star</code>  点赞操作</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li>资源命名区分单复数<blockquote>
-<p>文档(Document)类型的资源用名词(短语)单数命名（<em>如一篇文章<code>https://api/article</code></em>）<br>  集合(Collection)类型的资源用名词(短语)复数命名（<em>如文章列表<code>https://api/articles</code></em>）</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="操作表示"><a href="#操作表示" class="headerlink" title="操作表示"></a>操作表示</h4><ul>
-<li><p>HTTP方法来操作CRUD功能</p>
-<blockquote>
-</blockquote>
-<p>  GET:          查询—–查询资源<br>  POST:        创建—-创建一些新的资源或者子资源<br>  PUT:         更新全部—-更新一个存在的资源（提供全部信息）<br>  PATCH:       更新部分—-更新现有资源。它只更新所提供的字段，不管其他字段<br>  DELETE:   删除—–删除一个存在的资源</p>
-<p>  例子：</p>
-<blockquote>
-<p> GET /zoos：列出所有动物园<br>  POST /zoos：新建一个动物园<br>  GET /zoos/ID：获取某个指定动物园的信息<br>  PUT /zoos/ID：更新某个指定动物园的信息（提供该动物园的全部信息）<br>  PATCH /zoos/ID：更新某个指定动物园的信息（提供该动物园的部分信息）<br>  DELETE /zoos/ID：删除某个动物园<br>  GET /zoos/ID/animals：列出某个指定动物园的所有动物<br>  DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物  </p>
-</blockquote>
-<p>  附：<a href="https://segmentfault.com/q/1010000005685904" target="_blank" rel="noopener">pacth与put的区别</a></p>
-</li>
-<li><p>如果记录数量很多，服务器不可能都将它们返回给用户。API应该提供参数，过滤返回结果。</p>
-<p>  下面是一些常见的参数。</p>
-<blockquote>
-<p><code>?limit=10</code>：指定返回记录的数量<br>  <code>?offset=10</code>：指定返回记录的开始位置。<br>  <code>?page=2&amp;per_page=100</code>：指定第几页，以及每页的记录数。<br>  <code>?sortby=name&amp;order=asc</code>：指定返回结果按照哪个属性排序，以及排序顺序。<br>  <code>?producy_type=1</code>：指定筛选条件</p>
-</blockquote>
-</li>
-</ul>
-<p>​    </p>
-<h4 id="关系表示"><a href="#关系表示" class="headerlink" title="关系表示"></a>关系表示</h4><ul>
-<li><p>对于嵌套资源，在URL体现关系。  同时避免层级过深。<br>例如，使用id将员工与公司联系起来。  </p>
-<blockquote>
-<p><code>GET /schools/2/students</code> , 应该从学校2得到所有学生的名单<br> <code>GET /schools/2/students/31</code> , 应该得到学生31的详细信息，且此学生属于学校2<br> <code>DELETE /schools/2/students/31</code> , 应删除属于学校2的学生31<br> <code>PUT /schools/2/students/31</code>, 应该更新学生31的信息<br> <code>POST /schools</code> , 应该创建一所新学校，并返回创建的新学校的细节。在集合URL上使用POST  </p>
-</blockquote>
-<p> 但是如 <code>GET /zoos/1/areas/3/animals/4</code><br> 尽量使用查询参数代替路径中的实体导航，如<code>GET/animals?zoo=1&amp;area=3</code></p>
-<p> 附：<a href="https://blog.csdn.net/xcc_2269861428/article/details/80433382" target="_blank" rel="noopener">post请求和get请求的区别</a>  </p>
-</li>
-</ul>
-<ul>
-<li>如有迭代版本（v1,v2,v3），使用简单的序数表示版本。并将其移到URL的左侧，使其具有最高的范围表述：<blockquote>
-<p><code>http://api.domain.com/v1/schools/3/students</code>    </p>
-</blockquote>
-</li>
-</ul>
-<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
-<li><p>Response不要包装，body 直接就是数据，</p>
-<blockquote>
-<p>错误例子：<code>{
- &quot;success&quot;:true，
- &quot;data&quot;:{&quot;id&quot;:1,&quot;name&quot;:&quot;xiaotuan&quot;},
-}</code></p>
-</blockquote>
-</li>
-<li><p>Service/DAO层方法命名规约</p>
-<blockquote>
-<p>   1) 获取单个对象的方法用get做前缀。<br>   2) 获取多个对象的方法用list做前缀。<br>   3) 获取统计值的方法用count做前缀。<br>   4) 插入的方法用save/insert做前缀。<br>   5) 删除的方法用remove/delete做前缀。<br>   6) 修改的方法用update做前缀。   </p>
-</blockquote>
-</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><h3 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h3><ul>
-<li><a href="http://wangwei.info/about-rest-api/" target="_blank" rel="noopener">REST接口设计规范</a></li>
-<li><a href="https://gumutianqi1.gitbooks.io/specification-doc/content/specification-doc/restful_api.html" target="_blank" rel="noopener">API接口规范</a></li>
-<li><a href="https://github.com/elsewhencode/project-guidelines" target="_blank" rel="noopener"> A set of best practices for JavaScript projects</a></li>
-</ul>
-<h3 id="github网站页面的部分API参考"><a href="#github网站页面的部分API参考" class="headerlink" title="github网站页面的部分API参考"></a>github网站页面的部分API参考</h3><blockquote>
-<p><a href="https://github.com/ant-design/ant-design" target="_blank" rel="noopener">https://github.com/ant-design/ant-design</a></p>
-</blockquote>
-<ul>
-<li><p>请求star数量 <code>https://api.github.com/_private/browser/stats</code>  </p>
-</li>
-<li><p>用户资料卡 <code>https://github.com/hovercards?user_id=7264444&amp;subject=33</code>  </p>
-</li>
-<li><p>star <code>https://github.com/ant-design/ant-design/star</code>  </p>
-</li>
-<li><p>unstar <code>https://github.com/ant-design/ant-design/unstar</code></p>
-</li>
-<li><p>Issues功能  <code>https://github.com/ant-design/ant-design/issues?_pjax=%23js-repo-pjax-container</code></p>
-</li>
-<li><p>查询功能 <code>https://github.com/ant-design/ant-design/search/count?q=d%27d%27d&amp;type=Commits&amp;unscoped_q=d%27d%27d</code></p>
-</li>
-<li><p>更新设置 <code>https://github.com/newsletter_preference</code></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>规范</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2022/03/09/hexo%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>hexo自动 部署</title>
-    <url>/2022/03/09/hexo%E8%87%AA%E5%8A%A8%20%E9%83%A8%E7%BD%B2/</url>
+    <url>/2022/03/11/hexo%E8%87%AA%E5%8A%A8%20%E9%83%A8%E7%BD%B2/</url>
     <content><![CDATA[<p>参考 <a href="https://blog.ctftools.com/2021/07/newpost-18/#3-3-%E5%8F%91%E5%B8%83%E5%88%B0-github-pages" target="_blank" rel="noopener">https://blog.ctftools.com/2021/07/newpost-18/#3-3-%E5%8F%91%E5%B8%83%E5%88%B0-github-pages</a></p>
 ]]></content>
   </entry>
   <entry>
+    <title>怎样理解redux生态库？</title>
+    <url>/2022/03/11/%E6%80%8E%E6%A0%B7%E7%90%86%E8%A7%A3redux%E7%94%9F%E6%80%81%E5%BA%93%EF%BC%9F/</url>
+    <content><![CDATA[<h1 id="redux生态库理解"><a href="#redux生态库理解" class="headerlink" title="redux生态库理解"></a>redux生态库理解</h1><h3 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h3><p>状态管理库</p>
+<ul>
+<li>store：全局状态数据（一般是不可变的数据）</li>
+<li>action：记录操作（type）和操作值（payload）的对象</li>
+<li>reducer： 接收 state 和 action，并返回新的 state 的函数</li>
+</ul>
+<p>参考：<a href="https://www.redux.org.cn/docs/introduction/PriorArt.html" target="_blank" rel="noopener">https://www.redux.org.cn/docs/introduction/PriorArt.html</a></p>
+<h3 id="reselect"><a href="#reselect" class="headerlink" title="reselect"></a>reselect</h3><p>选择对应的部分store</p>
+<h3 id="redux-sage"><a href="#redux-sage" class="headerlink" title="redux-sage"></a>redux-sage</h3><p>一个以redux中间件形式存在的库，更加优雅的管理异步操作（Side Effect：<strong>异步网络请求</strong>、<strong>本地读取 localStorage/Cookie</strong> 等外界操作）</p>
+<p>通过createStore将store和sage关联起来</p>
+<ul>
+<li>Effect：一个简单的对象，这个对象包含了一些给 middleware 解释执行的信息。（调用某些异步函数，发起一个 action 到 store，等等）</li>
+<li>put： 这个函数用于创建 dispatch Effect</li>
+</ul>
+<p><img src="https://pic4.zhimg.com/v2-9697122f53bb1c92a9c455c1b0e5d22f_r.jpg" alt="preview"></p>
+<p>参考：<a href="https://zhuanlan.zhihu.com/p/35437092" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/35437092</a></p>
+<p>中文文档： <a href="https://redux-saga-in-chinese.js.org/" target="_blank" rel="noopener">https://redux-saga-in-chinese.js.org/</a></p>
+<h3 id="seamless-immutable"><a href="#seamless-immutable" class="headerlink" title="seamless-immutable"></a>seamless-immutable</h3><p>定义不可变的对象</p>
+<p>每次修改都会返回一个新的对象</p>
+<p>用树的方式存储数据，从而达到复用和高效更新</p>
+<p>使用自带api操作数据，方法内置在prototype</p>
+<h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><ul>
+<li>set(key, value) 设置值<ul>
+<li>key: String</li>
+<li>value: <any></li>
+</ul>
+</li>
+<li>setIn([key, key2 … ], value) 设置嵌套对象里的值</li>
+<li>get(key, value)</li>
+<li>getIn([key, key2 …], value)</li>
+<li>merge(obj || [obj, … ], config) 两个对象合并<ul>
+<li>obj: Object</li>
+<li>[obj, … ] : Array</li>
+<li>config: Object 合并设置，比如: <code>{deep: true} // 深度合并</code></li>
+</ul>
+</li>
+<li>isImmutable</li>
+<li>asMutable</li>
+<li>update(key, fn) 用函数操作更新<ul>
+<li>key: String</li>
+<li>fn: function 返回更新值value</li>
+</ul>
+</li>
+<li>updateIn([key, key2 … ], fn) 用函数操作嵌套对象的更新</li>
+</ul>
+<p>github仓库：<a href="https://github.com/rtfeldman/seamless-immutable" target="_blank" rel="noopener">https://github.com/rtfeldman/seamless-immutable</a></p>
+<h3 id="redux-persist"><a href="#redux-persist" class="headerlink" title="redux-persist"></a>redux-persist</h3><h3 id="ramda"><a href="#ramda" class="headerlink" title="ramda"></a>ramda</h3>]]></content>
+  </entry>
+  <entry>
+    <title>排序算法</title>
+    <url>/2022/03/11/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><pre><code class="js">function sort(nums, l, r) {
+   if(r - l &lt;= 0) return
+   let pivot = partition1(nums, l, r)
+   console.log(&#39;pivot&#39;, pivot)
+   // left
+   sort(nums, l, pivot -1)
+   // right
+   sort(nums, pivot + 1, r)
+   return nums
+}
+
+function partition(nums,l,r) {
+   // 中心位置
+   let center = l
+   // 指针
+   let compare = r
+   while(center != compare) {
+       // 在右边移动指针时
+       if(center &lt; compare) {
+          if(nums[center] &gt; nums[compare]) {
+             let temp = nums[center]
+             nums[center] = nums[compare]
+             nums[compare] = temp
+             let num = compare
+             compare = center
+             center = num
+             compare++
+             continue
+          }
+          compare--
+       }
+       // 在左边移动指针时
+       else {
+           if(nums[center] &lt; nums[compare]) {
+              let temp = nums[center]
+              nums[center] = nums[compare]
+              nums[compare] = temp
+              let num = compare
+              compare = center
+              center = num
+              compare--
+              continue
+          }
+          compare++    
+       }
+   }
+   console.log(nums)
+   return center
+ }
+
+ function partition1 (nums,l,r) {
+    // 保存基准值
+    let pivot = nums[l]
+    while(l!=r) {
+       while(r &gt; l &amp;&amp; nums[r] &gt;= pivot) {
+         r--
+       }
+       nums[l] = nums[r]
+       while(r &gt; l &amp;&amp; nums[l] &lt;= pivot) {
+         l++
+       }
+       nums[r] = nums[l]
+    }
+    nums[l] = pivot
+    return l
+ }
+
+ console.log(sort([45,23,55,12,4,88,1,2,4], 0, 8))</code></pre>
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><pre><code class="js">function sort(nums) {
+   for(let i = 0; i &lt; nums.length; i++) {
+      // 插入的数
+      let insert = nums[i]
+      //j 为排序列表长度
+      let j = i -1
+      for(j ; j &gt;= 0; j--) {
+         if(insert &lt; nums[j]) {
+            // insert往前挪
+            nums[j + 1] = nums[j]
+            nums[j] = insert
+         }
+      }
+   }
+   return nums
+}
+
+function sort2(nums) {
+   for(let i = 0; i &lt; nums.length; i++) {
+      // 插入的数
+      let insert = nums[i]
+      //j 为已排序列表长度
+      let j = i -1
+      while(j&gt;= 0 &amp;&amp; insert &lt; nums[j]) {
+            nums[j + 1] = nums[j]
+            j--z
+      }
+      nums[j + 1] = insert
+   }
+   return nums
+}
+
+
+
+
+ console.log(sort([45,23,55,12,4,88,1,2,4]))
+
+
+</code></pre>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>移动端面试复习</title>
+    <url>/2022/03/11/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/</url>
+    <content><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
+<p>最近在很多面试中都问到移动端的问题，暴露了我平时工作中对移动端经验不足的问题，但是天赋不够能力来凑，通过一些面试准备还是能够能混过关的，我希望在这里以问题为导向，探究下移动端的一些问题</p>
+</blockquote>
+<h2 id="一、移动端和pc端的区别"><a href="#一、移动端和pc端的区别" class="headerlink" title="一、移动端和pc端的区别"></a>一、移动端和pc端的区别</h2><ol>
+<li>兼容性不同： pc向下考虑IE兼容，移动端更多考虑是手机兼容，如一些手机屏幕大小和分辨率的兼容</li>
+<li>部分事件不同：移动端多出触屏事件，没有hover事件</li>
+<li>部分场景不同：移动端手机软键盘</li>
+<li>布局要求不同：移动端往往要求做到自适应</li>
+<li>平台区别：移动端可能要依托小程序、微信公众号平台进行开发，pc端比较纯粹</li>
+<li>性能要求不同：移动端对首屏加载速度，用户响应延迟、渲染性能、动画帧率要求比较高</li>
+</ol>
+<h2 id="二、点击穿透问题"><a href="#二、点击穿透问题" class="headerlink" title="二、点击穿透问题"></a>二、点击穿透问题</h2><p>  假如页面上有两个元素A和B。</p>
+<p>  B元素在A元素之上。</p>
+<p>  我们在B元素的touchstart事件上注册了一个回调函数，该回调函数的作用是隐藏B元素。</p>
+<p>  我们发现，当我们点击B元素，B元素被隐藏了，随后，A元素触发了click事件。</p>
+<p>  原因： 这是因为在移动端浏览器，事件执行的顺序是touchstart &gt; touchend &gt; click。而click事件有300ms的延迟，当touchstart事件把B元素隐藏之后，隔了300ms，浏览器触发了click事件，但是此时B元素不见了，所以该事件被派发到了A元素身上。如果A元素是一个链接，那此时页面就会意外地跳转。</p>
+<p>  解决方案：</p>
+<ol>
+<li>只用touch，简单完美</li>
+<li>只用click，副作用大</li>
+<li>tap后延迟350ms再隐藏mask</li>
+<li>禁用缩放</li>
+<li>更改默认视窗宽度为自适应</li>
+<li>引入插件，如：<a href="https://zhuanlan.zhihu.com/p/66845055" target="_blank" rel="noopener">fastClick</a></li>
+</ol>
+<p>  <strong>移动端300ms点击延迟</strong>：</p>
+<blockquote>
+<p>移动端300ms点击延迟由来：</p>
+<p>苹果公司在发布首款 iPhone 前夕，遇到一个问题：当时的网站都是为大屏幕设备所设计的。于是苹果的工程师们做了一些约定，应对 iPhone 这种小屏幕浏览桌面端站点的问题。</p>
+<p>这当中最出名的，当属双击缩放(double tap to zoom)，这也是会有上述 300 毫秒延迟的主要原因。</p>
+</blockquote>
+<p>  解决方案：</p>
+<ol>
+<li><p><strong>禁用缩放</strong></p>
+<p>在meta加入以下信息，表明页面不可缩放，从而可以移动端浏览器自动禁掉默认300ms点击延迟</p>
+<pre><code class="js">&lt;meta name=&quot;viewport&quot; content=&quot;user-scalable=no&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1,maximum-scale=1&quot;&gt;</code></pre>
+<p><strong>缺点：</strong>完全禁用缩放影响用户体验</p>
+</li>
+<li><p><strong>更改默认的视口宽度</strong></p>
+<p>一开始，为了让桌面站点能在移动端浏览器正常显示，移动端浏览器默认的视口宽度并不等于设备浏览器视窗宽度，通常是设固定值980px。现在我们可以通过以下标签来设置视口宽度为设备宽度。</p>
+<pre><code class="js">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</code></pre>
+<p>如果能够识别出一个网站是响应式的网站，那么移动端浏览器就可以自动禁掉默认的双击缩放行为并且去掉300ms的点击延迟。如果设置了上述<code>meta</code>标签，那浏览器就可以认为该网站已经对移动端做过了适配和优化，就无需双击缩放操作了。</p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/touch-action" target="_blank" rel="noopener">touch-action</a></p>
+<p>CSS属性 <strong><code>touch-action</code></strong> 用于设置触摸屏用户如何操纵元素的区域(例如，浏览器内置的缩放功能)。</p>
+<p>最常见的用法是禁用元素（及其不可滚动的后代）上的所有手势，以使用自己提供的拖放和缩放行为（如地图或游戏表面）。如：</p>
+<pre><code class="css">#map {
+  touch-action: none;
+}</code></pre>
+</li>
+</ol>
+<p><a href="https://juejin.im/post/5b3cc9836fb9a04f9a5cb0e0" target="_blank" rel="noopener">参考</a></p>
+<h2 id="三、移动端软键盘弹窗影响布局怎么解决"><a href="#三、移动端软键盘弹窗影响布局怎么解决" class="headerlink" title="三、移动端软键盘弹窗影响布局怎么解决"></a>三、移动端软键盘弹窗影响布局怎么解决</h2><ol>
+<li><p>当在移动端按钮position:fixed;底部bottom:0;</p>
+<p>固定在底部的按钮会被系统自带的键盘挤上去，占用输入框位置,如下</p>
+<img src="https://tva1.sinaimg.cn/large/00831rSTgy1gdk62smds2j308r0fiab5.jpg" alt="preview" style="zoom:50%;" />
+
+<p>解决：通过resize() 方法触发 resize 事件，当唤起键盘页面高度小于未唤起键盘页面高度时，取消fixed</p>
+</li>
+<li><p>安卓端，移动端页面输入底部被键盘遮挡问题</p>
+<p>解决：</p>
+<ul>
+<li><p>通过 <code>window.onresize</code> 监听页面大小变化，然后通过 <code>window.scrollTo</code> 使页面滚动到所需位置</p>
+</li>
+<li><p>通过 <code>Element.scrollIntoView()</code></p>
+</li>
+<li><p>通过 <code>Element.scrollIntoViewIfNeeded()</code></p>
+<p><a href="[https://dclcats.github.io/2017/08/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%A1%B5%E9%9D%A2%E8%BE%93%E5%85%A5%E5%BA%95%E9%83%A8%E8%A2%AB%E9%94%AE%E7%9B%98%E9%81%AE%E6%8C%A1%E9%97%AE%E9%A2%98/](https://dclcats.github.io/2017/08/17/移动端页面输入底部被键盘遮挡问题/)">参考</a></p>
+</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>策略模式</title>
+    <url>/2022/03/11/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><h3 id="一个表单验证的例子"><a href="#一个表单验证的例子" class="headerlink" title="一个表单验证的例子"></a>一个表单验证的例子</h3><p>给一个html页面，带一个form表单</p>
+<pre><code class="html">&lt;form id=&#39;login-form&#39; action=&quot;&quot; method=&quot;post&quot;&gt;
+    &lt;label for=&quot;account&quot;&gt;手机号&lt;/label&gt;
+    &lt;input type=&quot;number&quot; id=&quot;account&quot; name=&quot;account&quot;&gt;
+    &lt;label for=&quot;password&quot;&gt;密码&lt;/label&gt;
+    &lt;input type=&quot;password&quot; id=&quot;password&quot; name=&quot;password&quot;&gt;
+    &lt;button id=&#39;login&#39;&gt;登录&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+<h5 id="通常我们的做的简单表单验证"><a href="#通常我们的做的简单表单验证" class="headerlink" title="通常我们的做的简单表单验证"></a>通常我们的做的简单表单验证</h5><pre><code class="js">&lt;script&gt;
+    var loginForm = document.getElementById(&#39;login-form&#39;);
+
+    loginForm.onsubmit = function (e) {
+        e.preventDefault();  
+        var account = document.getElementById(&quot;account&quot;).value;
+        var pwd = document.getElementById(&quot;password&quot;).value;
+
+        if(account===null||account===&#39;&#39;){
+            alert(&#39;手机号不能为空&#39;)；
+            return false;
+        }
+        if(pwd===null||pwd===&#39;&#39;){
+            alert(&#39;密码不能为空&#39;)；
+            return false;
+        }
+        if (!/(^1[3|4|5|7|8][0-9]{9}$)/.test(account)) {
+            alert(&#39;手机号格式错误&#39;)；
+            return false;
+        }
+        if(pwd.length&lt;6){
+            alert(&#39;密码不能小于六位&#39;)；
+            return false;
+        }
+        // 发送请求
+    }
+&lt;/script&gt;</code></pre>
+<p>通常我们都是想，直接用if else来解决各种表单的验证，但是这样做的问题是，每次新加一个验证规则都要找到onsubmit函数，添加if判断，而且还要知道对应的字段名，麻烦就算了，最重要的是逻辑不能复用，如果有多个地方用到这个表单判断又要重写，这时候用到策略模式，一个策略就像一个诸葛亮的精囊妙计</p>
+<h4 id="策略模式简介"><a href="#策略模式简介" class="headerlink" title="策略模式简介"></a>策略模式简介</h4><ul>
+<li>意图： 定义一系列的算法,把它们一个个封装起来, 并且使它们可相互替换</li>
+<li>方式：创建一个策略对象和一个context，context的行为会随着不同的策略对象有不同的表现</li>
+<li>解决：在有多种算法相似的情况下，使用 if…else 所带来的复杂和难以维护。 </li>
+</ul>
+<h4 id="使用策略模式构建的表单校验"><a href="#使用策略模式构建的表单校验" class="headerlink" title="使用策略模式构建的表单校验"></a>使用策略模式构建的表单校验</h4><pre><code class="js">// 策略对象
+const strategy = {
+    isNoEmpty: (val) =&gt; {
+        if(val === null || var == &#39;&#39;) {
+            return &#39;不能为空&#39;
+        }
+    },
+    isPhoneNum: (val) =&gt; {
+        if (!/(^1[3|4|5|7|8][0-9]{9}$)/.test(account)) {
+            return &#39;手机号格式错误&#39;
+        }
+    },
+    length: (val, len) =&gt; {
+        if (val.length &gt; len) {
+            return &#39;不能小于六位&#39;
+        }
+    }
+ }
+
+// 上下文
+const context = (formRule) =&gt; {
+    if(let i = 0; i &lt; formRule.length; i++) {
+        const item = formRule[i]
+        const res = strategy[item.type](item.val)
+        if(res) res
+    }
+}
+
+/**
+class validator {
+    constructor() {
+        this.strategy = null
+        this.formRule =null 
+    }
+    // 设置策略对象
+    setStrategy(val) {
+        this.startegy = val
+    }
+    // 设置规则
+    setFormRule() {
+        this.formRule = val
+    }
+    // 验证，相对于context
+    validate() {
+        if(let i = 0; i &lt; formRule.length; i++) {
+        const item = formRule[i]
+        const res = strategy[item.type](item.val)
+        if(res) res
+    }
+    }
+}
+*/
+
+// 提交
+function subimit() {
+    const form =  [
+        {type: &#39;isNoEmpty&#39;, val:account },
+        {type: &#39;isNoEmpty&#39;, val:pwd },
+        {type: &#39;isPhoneNum&#39;, val:account },
+        {type: &#39;length&#39;, val:pwd },
+    ] // 简化的表单数据
+
+    // 验证
+    if(!context(form)) return
+
+    /**
+    // 验证
+    const validator = new context()
+    validator.setStrategy(strategy)
+    validator.setFormrule(form)
+    if(!validator.validate()) return
+    */
+    // 发起请求...
+
+}</code></pre>
+<p>这里用的就是策略模式，定义了一个策略对象，和一个context控制执行，可以很方便的实现逻辑复用</p>
+<h3 id="史诗级的表单验证"><a href="#史诗级的表单验证" class="headerlink" title="史诗级的表单验证"></a>史诗级的表单验证</h3><p>相关库 <a href="https://link.zhihu.com/?target=https%3A//github.com/yiminghe/async-validator">async-validator</a>，可以找相关源码了解，同样是用了了策略模式。</p>
+<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>优点：</p>
+<ol>
+<li>把相互独立的代码块封装在一处，方便以后管理扩展</li>
+<li>优于继承，继承的算法是封装在类里的，在算法多的情况下，会衍生很多不同的类，而类里面算法和使用者耦合也会增加维护难度</li>
+<li>优化繁重的if else，提升代码简洁度</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>选择算法时，必须了解全部算法的使用方法，才能选择合适的方法，违反最小知识原则</li>
+<li>算法间相互独立，如果有共同部分无法实现共享</li>
+</ol>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><ul>
+<li>在哪些场景下适用，哪些场景不适用？</li>
+<li>跟状态模式有什么不一样？</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>js 布尔值转换和数据类型的简单判断</title>
-    <url>/2022/03/09/js%20%E5%B8%83%E5%B0%94%E5%80%BC%E8%BD%AC%E6%8D%A2%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E5%88%A4%E6%96%AD/</url>
+    <url>/2021/07/03/js%20%E5%B8%83%E5%B0%94%E5%80%BC%E8%BD%AC%E6%8D%A2%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E5%88%A4%E6%96%AD/</url>
     <content><![CDATA[<h1 id="js-布尔值转换和数据类型的简单判断"><a href="#js-布尔值转换和数据类型的简单判断" class="headerlink" title="js 布尔值转换和数据类型的简单判断"></a>js 布尔值转换和数据类型的简单判断</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
 <p>通常情况下js的布尔值转换和数据类型判断是一个比较容易犯错的问题，现在我们结合对照表来简单梳理一下</p>
 </blockquote>
@@ -379,8 +504,145 @@ pattern instanceof RegExp //true</code></pre><p> 注意事项以及适用范围�
       </categories>
   </entry>
   <entry>
+    <title>怎样用js实现二叉树遍历？</title>
+    <url>/2021/03/04/%E6%80%8E%E6%A0%B7%E7%94%A8js%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%EF%BC%9F/</url>
+    <content><![CDATA[<h3 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h3><blockquote>
+<p>二叉树是数据结构算法的重要知识点，今天我们用js来实现下二叉树的深度优先遍历</p>
+</blockquote>
+<p>首先，生成一个二叉树</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdtk9xb44qj30k80ia0tf.jpg" alt="Jietu20200414-201926@2x" style="zoom:50%;" />
+
+<pre><code class="js">/*
+二叉树
+*/
+var tree = {
+  value: 1,
+  left: {
+    value: 2,
+    left: {
+      value: 4
+    }
+  },
+  right: {
+    value: 3,
+    left: {
+      value: 5,
+      left: {
+        value: 7
+      },
+      right: {
+        value: 8
+      }
+    },
+    right: {
+      value: 6
+    }
+  }
+}</code></pre>
+<h3 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h3><ul>
+<li>递归</li>
+</ul>
+<pre><code class="js">function preOrder(node) {
+  if(node != null) {
+    console.log(node.value)
+    preOrder(node.left)
+    preOrder(node.right)
+  } 
+}</code></pre>
+<ul>
+<li>非递归</li>
+</ul>
+<pre><code class="js">
+function preOrder(root) {
+        let stack = [];
+        let pNode = root;
+        while (pNode != null || !stack.length == 0) {
+            if (pNode != null) {
+                console.log(pNode.value+&quot;  &quot;);
+                stack.push(pNode);
+                pNode = pNode.left;
+            } else { //pNode == null &amp;&amp; !stack.isEmpty()
+                node = stack.pop();
+                pNode = node.right;
+            }
+        }
+    }
+preOrder(tree)
+
+</code></pre>
+<h3 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h3><ul>
+<li>递归</li>
+</ul>
+<pre><code class="js">function preOrder(node) {
+  if(node != null) {
+    preOrder(node.left)
+    console.log(node.value)
+    preOrder(node.right)
+  } 
+}</code></pre>
+<ul>
+<li>非递归</li>
+</ul>
+<pre><code class="js">function midOrder(root) {
+        let stack = [];
+        let pNode = root;
+        while (pNode != null || !stack.length == 0) {
+            if (pNode != null) {
+                stack.push(pNode);
+                pNode = pNode.left;
+            } else { //pNode == null &amp;&amp; !stack.isEmpty()
+                node = stack.pop();
+        console.log(pNode.value+&quot;  &quot;);
+                pNode = node.right;
+            }
+        }
+    }
+midOrder(tree)</code></pre>
+<h3 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h3><ul>
+<li>递归</li>
+</ul>
+<pre><code class="js">function preOrder(node) {
+  if(node != null) {
+    preOrder(node.left)
+    preOrder(node.right)
+    console.log(node.value)
+  } 
+}</code></pre>
+<ul>
+<li>非递归</li>
+</ul>
+<pre><code class="js">
+
+var lastOrder = (root) =&gt; {
+    let result = []
+    let stack = []
+    let node = root
+    while(node != null || stack.length != 0){
+        if(node != null) {
+            result.unshift(node.value)
+            stack.push(node)
+            node = node.right
+        }else{
+            node = stack.pop()
+            //console.log(node.value)
+            node = node.left
+        }
+    }
+    return result
+
+}
+lastOrder(tree)</code></pre>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>js常用算法面试题收集（持续更新）</title>
-    <url>/2022/03/09/js%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
+    <url>/2020/09/03/js%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
     <content><![CDATA[<h2 id="js常用算法面试题收集"><a href="#js常用算法面试题收集" class="headerlink" title="js常用算法面试题收集"></a>js常用算法面试题收集</h2><h4 id="1-统计一个字符出现的最高频率？"><a href="#1-统计一个字符出现的最高频率？" class="headerlink" title="1.统计一个字符出现的最高频率？"></a>1.统计一个字符出现的最高频率？</h4><pre><code class="js">let str = &#39;asdfghjklaqwertyuiopiaia&#39;;
 function statistics(str){
   const strArr = [...str]
@@ -519,59 +781,8 @@ console.log(separate([0, 1, 2, &#39;&#39;, &#39;&#39;, 6, 7, &#39;&#39;]))</code
       </tags>
   </entry>
   <entry>
-    <title>redux生态库理解</title>
-    <url>/2022/03/09/redux%E7%94%9F%E6%80%81%E5%BA%93%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[<h1 id="redux生态库理解"><a href="#redux生态库理解" class="headerlink" title="redux生态库理解"></a>redux生态库理解</h1><h3 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h3><p>状态管理库</p>
-<ul>
-<li>store：全局状态数据（一般是不可变的数据）</li>
-<li>action：记录操作（type）和操作值（payload）的对象</li>
-<li>reducer： 接收 state 和 action，并返回新的 state 的函数</li>
-</ul>
-<p>参考：<a href="https://www.redux.org.cn/docs/introduction/PriorArt.html" target="_blank" rel="noopener">https://www.redux.org.cn/docs/introduction/PriorArt.html</a></p>
-<h3 id="reselect"><a href="#reselect" class="headerlink" title="reselect"></a>reselect</h3><p>选择对应的部分store</p>
-<h3 id="redux-sage"><a href="#redux-sage" class="headerlink" title="redux-sage"></a>redux-sage</h3><p>一个以redux中间件形式存在的库，更加优雅的管理异步操作（Side Effect：<strong>异步网络请求</strong>、<strong>本地读取 localStorage/Cookie</strong> 等外界操作）</p>
-<p>通过createStore将store和sage关联起来</p>
-<ul>
-<li>Effect：一个简单的对象，这个对象包含了一些给 middleware 解释执行的信息。（调用某些异步函数，发起一个 action 到 store，等等）</li>
-<li>put： 这个函数用于创建 dispatch Effect</li>
-</ul>
-<p><img src="https://pic4.zhimg.com/v2-9697122f53bb1c92a9c455c1b0e5d22f_r.jpg" alt="preview"></p>
-<p>参考：<a href="https://zhuanlan.zhihu.com/p/35437092" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/35437092</a></p>
-<p>中文文档： <a href="https://redux-saga-in-chinese.js.org/" target="_blank" rel="noopener">https://redux-saga-in-chinese.js.org/</a></p>
-<h3 id="seamless-immutable"><a href="#seamless-immutable" class="headerlink" title="seamless-immutable"></a>seamless-immutable</h3><p>定义不可变的对象</p>
-<p>每次修改都会返回一个新的对象</p>
-<p>用树的方式存储数据，从而达到复用和高效更新</p>
-<p>使用自带api操作数据，方法内置在prototype</p>
-<h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><ul>
-<li>set(key, value) 设置值<ul>
-<li>key: String</li>
-<li>value: <any></li>
-</ul>
-</li>
-<li>setIn([key, key2 … ], value) 设置嵌套对象里的值</li>
-<li>get(key, value)</li>
-<li>getIn([key, key2 …], value)</li>
-<li>merge(obj || [obj, … ], config) 两个对象合并<ul>
-<li>obj: Object</li>
-<li>[obj, … ] : Array</li>
-<li>config: Object 合并设置，比如: <code>{deep: true} // 深度合并</code></li>
-</ul>
-</li>
-<li>isImmutable</li>
-<li>asMutable</li>
-<li>update(key, fn) 用函数操作更新<ul>
-<li>key: String</li>
-<li>fn: function 返回更新值value</li>
-</ul>
-</li>
-<li>updateIn([key, key2 … ], fn) 用函数操作嵌套对象的更新</li>
-</ul>
-<p>github仓库：<a href="https://github.com/rtfeldman/seamless-immutable" target="_blank" rel="noopener">https://github.com/rtfeldman/seamless-immutable</a></p>
-<h3 id="redux-persist"><a href="#redux-persist" class="headerlink" title="redux-persist"></a>redux-persist</h3><h3 id="ramda"><a href="#ramda" class="headerlink" title="ramda"></a>ramda</h3>]]></content>
-  </entry>
-  <entry>
     <title>typescript</title>
-    <url>/2022/03/09/typescript/</url>
+    <url>/2020/08/03/typescript/</url>
     <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>本篇文章主要是为了给让大家了解下Typescript</p>
 <p>这里将会讲到大家关心的几个问题，简单先简绍了几个与js不同的ts的语法，来探讨ts和传统js的区别</p>
 <p>然后从网络上收集整理了一些使用和不使用ts的意见，探讨我们应不应该使用ts，以及ts的适用场景</p>
@@ -925,8 +1136,318 @@ function identity&lt;T&gt;(arg: T): T {
       </tags>
   </entry>
   <entry>
-    <title>中高级前端面试题目收集（持续更新）</title>
-    <url>/2022/03/09/%E4%B8%AD%E9%AB%98%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
+    <title>前端项目注释规范参考</title>
+    <url>/2020/06/14/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
+    <content><![CDATA[<h2 id="注释规范初稿"><a href="#注释规范初稿" class="headerlink" title="注释规范初稿"></a>注释规范初稿</h2><ul>
+<li><p><strong>强制</strong>  </p>
+<ol>
+<li><p>方法的注释必须使用 JsDoc 规范，使用/<em>*内容</em>/格式，不得使用 // xxx方式。</p>
+</li>
+<li><p>所有的公用方法(包括接口中的方法)必须要用 Javadoc 注释、除了返回值、参数、 异常说明外，还必须指出该方法做什么事情，实现什么功能。</p>
+</li>
+<li><p>所有的公用方法都必须添加创建者和创建日期</p>
+</li>
+<li><p>方法内部单行注释，在被注释语句上方另起一行，使用//注释。方法内部多行注释<br> 使用/* */注释，注意与代码对齐。  </p>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p><strong>推荐</strong>  </p>
+<ol start="5">
+<li><p>与其“半吊子”英文来注释，不如用中文注释把问题说清楚。专有名词与关键字保持 英文原文即可。</p>
+<blockquote>
+<p>反例:“TCP 连接超时”解释成“传输控制协议连接超时”，理解反而费脑筋。  </p>
+</blockquote>
+</li>
+<li><p>代码修改的同时，注释也要进行相应的修改，尤其是参数、返回值、异常、核心逻辑 等的修改。</p>
+<blockquote>
+<p>说明:代码与注释更新不同步，就像路网与导航软件更新不同步一样，如果导航软件严重滞后， 就失去了导航的意义。  </p>
+</blockquote>
+</li>
+<li><p>对于注释的要求:第一、能够准确反应设计思想和代码逻辑;第二、能够描述业务含义，使别的程序员能够迅速了解到代码背后的信息。  </p>
+<blockquote>
+<p>完全没有注释的大段代码对于阅读者形同 天书，注释是给自己看的，即使隔很长时间，也能清晰理解当时的思路;注释也是给继任者看 的，使其能够快速接替自己的工作。</p>
+<ol start="8">
+<li>好的命名、代码结构是自解释的，注释力求精简准确、表达到位。避免出现注释的<br>一个极端:过多过滥的注释</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/han-1034683568/p/7680354.html" target="_blank" rel="noopener">阿里巴巴java开发手册</a></p>
+]]></content>
+      <categories>
+        <category>规范</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>API规范参考</title>
+    <url>/2020/04/03/API%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
+    <content><![CDATA[<h1 id="API规范"><a href="#API规范" class="headerlink" title="API规范"></a>API规范</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li><p>RESTful API是目前比较成熟的一套互联网应用程序的API设计理论,它遵循资源导向的设计方式。<br>  它有三个主要要素：资源，集合和 URLs。</p>
+<ul>
+<li>资源具有数据，嵌套，和一些操作方法。  </li>
+<li>一组资源称为一个集合。  </li>
+<li>URL标识资源或集合的线上位置。  </li>
+</ul>
+</li>
+</ul>
+<h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><h4 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a>命名规则</h4><ul>
+<li>使用kebab-case（短横线分割）的URL<blockquote>
+<p>例子：<code>/api/be/project-config</code></p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>在查询字符串或资源字段中使用camelCase模式。</p>
+<blockquote>
+<p>例子：<code>/api/be/meeting-config/projectUid=1453</code></p>
+</blockquote>
+</li>
+<li><p>URLs里面请尽量少用动词</p>
+<blockquote>
+<p>因为如果您为每个资源操作使用一个动词，您很快就会维护一个很大的URL列表，而且没有一致的使用模式，这会使开发人员难以学习。此外，我们还要使用动词做别的事情。<br>错误例子：<code>/api/be/project-config/create/list</code><br><code>/api/be/project-config/users/addName</code></p>
+</blockquote>
+</li>
+<li><p>为非资源型请求使用动词。在这种情况下，您的API并不需要返回任何资源。而是去执行一个操作(除CRUD操作）并返回执行结果。</p>
+<blockquote>
+<p> 例子：<code>/api.github.com/_private/browser/star</code>  点赞操作</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>资源命名区分单复数<blockquote>
+<p>文档(Document)类型的资源用名词(短语)单数命名（<em>如一篇文章<code>https://api/article</code></em>）<br>  集合(Collection)类型的资源用名词(短语)复数命名（<em>如文章列表<code>https://api/articles</code></em>）</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="操作表示"><a href="#操作表示" class="headerlink" title="操作表示"></a>操作表示</h4><ul>
+<li><p>HTTP方法来操作CRUD功能</p>
+<blockquote>
+</blockquote>
+<p>  GET:          查询—–查询资源<br>  POST:        创建—-创建一些新的资源或者子资源<br>  PUT:         更新全部—-更新一个存在的资源（提供全部信息）<br>  PATCH:       更新部分—-更新现有资源。它只更新所提供的字段，不管其他字段<br>  DELETE:   删除—–删除一个存在的资源</p>
+<p>  例子：</p>
+<blockquote>
+<p> GET /zoos：列出所有动物园<br>  POST /zoos：新建一个动物园<br>  GET /zoos/ID：获取某个指定动物园的信息<br>  PUT /zoos/ID：更新某个指定动物园的信息（提供该动物园的全部信息）<br>  PATCH /zoos/ID：更新某个指定动物园的信息（提供该动物园的部分信息）<br>  DELETE /zoos/ID：删除某个动物园<br>  GET /zoos/ID/animals：列出某个指定动物园的所有动物<br>  DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物  </p>
+</blockquote>
+<p>  附：<a href="https://segmentfault.com/q/1010000005685904" target="_blank" rel="noopener">pacth与put的区别</a></p>
+</li>
+<li><p>如果记录数量很多，服务器不可能都将它们返回给用户。API应该提供参数，过滤返回结果。</p>
+<p>  下面是一些常见的参数。</p>
+<blockquote>
+<p><code>?limit=10</code>：指定返回记录的数量<br>  <code>?offset=10</code>：指定返回记录的开始位置。<br>  <code>?page=2&amp;per_page=100</code>：指定第几页，以及每页的记录数。<br>  <code>?sortby=name&amp;order=asc</code>：指定返回结果按照哪个属性排序，以及排序顺序。<br>  <code>?producy_type=1</code>：指定筛选条件</p>
+</blockquote>
+</li>
+</ul>
+<p>​    </p>
+<h4 id="关系表示"><a href="#关系表示" class="headerlink" title="关系表示"></a>关系表示</h4><ul>
+<li><p>对于嵌套资源，在URL体现关系。  同时避免层级过深。<br> 例如，使用id将员工与公司联系起来。  </p>
+<blockquote>
+<p><code>GET /schools/2/students</code> , 应该从学校2得到所有学生的名单<br> <code>GET /schools/2/students/31</code> , 应该得到学生31的详细信息，且此学生属于学校2<br> <code>DELETE /schools/2/students/31</code> , 应删除属于学校2的学生31<br> <code>PUT /schools/2/students/31</code>, 应该更新学生31的信息<br> <code>POST /schools</code> , 应该创建一所新学校，并返回创建的新学校的细节。在集合URL上使用POST  </p>
+</blockquote>
+<p> 但是如 <code>GET /zoos/1/areas/3/animals/4</code><br> 尽量使用查询参数代替路径中的实体导航，如<code>GET/animals?zoo=1&amp;area=3</code></p>
+<p> 附：<a href="https://blog.csdn.net/xcc_2269861428/article/details/80433382" target="_blank" rel="noopener">post请求和get请求的区别</a>  </p>
+</li>
+</ul>
+<ul>
+<li>如有迭代版本（v1,v2,v3），使用简单的序数表示版本。并将其移到URL的左侧，使其具有最高的范围表述：<blockquote>
+<p><code>http://api.domain.com/v1/schools/3/students</code>    </p>
+</blockquote>
+</li>
+</ul>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
+<li><p>Response不要包装，body 直接就是数据，</p>
+<blockquote>
+<p>错误例子：<code>{
+ &quot;success&quot;:true，
+ &quot;data&quot;:{&quot;id&quot;:1,&quot;name&quot;:&quot;xiaotuan&quot;},
+}</code></p>
+</blockquote>
+</li>
+<li><p>Service/DAO层方法命名规约</p>
+<blockquote>
+<p>   1) 获取单个对象的方法用get做前缀。<br>   2) 获取多个对象的方法用list做前缀。<br>   3) 获取统计值的方法用count做前缀。<br>   4) 插入的方法用save/insert做前缀。<br>   5) 删除的方法用remove/delete做前缀。<br>   6) 修改的方法用update做前缀。   </p>
+</blockquote>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><h3 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h3><ul>
+<li><a href="http://wangwei.info/about-rest-api/" target="_blank" rel="noopener">REST接口设计规范</a></li>
+<li><a href="https://gumutianqi1.gitbooks.io/specification-doc/content/specification-doc/restful_api.html" target="_blank" rel="noopener">API接口规范</a></li>
+<li><a href="https://github.com/elsewhencode/project-guidelines" target="_blank" rel="noopener"> A set of best practices for JavaScript projects</a></li>
+</ul>
+<h3 id="github网站页面的部分API参考"><a href="#github网站页面的部分API参考" class="headerlink" title="github网站页面的部分API参考"></a>github网站页面的部分API参考</h3><blockquote>
+<p><a href="https://github.com/ant-design/ant-design" target="_blank" rel="noopener">https://github.com/ant-design/ant-design</a></p>
+</blockquote>
+<ul>
+<li><p>请求star数量 <code>https://api.github.com/_private/browser/stats</code>  </p>
+</li>
+<li><p>用户资料卡 <code>https://github.com/hovercards?user_id=7264444&amp;subject=33</code>  </p>
+</li>
+<li><p>star <code>https://github.com/ant-design/ant-design/star</code>  </p>
+</li>
+<li><p>unstar <code>https://github.com/ant-design/ant-design/unstar</code></p>
+</li>
+<li><p>Issues功能  <code>https://github.com/ant-design/ant-design/issues?_pjax=%23js-repo-pjax-container</code></p>
+</li>
+<li><p>查询功能 <code>https://github.com/ant-design/ant-design/search/count?q=d%27d%27d&amp;type=Commits&amp;unscoped_q=d%27d%27d</code></p>
+</li>
+<li><p>更新设置 <code>https://github.com/newsletter_preference</code></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>规范</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/04/03/hexo%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>AMD、CMD、CommonJS以及UMD的简单对比</title>
+    <url>/2020/03/02/AMD%E3%80%81CMD%E3%80%81CommonJS%E4%BB%A5%E5%8F%8AUMD%E7%9A%84%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94/</url>
+    <content><![CDATA[<h2 id="AMD、CMD、CommonJS以及UMD的简单对比"><a href="#AMD、CMD、CommonJS以及UMD的简单对比" class="headerlink" title="AMD、CMD、CommonJS以及UMD的简单对比"></a>AMD、CMD、CommonJS以及UMD的简单对比</h2><h3 id="一、AMD"><a href="#一、AMD" class="headerlink" title="一、AMD"></a>一、AMD</h3><p>为浏览器环境设计的， 所以是异步模块加载定义的</p>
+<ul>
+<li>加载模块</li>
+</ul>
+<p>AMD采用require()语句加载模块，但是不同于CommonJS，它要求两个参数：</p>
+<pre><code class="js"> 　　require([module], callback);</code></pre>
+<p>第一个参数[module]，是一个数组，里面的成员就是要加载的模块；第二个参数callback，则是加载成功之后的回调函数。</p>
+<ul>
+<li>定义模块</li>
+</ul>
+<p>模块通过 <code>define</code> 函数定义在闭包中，格式如下：</p>
+<pre><code class="js">define(id?: String, dependencies?: String[], factory: Function|Object)</code></pre>
+<p><code>id</code> 是模块的名字，它是可选的参数。</p>
+<p><code>dependencies</code> 指定了所要依赖的模块列表，它是一个数组，也是可选的参数，每个依赖的模块的输出将作为参数一次传入 <code>factory</code> 中。如果没有指定 <code>dependencies</code>，那么它的默认值是 <code>[&quot;require&quot;, &quot;exports&quot;, &quot;module&quot;]</code>。</p>
+<p><code>factory</code> 是最后一个参数，它包裹了模块的具体实现，它是一个函数或者对象。如果是函数，那么它的返回值就是模块的输出接口或值。</p>
+<p>用例：</p>
+<p>定义一个名为 <code>myModule</code> 的模块，它依赖 <code>jQuery</code> 模块：</p>
+<pre><code class="js">define(&#39;myModule&#39;, [&#39;jquery&#39;], function($) {
+    // $ 是 jquery 模块的输出
+    $(&#39;body&#39;).text(&#39;hello world&#39;);
+});
+// 使用
+require([&#39;myModule&#39;], function(myModule) {});</code></pre>
+<p>二、CMD</p>
+<p>和AMD同样是异步加载</p>
+<ul>
+<li><p>加载模块</p>
+<p>分为三种：</p>
+<p>requirea(name)；name为模块名</p>
+<p>require.async(name, callback)；异步加载 ，callback为加载后执行函数</p>
+<p>require.resolve(name);不加载模块，仅仅将短串解析成完整路径</p>
+</li>
+<li><p>模块定义</p>
+<p>分为define(factory)和define(name，deps，factory)</p>
+<pre><code class="js">// define(factory)
+define(function(require, exports, module) { 
+  // 模块代码 
+}); 
+
+// define(name，deps，factory)
+define(&#39;hello&#39;, [&#39;jquery&#39;], function(require, exports, module) { 
+  // 模块代码 
+}); </code></pre>
+</li>
+<li><p>和AMD异同</p>
+<p>CMD 推崇依赖就近，AMD 推崇依赖前置</p>
+<pre><code class="js">// CMD
+define(function(require, exports, module) {   
+    var a = require(&#39;./a&#39;)   
+    a.doSomething()    
+    var b = require(&#39;./b&#39;)   
+    b.doSomething()    
+    ... 
+})
+// AMD 
+define([&#39;./a&#39;, &#39;./b&#39;], function(a, b) {  // 依赖必须一开始就写好
+    a.doSomething()
+    ...
+    b.doSomething()
+    ...
+}) </code></pre>
+</li>
+</ul>
+<h2 id="三、CommonJS"><a href="#三、CommonJS" class="headerlink" title="三、CommonJS"></a>三、CommonJS</h2><p>​    以服务器为第一原则发展，同步加载</p>
+<ul>
+<li><p>加载</p>
+<pre><code class="js">const package = require(&#39;module-name&#39;)</code></pre>
+</li>
+<li><p>导出</p>
+<p>导出一个值</p>
+<pre><code class="js">module.exports = value</code></pre>
+<p>导出多个值</p>
+<pre><code class="js">exports.a = 1
+exports.b = 2
+exports.c = 3</code></pre>
+</li>
+</ul>
+<h2 id="四、UMD"><a href="#四、UMD" class="headerlink" title="四、UMD"></a>四、UMD</h2><p>umd是CommonJS和AMD结合的产物，是一个跨平台的解决方案。</p>
+<p>UMD先判断是否支持Node.js的模块（exports）是否存在，存在则使用Node.js模块模式。再判断是否支持AMD（define是否存在），存在则使用AMD方式加载模块。</p>
+<h2 id="五、ES-module"><a href="#五、ES-module" class="headerlink" title="五、ES module"></a>五、ES module</h2><pre><code class="js">// 报错1
+export 1;
+// 报错2
+const m = 1;
+export m;
+
+// 接口名与模块内部变量之间，建立了一一对应的关系
+// 写法1
+export const m = 1;
+// 写法2
+const m = 1；
+export { m };
+// 写法3
+const m = 1；
+export { m as module };
+</code></pre>
+<pre><code class="js">// 类似于对象解构
+// module.js
+export const m = 1;
+// index.js
+// 注意，这里的m得和被加载的模块输出的接口名对应
+import { m } from &#39;./module&#39;;
+// 若是想为输入的变量取名
+import { m as m1 }  &#39;./module&#39;;
+// 值得注意的是，import是编译阶段，所以不能动态加载，比如下面写法是错误的。因为&#39;a&#39; + &#39;b&#39;在运行阶段才能取到值，运行阶段在编译阶段之后
+import { &#39;a&#39; + &#39;b&#39; } from &#39;./module&#39;;
+// 若是只是想运行被加载的模块，如下
+// 值得注意的是，即使加载两次也只是运行一次
+import &#39;./module&#39;;
+// 整体加载
+import * as module from &#39;./module&#39;;
+</code></pre>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://zhaoda.net/webpack-handbook/amd.html" target="_blank" rel="noopener">AMD 规范</a></li>
+<li><a href="[http://www.ruanyifeng.com/blog/2012/11/require_js.html](http://www.ruanyifeng.com/blog/2012/11/require_js.html)">Javascript模块化编程（二）：require.js的用法</a></li>
+<li><a href="https://blog.csdn.net/mm_hello11/article/details/78958334" target="_blank" rel="noopener">amd和cmd规范的区别</a></li>
+<li><a href="https://github.com/seajs/seajs/issues/242" target="_blank" rel="noopener">cmd官方规范</a></li>
+<li><a href="https://github.com/amdjs/amdjs-api/wiki/AMD" target="_blank" rel="noopener">amd官方规范</a></li>
+<li><a href="https://juejin.im/post/5b7d2f45e51d4538826f4c28" target="_blank" rel="noopener">AMD , CMD, CommonJS，ES Module，UMD</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>模块化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前端面试题目收集（持续更新）</title>
+    <url>/2019/12/24/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
     <content><![CDATA[<p>[TOC]</p>
 <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
 <p>这里进行了一些常用面试题目的搜集，可供面试前参考，先罗列一遍，后期打算再进行分类整理</p>
@@ -1892,6 +2413,19 @@ flower.bloom();</code></pre>
 </ul>
 <p><a href="https://zh-hans.reactjs.org/docs/hooks-intro.html" target="_blank" rel="noopener">参考</a></p>
 <h2 id="webpack异步加载原理"><a href="#webpack异步加载原理" class="headerlink" title="webpack异步加载原理"></a>webpack异步加载原理</h2><p><a href="https://blog.csdn.net/ywl570717586/article/details/79034322?ops_request_misc=&request_id=&biz_id=102&utm_term=webpack%20%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-79034322.first_rank_v2_pc_rank_v29&spm=1018.2226.3001.4187" target="_blank" rel="noopener">参考</a></p>
+<h2 id="遇到大量if的代码如何优化"><a href="#遇到大量if的代码如何优化" class="headerlink" title="遇到大量if的代码如何优化"></a>遇到大量if的代码如何优化</h2><p>记住下面的口诀：</p>
+<p>互斥条件表驱动</p>
+<p>嵌套条件校验链</p>
+<p>短路条件早return</p>
+<p>零散条件可组合</p>
+<blockquote>
+<ol>
+<li>互斥条件，表示几个条件之间是冲突的，不可能同时达成的。比如说一个数字，它不可能同时是4和2。在这种情况下用表驱动就非常合适，表驱动的核心是key-handler，拿某个key去对应某个handler，只要条件符合key，那么就执行对应的handler。</li>
+<li>嵌套条件，表示几个条件是必须同时达成的，比如，只有在手机号码格式正确的情况下才执行某个操作，格式正确就包括必须是字符串、长度为11位、所有位都是数字这些条件，那么就可以使用校验链，比如通过描述的校验链：”string&amp;size:11&amp;numchar:0,*”。能用的形式很多，你可以直接使用&amp;&amp;逻辑运算符拼接条件，也可以把规则写成Validator。</li>
+<li>短路条件，表示只要某个条件满足了，那么就不用再继续下面的任何操作了。比如传进来的参数是null、参数如果为0，就不会有其他操作等情况，都可以聚合这些条件，在一开始的时候就判断并且直接返回，或者程序在中间会产生一些可以直接判断为不需要继续往下操作的条件，那么同样是直接在当场就return。</li>
+<li>零散条件，是指存在以上三种任意组合的条件形式，那么就可以通过组合这些解决方案。例如，遇到null，直接短路返回，然后之后的代码使用表驱动来区分互斥条件，在达成某个互斥条件的时候，通过校验链来验证嵌套条件等。</li>
+</ol>
+</blockquote>
 ]]></content>
       <categories>
         <category>面试</category>
@@ -1899,526 +2433,6 @@ flower.bloom();</code></pre>
       <tags>
         <tag>面试</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>二叉树深度优先遍历js实现</title>
-    <url>/2022/03/09/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86js%E5%AE%9E%E7%8E%B0/</url>
-    <content><![CDATA[<h3 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h3><blockquote>
-<p>二叉树是数据结构算法的重要知识点，今天我们用js来实现下二叉树的深度优先遍历</p>
-</blockquote>
-<p>首先，生成一个二叉树</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdtk9xb44qj30k80ia0tf.jpg" alt="Jietu20200414-201926@2x" style="zoom:50%;" />
-
-<pre><code class="js">/*
-二叉树
-*/
-var tree = {
-  value: 1,
-  left: {
-    value: 2,
-    left: {
-      value: 4
-    }
-  },
-  right: {
-    value: 3,
-    left: {
-      value: 5,
-      left: {
-        value: 7
-      },
-      right: {
-        value: 8
-      }
-    },
-    right: {
-      value: 6
-    }
-  }
-}</code></pre>
-<h3 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h3><ul>
-<li>递归</li>
-</ul>
-<pre><code class="js">function preOrder(node) {
-  if(node != null) {
-    console.log(node.value)
-    preOrder(node.left)
-    preOrder(node.right)
-  } 
-}</code></pre>
-<ul>
-<li>非递归</li>
-</ul>
-<pre><code class="js">
-function preOrder(root) {
-        let stack = [];
-        let pNode = root;
-        while (pNode != null || !stack.length == 0) {
-            if (pNode != null) {
-                console.log(pNode.value+&quot;  &quot;);
-                stack.push(pNode);
-                pNode = pNode.left;
-            } else { //pNode == null &amp;&amp; !stack.isEmpty()
-                node = stack.pop();
-                pNode = node.right;
-            }
-        }
-    }
-preOrder(tree)
-
-</code></pre>
-<h3 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h3><ul>
-<li>递归</li>
-</ul>
-<pre><code class="js">function preOrder(node) {
-  if(node != null) {
-    preOrder(node.left)
-    console.log(node.value)
-    preOrder(node.right)
-  } 
-}</code></pre>
-<ul>
-<li>非递归</li>
-</ul>
-<pre><code class="js">function midOrder(root) {
-        let stack = [];
-        let pNode = root;
-        while (pNode != null || !stack.length == 0) {
-            if (pNode != null) {
-                stack.push(pNode);
-                pNode = pNode.left;
-            } else { //pNode == null &amp;&amp; !stack.isEmpty()
-                node = stack.pop();
-        console.log(pNode.value+&quot;  &quot;);
-                pNode = node.right;
-            }
-        }
-    }
-midOrder(tree)</code></pre>
-<h3 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h3><ul>
-<li>递归</li>
-</ul>
-<pre><code class="js">function preOrder(node) {
-  if(node != null) {
-    preOrder(node.left)
-    preOrder(node.right)
-    console.log(node.value)
-  } 
-}</code></pre>
-<ul>
-<li>非递归</li>
-</ul>
-<pre><code class="js">
-
-var lastOrder = (root) =&gt; {
-    let result = []
-    let stack = []
-    let node = root
-    while(node != null || stack.length != 0){
-        if(node != null) {
-            result.unshift(node.value)
-            stack.push(node)
-            node = node.right
-        }else{
-            node = stack.pop()
-            //console.log(node.value)
-            node = node.left
-        }
-    }
-    return result
-
-}
-lastOrder(tree)</code></pre>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>前端项目注释规范参考</title>
-    <url>/2022/03/09/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
-    <content><![CDATA[<h2 id="注释规范初稿"><a href="#注释规范初稿" class="headerlink" title="注释规范初稿"></a>注释规范初稿</h2><ul>
-<li><p><strong>强制</strong>  </p>
-<ol>
-<li><p>方法的注释必须使用 JsDoc 规范，使用/<em>*内容</em>/格式，不得使用 // xxx方式。</p>
-</li>
-<li><p>所有的公用方法(包括接口中的方法)必须要用 Javadoc 注释、除了返回值、参数、 异常说明外，还必须指出该方法做什么事情，实现什么功能。</p>
-</li>
-<li><p>所有的公用方法都必须添加创建者和创建日期</p>
-</li>
-<li><p>方法内部单行注释，在被注释语句上方另起一行，使用//注释。方法内部多行注释<br> 使用/* */注释，注意与代码对齐。  </p>
-</li>
-</ol>
-</li>
-</ul>
-<ul>
-<li><p><strong>推荐</strong>  </p>
-<ol start="5">
-<li><p>与其“半吊子”英文来注释，不如用中文注释把问题说清楚。专有名词与关键字保持 英文原文即可。</p>
-<blockquote>
-<p>反例:“TCP 连接超时”解释成“传输控制协议连接超时”，理解反而费脑筋。  </p>
-</blockquote>
-</li>
-<li><p>代码修改的同时，注释也要进行相应的修改，尤其是参数、返回值、异常、核心逻辑 等的修改。</p>
-<blockquote>
-<p>说明:代码与注释更新不同步，就像路网与导航软件更新不同步一样，如果导航软件严重滞后， 就失去了导航的意义。  </p>
-</blockquote>
-</li>
-<li><p>对于注释的要求:第一、能够准确反应设计思想和代码逻辑;第二、能够描述业务含义，使别的程序员能够迅速了解到代码背后的信息。  </p>
-<blockquote>
-<p>完全没有注释的大段代码对于阅读者形同 天书，注释是给自己看的，即使隔很长时间，也能清晰理解当时的思路;注释也是给继任者看 的，使其能够快速接替自己的工作。</p>
-</blockquote>
-</li>
-<li><p>好的命名、代码结构是自解释的，注释力求精简准确、表达到位。避免出现注释的<br>一个极端:过多过滥的注释</p>
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/han-1034683568/p/7680354.html" target="_blank" rel="noopener">阿里巴巴java开发手册</a></p>
-]]></content>
-      <categories>
-        <category>规范</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>排序算法</title>
-    <url>/2022/03/09/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><pre><code class="js">function sort(nums, l, r) {
-   if(r - l &lt;= 0) return
-   let pivot = partition1(nums, l, r)
-   console.log(&#39;pivot&#39;, pivot)
-   // left
-   sort(nums, l, pivot -1)
-   // right
-   sort(nums, pivot + 1, r)
-   return nums
-}
-
-function partition(nums,l,r) {
-   // 中心位置
-   let center = l
-   // 指针
-   let compare = r
-   while(center != compare) {
-       // 在右边移动指针时
-       if(center &lt; compare) {
-          if(nums[center] &gt; nums[compare]) {
-             let temp = nums[center]
-             nums[center] = nums[compare]
-             nums[compare] = temp
-             let num = compare
-             compare = center
-             center = num
-             compare++
-             continue
-          }
-          compare--
-       }
-       // 在左边移动指针时
-       else {
-           if(nums[center] &lt; nums[compare]) {
-              let temp = nums[center]
-              nums[center] = nums[compare]
-              nums[compare] = temp
-              let num = compare
-              compare = center
-              center = num
-              compare--
-              continue
-          }
-          compare++    
-       }
-   }
-   console.log(nums)
-   return center
- }
-
- function partition1 (nums,l,r) {
-    // 保存基准值
-    let pivot = nums[l]
-    while(l!=r) {
-       while(r &gt; l &amp;&amp; nums[r] &gt;= pivot) {
-         r--
-       }
-       nums[l] = nums[r]
-       while(r &gt; l &amp;&amp; nums[l] &lt;= pivot) {
-         l++
-       }
-       nums[r] = nums[l]
-    }
-    nums[l] = pivot
-    return l
- }
-
- console.log(sort([45,23,55,12,4,88,1,2,4], 0, 8))</code></pre>
-<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><pre><code class="js">function sort(nums) {
-   for(let i = 0; i &lt; nums.length; i++) {
-      // 插入的数
-      let insert = nums[i]
-      //j 为排序列表长度
-      let j = i -1
-      for(j ; j &gt;= 0; j--) {
-         if(insert &lt; nums[j]) {
-            // insert往前挪
-            nums[j + 1] = nums[j]
-            nums[j] = insert
-         }
-      }
-   }
-   return nums
-}
-
-function sort2(nums) {
-   for(let i = 0; i &lt; nums.length; i++) {
-      // 插入的数
-      let insert = nums[i]
-      //j 为已排序列表长度
-      let j = i -1
-      while(j&gt;= 0 &amp;&amp; insert &lt; nums[j]) {
-            nums[j + 1] = nums[j]
-            j--z
-      }
-      nums[j + 1] = insert
-   }
-   return nums
-}
-
-
-
-
- console.log(sort([45,23,55,12,4,88,1,2,4]))
-
-
-</code></pre>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>移动端面试复习</title>
-    <url>/2022/03/09/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/</url>
-    <content><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
-<p>最近在很多面试中都问到移动端的问题，暴露了我平时工作中对移动端经验不足的问题，但是天赋不够能力来凑，通过一些面试准备还是能够能混过关的，我希望在这里以问题为导向，探究下移动端的一些问题</p>
-</blockquote>
-<h2 id="一、移动端和pc端的区别"><a href="#一、移动端和pc端的区别" class="headerlink" title="一、移动端和pc端的区别"></a>一、移动端和pc端的区别</h2><ol>
-<li>兼容性不同： pc向下考虑IE兼容，移动端更多考虑是手机兼容，如一些手机屏幕大小和分辨率的兼容</li>
-<li>部分事件不同：移动端多出触屏事件，没有hover事件</li>
-<li>部分场景不同：移动端手机软键盘</li>
-<li>布局要求不同：移动端往往要求做到自适应</li>
-<li>平台区别：移动端可能要依托小程序、微信公众号平台进行开发，pc端比较纯粹</li>
-<li>性能要求不同：移动端对首屏加载速度，用户响应延迟、渲染性能、动画帧率要求比较高</li>
-</ol>
-<h2 id="二、点击穿透问题"><a href="#二、点击穿透问题" class="headerlink" title="二、点击穿透问题"></a>二、点击穿透问题</h2><p>  假如页面上有两个元素A和B。</p>
-<p>  B元素在A元素之上。</p>
-<p>  我们在B元素的touchstart事件上注册了一个回调函数，该回调函数的作用是隐藏B元素。</p>
-<p>  我们发现，当我们点击B元素，B元素被隐藏了，随后，A元素触发了click事件。</p>
-<p>  原因： 这是因为在移动端浏览器，事件执行的顺序是touchstart &gt; touchend &gt; click。而click事件有300ms的延迟，当touchstart事件把B元素隐藏之后，隔了300ms，浏览器触发了click事件，但是此时B元素不见了，所以该事件被派发到了A元素身上。如果A元素是一个链接，那此时页面就会意外地跳转。</p>
-<p>  解决方案：</p>
-<ol>
-<li>只用touch，简单完美</li>
-<li>只用click，副作用大</li>
-<li>tap后延迟350ms再隐藏mask</li>
-<li>禁用缩放</li>
-<li>更改默认视窗宽度为自适应</li>
-<li>引入插件，如：<a href="https://zhuanlan.zhihu.com/p/66845055" target="_blank" rel="noopener">fastClick</a></li>
-</ol>
-<p>  <strong>移动端300ms点击延迟</strong>：</p>
-<blockquote>
-<p>移动端300ms点击延迟由来：</p>
-<p>苹果公司在发布首款 iPhone 前夕，遇到一个问题：当时的网站都是为大屏幕设备所设计的。于是苹果的工程师们做了一些约定，应对 iPhone 这种小屏幕浏览桌面端站点的问题。</p>
-<p>这当中最出名的，当属双击缩放(double tap to zoom)，这也是会有上述 300 毫秒延迟的主要原因。</p>
-</blockquote>
-<p>  解决方案：</p>
-<ol>
-<li><p><strong>禁用缩放</strong></p>
-<p>在meta加入以下信息，表明页面不可缩放，从而可以移动端浏览器自动禁掉默认300ms点击延迟</p>
-<pre><code class="js">&lt;meta name=&quot;viewport&quot; content=&quot;user-scalable=no&quot;&gt;
-&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1,maximum-scale=1&quot;&gt;</code></pre>
-<p><strong>缺点：</strong>完全禁用缩放影响用户体验</p>
-</li>
-<li><p><strong>更改默认的视口宽度</strong></p>
-<p>一开始，为了让桌面站点能在移动端浏览器正常显示，移动端浏览器默认的视口宽度并不等于设备浏览器视窗宽度，通常是设固定值980px。现在我们可以通过以下标签来设置视口宽度为设备宽度。</p>
-<pre><code class="js">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</code></pre>
-<p>如果能够识别出一个网站是响应式的网站，那么移动端浏览器就可以自动禁掉默认的双击缩放行为并且去掉300ms的点击延迟。如果设置了上述<code>meta</code>标签，那浏览器就可以认为该网站已经对移动端做过了适配和优化，就无需双击缩放操作了。</p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/touch-action" target="_blank" rel="noopener">touch-action</a></p>
-<p>CSS属性 <strong><code>touch-action</code></strong> 用于设置触摸屏用户如何操纵元素的区域(例如，浏览器内置的缩放功能)。</p>
-<p>最常见的用法是禁用元素（及其不可滚动的后代）上的所有手势，以使用自己提供的拖放和缩放行为（如地图或游戏表面）。如：</p>
-<pre><code class="css">#map {
-  touch-action: none;
-}</code></pre>
-</li>
-</ol>
-<p><a href="https://juejin.im/post/5b3cc9836fb9a04f9a5cb0e0" target="_blank" rel="noopener">参考</a></p>
-<h2 id="三、移动端软键盘弹窗影响布局怎么解决"><a href="#三、移动端软键盘弹窗影响布局怎么解决" class="headerlink" title="三、移动端软键盘弹窗影响布局怎么解决"></a>三、移动端软键盘弹窗影响布局怎么解决</h2><ol>
-<li><p>当在移动端按钮position:fixed;底部bottom:0;</p>
-<p>固定在底部的按钮会被系统自带的键盘挤上去，占用输入框位置,如下</p>
-<img src="https://tva1.sinaimg.cn/large/00831rSTgy1gdk62smds2j308r0fiab5.jpg" alt="preview" style="zoom:50%;" />
-
-<p>解决：通过resize() 方法触发 resize 事件，当唤起键盘页面高度小于未唤起键盘页面高度时，取消fixed</p>
-</li>
-<li><p>安卓端，移动端页面输入底部被键盘遮挡问题</p>
-<p>解决：</p>
-<ul>
-<li><p>通过 <code>window.onresize</code> 监听页面大小变化，然后通过 <code>window.scrollTo</code> 使页面滚动到所需位置</p>
-</li>
-<li><p>通过 <code>Element.scrollIntoView()</code></p>
-</li>
-<li><p>通过 <code>Element.scrollIntoViewIfNeeded()</code></p>
-<p><a href="[https://dclcats.github.io/2017/08/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%A1%B5%E9%9D%A2%E8%BE%93%E5%85%A5%E5%BA%95%E9%83%A8%E8%A2%AB%E9%94%AE%E7%9B%98%E9%81%AE%E6%8C%A1%E9%97%AE%E9%A2%98/](https://dclcats.github.io/2017/08/17/移动端页面输入底部被键盘遮挡问题/)">参考</a></p>
-</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>策略模式</title>
-    <url>/2022/03/09/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><h3 id="一个表单验证的例子"><a href="#一个表单验证的例子" class="headerlink" title="一个表单验证的例子"></a>一个表单验证的例子</h3><p>给一个html页面，带一个form表单</p>
-<pre><code class="html">&lt;form id=&#39;login-form&#39; action=&quot;&quot; method=&quot;post&quot;&gt;
-    &lt;label for=&quot;account&quot;&gt;手机号&lt;/label&gt;
-    &lt;input type=&quot;number&quot; id=&quot;account&quot; name=&quot;account&quot;&gt;
-    &lt;label for=&quot;password&quot;&gt;密码&lt;/label&gt;
-    &lt;input type=&quot;password&quot; id=&quot;password&quot; name=&quot;password&quot;&gt;
-    &lt;button id=&#39;login&#39;&gt;登录&lt;/button&gt;
-&lt;/form&gt;</code></pre>
-<h5 id="通常我们的做的简单表单验证"><a href="#通常我们的做的简单表单验证" class="headerlink" title="通常我们的做的简单表单验证"></a>通常我们的做的简单表单验证</h5><pre><code class="js">&lt;script&gt;
-    var loginForm = document.getElementById(&#39;login-form&#39;);
-
-    loginForm.onsubmit = function (e) {
-        e.preventDefault();  
-        var account = document.getElementById(&quot;account&quot;).value;
-        var pwd = document.getElementById(&quot;password&quot;).value;
-
-        if(account===null||account===&#39;&#39;){
-            alert(&#39;手机号不能为空&#39;)；
-            return false;
-        }
-        if(pwd===null||pwd===&#39;&#39;){
-            alert(&#39;密码不能为空&#39;)；
-            return false;
-        }
-        if (!/(^1[3|4|5|7|8][0-9]{9}$)/.test(account)) {
-            alert(&#39;手机号格式错误&#39;)；
-            return false;
-        }
-        if(pwd.length&lt;6){
-            alert(&#39;密码不能小于六位&#39;)；
-            return false;
-        }
-        // 发送请求
-    }
-&lt;/script&gt;</code></pre>
-<p>通常我们都是想，直接用if else来解决各种表单的验证，但是这样做的问题是，每次新加一个验证规则都要找到onsubmit函数，添加if判断，而且还要知道对应的字段名，麻烦就算了，最重要的是逻辑不能复用，如果有多个地方用到这个表单判断又要重写，这时候用到策略模式，一个策略就像一个诸葛亮的精囊妙计</p>
-<h4 id="策略模式简介"><a href="#策略模式简介" class="headerlink" title="策略模式简介"></a>策略模式简介</h4><ul>
-<li>意图： 定义一系列的算法,把它们一个个封装起来, 并且使它们可相互替换</li>
-<li>方式：创建一个策略对象和一个context，context的行为会随着不同的策略对象有不同的表现</li>
-<li>解决：在有多种算法相似的情况下，使用 if…else 所带来的复杂和难以维护。 </li>
-</ul>
-<h4 id="使用策略模式构建的表单校验"><a href="#使用策略模式构建的表单校验" class="headerlink" title="使用策略模式构建的表单校验"></a>使用策略模式构建的表单校验</h4><pre><code class="js">// 策略对象
-const strategy = {
-    isNoEmpty: (val) =&gt; {
-        if(val === null || var == &#39;&#39;) {
-            return &#39;不能为空&#39;
-        }
-    },
-    isPhoneNum: (val) =&gt; {
-        if (!/(^1[3|4|5|7|8][0-9]{9}$)/.test(account)) {
-            return &#39;手机号格式错误&#39;
-        }
-    },
-    length: (val, len) =&gt; {
-        if (val.length &gt; len) {
-            return &#39;不能小于六位&#39;
-        }
-    }
- }
-
-// 上下文
-const context = (formRule) =&gt; {
-    if(let i = 0; i &lt; formRule.length; i++) {
-        const item = formRule[i]
-        const res = strategy[item.type](item.val)
-        if(res) res
-    }
-}
-
-/**
-class validator {
-    constructor() {
-        this.strategy = null
-        this.formRule =null 
-    }
-    // 设置策略对象
-    setStrategy(val) {
-        this.startegy = val
-    }
-    // 设置规则
-    setFormRule() {
-        this.formRule = val
-    }
-    // 验证，相对于context
-    validate() {
-        if(let i = 0; i &lt; formRule.length; i++) {
-        const item = formRule[i]
-        const res = strategy[item.type](item.val)
-        if(res) res
-    }
-    }
-}
-*/
-
-// 提交
-function subimit() {
-    const form =  [
-        {type: &#39;isNoEmpty&#39;, val:account },
-        {type: &#39;isNoEmpty&#39;, val:pwd },
-        {type: &#39;isPhoneNum&#39;, val:account },
-        {type: &#39;length&#39;, val:pwd },
-    ] // 简化的表单数据
-
-    // 验证
-    if(!context(form)) return
-
-    /**
-    // 验证
-    const validator = new context()
-    validator.setStrategy(strategy)
-    validator.setFormrule(form)
-    if(!validator.validate()) return
-    */
-    // 发起请求...
-
-}</code></pre>
-<p>这里用的就是策略模式，定义了一个策略对象，和一个context控制执行，可以很方便的实现逻辑复用</p>
-<h3 id="史诗级的表单验证"><a href="#史诗级的表单验证" class="headerlink" title="史诗级的表单验证"></a>史诗级的表单验证</h3><p>相关库 <a href="https://link.zhihu.com/?target=https%3A//github.com/yiminghe/async-validator">async-validator</a>，可以找相关源码了解，同样是用了了策略模式。</p>
-<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>优点：</p>
-<ol>
-<li>把相互独立的代码块封装在一处，方便以后管理扩展</li>
-<li>优于继承，继承的算法是封装在类里的，在算法多的情况下，会衍生很多不同的类，而类里面算法和使用者耦合也会增加维护难度</li>
-<li>优化繁重的if else，提升代码简洁度</li>
-</ol>
-<p>缺点：</p>
-<ol>
-<li>选择算法时，必须了解全部算法的使用方法，才能选择合适的方法，违反最小知识原则</li>
-<li>算法间相互独立，如果有共同部分无法实现共享</li>
-</ol>
-<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><ul>
-<li>在哪些场景下适用，哪些场景不适用？</li>
-<li>跟状态模式有什么不一样？</li>
-</ul>
-]]></content>
   </entry>
   <entry>
     <title>前端自测流程</title>
