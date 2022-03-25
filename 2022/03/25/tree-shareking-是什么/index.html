@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>稍纵即逝</title>
+  <title>tree-shareking 是什么 | 稍纵即逝</title>
   <meta name="keywords" content="">
-  <meta name="description" content="稍纵即逝">
+  <meta name="description" content="tree-shareking 是什么 | 稍纵即逝">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="404">
@@ -54,7 +54,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -434,12 +434,54 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-tree-shareking-是什么" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2"><span class="toc-text">关于博客</span></a></li></ol>
+        <h1 class="article-title">tree-shareking 是什么</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2022-03-25 15:34:16'>2022-03-25 11:54</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#tree-shareking-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">tree-shareking 是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tree-shareking%E5%8E%9F%E7%90%86"><span class="toc-text">tree-shareking原理</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -452,13 +494,42 @@
     }
 </style>
 </div>
-            <h1 id="关于博客"><a href="#关于博客" class="headerlink" title="关于博客"></a>关于博客</h1><p><strong>博客</strong> 是谭佳健的个人站，主要分享一些技术文章。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="tree-shareking-是什么"><a href="#tree-shareking-是什么" class="headerlink" title="tree-shareking 是什么"></a>tree-shareking 是什么</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Tree-shaking 是 DCE（dead code elimination） 的一种新的实现</p>
+<blockquote>
+<p>DCE 就是消除死代码，死代码的特点：</p>
+<ul>
+<li>代码不会被执行，如return后的代码</li>
+<li>代码执行，但不会被使用，如定义没使用的变量</li>
+<li>代码被使用，但只影响死代码 ？</li>
+</ul>
+</blockquote>
+<p>ree-shaking 和传统的 DCE的方法又不太一样，传统的DCE 消灭不可能执行的代码，而Tree-shaking 更关注于消除没有用到的代码。</p>
+<h2 id="tree-shareking原理"><a href="#tree-shareking原理" class="headerlink" title="tree-shareking原理"></a>tree-shareking原理</h2><p>利用ES6 模块的特点进行消除。因为ES6模块的依赖关系是确定的，可以进行可靠的静态分析。可以做到在打包阶段去除死代码。</p>
+<blockquote>
+<p>静态分析：是指在不运行<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/代码/86048">代码</a>的方式下，通过<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/词法分析/8853461">词法分析</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/语法分析/8853407">语法分析</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/控制流/854473">控制流</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/数据流分析/21496987">数据流分析</a>等技术对程序代码进行扫描，验证代码是否满足规范性、安全性、可靠性、可维护性等指标的一种代码分析技术。</p>
+</blockquote>
+<p>面向过程编程函数和面向对象编程是javascript最常用的编程模式和代码组织方式，可以通过webpack测试一下</p>
+<p><strong>函数</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/adam-tan/markdown-image/img/IMG_20220325-150304647.png" alt="图 7">  </p>
+<p>预计del被消除，可以看到是没有了</p>
+<p><strong>class类</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/adam-tan/markdown-image/img/IMG_20220325-145806436.png" alt="图 6">  </p>
+<p>del没有被消除，说明作为类，tree-shareking没有消除未使用的方法，不够彻底</p>
+<p><a target="_blank" rel="noopener" href="https://webpack.docschina.org/guides/tree-shaking/#add-a-utility">Webpack shaking</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903544756109319">参考</a></p>
 
-        </article>
-        
-        
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1249118795@qq.com </span>
+    </div>
+</article>
+
+
+
+
+
     <div id="comments"></div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 
@@ -481,6 +552,13 @@
 </script>
 
 
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -489,11 +567,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>

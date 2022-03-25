@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>hexo自动 部署</title>
-    <url>/2022/03/11/hexo%E8%87%AA%E5%8A%A8%20%E9%83%A8%E7%BD%B2/</url>
-    <content><![CDATA[<p>参考 <a href="https://blog.ctftools.com/2021/07/newpost-18/#3-3-%E5%8F%91%E5%B8%83%E5%88%B0-github-pages" target="_blank" rel="noopener">https://blog.ctftools.com/2021/07/newpost-18/#3-3-%E5%8F%91%E5%B8%83%E5%88%B0-github-pages</a></p>
+    <title></title>
+    <url>/2022/03/25/hexo%E8%87%AA%E5%8A%A8%20%E9%83%A8%E7%BD%B2/</url>
+    <content><![CDATA[<p>参考 <a href="https://blog.ctftools.com/2021/07/newpost-18/#3-3-%E5%8F%91%E5%B8%83%E5%88%B0-github-pages">https://blog.ctftools.com/2021/07/newpost-18/#3-3-%E5%8F%91%E5%B8%83%E5%88%B0-github-pages</a></p>
 ]]></content>
   </entry>
   <entry>
-    <title>怎样理解redux生态库？</title>
-    <url>/2022/03/11/%E6%80%8E%E6%A0%B7%E7%90%86%E8%A7%A3redux%E7%94%9F%E6%80%81%E5%BA%93%EF%BC%9F/</url>
+    <title></title>
+    <url>/2022/03/25/%E6%80%8E%E6%A0%B7%E7%90%86%E8%A7%A3redux%E7%94%9F%E6%80%81%E5%BA%93%EF%BC%9F/</url>
     <content><![CDATA[<h1 id="redux生态库理解"><a href="#redux生态库理解" class="headerlink" title="redux生态库理解"></a>redux生态库理解</h1><h3 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h3><p>状态管理库</p>
 <ul>
 <li>store：全局状态数据（一般是不可变的数据）</li>
 <li>action：记录操作（type）和操作值（payload）的对象</li>
 <li>reducer： 接收 state 和 action，并返回新的 state 的函数</li>
 </ul>
-<p>参考：<a href="https://www.redux.org.cn/docs/introduction/PriorArt.html" target="_blank" rel="noopener">https://www.redux.org.cn/docs/introduction/PriorArt.html</a></p>
+<p>参考：<a href="https://www.redux.org.cn/docs/introduction/PriorArt.html">https://www.redux.org.cn/docs/introduction/PriorArt.html</a></p>
 <h3 id="reselect"><a href="#reselect" class="headerlink" title="reselect"></a>reselect</h3><p>选择对应的部分store</p>
 <h3 id="redux-sage"><a href="#redux-sage" class="headerlink" title="redux-sage"></a>redux-sage</h3><p>一个以redux中间件形式存在的库，更加优雅的管理异步操作（Side Effect：<strong>异步网络请求</strong>、<strong>本地读取 localStorage/Cookie</strong> 等外界操作）</p>
 <p>通过createStore将store和sage关联起来</p>
@@ -24,8 +24,8 @@
 <li>put： 这个函数用于创建 dispatch Effect</li>
 </ul>
 <p><img src="https://pic4.zhimg.com/v2-9697122f53bb1c92a9c455c1b0e5d22f_r.jpg" alt="preview"></p>
-<p>参考：<a href="https://zhuanlan.zhihu.com/p/35437092" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/35437092</a></p>
-<p>中文文档： <a href="https://redux-saga-in-chinese.js.org/" target="_blank" rel="noopener">https://redux-saga-in-chinese.js.org/</a></p>
+<p>参考：<a href="https://zhuanlan.zhihu.com/p/35437092">https://zhuanlan.zhihu.com/p/35437092</a></p>
+<p>中文文档： <a href="https://redux-saga-in-chinese.js.org/">https://redux-saga-in-chinese.js.org/</a></p>
 <h3 id="seamless-immutable"><a href="#seamless-immutable" class="headerlink" title="seamless-immutable"></a>seamless-immutable</h3><p>定义不可变的对象</p>
 <p>每次修改都会返回一个新的对象</p>
 <p>用树的方式存储数据，从而达到复用和高效更新</p>
@@ -42,7 +42,7 @@
 <li>merge(obj || [obj, … ], config) 两个对象合并<ul>
 <li>obj: Object</li>
 <li>[obj, … ] : Array</li>
-<li>config: Object 合并设置，比如: <code>{deep: true} // 深度合并</code></li>
+<li>config: Object 合并设置，比如: <code>&#123;deep: true&#125; // 深度合并</code></li>
 </ul>
 </li>
 <li>isImmutable</li>
@@ -54,13 +54,13 @@
 </li>
 <li>updateIn([key, key2 … ], fn) 用函数操作嵌套对象的更新</li>
 </ul>
-<p>github仓库：<a href="https://github.com/rtfeldman/seamless-immutable" target="_blank" rel="noopener">https://github.com/rtfeldman/seamless-immutable</a></p>
+<p>github仓库：<a href="https://github.com/rtfeldman/seamless-immutable">https://github.com/rtfeldman/seamless-immutable</a></p>
 <h3 id="redux-persist"><a href="#redux-persist" class="headerlink" title="redux-persist"></a>redux-persist</h3><h3 id="ramda"><a href="#ramda" class="headerlink" title="ramda"></a>ramda</h3>]]></content>
   </entry>
   <entry>
-    <title>排序算法</title>
-    <url>/2022/03/11/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><pre><code class="js">function sort(nums, l, r) {
+    <title></title>
+    <url>/2022/03/25/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><pre><code class="js">function sort(nums, l, r) &#123;
    if(r - l &lt;= 0) return
    let pivot = partition1(nums, l, r)
    console.log(&#39;pivot&#39;, pivot)
@@ -69,17 +69,17 @@
    // right
    sort(nums, pivot + 1, r)
    return nums
-}
+&#125;
 
-function partition(nums,l,r) {
+function partition(nums,l,r) &#123;
    // 中心位置
    let center = l
    // 指针
    let compare = r
-   while(center != compare) {
+   while(center != compare) &#123;
        // 在右边移动指针时
-       if(center &lt; compare) {
-          if(nums[center] &gt; nums[compare]) {
+       if(center &lt; compare) &#123;
+          if(nums[center] &gt; nums[compare]) &#123;
              let temp = nums[center]
              nums[center] = nums[compare]
              nums[compare] = temp
@@ -88,12 +88,12 @@ function partition(nums,l,r) {
              center = num
              compare++
              continue
-          }
+          &#125;
           compare--
-       }
+       &#125;
        // 在左边移动指针时
-       else {
-           if(nums[center] &lt; nums[compare]) {
+       else &#123;
+           if(nums[center] &lt; nums[compare]) &#123;
               let temp = nums[center]
               nums[center] = nums[compare]
               nums[compare] = temp
@@ -102,63 +102,63 @@ function partition(nums,l,r) {
               center = num
               compare--
               continue
-          }
+          &#125;
           compare++    
-       }
-   }
+       &#125;
+   &#125;
    console.log(nums)
    return center
- }
+ &#125;
 
- function partition1 (nums,l,r) {
+ function partition1 (nums,l,r) &#123;
     // 保存基准值
     let pivot = nums[l]
-    while(l!=r) {
-       while(r &gt; l &amp;&amp; nums[r] &gt;= pivot) {
+    while(l!=r) &#123;
+       while(r &gt; l &amp;&amp; nums[r] &gt;= pivot) &#123;
          r--
-       }
+       &#125;
        nums[l] = nums[r]
-       while(r &gt; l &amp;&amp; nums[l] &lt;= pivot) {
+       while(r &gt; l &amp;&amp; nums[l] &lt;= pivot) &#123;
          l++
-       }
+       &#125;
        nums[r] = nums[l]
-    }
+    &#125;
     nums[l] = pivot
     return l
- }
+ &#125;
 
  console.log(sort([45,23,55,12,4,88,1,2,4], 0, 8))</code></pre>
-<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><pre><code class="js">function sort(nums) {
-   for(let i = 0; i &lt; nums.length; i++) {
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><pre><code class="js">function sort(nums) &#123;
+   for(let i = 0; i &lt; nums.length; i++) &#123;
       // 插入的数
       let insert = nums[i]
       //j 为排序列表长度
       let j = i -1
-      for(j ; j &gt;= 0; j--) {
-         if(insert &lt; nums[j]) {
+      for(j ; j &gt;= 0; j--) &#123;
+         if(insert &lt; nums[j]) &#123;
             // insert往前挪
             nums[j + 1] = nums[j]
             nums[j] = insert
-         }
-      }
-   }
+         &#125;
+      &#125;
+   &#125;
    return nums
-}
+&#125;
 
-function sort2(nums) {
-   for(let i = 0; i &lt; nums.length; i++) {
+function sort2(nums) &#123;
+   for(let i = 0; i &lt; nums.length; i++) &#123;
       // 插入的数
       let insert = nums[i]
       //j 为已排序列表长度
       let j = i -1
-      while(j&gt;= 0 &amp;&amp; insert &lt; nums[j]) {
+      while(j&gt;= 0 &amp;&amp; insert &lt; nums[j]) &#123;
             nums[j + 1] = nums[j]
             j--z
-      }
+      &#125;
       nums[j + 1] = insert
-   }
+   &#125;
    return nums
-}
+&#125;
 
 
 
@@ -176,8 +176,8 @@ function sort2(nums) {
       </tags>
   </entry>
   <entry>
-    <title>移动端面试复习</title>
-    <url>/2022/03/11/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/</url>
+    <title></title>
+    <url>/2022/03/25/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/</url>
     <content><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
 <p>最近在很多面试中都问到移动端的问题，暴露了我平时工作中对移动端经验不足的问题，但是天赋不够能力来凑，通过一些面试准备还是能够能混过关的，我希望在这里以问题为导向，探究下移动端的一些问题</p>
 </blockquote>
@@ -201,7 +201,7 @@ function sort2(nums) {
 <li>tap后延迟350ms再隐藏mask</li>
 <li>禁用缩放</li>
 <li>更改默认视窗宽度为自适应</li>
-<li>引入插件，如：<a href="https://zhuanlan.zhihu.com/p/66845055" target="_blank" rel="noopener">fastClick</a></li>
+<li>引入插件，如：<a href="https://zhuanlan.zhihu.com/p/66845055">fastClick</a></li>
 </ol>
 <p>  <strong>移动端300ms点击延迟</strong>：</p>
 <blockquote>
@@ -222,15 +222,15 @@ function sort2(nums) {
 <pre><code class="js">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</code></pre>
 <p>如果能够识别出一个网站是响应式的网站，那么移动端浏览器就可以自动禁掉默认的双击缩放行为并且去掉300ms的点击延迟。如果设置了上述<code>meta</code>标签，那浏览器就可以认为该网站已经对移动端做过了适配和优化，就无需双击缩放操作了。</p>
 </li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/touch-action" target="_blank" rel="noopener">touch-action</a></p>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/touch-action">touch-action</a></p>
 <p>CSS属性 <strong><code>touch-action</code></strong> 用于设置触摸屏用户如何操纵元素的区域(例如，浏览器内置的缩放功能)。</p>
 <p>最常见的用法是禁用元素（及其不可滚动的后代）上的所有手势，以使用自己提供的拖放和缩放行为（如地图或游戏表面）。如：</p>
-<pre><code class="css">#map {
+<pre><code class="css">#map &#123;
   touch-action: none;
-}</code></pre>
+&#125;</code></pre>
 </li>
 </ol>
-<p><a href="https://juejin.im/post/5b3cc9836fb9a04f9a5cb0e0" target="_blank" rel="noopener">参考</a></p>
+<p><a href="https://juejin.im/post/5b3cc9836fb9a04f9a5cb0e0">参考</a></p>
 <h2 id="三、移动端软键盘弹窗影响布局怎么解决"><a href="#三、移动端软键盘弹窗影响布局怎么解决" class="headerlink" title="三、移动端软键盘弹窗影响布局怎么解决"></a>三、移动端软键盘弹窗影响布局怎么解决</h2><ol>
 <li><p>当在移动端按钮position:fixed;底部bottom:0;</p>
 <p>固定在底部的按钮会被系统自带的键盘挤上去，占用输入框位置,如下</p>
@@ -258,7 +258,7 @@ function sort2(nums) {
   </entry>
   <entry>
     <title>策略模式</title>
-    <url>/2022/03/11/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</url>
+    <url>/2022/03/25/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><h3 id="一个表单验证的例子"><a href="#一个表单验证的例子" class="headerlink" title="一个表单验证的例子"></a>一个表单验证的例子</h3><p>给一个html页面，带一个form表单</p>
 <pre><code class="html">&lt;form id=&#39;login-form&#39; action=&quot;&quot; method=&quot;post&quot;&gt;
     &lt;label for=&quot;account&quot;&gt;手机号&lt;/label&gt;
@@ -270,29 +270,29 @@ function sort2(nums) {
 <h5 id="通常我们的做的简单表单验证"><a href="#通常我们的做的简单表单验证" class="headerlink" title="通常我们的做的简单表单验证"></a>通常我们的做的简单表单验证</h5><pre><code class="js">&lt;script&gt;
     var loginForm = document.getElementById(&#39;login-form&#39;);
 
-    loginForm.onsubmit = function (e) {
+    loginForm.onsubmit = function (e) &#123;
         e.preventDefault();  
         var account = document.getElementById(&quot;account&quot;).value;
         var pwd = document.getElementById(&quot;password&quot;).value;
 
-        if(account===null||account===&#39;&#39;){
+        if(account===null||account===&#39;&#39;)&#123;
             alert(&#39;手机号不能为空&#39;)；
             return false;
-        }
-        if(pwd===null||pwd===&#39;&#39;){
+        &#125;
+        if(pwd===null||pwd===&#39;&#39;)&#123;
             alert(&#39;密码不能为空&#39;)；
             return false;
-        }
-        if (!/(^1[3|4|5|7|8][0-9]{9}$)/.test(account)) {
+        &#125;
+        if (!/(^1[3|4|5|7|8][0-9]&#123;9&#125;$)/.test(account)) &#123;
             alert(&#39;手机号格式错误&#39;)；
             return false;
-        }
-        if(pwd.length&lt;6){
+        &#125;
+        if(pwd.length&lt;6)&#123;
             alert(&#39;密码不能小于六位&#39;)；
             return false;
-        }
+        &#125;
         // 发送请求
-    }
+    &#125;
 &lt;/script&gt;</code></pre>
 <p>通常我们都是想，直接用if else来解决各种表单的验证，但是这样做的问题是，每次新加一个验证规则都要找到onsubmit函数，添加if判断，而且还要知道对应的字段名，麻烦就算了，最重要的是逻辑不能复用，如果有多个地方用到这个表单判断又要重写，这时候用到策略模式，一个策略就像一个诸葛亮的精囊妙计</p>
 <h4 id="策略模式简介"><a href="#策略模式简介" class="headerlink" title="策略模式简介"></a>策略模式简介</h4><ul>
@@ -301,65 +301,65 @@ function sort2(nums) {
 <li>解决：在有多种算法相似的情况下，使用 if…else 所带来的复杂和难以维护。 </li>
 </ul>
 <h4 id="使用策略模式构建的表单校验"><a href="#使用策略模式构建的表单校验" class="headerlink" title="使用策略模式构建的表单校验"></a>使用策略模式构建的表单校验</h4><pre><code class="js">// 策略对象
-const strategy = {
-    isNoEmpty: (val) =&gt; {
-        if(val === null || var == &#39;&#39;) {
+const strategy = &#123;
+    isNoEmpty: (val) =&gt; &#123;
+        if(val === null || var == &#39;&#39;) &#123;
             return &#39;不能为空&#39;
-        }
-    },
-    isPhoneNum: (val) =&gt; {
-        if (!/(^1[3|4|5|7|8][0-9]{9}$)/.test(account)) {
+        &#125;
+    &#125;,
+    isPhoneNum: (val) =&gt; &#123;
+        if (!/(^1[3|4|5|7|8][0-9]&#123;9&#125;$)/.test(account)) &#123;
             return &#39;手机号格式错误&#39;
-        }
-    },
-    length: (val, len) =&gt; {
-        if (val.length &gt; len) {
+        &#125;
+    &#125;,
+    length: (val, len) =&gt; &#123;
+        if (val.length &gt; len) &#123;
             return &#39;不能小于六位&#39;
-        }
-    }
- }
+        &#125;
+    &#125;
+ &#125;
 
 // 上下文
-const context = (formRule) =&gt; {
-    if(let i = 0; i &lt; formRule.length; i++) {
+const context = (formRule) =&gt; &#123;
+    if(let i = 0; i &lt; formRule.length; i++) &#123;
         const item = formRule[i]
         const res = strategy[item.type](item.val)
         if(res) res
-    }
-}
+    &#125;
+&#125;
 
 /**
-class validator {
-    constructor() {
+class validator &#123;
+    constructor() &#123;
         this.strategy = null
         this.formRule =null 
-    }
+    &#125;
     // 设置策略对象
-    setStrategy(val) {
+    setStrategy(val) &#123;
         this.startegy = val
-    }
+    &#125;
     // 设置规则
-    setFormRule() {
+    setFormRule() &#123;
         this.formRule = val
-    }
+    &#125;
     // 验证，相对于context
-    validate() {
-        if(let i = 0; i &lt; formRule.length; i++) {
+    validate() &#123;
+        if(let i = 0; i &lt; formRule.length; i++) &#123;
         const item = formRule[i]
         const res = strategy[item.type](item.val)
         if(res) res
-    }
-    }
-}
+    &#125;
+    &#125;
+&#125;
 */
 
 // 提交
-function subimit() {
+function subimit() &#123;
     const form =  [
-        {type: &#39;isNoEmpty&#39;, val:account },
-        {type: &#39;isNoEmpty&#39;, val:pwd },
-        {type: &#39;isPhoneNum&#39;, val:account },
-        {type: &#39;length&#39;, val:pwd },
+        &#123;type: &#39;isNoEmpty&#39;, val:account &#125;,
+        &#123;type: &#39;isNoEmpty&#39;, val:pwd &#125;,
+        &#123;type: &#39;isPhoneNum&#39;, val:account &#125;,
+        &#123;type: &#39;length&#39;, val:pwd &#125;,
     ] // 简化的表单数据
 
     // 验证
@@ -374,7 +374,7 @@ function subimit() {
     */
     // 发起请求...
 
-}</code></pre>
+&#125;</code></pre>
 <p>这里用的就是策略模式，定义了一个策略对象，和一个context控制执行，可以很方便的实现逻辑复用</p>
 <h3 id="史诗级的表单验证"><a href="#史诗级的表单验证" class="headerlink" title="史诗级的表单验证"></a>史诗级的表单验证</h3><p>相关库 <a href="https://link.zhihu.com/?target=https%3A//github.com/yiminghe/async-validator">async-validator</a>，可以找相关源码了解，同样是用了了策略模式。</p>
 <h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>优点：</p>
@@ -395,12 +395,249 @@ function subimit() {
 ]]></content>
   </entry>
   <entry>
-    <title>js 布尔值转换和数据类型的简单判断</title>
+    <title>tree-shareking 是什么</title>
+    <url>/2022/03/25/tree-shareking-%E6%98%AF%E4%BB%80%E4%B9%88/</url>
+    <content><![CDATA[<h1 id="tree-shareking-是什么"><a href="#tree-shareking-是什么" class="headerlink" title="tree-shareking 是什么"></a>tree-shareking 是什么</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Tree-shaking 是 DCE（dead code elimination） 的一种新的实现</p>
+<blockquote>
+<p>DCE 就是消除死代码，死代码的特点：</p>
+<ul>
+<li>代码不会被执行，如return后的代码</li>
+<li>代码执行，但不会被使用，如定义没使用的变量</li>
+<li>代码被使用，但只影响死代码 ？</li>
+</ul>
+</blockquote>
+<p>ree-shaking 和传统的 DCE的方法又不太一样，传统的DCE 消灭不可能执行的代码，而Tree-shaking 更关注于消除没有用到的代码。</p>
+<h2 id="tree-shareking原理"><a href="#tree-shareking原理" class="headerlink" title="tree-shareking原理"></a>tree-shareking原理</h2><p>利用ES6 模块的特点进行消除。因为ES6模块的依赖关系是确定的，可以进行可靠的静态分析。可以做到在打包阶段去除死代码。</p>
+<blockquote>
+<p>静态分析：是指在不运行<a href="https://baike.baidu.com/item/代码/86048">代码</a>的方式下，通过<a href="https://baike.baidu.com/item/词法分析/8853461">词法分析</a>、<a href="https://baike.baidu.com/item/语法分析/8853407">语法分析</a>、<a href="https://baike.baidu.com/item/控制流/854473">控制流</a>、<a href="https://baike.baidu.com/item/数据流分析/21496987">数据流分析</a>等技术对程序代码进行扫描，验证代码是否满足规范性、安全性、可靠性、可维护性等指标的一种代码分析技术。</p>
+</blockquote>
+<p>面向过程编程函数和面向对象编程是javascript最常用的编程模式和代码组织方式，可以通过webpack测试一下</p>
+<p><strong>函数</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/adam-tan/markdown-image/img/IMG_20220325-150304647.png" alt="图 7">  </p>
+<p>预计del被消除，可以看到是没有了</p>
+<p><strong>class类</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/adam-tan/markdown-image/img/IMG_20220325-145806436.png" alt="图 6">  </p>
+<p>del没有被消除，说明作为类，tree-shareking没有消除未使用的方法，不够彻底</p>
+<p><a href="https://webpack.docschina.org/guides/tree-shaking/#add-a-utility">Webpack shaking</a></p>
+<p><a href="https://juejin.cn/post/6844903544756109319">参考</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>前端模块化</title>
+    <url>/2022/03/20/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/</url>
+    <content><![CDATA[<h1 id="前端模块化"><a href="#前端模块化" class="headerlink" title="前端模块化"></a>前端模块化</h1><h2 id="模块化的进程"><a href="#模块化的进程" class="headerlink" title="模块化的进程"></a>模块化的进程</h2><p><img src="https://cdn.jsdelivr.net/gh/adam-tan/markdown-image/img/IMG_20220320-165447497.png" alt="图 5">  </p>
+<h2 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a>CommonJS</h2><ul>
+<li>介绍：用于node服务端的模块引入，一般是同步的</li>
+<li>基本语法<ul>
+<li>导出：<code>module.exports = xxx</code>或者 <code>module.exports.x = xxx</code></li>
+<li>引入：<code>var xxx = requrie(&#39;xx.js&#39;)</code></li>
+</ul>
+</li>
+<li>特点<ul>
+<li>引入的是对象的浅拷贝</li>
+<li>作用域是在模块文件内部，不污染全局</li>
+<li>可以多次加载，但是只运行一次</li>
+<li>加载顺序，跟代码顺序一致</li>
+</ul>
+</li>
+<li>应用场景<ul>
+<li>服务器</li>
+<li>浏览器需要借助Browserify</li>
+</ul>
+</li>
+</ul>
+<h2 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h2><ul>
+<li><p>介绍：主要用于浏览器，比CommonJS在浏览器实现早，可以用require.js库，实现异步加载，底层是通过script节点插入脚本方式异步加载模块</p>
+</li>
+<li><p>基本语法</p>
+<ul>
+<li><p>导出</p>
+<pre><code class="js">// 定义没有模块依赖的导出模块
+define(function()&#123;
+  // ...操作  
+  var x = 1
+  return 
+&#125;)
+// 定义有模块依赖的导出模块
+define([m1,m2],function(m1,m2) &#123;
+  // ...操作
+  var x = 1
+  return &#123;x&#125;
+&#125;)</code></pre>
+</li>
+<li><p>引入 </p>
+<pre><code class="js">require([m1,m2], function() &#123;
+  // ...操作 
+&#125;)</code></pre>
+</li>
+</ul>
+</li>
+<li><p>特点</p>
+<ul>
+<li>可以异步加载模块</li>
+<li>依赖和引入以数组形式传入</li>
+<li>回调形式执行加载后模块</li>
+</ul>
+</li>
+</ul>
+<h2 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h2><ul>
+<li><p>介绍：CommonJS和AMD的结合,也是通过script加载</p>
+</li>
+<li><p>导出：</p>
+<pre><code class="js">// 定义没有模块依赖的导出模块
+define(function(require, exports, module) &#123;
+  exports.x = &#39;x&#39;
+  // module.exports.x = &#39;x&#39;
+  // return &#123;x&#125;
+&#125;)
+define(&#123; &quot;foo&quot;: &quot;bar&quot; &#125;) // JSON 数据模块
+define(&#39;I am a template. My name is &#123;&#123;name&#125;&#125;.&#39;) // 字符串模板模块
+
+// 定义有模块依赖的导出模块
+define(&#39;id&#39;, [&#39;jquery&#39;], function(require, exports, module) &#123; 
+  // 模块代码
+&#125;)
+</code></pre>
+</li>
+<li><p>引入</p>
+<pre><code class="js">define(function(require, exports, module)&#123;
+  //引入依赖模块(同步)
+  var m1 = require(&#39;./m1&#39;)
+  //引入依赖模块(异步)
+    require.async(&#39;./m2&#39;, function (m2) &#123;
+      // ···操作
+    &#125;)
+  //暴露模块
+  exports.xxx = value
+&#125;)</code></pre>
+</li>
+</ul>
+<ul>
+<li><p>应用</p>
+<ul>
+<li>浏览器，使用<a href="https://seajs.github.io/seajs/docs/">sea.js</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="ES6模块"><a href="#ES6模块" class="headerlink" title="ES6模块"></a>ES6模块</h2><ul>
+<li><p>介绍：ES6 在语言标准的层面上，实现了模块功能，而且实现得相当简单，完全可以取代 CommonJS 和 AMD 规范，成为浏览器和服务器通用的模块解决方案。它设计思想是尽量静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量。</p>
+</li>
+<li><p>导出</p>
+<pre><code class="js">// 单个特性
+export let a = 0, b = 1, c = 2
+export function f() &#123;&#125;
+
+// 列表
+export &#123;a, b , c&#125;
+export &#123;a as A&#125;
+
+// 默认导出
+export default let a = 0, b = 1
+export default function f() &#123;&#125;
+
+// 列表选择一个默认
+export &#123;a as default ,...&#125;
+
+// 导出模块合集
+export * from …
+export &#123; name1, name2, …, nameN &#125; from …
+export &#123; default &#125; from …</code></pre>
+</li>
+<li><p>引入</p>
+<pre><code class="js">// 默认导入
+import defaultExport from &quot;module-name&quot;;
+import * as name from &quot;module-name&quot;;
+
+// 列表导入
+import &#123; export &#125; from &quot;module-name&quot;;
+import &#123; export as alias &#125; from &quot;module-name&quot;;
+import &#123; export1 , export2 &#125; from &quot;module-name&quot;;</code></pre>
+</li>
+</ul>
+<ul>
+<li><p>特点：</p>
+<ul>
+<li><p>加载多次执行一次</p>
+</li>
+<li><p>动态引入，不是值的拷贝，模块的变量绑定其模块，即使导出也如此</p>
+<pre><code class="javascript">/** import 动态引入 */
+// lib.js
+export let counter = 3;
+export function incCounter() &#123;
+  counter++;
+&#125;
+// main.js
+import &#123; counter, incCounter &#125; from &#39;./lib&#39;;
+console.log(counter); // 3
+incCounter();
+console.log(counter); // 4
+
+/** CommonJS 类似于值的拷贝*/
+var obj = &#123;
+  add: function() &#123;
+    this.val++
+  &#125;,
+  val: 0
+&#125;
+var &#123; val &#125; = obj
+console.log(&#39;val-1&#39;, val++)
+console.log(&#39;val-2&#39;, val++)
+obj.add()
+obj.add()
+console.log(&#39;val-3&#39;, val) // 如果为动态引用此时输出应该为 4
+// 输出
+// val-1 0
+// val-2 1
+// val-3 2</code></pre>
+</li>
+</ul>
+</li>
+<li><p>与CommonJS差异</p>
+<ul>
+<li>CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。</li>
+<li>ES6 模块是编译时输出接口， CommonJS 模块是运行时加载</li>
+</ul>
+</li>
+<li><p>应用</p>
+<ul>
+<li>浏览器，可以用ES6-Babel和Browserify，实际上就是先转es5(但包含CommonJS语法)再用Browserify编译打包</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://segmentfault.com/a/1190000017466120#item-2-4">参考</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>js错误处理</title>
+    <url>/2022/03/12/js%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/</url>
+    <content><![CDATA[<h1 id="js错误处理"><a href="#js错误处理" class="headerlink" title="js错误处理"></a>js错误处理</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p>[TOC]</p>
+<h2 id="一、try…catch的错误处理"><a href="#一、try…catch的错误处理" class="headerlink" title="一、try…catch的错误处理"></a>一、try…catch的错误处理</h2><h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><pre><code class="js">try &#123;
+
+  // 代码1...
+
+&#125; catch (err) &#123;
+
+  // 错误捕获
+
+&#125; finally &#123;
+
+&#125;
+// 代码2</code></pre>
+<p>如果代码不出错，则执行完代码1后执行代码2，如果错误，则可以下catch中捕获，处理异常，然后继续执行代码2</p>
+<h3 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h3><ul>
+<li><p>仅仅对运行时的error生效，代码语法错误是无法捕获的，如：</p>
+<pre><code class="js">try &#123;</code></pre>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
     <url>/2021/07/03/js%20%E5%B8%83%E5%B0%94%E5%80%BC%E8%BD%AC%E6%8D%A2%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E5%88%A4%E6%96%AD/</url>
     <content><![CDATA[<h1 id="js-布尔值转换和数据类型的简单判断"><a href="#js-布尔值转换和数据类型的简单判断" class="headerlink" title="js 布尔值转换和数据类型的简单判断"></a>js 布尔值转换和数据类型的简单判断</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
 <p>通常情况下js的布尔值转换和数据类型判断是一个比较容易犯错的问题，现在我们结合对照表来简单梳理一下</p>
 </blockquote>
-<h3 id="一、js-布尔值转换"><a href="#一、js-布尔值转换" class="headerlink" title="一、js 布尔值转换"></a>一、js 布尔值转换</h3><h4 id="一、-的情况下转换"><a href="#一、-的情况下转换" class="headerlink" title="一、==的情况下转换"></a>一、==的情况下转换</h4><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Equality" target="_blank" rel="noopener">参考</a></p>
+<h3 id="一、js-布尔值转换"><a href="#一、js-布尔值转换" class="headerlink" title="一、js 布尔值转换"></a>一、js 布尔值转换</h3><h4 id="一、-的情况下转换"><a href="#一、-的情况下转换" class="headerlink" title="一、==的情况下转换"></a>一、==的情况下转换</h4><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Equality">参考</a></p>
 <h4 id="二、数据类型和布尔值的转换"><a href="#二、数据类型和布尔值的转换" class="headerlink" title="二、数据类型和布尔值的转换"></a>二、数据类型和布尔值的转换</h4><table>
 <thead>
 <tr>
@@ -504,7 +741,7 @@ pattern instanceof RegExp //true</code></pre><p> 注意事项以及适用范围�
       </categories>
   </entry>
   <entry>
-    <title>怎样用js实现二叉树遍历？</title>
+    <title></title>
     <url>/2021/03/04/%E6%80%8E%E6%A0%B7%E7%94%A8js%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%EF%BC%9F/</url>
     <content><![CDATA[<h3 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h3><blockquote>
 <p>二叉树是数据结构算法的重要知识点，今天我们用js来实现下二叉树的深度优先遍历</p>
@@ -515,122 +752,122 @@ pattern instanceof RegExp //true</code></pre><p> 注意事项以及适用范围�
 <pre><code class="js">/*
 二叉树
 */
-var tree = {
+var tree = &#123;
   value: 1,
-  left: {
+  left: &#123;
     value: 2,
-    left: {
+    left: &#123;
       value: 4
-    }
-  },
-  right: {
+    &#125;
+  &#125;,
+  right: &#123;
     value: 3,
-    left: {
+    left: &#123;
       value: 5,
-      left: {
+      left: &#123;
         value: 7
-      },
-      right: {
+      &#125;,
+      right: &#123;
         value: 8
-      }
-    },
-    right: {
+      &#125;
+    &#125;,
+    right: &#123;
       value: 6
-    }
-  }
-}</code></pre>
+    &#125;
+  &#125;
+&#125;</code></pre>
 <h3 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h3><ul>
 <li>递归</li>
 </ul>
-<pre><code class="js">function preOrder(node) {
-  if(node != null) {
+<pre><code class="js">function preOrder(node) &#123;
+  if(node != null) &#123;
     console.log(node.value)
     preOrder(node.left)
     preOrder(node.right)
-  } 
-}</code></pre>
+  &#125; 
+&#125;</code></pre>
 <ul>
 <li>非递归</li>
 </ul>
 <pre><code class="js">
-function preOrder(root) {
+function preOrder(root) &#123;
         let stack = [];
         let pNode = root;
-        while (pNode != null || !stack.length == 0) {
-            if (pNode != null) {
+        while (pNode != null || !stack.length == 0) &#123;
+            if (pNode != null) &#123;
                 console.log(pNode.value+&quot;  &quot;);
                 stack.push(pNode);
                 pNode = pNode.left;
-            } else { //pNode == null &amp;&amp; !stack.isEmpty()
+            &#125; else &#123; //pNode == null &amp;&amp; !stack.isEmpty()
                 node = stack.pop();
                 pNode = node.right;
-            }
-        }
-    }
+            &#125;
+        &#125;
+    &#125;
 preOrder(tree)
 
 </code></pre>
 <h3 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h3><ul>
 <li>递归</li>
 </ul>
-<pre><code class="js">function preOrder(node) {
-  if(node != null) {
+<pre><code class="js">function preOrder(node) &#123;
+  if(node != null) &#123;
     preOrder(node.left)
     console.log(node.value)
     preOrder(node.right)
-  } 
-}</code></pre>
+  &#125; 
+&#125;</code></pre>
 <ul>
 <li>非递归</li>
 </ul>
-<pre><code class="js">function midOrder(root) {
+<pre><code class="js">function midOrder(root) &#123;
         let stack = [];
         let pNode = root;
-        while (pNode != null || !stack.length == 0) {
-            if (pNode != null) {
+        while (pNode != null || !stack.length == 0) &#123;
+            if (pNode != null) &#123;
                 stack.push(pNode);
                 pNode = pNode.left;
-            } else { //pNode == null &amp;&amp; !stack.isEmpty()
+            &#125; else &#123; //pNode == null &amp;&amp; !stack.isEmpty()
                 node = stack.pop();
         console.log(pNode.value+&quot;  &quot;);
                 pNode = node.right;
-            }
-        }
-    }
+            &#125;
+        &#125;
+    &#125;
 midOrder(tree)</code></pre>
 <h3 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h3><ul>
 <li>递归</li>
 </ul>
-<pre><code class="js">function preOrder(node) {
-  if(node != null) {
+<pre><code class="js">function preOrder(node) &#123;
+  if(node != null) &#123;
     preOrder(node.left)
     preOrder(node.right)
     console.log(node.value)
-  } 
-}</code></pre>
+  &#125; 
+&#125;</code></pre>
 <ul>
 <li>非递归</li>
 </ul>
 <pre><code class="js">
 
-var lastOrder = (root) =&gt; {
+var lastOrder = (root) =&gt; &#123;
     let result = []
     let stack = []
     let node = root
-    while(node != null || stack.length != 0){
-        if(node != null) {
+    while(node != null || stack.length != 0)&#123;
+        if(node != null) &#123;
             result.unshift(node.value)
             stack.push(node)
             node = node.right
-        }else{
+        &#125;else&#123;
             node = stack.pop()
             //console.log(node.value)
             node = node.left
-        }
-    }
+        &#125;
+    &#125;
     return result
 
-}
+&#125;
 lastOrder(tree)</code></pre>
 ]]></content>
       <categories>
@@ -641,71 +878,71 @@ lastOrder(tree)</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>js常用算法面试题收集（持续更新）</title>
+    <title></title>
     <url>/2020/09/03/js%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
     <content><![CDATA[<h2 id="js常用算法面试题收集"><a href="#js常用算法面试题收集" class="headerlink" title="js常用算法面试题收集"></a>js常用算法面试题收集</h2><h4 id="1-统计一个字符出现的最高频率？"><a href="#1-统计一个字符出现的最高频率？" class="headerlink" title="1.统计一个字符出现的最高频率？"></a>1.统计一个字符出现的最高频率？</h4><pre><code class="js">let str = &#39;asdfghjklaqwertyuiopiaia&#39;;
-function statistics(str){
+function statistics(str)&#123;
   const strArr = [...str]
-  let obj = {}
+  let obj = &#123;&#125;
   // 统计字符数
-  strArr.forEach((i) =&gt;{
+  strArr.forEach((i) =&gt;&#123;
     obj[i] = obj[i] == undefined ? 0 :  ++obj[i]
-  })
+  &#125;)
   // 求最大值
   return Object.keys(obj)
     .sort((i, r) =&gt; obj[r] - obj[i])[0] //降序排列
-}
+&#125;
 console.log(statistics(str))    // a
 </code></pre>
 <h4 id="2-数组去重"><a href="#2-数组去重" class="headerlink" title="2.数组去重"></a>2.数组去重</h4><ul>
 <li>ruduce 方法</li>
 </ul>
 <pre><code class="js">let arr = [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;1&#39;, &#39;a&#39;, &#39;b&#39;, &#39;b&#39;]
-function duplicate() {
+function duplicate() &#123;
     return arr.reduce((r,v) =&gt; r.indexOf(v) &gt; -1 ? r : [...r, v], [])  
-}
+&#125;
 console.log(duplicate())
 </code></pre>
 <ul>
 <li>forEach</li>
 </ul>
 <pre><code class="js">let arr = [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;1&#39;, &#39;a&#39;, &#39;b&#39;, &#39;b&#39;]
-const unique = arr =&gt; {
-    let obj = {}
-    arr.forEach(value =&gt; {
+const unique = arr =&gt; &#123;
+    let obj = &#123;&#125;
+    arr.forEach(value =&gt; &#123;
         obj[value] = 0
-    })
+    &#125;)
     return Object.keys(obj)
-}
+&#125;
 console.log(unique(arr))  // [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;a&#39;,&#39;b&#39;]</code></pre>
 <ul>
 <li>filter</li>
 </ul>
 <pre><code class="js">let arr = [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;1&#39;, &#39;a&#39;, &#39;b&#39;, &#39;b&#39;]
-const unique = arr =&gt; {
-    return arr.filter((ele, index, array) =&gt; {
+const unique = arr =&gt; &#123;
+    return arr.filter((ele, index, array) =&gt; &#123;
         return index === array.indexOf(ele)
-    })
-}
+    &#125;)
+&#125;
 console.log(unique(arr))  // [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;a&#39;,&#39;b&#39;]</code></pre>
 <ul>
 <li>set</li>
 </ul>
 <pre><code class="js">let arr = [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;1&#39;, &#39;a&#39;, &#39;b&#39;, &#39;b&#39;]
-const unique = arr =&gt; {
+const unique = arr =&gt; &#123;
     return new [...Set(arr)]
-}
+&#125;
 console.log(unique(arr))  // [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;a&#39;,&#39;b&#39;]</code></pre>
 <h4 id="3、翻转字符串"><a href="#3、翻转字符串" class="headerlink" title="3、翻转字符串"></a>3、翻转字符串</h4><pre><code class="js">let str = &#39;holle word&#39;
-const reverseStr = str =&gt; {
+const reverseStr = str =&gt; &#123;
   return [...str].reverse().join(&#39;&#39;)
-}
+&#125;
 console.log(reverseStr(str))</code></pre>
 <h4 id="4、数组中最大差值"><a href="#4、数组中最大差值" class="headerlink" title="4、数组中最大差值"></a>4、数组中最大差值</h4><pre><code class="js">let arr = [2,44,22,8,9]
-const different = arr =&gt; {
+const different = arr =&gt; &#123;
   let sortArr = arr.sort((i,r) =&gt; i-r)
   return sortArr[sortArr.length - 1] - sortArr[0]
-}
+&#125;
 console.log(different(arr))</code></pre>
 <h4 id="5、不借助临时变量，进行两个整数的交换"><a href="#5、不借助临时变量，进行两个整数的交换" class="headerlink" title="5、不借助临时变量，进行两个整数的交换"></a>5、不借助临时变量，进行两个整数的交换</h4><ul>
 <li>数组解构</li>
@@ -719,56 +956,56 @@ console.log(different(arr))</code></pre>
 </ul>
 <pre><code class="js">let a = 2,
     b = 3;
-const swop = (a, b) =&gt; {
+const swop = (a, b) =&gt; &#123;
     b = b - a;
     a = a + b;
     b = a - b;
     return [a,b];
-}
+&#125;
 console.log(swop(2,3)) // [3,2]</code></pre>
 <h4 id="6、冒泡排序"><a href="#6、冒泡排序" class="headerlink" title="6、冒泡排序"></a>6、冒泡排序</h4><pre><code class="js">let arr = [43, 32, 1, 5, 9, 22];
-const sort = arr =&gt; {
-    arr.forEach((v, i) =&gt; {
-        for (let j = i + 1; j &lt; arr.length; j++) {
-            if (arr[i] &gt; arr[j]) {
+const sort = arr =&gt; &#123;
+    arr.forEach((v, i) =&gt; &#123;
+        for (let j = i + 1; j &lt; arr.length; j++) &#123;
+            if (arr[i] &gt; arr[j]) &#123;
                 [arr[i],arr[j]] = [arr[j],arr[i]]
-            }
+            &#125;
             console.log(arr)
-        }
-    })
+        &#125;
+    &#125;)
     return arr
-}
+&#125;
 console.log(sort([43, 9, 5, 22, 32, 1]))  // [1, 5, 9, 22, 32, 43]</code></pre>
 <h4 id="7、分割数组"><a href="#7、分割数组" class="headerlink" title="7、分割数组"></a>7、分割数组</h4><p>题目：给一个形如<code>[&#39;&#39;, 1, 2, &#39;&#39;, &#39;&#39;, 6, 7, 8]</code>的数组，里面需要分割成<code>[[1,2], [6,7,8]]</code>的形式</p>
 <pre><code class="js">// 分割&#39; &#39;,双指针法
-function separate(arr) {
+function separate(arr) &#123;
   let pre = 0 //前节点
   let cur = 0 // 当前节点
   let res = []
   let _arr = [...arr.slice(0), &#39;&#39;] //加入一个&#39;&#39;,作为结尾，兼容结尾为数字的情况
 
-  while(cur &lt; _arr.length) {
+  while(cur &lt; _arr.length) &#123;
     // 前后节点一致的情况，遇到&#39;&#39;跳过
-    if(_arr[pre] === &#39;&#39; &amp;&amp; _arr[cur] === &#39;&#39;) { 
+    if(_arr[pre] === &#39;&#39; &amp;&amp; _arr[cur] === &#39;&#39;) &#123; 
       pre++
       cur++
       continue
-    }
+    &#125;
         // 前后节点不一致的情况一，都不为空串，只移动cur，相当于记录pre
-    if(_arr[pre] !== &#39;&#39; &amp;&amp; _arr[cur] !== &#39;&#39;) {
+    if(_arr[pre] !== &#39;&#39; &amp;&amp; _arr[cur] !== &#39;&#39;) &#123;
       cur++
       continue
-    }
+    &#125;
     // 前后节点不一致的情况二，cur遇到空串，表示到了分割点，加入区间[)到数组
-    if(_arr[pre] !== &#39;&#39; &amp;&amp; _arr[cur] === &quot;&quot;) {
+    if(_arr[pre] !== &#39;&#39; &amp;&amp; _arr[cur] === &quot;&quot;) &#123;
       res.push(_arr.slice(pre, cur))
       cur++
       pre = cur
-    }
-  }
+    &#125;
+  &#125;
 
   return res
-}
+&#125;
 
 console.log(separate([&#39;&#39;, 1, 2, &#39;&#39;, &#39;&#39;, 6, 7, 8]))
 console.log(separate([0, 1, 2, &#39;&#39;, &#39;&#39;, 6, 7, &#39;&#39;]))</code></pre>
@@ -781,7 +1018,7 @@ console.log(separate([0, 1, 2, &#39;&#39;, &#39;&#39;, 6, 7, &#39;&#39;]))</code
       </tags>
   </entry>
   <entry>
-    <title>typescript</title>
+    <title></title>
     <url>/2020/08/03/typescript/</url>
     <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>本篇文章主要是为了给让大家了解下Typescript</p>
 <p>这里将会讲到大家关心的几个问题，简单先简绍了几个与js不同的ts的语法，来探讨ts和传统js的区别</p>
@@ -796,9 +1033,9 @@ console.log(separate([0, 1, 2, &#39;&#39;, &#39;&#39;, 6, 7, &#39;&#39;]))</code
 <h4 id="安装-TypeScript"><a href="#安装-TypeScript" class="headerlink" title="安装 TypeScript"></a>安装 TypeScript</h4><p>执行<code>npm install -g typescript</code></p>
 <p>然后就可以在任何地方编译ts文件<code>tsc holle.ts</code></p>
 <h4 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h4><p>将下面代码复制到<code>hello.ts</code>中, 其中使用 : 指定变量的类型</p>
-<pre><code class="javascript">function sayHello(person: string) {
+<pre><code class="javascript">function sayHello(person: string) &#123;
     return &#39;Hello, &#39; + person;
-}
+&#125;
 
 let user = &#39;Tom&#39;;
 console.log(sayHello(user));
@@ -806,16 +1043,16 @@ console.log(sayHello(user));
 <p>然后执行</p>
 <p><code>tsc holle.ts</code>、</p>
 <p>这时候会生成一个编译好的文件<code>hello.js</code>：</p>
-<pre><code class="javascript">function sayHello(person) {
+<pre><code class="javascript">function sayHello(person) &#123;
     return &#39;Hello, &#39; + person;
-}
+&#125;
 var user = &#39;Tom&#39;;
 console.log(sayHello(user));</code></pre>
 <h4 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h4><p>编译下段代码</p>
 <pre><code class="javascript">// holle.ts
-function sayHello(person: string) {
+function sayHello(person: string) &#123;
     return &#39;Hello, &#39; + person;
-}
+&#125;
 
 let user = [0, 1, 2];
 console.log(sayHello(user));</code></pre>
@@ -841,7 +1078,7 @@ x = [&#39;hello&#39;, 10]; // OK</code></pre>
 <blockquote>
 <p>像C#等其它语言一样，使用枚举类型可以为一组数值赋予友好的名字。</p>
 </blockquote>
-<pre><code class="javascript">enum Color {Red, Green, Blue}
+<pre><code class="javascript">enum Color &#123;Red, Green, Blue&#125;
 let c: Color = Color.Green;</code></pre>
 <ul>
 <li>Any</li>
@@ -858,9 +1095,9 @@ notSure = false; // okay, definitely a boolean</code></pre>
 <blockquote>
 <p>void类型像是与any类型相反，它表示没有任何类型。</p>
 </blockquote>
-<pre><code class="javascript">function warnUser(): void {
+<pre><code class="javascript">function warnUser(): void &#123;
     console.log(&quot;This is my warning message&quot;);
-}</code></pre>
+&#125;</code></pre>
 <ul>
 <li>never</li>
 </ul>
@@ -868,20 +1105,20 @@ notSure = false; // okay, definitely a boolean</code></pre>
 <p>表示的是那些永不存在的值的类型。</p>
 </blockquote>
 <pre><code class="javascript">// 返回never的函数必须存在无法达到的终点
-function error(message: string): never {
+function error(message: string): never &#123;
     throw new Error(message);
-}
+&#125;
 
 // 推断的返回值类型为never
-function fail() {
+function fail() &#123;
     return error(&quot;Something failed&quot;);
-}
+&#125;
 
 // 返回never的函数必须存在无法达到的终点
-function infiniteLoop(): never {
-    while (true) {
-    }
-}</code></pre>
+function infiniteLoop(): never &#123;
+    while (true) &#123;
+    &#125;
+&#125;</code></pre>
 <ul>
 <li>类型断言</li>
 </ul>
@@ -904,15 +1141,15 @@ let strLength: number = (&lt;string&gt;someValue).length;</code></pre>
 <blockquote>
 <p>定义传入的参数</p>
 </blockquote>
-<pre><code class="javascript">interface LabelledValue {
+<pre><code class="javascript">interface LabelledValue &#123;
   label: string;
-}
+&#125;
 
-function printLabel(labelledObj: LabelledValue) {
+function printLabel(labelledObj: LabelledValue) &#123;
   console.log(labelledObj.label);
-}
+&#125;
 
-let myObj = {size: 10, label: &quot;Size 10 Object&quot;};
+let myObj = &#123;size: 10, label: &quot;Size 10 Object&quot;&#125;;
 printLabel(myObj);</code></pre>
 <ul>
 <li>可选接口</li>
@@ -920,22 +1157,22 @@ printLabel(myObj);</code></pre>
 <blockquote>
 <p>参数可选</p>
 </blockquote>
-<pre><code class="javascript"> interface SquareConfig {
+<pre><code class="javascript"> interface SquareConfig &#123;
   color?: string;
   width?: number;
-}</code></pre>
+&#125;</code></pre>
 <ul>
 <li>只读属性</li>
 </ul>
 <blockquote>
 <p>传入参数只读</p>
 </blockquote>
-<pre><code class="javascript">interface Point {
+<pre><code class="javascript">interface Point &#123;
     readonly x: number;
     readonly y: number;
-}
+&#125;
 
-let p1: Point = { x: 10, y: 20 };
+let p1: Point = &#123; x: 10, y: 20 &#125;;
 p1.x = 5; // error!</code></pre>
 <ul>
 <li>描述函数</li>
@@ -943,49 +1180,49 @@ p1.x = 5; // error!</code></pre>
 <blockquote>
 <p>定义函数输入输出</p>
 </blockquote>
-<pre><code class="javascript">interface SearchFunc {
+<pre><code class="javascript">interface SearchFunc &#123;
   (source: string, subString: string): boolean;
-}
+&#125;
 
 let mySearch: SearchFunc;
-mySearch = function(source: string, subString: string) {
+mySearch = function(source: string, subString: string) &#123;
   let result = source.search(subString);
   return result &gt; -1;
-}</code></pre>
+&#125;</code></pre>
 <ul>
 <li>实现接口</li>
 </ul>
 <blockquote>
 <p>在类中实现接口</p>
 </blockquote>
-<pre><code class="javascript">interface ClockInterface {
+<pre><code class="javascript">interface ClockInterface &#123;
     currentTime: Date;
     setTime(d: Date);
-}
+&#125;
 
-class Clock implements ClockInterface {
+class Clock implements ClockInterface &#123;
     currentTime: Date;
-    setTime(d: Date) {
+    setTime(d: Date) &#123;
         this.currentTime = d;
-    }
-    constructor(h: number, m: number) { }
-}</code></pre>
+    &#125;
+    constructor(h: number, m: number) &#123; &#125;
+&#125;</code></pre>
 <ul>
 <li>继承接口</li>
 </ul>
-<pre><code class="javascript">interface Shape {
+<pre><code class="javascript">interface Shape &#123;
     color: string;
-}
+&#125;
 
-interface PenStroke {
+interface PenStroke &#123;
     penWidth: number;
-}
+&#125;
 
-interface Square extends Shape, PenStroke {
+interface Square extends Shape, PenStroke &#123;
     sideLength: number;
-}
+&#125;
 
-let square = &lt;Square&gt;{};
+let square = &lt;Square&gt;&#123;&#125;;
 square.color = &quot;blue&quot;;
 square.sideLength = 10;
 square.penWidth = 5.0;</code></pre>
@@ -1010,17 +1247,17 @@ square.penWidth = 5.0;</code></pre>
 <blockquote>
 <p>子类继承父类，子类除了拥有父类的所有特性外，还有一些更具体的特性</p>
 </blockquote>
-<pre><code>class Animal {
-    move(distanceInMeters: number = 0) {
-        console.log(`Animal moved ${distanceInMeters}m.`);
-    }
-}
+<pre><code>class Animal &#123;
+    move(distanceInMeters: number = 0) &#123;
+        console.log(`Animal moved $&#123;distanceInMeters&#125;m.`);
+    &#125;
+&#125;
 
-class Dog extends Animal {
-    bark() {
+class Dog extends Animal &#123;
+    bark() &#123;
         console.log(&#39;Woof! Woof!&#39;);
-    }
-}
+    &#125;
+&#125;
 
 const dog = new Dog();
 dog.bark();
@@ -1041,17 +1278,17 @@ dog.bark();</code></pre><ul>
 <li>抽象类（Abstract Class）</li>
 </ul>
 <blockquote>
-<p>抽象类是供其他类继承的基类，抽象类不允许被实例化。抽象类中的抽象方法必须在子类中被实现<br>这个和接口有点像，有兴趣可以看下<a href="https://www.jianshu.com/p/038f0b356e9a" target="_blank" rel="noopener">接口和抽象类的区别</a></p>
+<p>抽象类是供其他类继承的基类，抽象类不允许被实例化。抽象类中的抽象方法必须在子类中被实现<br>这个和接口有点像，有兴趣可以看下<a href="https://www.jianshu.com/p/038f0b356e9a">接口和抽象类的区别</a></p>
 </blockquote>
 <h4 id="5-泛型"><a href="#5-泛型" class="headerlink" title="5. 泛型"></a>5. 泛型</h4><p>在像C#和Java这样的语言中，可以使用泛型来创建可重用的组件，一个组件可以支持多种类型的数据。</p>
 <pre><code class="javascript">// 使用泛型前
-function identity(arg: number): number {
+function identity(arg: number): number &#123;
     return arg;
-}
+&#125;
 // 使用泛型后
-function identity&lt;T&gt;(arg: T): T {
+function identity&lt;T&gt;(arg: T): T &#123;
     return arg;
-}</code></pre>
+&#125;</code></pre>
 <p>T帮助我们捕获用户传入的类型，使用后再返回类型T的值</p>
 <h4 id="6-使用第三方模块"><a href="#6-使用第三方模块" class="headerlink" title="6.使用第三方模块"></a>6.使用第三方模块</h4><ul>
 <li>需要相应的声明文件（.d.ts文件）</li>
@@ -1068,7 +1305,7 @@ function identity&lt;T&gt;(arg: T): T {
 <blockquote>
 <p>TypeScript 官方建立了一个名叫 DefinitelyTyped 的仓库，任何人都可以通过 GitHub 在上面修改或者新增 npm 模块的声明文件</p>
 </blockquote>
-<h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p>还有其他类型就不一一详细介绍了，具体可以参照<a href="https://www.tslang.cn/docs/home.html" target="_blank" rel="noopener">官方文档(中文版)</a></p>
+<h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p>还有其他类型就不一一详细介绍了，具体可以参照<a href="https://www.tslang.cn/docs/home.html">官方文档(中文版)</a></p>
 <h3 id="三、使用与不使用的理由"><a href="#三、使用与不使用的理由" class="headerlink" title="三、使用与不使用的理由"></a>三、使用与不使用的理由</h3><h4 id="1-不使用的理由"><a href="#1-不使用的理由" class="headerlink" title="1. 不使用的理由"></a>1. 不使用的理由</h4><ul>
 <li>npm装上的那些xxxjs库都是没有任何类型信息的</li>
 </ul>
@@ -1123,9 +1360,9 @@ function identity&lt;T&gt;(arg: T): T {
 </ul>
 <p>总结，这些特点还是挺诱人的，大型项目可以使用，总体来说，学习成本有，但熟悉过es6的人来说，门槛不算太高，比较类似java的风格。</p>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
-<li><a href="https://www.jianshu.com/p/103933b7c2b4" target="_blank" rel="noopener">Typescript基础入门</a></li>
-<li><a href="https://juejin.im/post/59c46bc86fb9a00a4636f939" target="_blank" rel="noopener">Tyepscript体系调研报告</a></li>
-<li><a href="http://taobaofed.org/blog/2017/03/09/head-first-typescript/" target="_blank" rel="noopener">认识 TypeScript</a></li>
+<li><a href="https://www.jianshu.com/p/103933b7c2b4">Typescript基础入门</a></li>
+<li><a href="https://juejin.im/post/59c46bc86fb9a00a4636f939">Tyepscript体系调研报告</a></li>
+<li><a href="http://taobaofed.org/blog/2017/03/09/head-first-typescript/">认识 TypeScript</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1136,7 +1373,7 @@ function identity&lt;T&gt;(arg: T): T {
       </tags>
   </entry>
   <entry>
-    <title>前端项目注释规范参考</title>
+    <title></title>
     <url>/2020/06/14/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
     <content><![CDATA[<h2 id="注释规范初稿"><a href="#注释规范初稿" class="headerlink" title="注释规范初稿"></a>注释规范初稿</h2><ul>
 <li><p><strong>强制</strong>  </p>
@@ -1176,14 +1413,28 @@ function identity&lt;T&gt;(arg: T): T {
 </ol>
 </li>
 </ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/han-1034683568/p/7680354.html" target="_blank" rel="noopener">阿里巴巴java开发手册</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/han-1034683568/p/7680354.html">阿里巴巴java开发手册</a></p>
 ]]></content>
       <categories>
         <category>规范</category>
       </categories>
   </entry>
   <entry>
-    <title>API规范参考</title>
+    <title>Hello World</title>
+    <url>/2020/04/03/hexo%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
     <url>/2020/04/03/API%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83/</url>
     <content><![CDATA[<h1 id="API规范"><a href="#API规范" class="headerlink" title="API规范"></a>API规范</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
 <li><p>RESTful API是目前比较成熟的一套互联网应用程序的API设计理论,它遵循资源导向的设计方式。<br>  它有三个主要要素：资源，集合和 URLs。</p>
@@ -1232,7 +1483,7 @@ function identity&lt;T&gt;(arg: T): T {
 <blockquote>
 <p> GET /zoos：列出所有动物园<br>  POST /zoos：新建一个动物园<br>  GET /zoos/ID：获取某个指定动物园的信息<br>  PUT /zoos/ID：更新某个指定动物园的信息（提供该动物园的全部信息）<br>  PATCH /zoos/ID：更新某个指定动物园的信息（提供该动物园的部分信息）<br>  DELETE /zoos/ID：删除某个动物园<br>  GET /zoos/ID/animals：列出某个指定动物园的所有动物<br>  DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物  </p>
 </blockquote>
-<p>  附：<a href="https://segmentfault.com/q/1010000005685904" target="_blank" rel="noopener">pacth与put的区别</a></p>
+<p>  附：<a href="https://segmentfault.com/q/1010000005685904">pacth与put的区别</a></p>
 </li>
 <li><p>如果记录数量很多，服务器不可能都将它们返回给用户。API应该提供参数，过滤返回结果。</p>
 <p>  下面是一些常见的参数。</p>
@@ -1248,7 +1499,7 @@ function identity&lt;T&gt;(arg: T): T {
 <p><code>GET /schools/2/students</code> , 应该从学校2得到所有学生的名单<br> <code>GET /schools/2/students/31</code> , 应该得到学生31的详细信息，且此学生属于学校2<br> <code>DELETE /schools/2/students/31</code> , 应删除属于学校2的学生31<br> <code>PUT /schools/2/students/31</code>, 应该更新学生31的信息<br> <code>POST /schools</code> , 应该创建一所新学校，并返回创建的新学校的细节。在集合URL上使用POST  </p>
 </blockquote>
 <p> 但是如 <code>GET /zoos/1/areas/3/animals/4</code><br> 尽量使用查询参数代替路径中的实体导航，如<code>GET/animals?zoo=1&amp;area=3</code></p>
-<p> 附：<a href="https://blog.csdn.net/xcc_2269861428/article/details/80433382" target="_blank" rel="noopener">post请求和get请求的区别</a>  </p>
+<p> 附：<a href="https://blog.csdn.net/xcc_2269861428/article/details/80433382">post请求和get请求的区别</a>  </p>
 </li>
 </ul>
 <ul>
@@ -1260,10 +1511,10 @@ function identity&lt;T&gt;(arg: T): T {
 <h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
 <li><p>Response不要包装，body 直接就是数据，</p>
 <blockquote>
-<p>错误例子：<code>{
+<p>错误例子：<code>&#123;
  &quot;success&quot;:true，
- &quot;data&quot;:{&quot;id&quot;:1,&quot;name&quot;:&quot;xiaotuan&quot;},
-}</code></p>
+ &quot;data&quot;:&#123;&quot;id&quot;:1,&quot;name&quot;:&quot;xiaotuan&quot;&#125;,
+&#125;</code></p>
 </blockquote>
 </li>
 <li><p>Service/DAO层方法命名规约</p>
@@ -1273,12 +1524,12 @@ function identity&lt;T&gt;(arg: T): T {
 </li>
 </ul>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><h3 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h3><ul>
-<li><a href="http://wangwei.info/about-rest-api/" target="_blank" rel="noopener">REST接口设计规范</a></li>
-<li><a href="https://gumutianqi1.gitbooks.io/specification-doc/content/specification-doc/restful_api.html" target="_blank" rel="noopener">API接口规范</a></li>
-<li><a href="https://github.com/elsewhencode/project-guidelines" target="_blank" rel="noopener"> A set of best practices for JavaScript projects</a></li>
+<li><a href="http://wangwei.info/about-rest-api/">REST接口设计规范</a></li>
+<li><a href="https://gumutianqi1.gitbooks.io/specification-doc/content/specification-doc/restful_api.html">API接口规范</a></li>
+<li><a href="https://github.com/elsewhencode/project-guidelines"> A set of best practices for JavaScript projects</a></li>
 </ul>
 <h3 id="github网站页面的部分API参考"><a href="#github网站页面的部分API参考" class="headerlink" title="github网站页面的部分API参考"></a>github网站页面的部分API参考</h3><blockquote>
-<p><a href="https://github.com/ant-design/ant-design" target="_blank" rel="noopener">https://github.com/ant-design/ant-design</a></p>
+<p><a href="https://github.com/ant-design/ant-design">https://github.com/ant-design/ant-design</a></p>
 </blockquote>
 <ul>
 <li><p>请求star数量 <code>https://api.github.com/_private/browser/stats</code>  </p>
@@ -1302,21 +1553,7 @@ function identity&lt;T&gt;(arg: T): T {
       </categories>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2020/04/03/hexo%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>AMD、CMD、CommonJS以及UMD的简单对比</title>
+    <title></title>
     <url>/2020/03/02/AMD%E3%80%81CMD%E3%80%81CommonJS%E4%BB%A5%E5%8F%8AUMD%E7%9A%84%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94/</url>
     <content><![CDATA[<h2 id="AMD、CMD、CommonJS以及UMD的简单对比"><a href="#AMD、CMD、CommonJS以及UMD的简单对比" class="headerlink" title="AMD、CMD、CommonJS以及UMD的简单对比"></a>AMD、CMD、CommonJS以及UMD的简单对比</h2><h3 id="一、AMD"><a href="#一、AMD" class="headerlink" title="一、AMD"></a>一、AMD</h3><p>为浏览器环境设计的， 所以是异步模块加载定义的</p>
 <ul>
@@ -1335,12 +1572,12 @@ function identity&lt;T&gt;(arg: T): T {
 <p><code>factory</code> 是最后一个参数，它包裹了模块的具体实现，它是一个函数或者对象。如果是函数，那么它的返回值就是模块的输出接口或值。</p>
 <p>用例：</p>
 <p>定义一个名为 <code>myModule</code> 的模块，它依赖 <code>jQuery</code> 模块：</p>
-<pre><code class="js">define(&#39;myModule&#39;, [&#39;jquery&#39;], function($) {
+<pre><code class="js">define(&#39;myModule&#39;, [&#39;jquery&#39;], function($) &#123;
     // $ 是 jquery 模块的输出
     $(&#39;body&#39;).text(&#39;hello world&#39;);
-});
+&#125;);
 // 使用
-require([&#39;myModule&#39;], function(myModule) {});</code></pre>
+require([&#39;myModule&#39;], function(myModule) &#123;&#125;);</code></pre>
 <p>二、CMD</p>
 <p>和AMD同样是异步加载</p>
 <ul>
@@ -1353,32 +1590,32 @@ require([&#39;myModule&#39;], function(myModule) {});</code></pre>
 <li><p>模块定义</p>
 <p>分为define(factory)和define(name，deps，factory)</p>
 <pre><code class="js">// define(factory)
-define(function(require, exports, module) { 
+define(function(require, exports, module) &#123; 
   // 模块代码 
-}); 
+&#125;); 
 
 // define(name，deps，factory)
-define(&#39;hello&#39;, [&#39;jquery&#39;], function(require, exports, module) { 
+define(&#39;hello&#39;, [&#39;jquery&#39;], function(require, exports, module) &#123; 
   // 模块代码 
-}); </code></pre>
+&#125;); </code></pre>
 </li>
 <li><p>和AMD异同</p>
 <p>CMD 推崇依赖就近，AMD 推崇依赖前置</p>
 <pre><code class="js">// CMD
-define(function(require, exports, module) {   
+define(function(require, exports, module) &#123;   
     var a = require(&#39;./a&#39;)   
     a.doSomething()    
     var b = require(&#39;./b&#39;)   
     b.doSomething()    
     ... 
-})
+&#125;)
 // AMD 
-define([&#39;./a&#39;, &#39;./b&#39;], function(a, b) {  // 依赖必须一开始就写好
+define([&#39;./a&#39;, &#39;./b&#39;], function(a, b) &#123;  // 依赖必须一开始就写好
     a.doSomething()
     ...
     b.doSomething()
     ...
-}) </code></pre>
+&#125;) </code></pre>
 </li>
 </ul>
 <h2 id="三、CommonJS"><a href="#三、CommonJS" class="headerlink" title="三、CommonJS"></a>三、CommonJS</h2><p>​    以服务器为第一原则发展，同步加载</p>
@@ -1408,21 +1645,21 @@ export m;
 export const m = 1;
 // 写法2
 const m = 1；
-export { m };
+export &#123; m &#125;;
 // 写法3
 const m = 1；
-export { m as module };
+export &#123; m as module &#125;;
 </code></pre>
 <pre><code class="js">// 类似于对象解构
 // module.js
 export const m = 1;
 // index.js
 // 注意，这里的m得和被加载的模块输出的接口名对应
-import { m } from &#39;./module&#39;;
+import &#123; m &#125; from &#39;./module&#39;;
 // 若是想为输入的变量取名
-import { m as m1 }  &#39;./module&#39;;
+import &#123; m as m1 &#125;  &#39;./module&#39;;
 // 值得注意的是，import是编译阶段，所以不能动态加载，比如下面写法是错误的。因为&#39;a&#39; + &#39;b&#39;在运行阶段才能取到值，运行阶段在编译阶段之后
-import { &#39;a&#39; + &#39;b&#39; } from &#39;./module&#39;;
+import &#123; &#39;a&#39; + &#39;b&#39; &#125; from &#39;./module&#39;;
 // 若是只是想运行被加载的模块，如下
 // 值得注意的是，即使加载两次也只是运行一次
 import &#39;./module&#39;;
@@ -1430,12 +1667,12 @@ import &#39;./module&#39;;
 import * as module from &#39;./module&#39;;
 </code></pre>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://zhaoda.net/webpack-handbook/amd.html" target="_blank" rel="noopener">AMD 规范</a></li>
+<li><a href="https://zhaoda.net/webpack-handbook/amd.html">AMD 规范</a></li>
 <li><a href="[http://www.ruanyifeng.com/blog/2012/11/require_js.html](http://www.ruanyifeng.com/blog/2012/11/require_js.html)">Javascript模块化编程（二）：require.js的用法</a></li>
-<li><a href="https://blog.csdn.net/mm_hello11/article/details/78958334" target="_blank" rel="noopener">amd和cmd规范的区别</a></li>
-<li><a href="https://github.com/seajs/seajs/issues/242" target="_blank" rel="noopener">cmd官方规范</a></li>
-<li><a href="https://github.com/amdjs/amdjs-api/wiki/AMD" target="_blank" rel="noopener">amd官方规范</a></li>
-<li><a href="https://juejin.im/post/5b7d2f45e51d4538826f4c28" target="_blank" rel="noopener">AMD , CMD, CommonJS，ES Module，UMD</a></li>
+<li><a href="https://blog.csdn.net/mm_hello11/article/details/78958334">amd和cmd规范的区别</a></li>
+<li><a href="https://github.com/seajs/seajs/issues/242">cmd官方规范</a></li>
+<li><a href="https://github.com/amdjs/amdjs-api/wiki/AMD">amd官方规范</a></li>
+<li><a href="https://juejin.im/post/5b7d2f45e51d4538826f4c28">AMD , CMD, CommonJS，ES Module，UMD</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1446,7 +1683,7 @@ import * as module from &#39;./module&#39;;
       </tags>
   </entry>
   <entry>
-    <title>前端面试题目收集（持续更新）</title>
+    <title></title>
     <url>/2019/12/24/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E6%94%B6%E9%9B%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
     <content><![CDATA[<p>[TOC]</p>
 <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
@@ -1456,15 +1693,15 @@ import * as module from &#39;./module&#39;;
 <h2 id="知识树"><a href="#知识树" class="headerlink" title="知识树"></a>知识树</h2><p>之前每次面试前，看一篇自己的总结面试题，感觉很好，但是每次这样效果太低下，一个个题目看，然后再进行回想，每个题目在你脑中渐渐形成一个孤立的荒岛，为了加快效率，希望大家<strong>构建自己的知识体系</strong></p>
 <p>接下来，我自己罗列下前端知识体系，每次面试前根据知识体系回想回想一遍，把知识联系起来，形成一棵树，然后再用具体题目去充实上面的每个子树吧</p>
 <ul>
-<li>浏览器相关 （加载过程、三级缓存、浏览器缓存、垃圾回收、<a href="https://juejin.cn/post/6844904016325902344#heading-13" target="_blank" rel="noopener">v8垃圾回收</a>、<a href="https://juejin.cn/post/6844903638238756878#heading-4" target="_blank" rel="noopener">事件循环</a> <a href="https://zhuanlan.zhihu.com/p/33058983" target="_blank" rel="noopener">其他参考</a>、<a href="https://segmentfault.com/a/1190000018935873" target="_blank" rel="noopener">Ajax</a>、<a href="http://blog.poetries.top/browser-working-principle/guide/part1/lesson01.html" target="_blank" rel="noopener">浏览器工作原理</a>、<a href="https://juejin.cn/post/6844903593275817998#heading-3" target="_blank" rel="noopener">缓存</a>）</li>
-<li>网络 （tcp三次握手四次挥手、http、https握手过程、网络五层协议、XSS/CSRF/sql注入等网络安全问题）</li>
-<li>js （类型判断、原型链、this指向、异步函数、继承、设计模式、设计原则、es6、<a href="https://github.com/mqyqingfeng/Blog/issues/155" target="_blank" rel="noopener">浮点数</a>、Promise）</li>
-<li>css （BFC、清除浮动、居中、css3实现三角形、主题切换方案、<a href="https://zhuanlan.zhihu.com/p/41604775" target="_blank" rel="noopener">css选择器权重</a>、<a href="https://segmentfault.com/a/1190000010780991" target="_blank" rel="noopener">css3</a>、<a href="https://segmentfault.com/a/1190000012739764" target="_blank" rel="noopener">浮动</a>）</li>
+<li>浏览器相关 （加载过程、三级缓存、<a href="https://juejin.cn/post/6844903764566999054#heading-11">浏览器缓存</a>、垃圾回收、<a href="https://juejin.cn/post/6844904016325902344#heading-13">v8垃圾回收</a>、<a href="https://juejin.cn/post/6844903638238756878#heading-4">事件循环</a> <a href="https://zhuanlan.zhihu.com/p/33058983">其他参考</a>、<a href="https://segmentfault.com/a/1190000018935873">Ajax</a>、<a href="http://blog.poetries.top/browser-working-principle/guide/part1/lesson01.html">浏览器工作原理</a>、<a href="https://juejin.cn/post/6844903593275817998#heading-3">缓存</a>）</li>
+<li>网络 （tcp三次握手四次挥手、http、https握手过程、<a href="https://blog.csdn.net/qq_22238021/article/details/80279001">网络五层协议</a>、XSS/CSRF/sql注入等网络安全问题）</li>
+<li>js （类型判断、原型链、this指向、异步函数、继承、设计模式、设计原则、es6、<a href="https://github.com/mqyqingfeng/Blog/issues/155">浮点数</a>）</li>
+<li>css （BFC、清除浮动、居中、css3实现三角形、主题切换方案、<a href="https://zhuanlan.zhihu.com/p/41604775">css选择器权重</a>、<a href="https://segmentfault.com/a/1190000010780991">css3</a>、<a href="https://segmentfault.com/a/1190000012739764">浮动</a>）</li>
 <li>html （语义化、canvas、空标签有哪些）</li>
-<li>node.js （express、koa洋葱模型、eventEmitter的实现、事件循环、微任务与宏任务、async awiat、错误处理、pm2的使用、docker的使用）</li>
-<li>Vue （双向绑定的原理 （<a href="https://juejin.cn/post/6844903479044112391" target="_blank" rel="noopener">1</a>、<a href="https://juejin.cn/post/6844903869730799629#heading-10" target="_blank" rel="noopener">2</a>）、v-model的原理、vue-router的实现、vuex的实现、vue3.0的新特性）</li>
-<li>React （vue和react的区别、react的函数式组件、immutable、redux实现、React16的新特性、hook的使用、生命周期）</li>
-<li><a href="https://alienzhou.com/projects/fe-performance-journey/5-subresources/" target="_blank" rel="noopener">前端性能优化</a> （方案、性能监控）</li>
+<li>node.js （express、koa<a href="https://juejin.cn/post/6957258059022499854">洋葱模型</a>、eventEmitter的实现、事件循环、微任务与宏任务、async awiat、错误处理、pm2的使用、docker的使用）</li>
+<li>Vue （双向绑定的原理 （<a href="https://juejin.cn/post/6844903479044112391">1</a>、<a href="https://juejin.cn/post/6844903869730799629#heading-10">2</a>）、v-model的原理、vue-router的实现、vuex的实现、vue3.0的新特性）</li>
+<li>React （<a href="https://zhuanlan.zhihu.com/p/100228073#:~:text=%E8%80%8CVue%E6%98%AF%E9%80%9A%E8%BF%87%E4%B8%80,%E7%9A%84%EF%BC%8C%E6%9B%B4%E5%8A%A0%E7%BA%AF%E7%B2%B9%E6%9B%B4%E5%8A%A0%E5%8E%9F%E7%94%9F%E3%80%82">vue和react的区别</a>、vuex和redux的区别、react的函数式组件、immutable、redux实现、React16的新特性、hook的使用、生命周期）</li>
+<li><a href="https://alienzhou.com/projects/fe-performance-journey/5-subresources/">前端性能优化</a> （方案、性能监控）</li>
 <li>webpack （配置、各种loader、原理、性能优化：多线程打包、代码分割、按需加载）</li>
 <li>基础算法 （排序、链表、数、队列、栈）</li>
 <li>git （命令、cli、rebase用法）</li>
@@ -1472,8 +1709,8 @@ import * as module from &#39;./module&#39;;
 <li>客户端 ：RN/Weex、原生bridge</li>
 <li>移动端（微信公众号开发、小程序、移动端问题：1px问题、点击穿透、图片懒加载）</li>
 </ul>
-<p>资料：<a href="https://bytedance.feishu.cn/base/app8Ok6k9qafpMkgyRbfgxeEnet?table=tblEnSV2PNAajtWE&view=vewJHSwJVd" target="_blank" rel="noopener">字节飞书面试题</a></p>
-<h2 id="css可以继承的属性"><a href="#css可以继承的属性" class="headerlink" title="css可以继承的属性"></a>css可以继承的属性</h2><ul>
+<p>资料：<a href="https://bytedance.feishu.cn/base/app8Ok6k9qafpMkgyRbfgxeEnet?table=tblEnSV2PNAajtWE&view=vewJHSwJVd">字节飞书面试题</a></p>
+<h2 id="CSS可以继承的属性"><a href="#CSS可以继承的属性" class="headerlink" title="CSS可以继承的属性"></a>CSS可以继承的属性</h2><ul>
 <li><p>常用的css可继承的属性：</p>
 <p>font：组合字体</p>
 <p>font-family：规定元素的字体系列</p>
@@ -1487,20 +1724,33 @@ import * as module from &#39;./module&#39;;
 <p>visibility：元素可见性</p>
 <p>光标属性：cursor</p>
 </li>
-<li><p>所有元素可以继承的</p>
-<p>1、属性：cursor</p>
+<li><p>所有元素可以继承的属性：cursor</p>
+</li>
+<li><p>内联元素可以继承的属性：text-indent、text-align之外的文本系列属性</p>
+</li>
+<li><p>块级元素可以继承的属性：text-indent、text-align</p>
 </li>
 </ul>
-<p>2、光标属性：cursor</p>
-<ul>
-<li><p>内联元素可以继承的属性</p>
-<p>1、text-indent、text-align之外的文本系列属性</p>
+<h2 id="CSS居中"><a href="#CSS居中" class="headerlink" title="CSS居中"></a>CSS居中</h2><ul>
+<li>内联元素：<ul>
+<li>水平：text-align</li>
+<li>垂直：<ul>
+<li>vertical-alight：middle；</li>
+<li>line-height：元素高度 (只对inline中文字有效)</li>
+</ul>
 </li>
 </ul>
-<p>3、除text-indent、text-align之外的文本系列属性</p>
-<ul>
-<li><p>块级元素可以继承的属性</p>
-<p>text-indent、text-align</p>
+</li>
+<li>块级元素：<ul>
+<li>margin：0 auto; （只能水平居中）</li>
+<li>position<ul>
+<li>定宽：position: absolute; left: 50%; right: 50%; margin-left:负自身宽度的一半; margin-top:负自身高度的一半;</li>
+<li>不定宽：position: absolute; left: 50%;  left：50%; top:50%; transfrom:(-50%,-50%);</li>
+</ul>
+</li>
+<li>flex：justify-content:center;  align-item: center;</li>
+<li>table：diplay：table-cell;vertical-align: middle;</li>
+</ul>
 </li>
 </ul>
 <h2 id="原型链的相关知识"><a href="#原型链的相关知识" class="headerlink" title="原型链的相关知识"></a>原型链的相关知识</h2><p><img src="https://cdn.jsdelivr.net/gh/adam-tan/markdown-image/img/IMG_20220225-175614012.png" alt="图 1">  </p>
@@ -1518,9 +1768,9 @@ import * as module from &#39;./module&#39;;
 <li>js中<strong>每一个对象或函数</strong>都有<code>__proto__</code>属性，但是只有<strong>函数对象</strong>才有<strong>prototype</strong>属性。</li>
 </ul>
 <pre><code class="js">    // 函数对象
-    function Person() {}
+    function Person() &#123;&#125;
   // 普通对象
-  var obj = {};
+  var obj = &#123;&#125;;
 
   obj.__proto__ === Object.prototype;//true
 
@@ -1543,7 +1793,7 @@ import * as module from &#39;./module&#39;;
 <li><p><strong><code>instanceof</code></strong> <strong>运算符</strong>用于检测构造函数的 <code>prototype</code> 属性是否出现在某个实例对象的原型链(构造函数是不是对象new)</p>
 </li>
 <li><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gdbszdheq1j310o0lgabp.jpg" alt="img"></p>
-<p><a href="https://github.com/mqyqingfeng/Blog/issues/2" target="_blank" rel="noopener">可参考</a></p>
+<p><a href="https://github.com/mqyqingfeng/Blog/issues/2">可参考</a></p>
 </li>
 </ul>
 <h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><ol>
@@ -1568,9 +1818,9 @@ import * as module from &#39;./module&#39;;
 <p>session：服务端执行session机制时候会生成session的id值，客户端每次请求都会把这个id值放到http请求的头部发送给服务端，而这个id值在客户端会保存下来，保存的容器就是cookie(Session不一定必须依赖Cookie，也可以在url上)</p>
 <h2 id="node事件驱动模型"><a href="#node事件驱动模型" class="headerlink" title="node事件驱动模型"></a>node事件驱动模型</h2><p><img src="https://cdn.jsdelivr.net/gh/adam-tan/markdown-image/img/IMG_20220228-165123938.png" alt="图 3">  </p>
 <p>关于线程： 除了你的代码是单线程，其余都是多线程（线程池），nodejs本身是事件驱动，一个io事件完成会被放到一个事件队列中，主线程负责轮询这个队列，然后执行相应的回调函数。</p>
-<p><a href="https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/26" target="_blank" rel="noopener">参考1</a></p>
-<p><a href="http://www.ruanyifeng.com/blog/2018/02/node-event-loop.html" target="_blank" rel="noopener">参考2</a></p>
-<p><a href="https://nodejs.org/zh-cn/docs/guides/event-loop-timers-and-nexttick/" target="_blank" rel="noopener">Node.js 事件循环，定时器和 process.nextTick()</a> by node.js</p>
+<p><a href="https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/26">参考1</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2018/02/node-event-loop.html">参考2</a></p>
+<p><a href="https://nodejs.org/zh-cn/docs/guides/event-loop-timers-and-nexttick/">Node.js 事件循环，定时器和 process.nextTick()</a> by node.js</p>
 <h3 id="process-nextTick"><a href="#process-nextTick" class="headerlink" title="process.nextTick"></a>process.nextTick</h3><p><code>process.nextTick</code>这个名字有点误导，它是在本轮循环执行的，而且是所有异步任务里面最快执行的。</p>
 <p><img src="https://www.ruanyifeng.com/blogimg/asset/2018/bg2018022302.png" alt="img"></p>
 <p>Node 执行完所有同步任务，接下来就会执行<code>process.nextTick</code>的任务队列。</p>
@@ -1590,16 +1840,16 @@ import * as module from &#39;./module&#39;;
 <p>执行计时器的顺序将根据调用它们的上下文而异。如果二者都从主模块内调用，则计时器将受进程性能的约束（这可能会受到计算机上其他正在运行应用程序的影响）。</p>
 <p>例如，如果运行以下不在 I/O 周期（即主模块）内的脚本(可以理解为<strong>初始化时</strong>)，则执行两个计时器的顺序是非确定性的，因为它受进程性能的约束：</p>
 <blockquote>
-<p>当 Node.js 启动后，它会初始化事件循环，处理已提供的输入脚本（或丢入 <a href="https://nodejs.org/api/repl.html#repl_repl" target="_blank" rel="noopener">REPL</a>，本文不涉及到），它可能会调用一些异步的 API、调度定时器，或者调用 <code>process.nextTick()</code>，然后开始处理事件循环。</p>
+<p>当 Node.js 启动后，它会初始化事件循环，处理已提供的输入脚本（或丢入 <a href="https://nodejs.org/api/repl.html#repl_repl">REPL</a>，本文不涉及到），它可能会调用一些异步的 API、调度定时器，或者调用 <code>process.nextTick()</code>，然后开始处理事件循环。</p>
 </blockquote>
 <pre><code class="js">// timeout_vs_immediate.js
-setTimeout(() =&gt; {
+setTimeout(() =&gt; &#123;
   console.log(&#39;timeout&#39;);
-}, 0);
+&#125;, 0);
 
-setImmediate(() =&gt; {
+setImmediate(() =&gt; &#123;
   console.log(&#39;immediate&#39;);
-});
+&#125;);
 $ node timeout_vs_immediate.js
 timeout
 immediate
@@ -1611,14 +1861,14 @@ timeout</code></pre>
 <pre><code class="js">// timeout_vs_immediate.js
 const fs = require(&#39;fs&#39;);
 
-fs.readFile(__filename, () =&gt; {
-  setTimeout(() =&gt; {
+fs.readFile(__filename, () =&gt; &#123;
+  setTimeout(() =&gt; &#123;
     console.log(&#39;timeout&#39;);
-  }, 0);
-  setImmediate(() =&gt; {
+  &#125;, 0);
+  setImmediate(() =&gt; &#123;
     console.log(&#39;immediate&#39;);
-  });
-});
+  &#125;);
+&#125;);
 $ node timeout_vs_immediate.js
 immediate
 timeout
@@ -1630,27 +1880,48 @@ timeout</code></pre>
 <p>ele.offsetWidth = 宽度 + padding + border</p>
 <p> ele.scrollTop = 被卷去的上侧距离</p>
 <p> ele.scrollHeight = 自身实际的高度，可见部分加上不可见部分（不包括边框）</p>
-<p>ele.offsetTop = 当前元素相对于其 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetParent" target="_blank" rel="noopener"><code>offsetParent</code></a> 元素的顶部内边距的距离</p>
+<p>ele.offsetTop = 当前元素相对于其 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetParent"><code>offsetParent</code></a> 元素的顶部内边距的距离</p>
 <p>Ps：懒加载是利用图片的ele.offsetTop和父元素的scrollTop的差判断图片是否在屏幕范围内</p>
 <h2 id="线程和进程的差别"><a href="#线程和进程的差别" class="headerlink" title="线程和进程的差别"></a>线程和进程的差别</h2><h2 id="网络安全"><a href="#网络安全" class="headerlink" title="网络安全"></a>网络安全</h2><p><strong>常见Web漏洞及其防范</strong></p>
 <ul>
-<li>1.XSS(Cross Site Scripting)跨站脚本攻击<ul>
+<li><p>1.XSS(Cross Site Scripting)跨站脚本攻击</p>
+<ul>
 <li>攻击方式：利用html的漏洞，让网页执行不存在的js代码，比如在评论里写进代码，用户浏览到当条评论就会执行此段代码</li>
 <li>防范：客户端与服务端同时做htmlEncode和jsEncode。服务端保障安全，客户端提升体验。服务端可使用XSS Filter实现，nodejs可使用XSS相关中间件。</li>
 </ul>
 </li>
-<li>2.CSRF（Cross-site request forgery）跨站请求伪造<ul>
+<li><p>2.CSRF（Cross-site request forgery）跨站请求伪造</p>
+<ul>
 <li>方式：伪装成用户发请求，如劫持用户cookie获取请求，伪装成用户进行银行卡转账</li>
-<li>防范：通过HTTP的Referer字段验证请求是否来自信任网站</li>
+<li>防范：通过HTTP的<a href="http://www.ruanyifeng.com/blog/2019/06/http-referer.html">Referer</a>字段验证请求是否来自信任网站</li>
 </ul>
 </li>
-<li>3.SQL注入<br>防范：SQL预编译</li>
-<li>4.弱口令<br>防范：使用规则限制用户使用弱口令</li>
-<li>5.非加密传输<br>防范：使用HTTPS(HTTPS原理：非对称加密交换密钥+对称加密数据+CA认证)</li>
-<li>6.CFS(Cross Frame Script跨框架脚本攻击)与Clickjacking(点击劫持)<br>防范：服务端header设置X-Frame-Options为SAMEORIGIN</li>
+<li><p>3.SQL注入</p>
+<ul>
+<li>方式：SQL注入即是指web应用程序对用户输入数据的合法性没有判断或过滤不严，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，在管理员不知情的情况下实现非法操作。例如：网页查询界面，在input注入sql</li>
+<li>防范：服务器对查询的SQL语句进行预编译、校验请求参数。例如：nodejs使用sqlstring对sql语句进行预编译</li>
 </ul>
-<h2 id="http2和http1的区别"><a href="#http2和http1的区别" class="headerlink" title="http2和http1的区别"></a>http2和http1的区别</h2><h2 id="虚拟dom的原理"><a href="#虚拟dom的原理" class="headerlink" title="虚拟dom的原理"></a>虚拟dom的原理</h2><h2 id="如果要实现一个组件的动态加载，会用webpack的什么方法"><a href="#如果要实现一个组件的动态加载，会用webpack的什么方法" class="headerlink" title="如果要实现一个组件的动态加载，会用webpack的什么方法"></a>如果要实现一个组件的动态加载，会用webpack的什么方法</h2><h2 id="ajax实现"><a href="#ajax实现" class="headerlink" title="ajax实现"></a><a href="https://segmentfault.com/a/1190000018935873" target="_blank" rel="noopener">ajax实现</a></h2><h2 id="宏任务微任务"><a href="#宏任务微任务" class="headerlink" title="宏任务微任务"></a>宏任务微任务</h2><p>任务执行顺序： 同步任务、异步任务(顺序：微任务（promise，nextTick）、宏任务(setTimeout，setInterval、setImmediate))</p>
-<p>参考：<a href="https://juejin.im/post/5b498d245188251b193d4059#heading-6]" target="_blank" rel="noopener">宏任务与微任务</a></p>
+</li>
+<li><p>4.弱口令<br>防范：使用规则限制用户使用弱口令</p>
+</li>
+<li><p>5.非加密传输<br>防范：使用HTTPS(HTTPS原理：非对称加密交换密钥+对称加密数据+CA认证)</p>
+</li>
+<li><p>6.CFS(Cross Frame Script跨框架脚本攻击)与Clickjacking(点击劫持)</p>
+<ul>
+<li><p>方式：利用浏览器允许框架(frame)跨站包含其它页面的漏洞，在主框架的代码中加入scirpt，监视、盗取用户输入。</p>
+</li>
+<li><p>防范：服务端header设置X-Frame-Options为SAMEORIGIN</p>
+</li>
+<li><p>tip：使用 X-Frame-Options 有三个可选的值：</p>
+<p>DENY：浏览器拒绝当前页面加载任何Frame页面</p>
+<p>SAMEORIGIN：frame页面的地址只能为同源域名下的页面</p>
+<p>ALLOW-FROM：允许frame加载的页面地址</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="http2和http1的区别"><a href="#http2和http1的区别" class="headerlink" title="http2和http1的区别"></a>http2和http1的区别</h2><h2 id="虚拟dom的原理"><a href="#虚拟dom的原理" class="headerlink" title="虚拟dom的原理"></a>虚拟dom的原理</h2><h2 id="如果要实现一个组件的动态加载，会用webpack的什么方法"><a href="#如果要实现一个组件的动态加载，会用webpack的什么方法" class="headerlink" title="如果要实现一个组件的动态加载，会用webpack的什么方法"></a>如果要实现一个组件的动态加载，会用webpack的什么方法</h2><h2 id="ajax实现"><a href="#ajax实现" class="headerlink" title="ajax实现"></a><a href="https://segmentfault.com/a/1190000018935873">ajax实现</a></h2><h2 id="宏任务微任务"><a href="#宏任务微任务" class="headerlink" title="宏任务微任务"></a>宏任务微任务</h2><p>任务执行顺序： 同步任务、异步任务(顺序：微任务（promise，nextTick）、宏任务(setTimeout，setInterval、setImmediate))</p>
+<p>参考：<a href="https://juejin.im/post/5b498d245188251b193d4059#heading-6]">宏任务与微任务</a></p>
 <h2 id="什么是reflow和repaint"><a href="#什么是reflow和repaint" class="headerlink" title="什么是reflow和repaint"></a>什么是reflow和repaint</h2><blockquote>
 <p>repaint（重绘）：如果只是改变某个元素的背景色、文字颜色、边框颜色等等不影响它周围或内部布局的属性，将只会引起浏览器 repaint。repaint 的速度明显快于 reflow</p>
 <p>reflow（回流）：例如某个子元素样式发生改变，直接影响到了其父元素以及往上追溯很多祖先元素（包括兄弟元素），这个时候浏览器要重新去渲染这个子元素相关联的所有元素的过程称为回流。</p>
@@ -1665,16 +1936,16 @@ timeout</code></pre>
 <p>6：脚本操作DOM</p>
 <p>7：计算offsetWidth和offsetHeight</p>
 <p>8：设置style属性</p>
-<p>相关扩展：<a href="https://www.zhihu.com/question/33629083" target="_blank" rel="noopener">在移动端使用transform: translate代替top left marg等做位移有好处么 ？</a></p>
+<p>相关扩展：<a href="https://www.zhihu.com/question/33629083">在移动端使用transform: translate代替top left marg等做位移有好处么 ？</a></p>
 <h2 id="new做了什么"><a href="#new做了什么" class="headerlink" title="new做了什么"></a>new做了什么</h2><p>新建一个对象，并把this指向这个对象，同时使该对象继承函数的原型</p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new" target="_blank" rel="noopener">参考</a></p>
-<h2 id="new的模拟实现"><a href="#new的模拟实现" class="headerlink" title="new的模拟实现"></a>new的模拟实现</h2><pre><code class="js">function parent(name) {
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new">参考</a></p>
+<h2 id="new的模拟实现"><a href="#new的模拟实现" class="headerlink" title="new的模拟实现"></a>new的模拟实现</h2><pre><code class="js">function parent(name) &#123;
     this.name = name
 
-    return {
+    return &#123;
         name: &#39;刘&#39;
-    }
-}
+    &#125;
+&#125;
 
 parent.prototype.car = &#39;bigCar&#39;
 
@@ -1684,7 +1955,7 @@ console.log(&#39;child&#39;, child)
 
 // 模拟实现
 
-function _new() {
+function _new() &#123;
 
     const  constructor = [].slice.call(arguments, 0, 1)[0]
 
@@ -1697,7 +1968,7 @@ function _new() {
     obj.__proto__ = constructor.prototype
 
     return  ret instanceof Object ? ret : obj
-}
+&#125;
 
 child1 = _new(parent, &#39;林&#39;)
 
@@ -1716,15 +1987,15 @@ console.log(&#39;child1&#39;, child1)</code></pre>
 <li><p>循环引用</p>
 </li>
 </ol>
-<pre><code class="js">   function handle () {
+<pre><code class="js">   function handle () &#123;
        var element = document.getElementById(“testId”);
       // 闭包
-       element.onclick = function (){
+       element.onclick = function ()&#123;
            alert(element.id)
-       }
-   }</code></pre>
+       &#125;
+   &#125;</code></pre>
 <p>   闭包会持有外部传入的变量，因此闭包持有了element对象，而element对象通过onclick属性持有了闭包，因此两个对象相互持有，造成内存泄漏。</p>
-<p>   Ps: 可以<a href="https://www.zhihu.com/question/31078912" target="_blank" rel="noopener">参考</a></p>
+<p>   Ps: 可以<a href="https://www.zhihu.com/question/31078912">参考</a></p>
 </li>
 <li><p>被遗忘的定时器和回调函数 在定时器完成工作的时候，手动清除定时器</p>
 </li>
@@ -1733,7 +2004,7 @@ console.log(&#39;child1&#39;, child1)</code></pre>
 <li><p>遗忘的事件监听器，如在单页面应用，组件销毁的时候，resize 事件还是在监听中，里面涉及到的内存都是没法回收，需要在组件销毁的时候移除相关的事件</p>
 </li>
 </ol>
-<p>参考 <a href="https://segmentfault.com/a/1190000020231307#item-5-5" target="_blank" rel="noopener">内存泄露</a></p>
+<p>参考 <a href="https://segmentfault.com/a/1190000020231307#item-5-5">内存泄露</a></p>
 <h2 id="http-2-0对于http-1-x有哪些优点？"><a href="#http-2-0对于http-1-x有哪些优点？" class="headerlink" title="http 2.0对于http 1.x有哪些优点？"></a>http 2.0对于http 1.x有哪些优点？</h2><ol>
 <li><p>多路复用，多个http请求复用一个连接</p>
 <blockquote>
@@ -1751,7 +2022,7 @@ console.log(&#39;child1&#39;, child1)</code></pre>
 <li><p>服务器推送，类似websocket</p>
 </li>
 </ol>
-<p><a href="https://www.zhihu.com/question/34074946" target="_blank" rel="noopener">参考</a></p>
+<p><a href="https://www.zhihu.com/question/34074946">参考</a></p>
 <h2 id="virtualDOM是什么"><a href="#virtualDOM是什么" class="headerlink" title="virtualDOM是什么"></a>virtualDOM是什么</h2><p>virtualDOM是DOM节点树的一个映射</p>
 <p>使用原因：真实dom依赖环境，操作开销大，节点渲染频繁</p>
 <p>它的作用是，每次数据变化时，通过virtualDOM执行diff算法进行对比得到差异结果后，再一次性对DOM进行批量更新操作</p>
@@ -1769,8 +2040,8 @@ console.log(&#39;child1&#39;, child1)</code></pre>
 <p>如果有key就能够快速识别新旧列表之间的变化内容</p>
 </li>
 </ol>
-<p><a href="https://juejin.im/post/5d81eec56fb9a06add4e63ba" target="_blank" rel="noopener">参考</a></p>
-<h2 id="webpack性能优化汇总"><a href="#webpack性能优化汇总" class="headerlink" title="webpack性能优化汇总"></a><a href="https://juejin.im/post/5dcc45136fb9a02b450c2818" target="_blank" rel="noopener">webpack性能优化汇总</a></h2><ol>
+<p><a href="https://juejin.im/post/5d81eec56fb9a06add4e63ba">参考</a></p>
+<h2 id="webpack性能优化汇总"><a href="#webpack性能优化汇总" class="headerlink" title="webpack性能优化汇总"></a><a href="https://juejin.im/post/5dcc45136fb9a02b450c2818">webpack性能优化汇总</a></h2><ol>
 <li><p>减少打包时间</p>
 <ol>
 <li>优化loader配置</li>
@@ -1789,7 +2060,7 @@ console.log(&#39;child1&#39;, child1)</code></pre>
 </ol>
 </li>
 </ol>
-<p><a href="https://juejin.im/post/5b652b036fb9a04fa01d616b#heading-16" target="_blank" rel="noopener">参考</a></p>
+<p><a href="https://juejin.im/post/5b652b036fb9a04fa01d616b#heading-16">参考</a></p>
 <h2 id="组件设计原则"><a href="#组件设计原则" class="headerlink" title="组件设计原则"></a>组件设计原则</h2><ol>
 <li>低耦合高内聚，</li>
 <li>分清业务组件和通用组件</li>
@@ -1800,7 +2071,7 @@ console.log(&#39;child1&#39;, child1)</code></pre>
 <p>中间件其是一个函数，在响应发送之前对请求进行一些操作</p>
 <p>这个函数有些不太一样，它还有一个next参数，而这个next也是一个函数，它表示函数数组中的下一个函数</p>
 <p>express内部维护一个函数数组，这个函数数组表示在发出响应之前要执行的所有函数，也就是中间件数组</p>
-<p>ps：<a href="https://cloud.tencent.com/developer/article/1467268" target="_blank" rel="noopener">koa与express的中间件机制揭秘</a> by 挥刀北上</p>
+<p>ps：<a href="https://cloud.tencent.com/developer/article/1467268">koa与express的中间件机制揭秘</a> by 挥刀北上</p>
 <h2 id="http请求方式"><a href="#http请求方式" class="headerlink" title="http请求方式"></a>http请求方式</h2><table>
 <thead>
 <tr>
@@ -1845,26 +2116,26 @@ console.log(&#39;child1&#39;, child1)</code></pre>
 <td>PATCH方法出现的较晚，它在2010年的RFC 5789标准中被定义。PATCH请求与PUT请求类似，同样用于资源的更新。二者有以下两点不同：1.PATCH一般用于资源的部分更新，而PUT一般用于资源的整体更新。2.当资源不存在时，PATCH会创建一个新的资源，而PUT只会对已在资源进行更新。</td>
 </tr>
 </tbody></table>
-<p><a href="https://juejin.im/entry/5b004085f265da0b886daf7c" target="_blank" rel="noopener">参考</a></p>
+<p><a href="https://juejin.im/entry/5b004085f265da0b886daf7c">参考</a></p>
 <h2 id="关于-javascript-中的-this"><a href="#关于-javascript-中的-this" class="headerlink" title="关于 javascript 中的 this"></a>关于 javascript 中的 this</h2><p>javascript 中的 this 和 OO 语言（如：java、C#）的 this 有着比较大的差异。</p>
 <ul>
 <li>1 请说明下方代码片段中对于 this 的使用是否正确，不正确的话，问题在哪里，如何修改？</li>
 <li>2 写些小的代码片段说明一下你理解的 this。</li>
 </ul>
-<pre><code class="javascript">class Handler {
-  get (req, res) {
+<pre><code class="javascript">class Handler &#123;
+  get (req, res) &#123;
     const type = req.query.type
     this[type](req, res)
-  }
+  &#125;
 
-  typeA (req, res) {
+  typeA (req, res) &#123;
     res.send(&#39;hello a&#39;)
-  }
+  &#125;
 
-  typeB (req, res) {
+  typeB (req, res) &#123;
     res.send(&#39;hello b&#39;)
-  }
-}
+  &#125;
+&#125;
 
 const express = require(&#39;express&#39;)
 const app = express()
@@ -1876,29 +2147,29 @@ app.use(&#39;/&#39;, handler.get)</code></pre>
 <li>不正确，问题在执行<code>app.use(&#39;/&#39;, handler.get)</code> 时,改变了this的指向， 因为此时函数中的this是根据上下文指定的</li>
 <li>修改方式:</li>
 </ul>
-<pre><code class="javascript">const handler = function (req, res) {
+<pre><code class="javascript">const handler = function (req, res) &#123;
   const hand = new Handler()
   hand.get(req, res)
-}
+&#125;
 
 app.use(&#39;/&#39;, handler)
 </code></pre>
 <ul>
 <li>代码片段：</li>
 </ul>
-<pre><code class="js">const fun = function() { console.log(this) }
+<pre><code class="js">const fun = function() &#123; console.log(this) &#125;
 fun() //指向全局
 
-const obj = { objFun : fun }
+const obj = &#123; objFun : fun &#125;
 obj.objFun() //指向obj
 
 fun.call(obj) //指向obj
 
-const person = function () { this.name = &#39;lili&#39; }
+const person = function () &#123; this.name = &#39;lili&#39; &#125;
 myName = new person()
 console.log(myName.name) //&#39;lili&#39;
 
-const func = () =&gt; { console.log(this) }
+const func = () =&gt; &#123; console.log(this) &#125;
 func() //指向全局
 func.call(obj) //指向全局</code></pre>
 <h2 id="简述-HTTPS-的工作原理，如何实现的加密传输"><a href="#简述-HTTPS-的工作原理，如何实现的加密传输" class="headerlink" title="简述 HTTPS 的工作原理，如何实现的加密传输"></a>简述 HTTPS 的工作原理，如何实现的加密传输</h2><p>答：</p>
@@ -1936,31 +2207,31 @@ func.call(obj) //指向全局</code></pre>
 <li>事件冒泡阶段</li>
 </ol>
 <p>即是事件捕获机制</p>
-<p><a href="https://www.cnblogs.com/Leophen/p/11405579.html" target="_blank" rel="noopener">参考</a></p>
+<p><a href="https://www.cnblogs.com/Leophen/p/11405579.html">参考</a></p>
 <h2 id="理解变量提升"><a href="#理解变量提升" class="headerlink" title="理解变量提升"></a>理解变量提升</h2><ol>
 <li>变量函数都会提升</li>
 <li>函数声明提升(包括function(){}里面也算函数声明)</li>
 <li>变量声明提升，不会提升赋值</li>
 </ol>
-<p><a href="https://juejin.im/post/5d36b06af265da1ba84ad143#heading-3" target="_blank" rel="noopener">参考</a></p>
+<p><a href="https://juejin.im/post/5d36b06af265da1ba84ad143#heading-3">参考</a></p>
 <h2 id="作用域提升"><a href="#作用域提升" class="headerlink" title="作用域提升"></a>作用域提升</h2><ol>
 <li><em>变量声明、函数声明都会被提升到作用域顶处；</em></li>
 <li>当出现相同名称时，优先级为：<strong>变量声明(foo#1) &gt; 函数声明(foo#2) &gt; 变量赋值(foo#3)*</strong></li>
 </ol>
-<p><a href="https://github.com/mqyqingfeng/Blog/issues/5" target="_blank" rel="noopener">参考</a></p>
-<h2 id="前端模块化：CommonJS-AMD-CMD-ES6"><a href="#前端模块化：CommonJS-AMD-CMD-ES6" class="headerlink" title="前端模块化：CommonJS,AMD,CMD,ES6"></a>前端模块化：CommonJS,AMD,CMD,ES6</h2><p><a href="https://juejin.im/post/5aaa37c8f265da23945f365c" target="_blank" rel="noopener">参考</a></p>
+<p><a href="https://github.com/mqyqingfeng/Blog/issues/5">参考</a></p>
+<h2 id="前端模块化：CommonJS-AMD-CMD-ES6"><a href="#前端模块化：CommonJS-AMD-CMD-ES6" class="headerlink" title="前端模块化：CommonJS,AMD,CMD,ES6"></a>前端模块化：CommonJS,AMD,CMD,ES6</h2><p><a href="https://juejin.im/post/5aaa37c8f265da23945f365c">参考</a></p>
 <h2 id="继承的几种方式"><a href="#继承的几种方式" class="headerlink" title="继承的几种方式"></a>继承的几种方式</h2><ol>
 <li><p>原型链继承 缺点：引用类型值的原型属性会被所有实例共享</p>
-<pre><code class="js">function Parent() {
+<pre><code class="js">function Parent() &#123;
     this.name = &#39;父亲&#39;; // 实例基本属性 (该属性，强调私有，不共享)
     this.arr = [1]; // (该属性，强调私有)
-}
-Parent.prototype.say = function() { // -- 将需要复用、共享的方法定义在父类原型上 
+&#125;
+Parent.prototype.say = function() &#123; // -- 将需要复用、共享的方法定义在父类原型上 
     console.log(&#39;hello&#39;)
-}
-function Child(like) {
+&#125;
+function Child(like) &#123;
     this.like = like;
-}
+&#125;
 Child.prototype = new Parent() // 核心
 
 let boy1 = new Child()
@@ -1969,32 +2240,32 @@ let boy2 = new Child()</code></pre>
 <img src="https://tva1.sinaimg.cn/large/00831rSTgy1gdhtsqldzsj30s80jw0v2.jpg" alt="image-20200330115542949" style="zoom:50%;" />
 </li>
 <li><p>借用构造函数继承 缺点：父类的方法不能复用,每次都要新建一次方法</p>
-<pre><code class="js">function Parent(name) {
+<pre><code class="js">function Parent(name) &#123;
     this.name = name; // 实例基本属性 (该属性，强调私有，不共享)
      this.arr = [1]; // (该属性，强调私有)
-    this.say = function() { // 实例引用属性 (该属性，强调复用，需要共享)
+    this.say = function() &#123; // 实例引用属性 (该属性，强调复用，需要共享)
         console.log(&#39;hello&#39;)
-    }
-}
-function Child(name,like) {
+    &#125;
+&#125;
+function Child(name,like) &#123;
     Parent.call(this,name);  // 核心
     this.like = like;
-}
+&#125;
 let boy1 = new Child(&#39;小红&#39;,&#39;apple&#39;);
 let boy2 = new Child(&#39;小明&#39;, &#39;orange &#39;);</code></pre>
 </li>
 <li><p>组合继承 缺点：两次调用构造方法</p>
-<pre><code class="js">function Parent(name) {
+<pre><code class="js">function Parent(name) &#123;
     this.name = name; // 实例基本属性 (该属性，强调私有，不共享)
     this.arr = [1]; // (该属性，强调私有)
-}
-Parent.prototype.say = function() { // --- 将需要复用、共享的方法定义在父类原型上 
+&#125;
+Parent.prototype.say = function() &#123; // --- 将需要复用、共享的方法定义在父类原型上 
     console.log(&#39;hello&#39;)
-}
-function Child(name,like) {
+&#125;
+function Child(name,like) &#123;
     Parent.call(this,name) // 核心   第二次
     this.like = like;
-}
+&#125;
 Child.prototype = new Parent() // 核心   第一次
 
 &lt;!--这里是修复构造函数指向的代码--&gt;
@@ -2003,58 +2274,58 @@ let boy1 = new Child(&#39;小红&#39;,&#39;apple&#39;)
 let boy2 = new Child(&#39;小明&#39;,&#39;orange&#39;)</code></pre>
 </li>
 </ol>
-<p><a href="https://segmentfault.com/a/1190000015216289#item-2-5" target="_blank" rel="noopener">参考</a></p>
-<p><a href="https://github.com/mqyqingfeng/Blog/issues/16" target="_blank" rel="noopener">参考2</a></p>
+<p><a href="https://segmentfault.com/a/1190000015216289#item-2-5">参考</a></p>
+<p><a href="https://github.com/mqyqingfeng/Blog/issues/16">参考2</a></p>
 <h2 id="创建对象的几种方式"><a href="#创建对象的几种方式" class="headerlink" title="创建对象的几种方式"></a>创建对象的几种方式</h2><ol>
 <li><p>Object对象函数和对象字面量</p>
 </li>
 <li><p>工厂模式</p>
 <p>用函数创造一个对象</p>
 <p>缺点：没有解决对象识别的问题？</p>
-<pre><code class="js">function person(name) {
+<pre><code class="js">function person(name) &#123;
   let obj = new Object()
   obj.name = name
-  obj.say = function(){
+  obj.say = function()&#123;
   alert(&#39;say&#39;)
- }
-}
+ &#125;
+&#125;
 let person1 = preson(&#39;钟汉良&#39;)</code></pre>
 </li>
 <li><p>原型链模式</p>
 <p>用类创造一个对象</p>
 <p>缺点：共享了方法属性</p>
-<pre><code class="js">function person() {
-}
+<pre><code class="js">function person() &#123;
+&#125;
 person.prototype.name = name
-person.prototype.say = function(){
+person.prototype.say = function()&#123;
   alert(&#39;say&#39;)
-}
+&#125;
 let person1 = new preson()</code></pre>
 </li>
 <li><p>构造函数模式</p>
 <p>用类创造一个对象</p>
 <p>缺点：每次新建时方法都会被创建一次</p>
-<pre><code class="js">function person(name) {
+<pre><code class="js">function person(name) &#123;
   this.name = name
-  this.say = function(){
+  this.say = function()&#123;
   alert(&#39;say&#39;)
- }
-}
+ &#125;
+&#125;
 let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 </li>
 <li><p>组合使用原型链模式和构造函数模式<br>用类创造一个对象</p>
-<pre><code class="js">function person(name) {
+<pre><code class="js">function person(name) &#123;
   this.name = name
-  this.say = function(){
+  this.say = function()&#123;
   alert(&#39;say&#39;)
- }
-}
-person.prototype = {
+ &#125;
+&#125;
+person.prototype = &#123;
   constructor: person,
-  say: function(){
+  say: function()&#123;
   alert(&#39;say&#39;)
- }
-}
+ &#125;
+&#125;
 let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 </li>
 </ol>
@@ -2132,7 +2403,7 @@ let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 </blockquote>
 </li>
 </ol>
-<p><a href="https://www.cnblogs.com/tugenhua0707/p/5198407.html" target="_blank" rel="noopener">Javascript设计模式详解</a></p>
+<p><a href="https://www.cnblogs.com/tugenhua0707/p/5198407.html">Javascript设计模式详解</a></p>
 <h2 id="js设计原则"><a href="#js设计原则" class="headerlink" title="js设计原则"></a>js设计原则</h2><ol>
 <li><p>单一职责原则</p>
 <blockquote>
@@ -2165,7 +2436,7 @@ let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 </blockquote>
 </li>
 </ol>
-<h2 id="amqp"><a href="#amqp" class="headerlink" title="amqp"></a><a href="https://juejin.im/post/5dfc93a5f265da339b500273" target="_blank" rel="noopener">amqp</a></h2><h2 id="高性能建站指南"><a href="#高性能建站指南" class="headerlink" title="高性能建站指南"></a>高性能建站指南</h2><ol>
+<h2 id="amqp"><a href="#amqp" class="headerlink" title="amqp"></a><a href="https://juejin.im/post/5dfc93a5f265da339b500273">amqp</a></h2><h2 id="高性能建站指南"><a href="#高性能建站指南" class="headerlink" title="高性能建站指南"></a>高性能建站指南</h2><ol>
 <li>减少http请求 方式：合并css、js文件，使用精灵图</li>
 <li>使用cdn加快加载速度</li>
 <li>开启浏览器缓存</li>
@@ -2190,9 +2461,9 @@ let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 <p>BFC 特性及应用：</p>
 <ul>
 <li>同一个 BFC 下外边距会发生重叠</li>
-<li>计算高度时浮动的元素参与计算（清除浮动）</li>
-<li>浮动元素不重叠</li>
-<li>用来实现<a href="https://juejin.cn/post/6844903817104850952#heading-4" target="_blank" rel="noopener">两列自适应布局</a></li>
+<li>内部第一层计算高度时浮动的元素参与计算（清除浮动）</li>
+<li>内部第一层浮动元素不重叠（其实同上）</li>
+<li>应用：用来实现<a href="https://juejin.cn/post/6844903817104850952#heading-4">两列自适应布局</a></li>
 </ul>
 <h2 id="CSS-百分比参照问题"><a href="#CSS-百分比参照问题" class="headerlink" title="CSS 百分比参照问题"></a>CSS 百分比参照问题</h2><ul>
 <li>参照父元素<strong>宽度</strong>的元素：padding <strong>margin</strong> width text-indent</li>
@@ -2242,8 +2513,8 @@ let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 <li><p>close callbacks</p>
 </li>
 </ul>
-<h2 id="浏览器与Node的事件循环-Event-Loop-有何区别"><a href="#浏览器与Node的事件循环-Event-Loop-有何区别" class="headerlink" title="浏览器与Node的事件循环(Event Loop)有何区别"></a><a href="https://blog.fundebug.com/2019/01/15/diffrences-of-browser-and-node-in-event-loop/" target="_blank" rel="noopener">浏览器与Node的事件循环(Event Loop)有何区别</a></h2><p>node跟浏览器端相差比较大，timers 阶段有几个 setTimeout/setInterval 都会依次执行，并不像浏览器端，每执行一个宏任务后就去执行一个微任务</p>
-<h2 id="H5移动端兼容问题"><a href="#H5移动端兼容问题" class="headerlink" title="H5移动端兼容问题"></a><a href="https://segmentfault.com/a/1190000015131445" target="_blank" rel="noopener">H5移动端兼容问题</a></h2><h2 id="异步加载JS的方式有哪些？"><a href="#异步加载JS的方式有哪些？" class="headerlink" title="异步加载JS的方式有哪些？"></a>异步加载JS的方式有哪些？</h2><ul>
+<h2 id="浏览器与Node的事件循环-Event-Loop-有何区别"><a href="#浏览器与Node的事件循环-Event-Loop-有何区别" class="headerlink" title="浏览器与Node的事件循环(Event Loop)有何区别"></a><a href="https://blog.fundebug.com/2019/01/15/diffrences-of-browser-and-node-in-event-loop/">浏览器与Node的事件循环(Event Loop)有何区别</a></h2><p>node跟浏览器端相差比较大，timers 阶段有几个 setTimeout/setInterval 都会依次执行，并不像浏览器端，每执行一个宏任务后就去执行一个微任务</p>
+<h2 id="H5移动端兼容问题"><a href="#H5移动端兼容问题" class="headerlink" title="H5移动端兼容问题"></a><a href="https://segmentfault.com/a/1190000015131445">H5移动端兼容问题</a></h2><h2 id="异步加载JS的方式有哪些？"><a href="#异步加载JS的方式有哪些？" class="headerlink" title="异步加载JS的方式有哪些？"></a>异步加载JS的方式有哪些？</h2><ul>
 <li>defer：浏览器解析完成后执行，defer之间保证执行顺序</li>
 <li><code>async</code>：尽快执行，阻塞解析，不保证顺序</li>
 <li>创建<code>script</code>，在onload后，插入到<code>DOM</code>中，加载完毕后<code>callBcak</code></li>
@@ -2267,16 +2538,16 @@ let person1 = new preson(&#39;钟汉良&#39;)</code></pre>
 <p><code>Object.prototype.toString.call()</code></p>
 </li>
 </ol>
-<p><a href="https://www.cnblogs.com/onepixel/p/5126046.html" target="_blank" rel="noopener">参考</a></p>
+<p><a href="https://www.cnblogs.com/onepixel/p/5126046.html">参考</a></p>
 <h2 id="Proxy和defineProperty"><a href="#Proxy和defineProperty" class="headerlink" title="Proxy和defineProperty"></a>Proxy和defineProperty</h2><ul>
 <li><p><strong>Object.defineProperty</strong> ：该方法可以在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回这个对象</p>
-<pre><code class="js">var obj = {};
-Object.defineProperty(obj, &quot;num&quot;, {
+<pre><code class="js">var obj = &#123;&#125;;
+Object.defineProperty(obj, &quot;num&quot;, &#123;
     value : 1,
     writable : true,
     enumerable : true,
     configurable : true
-});
+&#125;);
 //  对象 obj 拥有属性 num，值为 1
 </code></pre>
 </li>
@@ -2288,7 +2559,7 @@ handler参数也是一个对象，用来定制拦截行为。*/
 </code></pre>
 </li>
 </ul>
-<p>参考：<a href="https://juejin.im/post/5be4f7cfe51d453339084530#heading-4" target="_blank" rel="noopener">ES6 系列之 defineProperty 与 proxy</a></p>
+<p>参考：<a href="https://juejin.im/post/5be4f7cfe51d453339084530#heading-4">ES6 系列之 defineProperty 与 proxy</a></p>
 <h2 id="页面性能指标"><a href="#页面性能指标" class="headerlink" title="页面性能指标"></a>页面性能指标</h2><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gdhtsdka5bj31pc0n6ti1.jpg" alt="蚂蚁金服如何把前端性能监控做到极致?"></p>
 <p>页面加载时长是被清晰的标在这个页面的底部的。它是指 DOM <code>load</code> 事件触发完成，它的优点有：</p>
 <ul>
@@ -2303,8 +2574,8 @@ handler参数也是一个对象，用来定制拦截行为。*/
 </ul>
 <p>为了解决这个问题，W3C 的工作小组引入了首次渲染 / 首次内容渲染。首次渲染是指第⼀个非网页背景像素渲染，⾸次内容渲染是指第一个⽂本、图像、背景图片或非白色 canvas/SVG 渲染。</p>
 <p>相关：</p>
-<p><a href="https://www.cnblogs.com/xiaohuochai/p/9182710.html" target="_blank" rel="noopener">使用chrome开发者工具中的performance面板解决性能瓶颈</a></p>
-<h2 id="渲染树的形成原理"><a href="#渲染树的形成原理" class="headerlink" title="渲染树的形成原理"></a><a href="https://juejin.im/post/5da2f4f7f265da5b8a516502#heading-7" target="_blank" rel="noopener">渲染树的形成原理</a></h2><blockquote>
+<p><a href="https://www.cnblogs.com/xiaohuochai/p/9182710.html">使用chrome开发者工具中的performance面板解决性能瓶颈</a></p>
+<h2 id="渲染树的形成原理"><a href="#渲染树的形成原理" class="headerlink" title="渲染树的形成原理"></a><a href="https://juejin.im/post/5da2f4f7f265da5b8a516502#heading-7">渲染树的形成原理</a></h2><blockquote>
 <p>注意点:</p>
 <ol>
 <li>CSS解析可以与DOM解析同进行</li>
@@ -2314,57 +2585,57 @@ handler参数也是一个对象，用来定制拦截行为。*/
 <h2 id="Promise-all-和Promise-race模拟实现"><a href="#Promise-all-和Promise-race模拟实现" class="headerlink" title="Promise.all()和Promise.race模拟实现"></a>Promise.all()和Promise.race模拟实现</h2><ol>
 <li><p>Promise.all()</p>
 <pre><code class="js">
-function promiseAll(arg = []) {
-    return new Promise((resolve, reject) =&gt; {
+function promiseAll(arg = []) &#123;
+    return new Promise((resolve, reject) =&gt; &#123;
         let timer = 0
         const rets = new Array(arg.length)
 
-        for(let i = 0; i &lt; arg.length; i++) {
-                   // Promise.resolve 为了兼容 arg中存在不是Promise的数   
-            Promise.resolve(arg[i]).then((res) =&gt; {
+        for(let i = 0; i &lt; arg.length; i++) &#123;
+          // Promise.resolve 为了兼容 arg中存在不是Promise的数   
+            Promise.resolve(arg[i]).then((res) =&gt; &#123;
                 rets[i] = res
                 timer++
-                     // 重点，在最后一个完成事执行resolve，最终返回[]
+               // 重点，在最后一个完成事执行resolve，最终返回[]
                 if(timer === arg.length) resovle(rets)
-            }).catch(e =&gt; reject(e))
-        }
-    })
-}
+            &#125;).catch(e =&gt; reject(e))
+        &#125;
+    &#125;)
+&#125;
 
 promiseAll([Promise.resolve(1), Promise.resolve(2), 3]).then((res) =&gt; console.log(res))
 // promiseAll([Promise.resolve(1), Promise.reject(2), 3, () =&gt; 4]).then((res) =&gt; console.log(res))</code></pre>
 </li>
 <li><p>Promise.race()</p>
-<pre><code class="js">function promiseRace(arg = []) {
-  return new Promise((resolve, reject) =&gt; {
-    for(let i = 0; i &lt; arg.length; i++) {
-      Promise.resolve(arg[i]).then(res =&gt; {
-             // 有返回直接返回   
+<pre><code class="js">function promiseRace(arg = []) &#123;
+  return new Promise((resolve, reject) =&gt; &#123;
+    for(let i = 0; i &lt; arg.length; i++) &#123;
+      Promise.resolve(arg[i]).then(res =&gt; &#123;
+       // 有返回直接返回   
         resolve(res)
-      }).catch(e =&gt; reject(e))
-    }
-  })
-}
+      &#125;).catch(e =&gt; reject(e))
+    &#125;
+  &#125;)
+&#125;
 
 promiseRace([new Promise(res =&gt; setTimeout(()=&gt; res(1), 100)), new Promise(res =&gt; setTimeout(()=&gt; res(2), 200))])
   .then((res) =&gt; console.log(res))</code></pre>
-<p>关于Promise的更多实现可<a href="https://juejin.cn/post/6844904063570542599#heading-4" target="_blank" rel="noopener">参考</a>（此文章，实现有些许冗余）</p>
+<p>关于Promise的更多实现可<a href="https://juejin.cn/post/6844904063570542599#heading-4">参考</a>（此文章，实现有些许冗余）</p>
 </li>
 </ol>
 <p>Generators原理</p>
 <p>通过利用闭包，保存生成器函数的上下文，并对生成器函数进行包装添加next方法，似的对next的调用进入到状态机里，而实现next对生成器里面代码的暂停恢复控制。</p>
 <p>简单的实例：</p>
-<pre><code class="js">function* example() {
+<pre><code class="js">function* example() &#123;
   yield 1;
   yield 2;
   yield 3;
-}
+&#125;
 var iter=example();
-iter.next();//{value:1，done:false}
-iter.next();//{value:2，done:false}
-iter.next();//{value:3，done:false}
-iter.next();//{value:undefined，done:true}</code></pre>
-<p><a href="http://www.alloyteam.com/2016/02/generators-in-depth/" target="_blank" rel="noopener">参考</a></p>
+iter.next();//&#123;value:1，done:false&#125;
+iter.next();//&#123;value:2，done:false&#125;
+iter.next();//&#123;value:3，done:false&#125;
+iter.next();//&#123;value:undefined，done:true&#125;</code></pre>
+<p><a href="http://www.alloyteam.com/2016/02/generators-in-depth/">参考</a></p>
 <h2 id="webpack-中-loader-和-plugin-的区别是什么"><a href="#webpack-中-loader-和-plugin-的区别是什么" class="headerlink" title="webpack 中 loader 和 plugin 的区别是什么"></a>webpack 中 loader 和 plugin 的区别是什么</h2><ul>
 <li><p>loader，它是一个转换器，将A文件进行编译成B文件，比如：将A.less转换为A.css，单纯的文件转换过程。</p>
 </li>
@@ -2373,46 +2644,46 @@ iter.next();//{value:undefined，done:true}</code></pre>
 </ul>
 <h2 id="Vue-中的-computed-是如何实现的"><a href="#Vue-中的-computed-是如何实现的" class="headerlink" title="Vue 中的 computed 是如何实现的"></a>Vue 中的 computed 是如何实现的</h2><p>computed本身是通过代理的方式代理到组件实例上的，所以读取计算属性的时候，执行的是一个内部的getter，而不是用户定义的方法。</p>
 <p>computed内部实现了一个惰性的watcher，在实例化的时候不会去求值，其内部通过dirty属性标记计算属性是否需要重新求值。当computed依赖的任一状态（不一定是return中的）发生变化，都会通知这个惰性watcher，让它把dirty属性设置为true。所以，当再次读取这个计算属性的时候，就会重新去求值。</p>
-<p><a href="https://ustbhuangyi.github.io/vue-analysis/v2/reactive/computed-watcher.html#computed" target="_blank" rel="noopener">参考</a></p>
+<p><a href="https://ustbhuangyi.github.io/vue-analysis/v2/reactive/computed-watcher.html#computed">参考</a></p>
 <h2 id="css优先级"><a href="#css优先级" class="headerlink" title="css优先级"></a>css优先级</h2><p>!important &gt; 内联 &gt; id &gt; class（=伪类、属性选择器） &gt; 标签选择器（=伪元素）</p>
-<p><a href="https://zhuanlan.zhihu.com/p/41604775" target="_blank" rel="noopener">参考</a></p>
-<h2 id="如何修复输出值中的-undefined-？-阿里"><a href="#如何修复输出值中的-undefined-？-阿里" class="headerlink" title="如何修复输出值中的 undefined ？(阿里)"></a>如何修复输出值中的 undefined ？(阿里)</h2><pre><code class="javascript">function LateBloomer(){
+<p><a href="https://zhuanlan.zhihu.com/p/41604775">参考</a></p>
+<h2 id="如何修复输出值中的-undefined-？-阿里"><a href="#如何修复输出值中的-undefined-？-阿里" class="headerlink" title="如何修复输出值中的 undefined ？(阿里)"></a>如何修复输出值中的 undefined ？(阿里)</h2><pre><code class="javascript">function LateBloomer()&#123;
     this.petalCount = Math.ceil(Math.random()*2 + 1);
-}
-LateBloomer.prototype.bloom = function(){
+&#125;
+LateBloomer.prototype.bloom = function()&#123;
     window.setTimeout(this.declare, 1000);
-}
-LateBloomer.prototype.declare = function(){
+&#125;
+LateBloomer.prototype.declare = function()&#123;
     console.log(&#39;I am a beautiful flower with &#39; + this.petalCount + &#39; petals&#39;);
-}
+&#125;
 var flower = new LateBloomer();
 flower.bloom();</code></pre>
-<h2 id="this指向"><a href="#this指向" class="headerlink" title="this指向"></a>this指向</h2><p>区别：</p>
+<h2 id="普通函数和箭头函数this的区别"><a href="#普通函数和箭头函数this的区别" class="headerlink" title="普通函数和箭头函数this的区别"></a>普通函数和箭头函数this的区别</h2><p>区别：</p>
 <p><strong>普通函数中的this:</strong></p>
 <ol>
-<li><p>this总是代表它的直接调用者, 例如 obj.func ,那么func中的this就是obj</p>
-</li>
-<li><p>在默认情况(非严格模式下,未使用 ‘use strict’),没找到直接调用者,则this指的是 window</p>
-</li>
-<li><p>在严格模式下,没有直接调用者的函数中的this是 undefined</p>
-</li>
-<li><p>使用call,apply,bind(ES5新增)绑定的,this指的是 绑定的对象</p>
-</li>
+<li>this总是代表它的直接调用者, 例如 obj.func ,那么func中的this就是obj</li>
+<li>在默认情况(非严格模式下,未使用 ‘use strict’),没找到直接调用者,则this指的是 window</li>
+<li>如果该函数是一个构造函数，this指针指向一个新的对象</li>
+<li>在严格模式下,没有直接调用者的函数中的this是 undefined</li>
+<li>使用call,apply,bind(ES5新增)绑定的,this指的是 绑定的对象</li>
 </ol>
 <p><strong>箭头函数中的this</strong></p>
 <ol>
 <li>默认指向在定义它时,它所处的对象,而不是执行时的对象, 定义它的时候,可能环境是window（即继承父级的this）</li>
+<li>箭头函数不会创建自己的<code>this</code>它只会从自己的<a href="https://chinese.freecodecamp.org/news/javascript-lexical-scope-tutorial/#:~:text=%E4%BB%80%E4%B9%88%E6%98%AF%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%88Lexical%20Scope%EF%BC%89,%E5%8F%88%E5%8F%AB%E9%9D%99%E6%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%82">词法作用域链</a>的上一层继承<code>this</code></li>
 <li>call,apply,bind不改变this指向</li>
+<li>不能作为构造函数</li>
+<li>没有argument属性</li>
 </ol>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this" target="_blank" rel="noopener">参考</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this">参考</a></p>
 <h2 id="vue-nextTick实现"><a href="#vue-nextTick实现" class="headerlink" title="vue nextTick实现"></a>vue nextTick实现</h2><p>注意：dom的更新是同步的，前一步更新后一步就能拿到结果，所以nextTick能获取dom操作后的结果</p>
-<p><a href="https://ustbhuangyi.github.io/vue-analysis/v2/reactive/next-tick.html#js-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6" target="_blank" rel="noopener">参考</a></p>
+<p><a href="https://ustbhuangyi.github.io/vue-analysis/v2/reactive/next-tick.html#js-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6">参考</a></p>
 <h2 id="redux简述"><a href="#redux简述" class="headerlink" title="redux简述"></a>redux简述</h2><p>生成一个使用action变更的state，使用reduer进行管理（传入state和action返回一个新的state）</p>
 <h2 id="react-hook"><a href="#react-hook" class="headerlink" title="react hook"></a>react hook</h2><ul>
-<li>useEffect怎么替代componentDidMount，可以第二个参数传入[],如：<code>useEffect(()=&gt; {}, [])</code></li>
+<li>useEffect怎么替代componentDidMount，可以第二个参数传入[],如：<code>useEffect(()=&gt; &#123;&#125;, [])</code></li>
 </ul>
-<p><a href="https://zh-hans.reactjs.org/docs/hooks-intro.html" target="_blank" rel="noopener">参考</a></p>
-<h2 id="webpack异步加载原理"><a href="#webpack异步加载原理" class="headerlink" title="webpack异步加载原理"></a>webpack异步加载原理</h2><p><a href="https://blog.csdn.net/ywl570717586/article/details/79034322?ops_request_misc=&request_id=&biz_id=102&utm_term=webpack%20%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-79034322.first_rank_v2_pc_rank_v29&spm=1018.2226.3001.4187" target="_blank" rel="noopener">参考</a></p>
+<p><a href="https://zh-hans.reactjs.org/docs/hooks-intro.html">参考</a></p>
+<h2 id="webpack异步加载原理"><a href="#webpack异步加载原理" class="headerlink" title="webpack异步加载原理"></a>webpack异步加载原理</h2><p><a href="https://blog.csdn.net/ywl570717586/article/details/79034322?ops_request_misc=&request_id=&biz_id=102&utm_term=webpack%20%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-79034322.first_rank_v2_pc_rank_v29&spm=1018.2226.3001.4187">参考</a></p>
 <h2 id="遇到大量if的代码如何优化"><a href="#遇到大量if的代码如何优化" class="headerlink" title="遇到大量if的代码如何优化"></a>遇到大量if的代码如何优化</h2><p>记住下面的口诀：</p>
 <p>互斥条件表驱动</p>
 <p>嵌套条件校验链</p>
@@ -2426,6 +2697,49 @@ flower.bloom();</code></pre>
 <li>零散条件，是指存在以上三种任意组合的条件形式，那么就可以通过组合这些解决方案。例如，遇到null，直接短路返回，然后之后的代码使用表驱动来区分互斥条件，在达成某个互斥条件的时候，通过校验链来验证嵌套条件等。</li>
 </ol>
 </blockquote>
+<h2 id="获取DOM元素大小"><a href="#获取DOM元素大小" class="headerlink" title="获取DOM元素大小"></a>获取DOM元素大小</h2><ol>
+<li>偏移量<ol>
+<li>offsetWidth：偏移宽度 = content + padding + border</li>
+<li>offsetHeight：偏移高度 = content + padding + border</li>
+<li>offsetTop： 相对于offsetParent的偏移顶部 = border上边界 ~ parent的border上边界</li>
+<li>offsetLeft：相对于offsetParent的偏移左侧部分 = border左边界 ~ parent的border左边界</li>
+</ol>
+</li>
+<li>客户区大小<ol>
+<li>clientWidth： 客户区宽度 = content + padding</li>
+<li>clientHeight：客户区高度 = content + padding</li>
+</ol>
+</li>
+<li>滚动大小<ol>
+<li>scrollWidth： 滚动区域宽度 = content</li>
+<li>scrollHeight： 滚动区域高度 = content</li>
+<li>scrollTop： 滚动区域顶部被遮住的内容</li>
+<li>scrollLeft：滚动左边被遮住的内容</li>
+</ol>
+</li>
+<li>getBoundingClientRect 返回left、right、top、bottom、width、height（与offsetXXXX一致，不知道为啥叫clientRect）</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/adam-tan/markdown-image/img/IMG_20220314-225321438.png" alt="图 1"></p>
+<h2 id="react-hook的优缺点"><a href="#react-hook的优缺点" class="headerlink" title="react hook的优缺点"></a>react hook的优缺点</h2><ul>
+<li>优点<ul>
+<li>易于复用，可以组合各种hook，方便移植</li>
+<li>代码量更少</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>响应式的useEffect，形成一条依赖链，没有componentDidmount生命周期好用。</li>
+<li>不擅长异步。容易引入组件的旧值，类似闭包。解决：useRef保存引用。</li>
+<li>不能放在if 语句里面使用。因为组件hookStates存放hooks数据，state判断调用哪个hook，是通过hook的调用顺序，if会使得调用顺序不可控。</li>
+</ul>
+</li>
+<li>避免缺点：<ul>
+<li>useEffect尽量少依赖</li>
+<li>组件划分小而完整</li>
+<li>异步尝试传入从组件传入函数参数</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://zhuanlan.zhihu.com/p/88593858">参考</a></p>
 ]]></content>
       <categories>
         <category>面试</category>
@@ -2435,7 +2749,7 @@ flower.bloom();</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>前端自测流程</title>
+    <title></title>
     <url>/2018/12/24/%E5%89%8D%E7%AB%AF%E8%87%AA%E6%B5%8B%E6%B5%81%E7%A8%8B/</url>
     <content><![CDATA[<h3 id="前端自测流程"><a href="#前端自测流程" class="headerlink" title="前端自测流程"></a>前端自测流程</h3><p>由于团队交付测试简单bug太多，为了保证前端页面的质量，建议先进行简单自测，我收集了部分资料，总结了一些前端自测的流程规范，希望能作为大家页面开发完毕后自测的参考。</p>
 <p>首先，测试的顺序为：自上向下、从左到右</p>
