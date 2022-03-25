@@ -239,7 +239,7 @@ console.log(&#39;val-3&#39;, val) // 如果为动态引用此时输出应该为 
   </entry>
   <entry>
     <title></title>
-    <url>/2021/09/24/%E6%80%8E%E6%A0%B7%E7%90%86%E8%A7%A3redux%E7%94%9F%E6%80%81%E5%BA%93%EF%BC%9F/</url>
+    <url>/2021/09/24/%E6%80%8E%E6%A0%B7%E7%90%86%E8%A7%A3redux%E7%94%9F%E6%80%81%E5%BA%93/</url>
     <content><![CDATA[<h1 id="redux生态库理解"><a href="#redux生态库理解" class="headerlink" title="redux生态库理解"></a>redux生态库理解</h1><h3 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h3><p>状态管理库</p>
 <ul>
 <li>store：全局状态数据（一般是不可变的数据）</li>
@@ -480,7 +480,7 @@ pattern instanceof RegExp //true</code></pre><p> 注意事项以及适用范围�
   </entry>
   <entry>
     <title></title>
-    <url>/2021/03/04/%E6%80%8E%E6%A0%B7%E7%94%A8js%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%EF%BC%9F/</url>
+    <url>/2021/03/04/%E6%80%8E%E6%A0%B7%E7%94%A8js%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86/</url>
     <content><![CDATA[<h3 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h3><blockquote>
 <p>二叉树是数据结构算法的重要知识点，今天我们用js来实现下二叉树的深度优先遍历</p>
 </blockquote>
@@ -775,7 +775,7 @@ console.log(statistics(str))    // a
 </ul>
 <pre><code class="js">let arr = [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;1&#39;, &#39;a&#39;, &#39;b&#39;, &#39;b&#39;]
 function duplicate() &#123;
-    return arr.reduce((r,v) =&gt; r.indexOf(v) &gt; -1 ? r : [...r, v], [])  
+ return arr.reduce((r,v) =&gt; r.indexOf(v) &gt; -1 ? r : [...r, v], [])  
 &#125;
 console.log(duplicate())
 </code></pre>
@@ -867,7 +867,7 @@ function separate(arr) &#123;
       cur++
       continue
     &#125;
-        // 前后节点不一致的情况一，都不为空串，只移动cur，相当于记录pre
+  // 前后节点不一致的情况一，都不为空串，只移动cur，相当于记录pre
     if(_arr[pre] !== &#39;&#39; &amp;&amp; _arr[cur] !== &#39;&#39;) &#123;
       cur++
       continue

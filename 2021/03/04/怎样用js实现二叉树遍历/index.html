@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>稍纵即逝</title>
-  <meta name="keywords" content="">
+  <meta name="keywords" content=" 算法 ">
   <meta name="description" content="稍纵即逝">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="稍纵即逝">
 <meta property="og:locale">
 <meta property="article:published_time" content="2020-04-07T08:01:07.000Z">
-<meta property="article:modified_time" content="2022-03-25T07:42:02.013Z">
+<meta property="article:modified_time" content="2022-03-25T08:02:19.980Z">
 <meta property="article:author" content="tanjiajian">
 <meta name="twitter:card" content="summary">
 
@@ -307,7 +307,7 @@
         </a>
         
         <a  class="All "
-           href="/2021/09/24/%E6%80%8E%E6%A0%B7%E7%90%86%E8%A7%A3redux%E7%94%9F%E6%80%81%E5%BA%93%EF%BC%9F/"
+           href="/2021/09/24/%E6%80%8E%E6%A0%B7%E7%90%86%E8%A7%A3redux%E7%94%9F%E6%80%81%E5%BA%93/"
            data-tag=""
            data-author="" >
             <span class="post-title" title=""></span>
@@ -331,7 +331,7 @@
         </a>
         
         <a  class="All 算法 "
-           href="/2021/03/04/%E6%80%8E%E6%A0%B7%E7%94%A8js%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%EF%BC%9F/"
+           href="/2021/03/04/%E6%80%8E%E6%A0%B7%E7%94%A8js%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86/"
            data-tag="算法"
            data-author="" >
             <span class="post-title" title=""></span>
@@ -428,17 +428,32 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-怎样理解redux生态库？" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-怎样用js实现二叉树遍历" class="article article-type-post" itemscope itemprop="blogPost">
     
     <div class="article-meta">
         
         
         
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="算法">算法</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">算法</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2022-03-25 15:42:02'>2021-09-24 20:00</time>
+            Created At : <time class="date" title='Updated At: 2022-03-25 16:02:19'>2021-03-04 18:34</time>
         
     </div>
     <div class="article-meta">
@@ -471,7 +486,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#redux%E7%94%9F%E6%80%81%E5%BA%93%E7%90%86%E8%A7%A3"><span class="toc-text">redux生态库理解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#redux"><span class="toc-text">redux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reselect"><span class="toc-text">reselect</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redux-sage"><span class="toc-text">redux-sage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#seamless-immutable"><span class="toc-text">seamless-immutable</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#API"><span class="toc-text">API</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redux-persist"><span class="toc-text">redux-persist</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ramda"><span class="toc-text">ramda</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E8%AF%BB"><span class="toc-text">导读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-text">前序遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-text">中序遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-text">后序遍历</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -487,53 +502,133 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="redux生态库理解"><a href="#redux生态库理解" class="headerlink" title="redux生态库理解"></a>redux生态库理解</h1><h3 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h3><p>状态管理库</p>
+        <h3 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h3><blockquote>
+<p>二叉树是数据结构算法的重要知识点，今天我们用js来实现下二叉树的深度优先遍历</p>
+</blockquote>
+<p>首先，生成一个二叉树</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdtk9xb44qj30k80ia0tf.jpg" alt="Jietu20200414-201926@2x" style="zoom:50%;" />
+
+<pre><code class="js">/*
+二叉树
+*/
+var tree = &#123;
+  value: 1,
+  left: &#123;
+    value: 2,
+    left: &#123;
+      value: 4
+    &#125;
+  &#125;,
+  right: &#123;
+    value: 3,
+    left: &#123;
+      value: 5,
+      left: &#123;
+        value: 7
+      &#125;,
+      right: &#123;
+        value: 8
+      &#125;
+    &#125;,
+    right: &#123;
+      value: 6
+    &#125;
+  &#125;
+&#125;</code></pre>
+<h3 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h3><ul>
+<li>递归</li>
+</ul>
+<pre><code class="js">function preOrder(node) &#123;
+  if(node != null) &#123;
+    console.log(node.value)
+    preOrder(node.left)
+    preOrder(node.right)
+  &#125; 
+&#125;</code></pre>
 <ul>
-<li>store：全局状态数据（一般是不可变的数据）</li>
-<li>action：记录操作（type）和操作值（payload）的对象</li>
-<li>reducer： 接收 state 和 action，并返回新的 state 的函数</li>
+<li>非递归</li>
 </ul>
-<p>参考：<a target="_blank" rel="noopener" href="https://www.redux.org.cn/docs/introduction/PriorArt.html">https://www.redux.org.cn/docs/introduction/PriorArt.html</a></p>
-<h3 id="reselect"><a href="#reselect" class="headerlink" title="reselect"></a>reselect</h3><p>选择对应的部分store</p>
-<h3 id="redux-sage"><a href="#redux-sage" class="headerlink" title="redux-sage"></a>redux-sage</h3><p>一个以redux中间件形式存在的库，更加优雅的管理异步操作（Side Effect：<strong>异步网络请求</strong>、<strong>本地读取 localStorage/Cookie</strong> 等外界操作）</p>
-<p>通过createStore将store和sage关联起来</p>
+<pre><code class="js">
+function preOrder(root) &#123;
+        let stack = [];
+        let pNode = root;
+        while (pNode != null || !stack.length == 0) &#123;
+            if (pNode != null) &#123;
+                console.log(pNode.value+&quot;  &quot;);
+                stack.push(pNode);
+                pNode = pNode.left;
+            &#125; else &#123; //pNode == null &amp;&amp; !stack.isEmpty()
+                node = stack.pop();
+                pNode = node.right;
+            &#125;
+        &#125;
+    &#125;
+preOrder(tree)
+
+</code></pre>
+<h3 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h3><ul>
+<li>递归</li>
+</ul>
+<pre><code class="js">function preOrder(node) &#123;
+  if(node != null) &#123;
+    preOrder(node.left)
+    console.log(node.value)
+    preOrder(node.right)
+  &#125; 
+&#125;</code></pre>
 <ul>
-<li>Effect：一个简单的对象，这个对象包含了一些给 middleware 解释执行的信息。（调用某些异步函数，发起一个 action 到 store，等等）</li>
-<li>put： 这个函数用于创建 dispatch Effect</li>
+<li>非递归</li>
 </ul>
-<p><img src="https://pic4.zhimg.com/v2-9697122f53bb1c92a9c455c1b0e5d22f_r.jpg" alt="preview"></p>
-<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35437092">https://zhuanlan.zhihu.com/p/35437092</a></p>
-<p>中文文档： <a target="_blank" rel="noopener" href="https://redux-saga-in-chinese.js.org/">https://redux-saga-in-chinese.js.org/</a></p>
-<h3 id="seamless-immutable"><a href="#seamless-immutable" class="headerlink" title="seamless-immutable"></a>seamless-immutable</h3><p>定义不可变的对象</p>
-<p>每次修改都会返回一个新的对象</p>
-<p>用树的方式存储数据，从而达到复用和高效更新</p>
-<p>使用自带api操作数据，方法内置在prototype</p>
-<h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><ul>
-<li>set(key, value) 设置值<ul>
-<li>key: String</li>
-<li>value: <any></li>
+<pre><code class="js">function midOrder(root) &#123;
+        let stack = [];
+        let pNode = root;
+        while (pNode != null || !stack.length == 0) &#123;
+            if (pNode != null) &#123;
+                stack.push(pNode);
+                pNode = pNode.left;
+            &#125; else &#123; //pNode == null &amp;&amp; !stack.isEmpty()
+                node = stack.pop();
+        console.log(pNode.value+&quot;  &quot;);
+                pNode = node.right;
+            &#125;
+        &#125;
+    &#125;
+midOrder(tree)</code></pre>
+<h3 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h3><ul>
+<li>递归</li>
 </ul>
-</li>
-<li>setIn([key, key2 … ], value) 设置嵌套对象里的值</li>
-<li>get(key, value)</li>
-<li>getIn([key, key2 …], value)</li>
-<li>merge(obj || [obj, … ], config) 两个对象合并<ul>
-<li>obj: Object</li>
-<li>[obj, … ] : Array</li>
-<li>config: Object 合并设置，比如: <code>&#123;deep: true&#125; // 深度合并</code></li>
+<pre><code class="js">function preOrder(node) &#123;
+  if(node != null) &#123;
+    preOrder(node.left)
+    preOrder(node.right)
+    console.log(node.value)
+  &#125; 
+&#125;</code></pre>
+<ul>
+<li>非递归</li>
 </ul>
-</li>
-<li>isImmutable</li>
-<li>asMutable</li>
-<li>update(key, fn) 用函数操作更新<ul>
-<li>key: String</li>
-<li>fn: function 返回更新值value</li>
-</ul>
-</li>
-<li>updateIn([key, key2 … ], fn) 用函数操作嵌套对象的更新</li>
-</ul>
-<p>github仓库：<a target="_blank" rel="noopener" href="https://github.com/rtfeldman/seamless-immutable">https://github.com/rtfeldman/seamless-immutable</a></p>
-<h3 id="redux-persist"><a href="#redux-persist" class="headerlink" title="redux-persist"></a>redux-persist</h3><h3 id="ramda"><a href="#ramda" class="headerlink" title="ramda"></a>ramda</h3>
+<pre><code class="js">
+
+var lastOrder = (root) =&gt; &#123;
+    let result = []
+    let stack = []
+    let node = root
+    while(node != null || stack.length != 0)&#123;
+        if(node != null) &#123;
+            result.unshift(node.value)
+            stack.push(node)
+            node = node.right
+        &#125;else&#123;
+            node = stack.pop()
+            //console.log(node.value)
+            node = node.left
+        &#125;
+    &#125;
+    return result
+
+&#125;
+lastOrder(tree)</code></pre>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1249118795@qq.com </span>
     </div>
