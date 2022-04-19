@@ -90,6 +90,9 @@
 <h3 id="面经"><a href="#面经" class="headerlink" title="面经"></a>面经</h3><h4 id="字节"><a href="#字节" class="headerlink" title="字节"></a>字节</h4><p><a href="https://juejin.cn/post/6990174096554360869#heading-6">字节跳动前端面经(已接offer~)</a></p>
 <p><a href="https://juejin.cn/post/6990174096554360869#heading-6">两年字节面试</a></p>
 ]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
   </entry>
   <entry>
     <title>tree-shareking 是什么</title>
@@ -118,6 +121,9 @@
 <p><a href="https://webpack.docschina.org/guides/tree-shaking/#add-a-utility">Webpack shaking</a></p>
 <p><a href="https://juejin.cn/post/6844903544756109319">参考</a></p>
 ]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
   </entry>
   <entry>
     <title>前端模块化</title>
@@ -162,7 +168,7 @@ define([m1,m2],function(m1,m2) &#123;
   return &#123;x&#125;
 &#125;)</code></pre>
 </li>
-<li><p>引入 </p>
+<li><p>引入</p>
 <pre><code class="js">require([m1,m2], function() &#123;
   // ...操作 
 &#125;)</code></pre>
@@ -208,8 +214,6 @@ define(&#39;id&#39;, [&#39;jquery&#39;], function(require, exports, module) &#12
   exports.xxx = value
 &#125;)</code></pre>
 </li>
-</ul>
-<ul>
 <li><p>应用</p>
 <ul>
 <li>浏览器，使用<a href="https://seajs.github.io/seajs/docs/">sea.js</a></li>
@@ -250,8 +254,6 @@ import &#123; export &#125; from &quot;module-name&quot;;
 import &#123; export as alias &#125; from &quot;module-name&quot;;
 import &#123; export1 , export2 &#125; from &quot;module-name&quot;;</code></pre>
 </li>
-</ul>
-<ul>
 <li><p>特点：</p>
 <ul>
 <li><p>加载多次执行一次</p>
@@ -303,6 +305,9 @@ console.log(&#39;val-3&#39;, val) // 如果为动态引用此时输出应该为 
 </ul>
 <p><a href="https://segmentfault.com/a/1190000017466120#item-2-4">参考</a></p>
 ]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
   </entry>
   <entry>
     <title>js错误处理</title>
@@ -327,6 +332,9 @@ console.log(&#39;val-3&#39;, val) // 如果为动态引用此时输出应该为 
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
   </entry>
   <entry>
     <title>web性能监控</title>
@@ -401,6 +409,9 @@ console.log(&#39;val-3&#39;, val) // 如果为动态引用此时输出应该为 
 <p><a href="https://juejin.cn/post/6950824230653001758#heading-3">前端实现方式</a></p>
 <h2 id="微信小程序性能监控指标（待补充）"><a href="#微信小程序性能监控指标（待补充）" class="headerlink" title="微信小程序性能监控指标（待补充）"></a>微信小程序性能监控指标（待补充）</h2><p><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/performance/perf_data.html">参考</a></p>
 ]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
   </entry>
   <entry>
     <title>redux生态库理解</title>
@@ -452,6 +463,9 @@ console.log(&#39;val-3&#39;, val) // 如果为动态引用此时输出应该为 
 </ul>
 <p>github仓库：<a href="https://github.com/rtfeldman/seamless-immutable">https://github.com/rtfeldman/seamless-immutable</a></p>
 <h3 id="redux-persist"><a href="#redux-persist" class="headerlink" title="redux-persist"></a>redux-persist</h3><h3 id="ramda"><a href="#ramda" class="headerlink" title="ramda"></a>ramda</h3>]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
   </entry>
   <entry>
     <title>移动端面试复习</title>
@@ -918,6 +932,9 @@ function subimit() &#123;
 <li>跟状态模式有什么不一样？</li>
 </ul>
 ]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
   </entry>
   <entry>
     <title>js常用算法面试题收集</title>
