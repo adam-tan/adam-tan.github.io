@@ -7,12 +7,12 @@
   <meta name="description" content="前端面试题目收集（持续更新） | 稍纵即逝">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="https://coo2.top/about/index.html">
+<meta property="og:title" content="404">
+<meta property="og:url" content="https://coo2.top/404.html">
 <meta property="og:site_name" content="稍纵即逝">
 <meta property="og:locale">
-<meta property="article:published_time" content="2020-02-29T08:57:24.000Z">
-<meta property="article:modified_time" content="2022-04-19T15:45:36.859Z">
+<meta property="article:published_time" content="2020-04-07T08:01:07.000Z">
+<meta property="article:modified_time" content="2022-11-03T11:04:19.021Z">
 <meta property="article:author" content="tanjiajian">
 <meta name="twitter:card" content="summary">
 
@@ -487,7 +487,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2022-04-19 23:45:36'>2019-12-24 15:48</time>
+            Created At : <time class="date" title='Updated At: 2022-11-03 19:04:19'>2019-12-24 15:48</time>
         
     </div>
     <div class="article-meta">
@@ -796,13 +796,13 @@ console.log(&#39;child1&#39;, child1)</code></pre>
 <p>参考 <a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000020231307#item-5-5">内存泄露</a></p>
 <h3 id="原型链的相关知识"><a href="#原型链的相关知识" class="headerlink" title="原型链的相关知识"></a>原型链的相关知识</h3><p><img src="https://cdn.jsdelivr.net/gh/adam-tan/markdown-image/img/IMG_20220225-175614012.png" alt="图 1">  </p>
 <ul>
-<li><p>那什么是原型？你可以这样理解：每一个JavaScript对象(null除外)在创建的时候就会与之关联另一个对象，这个对象就是我们所说的原型，每一个对象都会从原型”继承”属性。也可以说是实例原型。特殊情况：函数对象，如果Object、Function，此时他们既有<code>__proto__</code>也有prototype，而且原型为函数<br><img src="https://cdn.jsdelivr.net/gh/adam-tan/markdown-image/img/IMG_20220225-181204622.png" alt="原型为函数 1"></p>
+<li><p>什么是原型（prototype）？你可以这样理解：每一个JavaScript对象(null除外)在创建的时候就会与之关联另一个对象，这个对象就是我们所说的原型（也可以叫: 实例原型，原因是它也可以是构造函数创建的实例的原型）。</p>
 </li>
-<li><p><code>__proto__</code>和prototype是什么？</p>
+<li><p><code>__proto__</code> 和 prototype 是什么？</p>
 <ul>
-<li><p><code>__proto__</code>指向该对象的原型，也同时是其构造函数的原型。</p>
+<li><p><code>__proto__</code> 指向原型。</p>
 </li>
-<li><p>js中<strong>每一个对象或函数</strong>都有<code>__proto__</code>属性，但是只有<strong>函数对象</strong>才有<strong>prototype</strong>属性。</p>
+<li><p>js 中<strong>每一个对象</strong>都有 <code>__proto__</code> 属性，但是只有<strong>函数</strong>才有 <strong>prototype</strong> 属性 (函数也是对象)。例子：</p>
 </li>
 </ul>
 <pre><code class="js">    // 函数对象
@@ -818,32 +818,43 @@ console.log(&#39;child1&#39;, child1)</code></pre>
 
     Person.prototype !== undefined;//true</code></pre>
 <ul>
-<li>prototype指向该构造函数的原型，<strong>Object.prototype</strong>指向一个普通对象(普通对象没有prototype属性，所以值是undefined)，它是js原型链的最顶端,它的<code>__proto__</code>是null(有<code>__proto__</code>属性，但值是null，因为这是原型链的最顶端)。所以Object.prototype没有原型 。</li>
-</ul>
-<pre><code class="js">  Object.prototype.__proto__=== null;//true
-  Object.prototype.prototype === undefied;//true 对象没有prototype,除非是函数对象</code></pre>
-<ul>
-<li>所有函数都有prototype属性，除了Function.prototype外，它是函数对象，但是没有prototype属性。<code>Function.prototype.prototype === undefined;//true</code></li>
+<li><p>prototype 指向原型。</p>
+</li>
+<li><p>所有函数都有 prototype 属性，除了 Function.prototype 外，它是函数对象，但是没有prototype属性。<code>Function.prototype.prototype === undefined;//true</code></p>
+</li>
 </ul>
 </li>
 <li><p>构造、实例、继承是指什么？</p>
 <ul>
-<li>在js中如果A对象是由B函数构造的（也可以说是B是A的实例），那么<code>A.__proto__ === B.prototype</code>。javascript中对象是都是由Object构造的，函数是由Function构造的。</li>
+<li>在 js 中如果 A 对象是由 B 函数构造的（也可以说是 B 是 A 的实例），那么<code>A.__proto__ === B.prototype</code>。</li>
 <li>原型链是基于<code>__proto__</code>形成的，继承是通过prototype实现的。</li>
 </ul>
 </li>
-<li><p>Object和Function的关系？</p>
+<li><p>Object 和 Function 的关系？</p>
 <ul>
-<li><strong>内置的Object</strong>其实是一个函数对象，它是由Function创建的。<code>Object.__proto__ === Function.prototype;</code></li>
-<li><strong>内置的Function</strong>也是一个函数对象，它是通过自己来创建自己的。<code>Function.__proto__=== Function.prototype;//true</code></li>
-<li>函数也是对象，因为<code>Function.prototype.__proto__</code>指向Object.prototype。</li>
-</ul>
-<pre><code class="js">    typeof Function.prototype.__proto__) === &quot;object&quot;;//true
-    Function.prototype.__proto__=== Object.prototype;//true</code></pre>
+<li><p><strong>内置的 Object</strong> 其实是一个函数对象，它是由Function构造的。<code>Object.__proto__ === Function.prototype;</code></p>
 </li>
-<li><p>其他：</p>
+<li><p><strong>内置的Function</strong>也是一个函数对象，它是通过自己来构造自己的。<code>Function.__proto__=== Function.prototype;//true</code></p>
+</li>
+<li><p><strong>Object.prototype</strong> 指向一个普通对象，它的<code>__proto__</code>是 null，它是 js 原型链的最顶端 。所以 Object.prototype 没有原型 。</p>
+<pre><code class="js"> Object.prototype.__proto__=== null;//true
+ Object.prototype.prototype === undefied;//true 对象没有prototype,除非是函数对象</code></pre>
+</li>
+</ul>
+</li>
+</ul>
 <ul>
-<li><strong><code>instanceof</code></strong> <strong>运算符</strong>用于检测构造函数的 <code>prototype</code> 属性是否出现在某个实例对象的原型链(构造函数是不是对象new)</li>
+<li><p>函数也是对象，因为函数在创建时会继承 <code>Function.prototype</code>，<code>Function.prototype.__proto__</code>指向 Object.prototype。</p>
+<pre><code class="js">  typeof Function.prototype.__proto__) === &quot;object&quot;;//true
+  Function.prototype.__proto__=== Object.prototype;//true
+  function a() &#123;&#125;
+  a.__proto__.__proto__ === Object.prototype; //true</code></pre>
+</li>
+</ul>
+<ul>
+<li><p><strong><code>instanceof</code></strong> ：</p>
+<ul>
+<li><strong><code>instanceof</code></strong> <strong>运算符</strong>用于检测当前构造函数的 <code>prototype</code> 属性是否出现在当前实例对象的原型链</li>
 <li>一图理清关系<img src="https://tva1.sinaimg.cn/large/00831rSTgy1gdbszdheq1j310o0lgabp.jpg" alt="img"></li>
 </ul>
 <p><a target="_blank" rel="noopener" href="https://github.com/mqyqingfeng/Blog/issues/2">可参考</a></p>
