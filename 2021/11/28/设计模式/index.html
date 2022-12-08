@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>js错误处理 | 稍纵即逝</title>
+  <title>js 设计模式 | 稍纵即逝</title>
   <meta name="keywords" content="">
-  <meta name="description" content="js错误处理 | 稍纵即逝">
+  <meta name="description" content="js 设计模式 | 稍纵即逝">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="404">
@@ -478,9 +478,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-js错误处理" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-设计模式" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">js错误处理</h1>
+        <h1 class="article-title">js 设计模式</h1>
     
     <div class="article-meta">
         
@@ -490,7 +490,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="前端">前端</a>
+            <a  data-rel="设计模式">设计模式</a>
             
         </span>
         
@@ -498,7 +498,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2022-12-08 14:15:59'>2022-03-12 15:02</time>
+            Created At : <time class="date" title='Updated At: 2022-12-08 14:15:59'>2021-11-28 18:00</time>
         
     </div>
     <div class="article-meta">
@@ -531,7 +531,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#js%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="toc-text">js错误处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81try%E2%80%A6catch%E7%9A%84%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="toc-text">一、try…catch的错误处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%B3%95"><span class="toc-text">用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%80%E9%99%90%E6%80%A7"><span class="toc-text">局限性</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#js-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">js 设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F"><span class="toc-text">代理模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90%EF%BC%9A"><span class="toc-text">例子：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E7%9A%84%E6%84%8F%E4%B9%89"><span class="toc-text">代理的意义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F"><span class="toc-text">迭代器模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">发布订阅模式</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -547,25 +547,79 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="js错误处理"><a href="#js错误处理" class="headerlink" title="js错误处理"></a>js错误处理</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#js%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="toc-text">js错误处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81try%E2%80%A6catch%E7%9A%84%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="toc-text">一、try…catch的错误处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%B3%95"><span class="toc-text">用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%80%E9%99%90%E6%80%A7"><span class="toc-text">局限性</span></a></li></ol></li></ol></li></ol></div></p>
-<h2 id="一、try…catch的错误处理"><a href="#一、try…catch的错误处理" class="headerlink" title="一、try…catch的错误处理"></a>一、try…catch的错误处理</h2><h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><pre><code class="js">try &#123;
-
-  // 代码1...
-
-&#125; catch (err) &#123;
-
-  // 错误捕获
-
-&#125; finally &#123;
-
+        <h1 id="js-设计模式"><a href="#js-设计模式" class="headerlink" title="js 设计模式"></a>js 设计模式</h1><h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><blockquote>
+<p>代理模式是为一个对象提供一个代用品或占位符，以便控制对它的访问。</p>
+</blockquote>
+<h3 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h3><p>实现图片预加载：在 Web 开发中，图片预加载是一种常用的技术，如果直接给某个 img 标签节点设置 src 属性， 由于图片过大或者网络不佳，图片的位置往往有段时间会是一片空白，可以先用一张 loading 图片占位，然后用异步的方式加载图片，等图片加载好了再把它填充到 img 节点里：</p>
+<p>不使用代理：</p>
+<pre><code class="js">var MyImage = (function () &#123;
+    var imgNode = document.createElement(&#39;img&#39;);
+    document.body.appendChild(imgNode);
+    var img = new Image();
+    img.onload = function () &#123;
+        imgNode.src = img.src;
+    &#125;;
+    return &#123;
+        setSrc: function (src) &#123;
+            imgNode.src = &#39;file:// /C:/Users/svenzeng/Desktop/loading.gif&#39;;
+            img.src = src;
+        &#125;,
+    &#125;;
+&#125;)();
+MyImage.setSrc(&#39;http:// imgcache.qq.com/music/photo/k/000GGDys0yA0Nk.jpg&#39;);
+</code></pre>
+<p>使用代理</p>
+<pre><code class="js">var myImage = (function () &#123;
+  var imgNode = document.createElement(&#39;img&#39;); document.body.appendChild(imgNode);
+  return &#123;
+    setSrc: function (src) &#123;
+      imgNode.src = src;
+    &#125;
+  &#125;
+&#125;)();
+var proxyImage = (function () &#123;
+  var img = new Image; img.onload = function () &#123;
+    myImage.setSrc(this.src);
+  &#125;
+  return &#123;
+    setSrc: function (src) &#123;
+      myImage.setSrc(&#39;file:// /C:/Users/svenzeng/Desktop/loading.gif&#39;);
+      img.src = src;
+    &#125;
+  &#125;
+&#125;)();
+proxyImage.setSrc(&#39;http:// imgcache.qq.com/music/photo/k/000GGDys0yA0Nk.jpg&#39;);</code></pre>
+<p>现在我们通过 proxyImage 间接地访问 MyImage。proxyImage 控制了客户对 MyImage 的访问，并 且在此过程中加入一些额外的操作，比如在真正的图片加载好之前，先把 img 节点的 src 设置为 一张本地的 loading 图片。</p>
+<h3 id="代理的意义"><a href="#代理的意义" class="headerlink" title="代理的意义"></a>代理的意义</h3><p>维护单一职责</p>
+<p>单一职责原则指的是，就一个类(通常也包括对象和函数等)而言，应该仅有一个引起它变 化的原因。如果一个对象承担了多项职责，就意味着这个对象将变得巨大，引起它变化的原因可 能会有多个。</p>
+<p>面向对象设计鼓励将行为分布到细粒度的对象之中，如果一个对象承担的职责过多， 等于把这些职责耦合到了一起，这种耦合会导致脆弱和低内聚的设计。当变化发生时，设计可能 会遭到意外的破坏。</p>
+<h2 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h2><blockquote>
+<p>迭代器模式是指提供一个方法可以顺序访问一个聚合对象的各个元素，而又不用暴露对象的内部表示。</p>
+</blockquote>
+<p>大部分语言都已经实现迭代器。在 js 比较有用的是提供访问类数组的方法：</p>
+<pre><code class="js">// 在 JavaScript 中，for in 语句可以用来迭代普通字面量对象的属性。jQuery 中提供了$.each` 函数来封装各种迭代行为:
+$.each = function (obj, callback) &#123;
+  var value,
+  i = 0,
+  length = obj.length,
+  isArray = isArraylike(obj);
+  if (isArray) &#123; // 迭代类数组 for ( ; i &lt; length; i++ ) &#123;
+    value = callback.call(obj[i], i, obj[i]);
+    if (value === false) &#123;
+      break;
+    &#125;
+  &#125;
+&#125; else &#123;
+  for (i in obj) &#123; // 迭代object对象
+    value = callback.call(obj[i], i, obj[i]); if (value === false) &#123;
+      break;
+    &#125;
+  &#125;
 &#125;
-// 代码2</code></pre>
-<p>如果代码不出错，则执行完代码1后执行代码2，如果错误，则可以下catch中捕获，处理异常，然后继续执行代码2</p>
-<h3 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h3><ul>
-<li><p>仅仅对运行时的error生效，代码语法错误是无法捕获的，如：</p>
-<pre><code class="js">try &#123;</code></pre>
-</li>
-</ul>
+return obj; &#125;;</code></pre>
+<h2 id="发布订阅模式"><a href="#发布订阅模式" class="headerlink" title="发布订阅模式"></a>发布订阅模式</h2><p>发布—订阅模式又叫观察者模式，它定义对象间的一种一对多的依赖关系，当一个对象的状 态发生改变时，所有依赖于它的对象都将得到通知。在 JavaScript 开发中，我们一般用事件模型 来替代传统的发布—订阅模式。</p>
+<p>扩展：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60324936">实现一个 Event 类</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1249118795@qq.com </span>

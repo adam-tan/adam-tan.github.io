@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>js错误处理 | 稍纵即逝</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="js错误处理 | 稍纵即逝">
+  <title>排序算法 | 稍纵即逝</title>
+  <meta name="keywords" content=" 算法 ">
+  <meta name="description" content="排序算法 | 稍纵即逝">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="404">
@@ -478,9 +478,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-js错误处理" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-算法" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">js错误处理</h1>
+        <h1 class="article-title">排序算法</h1>
     
     <div class="article-meta">
         
@@ -490,15 +490,22 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="前端">前端</a>
+            <a  data-rel="算法">算法</a>
             
         </span>
         
         
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">算法</a>
+            
+        </span>
+        
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2022-12-08 14:15:59'>2022-03-12 15:02</time>
+            Created At : <time class="date" title='Updated At: 2022-12-08 14:15:59'>2020-08-15 20:00</time>
         
     </div>
     <div class="article-meta">
@@ -531,7 +538,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#js%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="toc-text">js错误处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81try%E2%80%A6catch%E7%9A%84%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="toc-text">一、try…catch的错误处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%B3%95"><span class="toc-text">用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%80%E9%99%90%E6%80%A7"><span class="toc-text">局限性</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-text">快速排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">插入排序</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -547,25 +554,113 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="js错误处理"><a href="#js错误处理" class="headerlink" title="js错误处理"></a>js错误处理</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#js%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="toc-text">js错误处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81try%E2%80%A6catch%E7%9A%84%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="toc-text">一、try…catch的错误处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%B3%95"><span class="toc-text">用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%80%E9%99%90%E6%80%A7"><span class="toc-text">局限性</span></a></li></ol></li></ol></li></ol></div></p>
-<h2 id="一、try…catch的错误处理"><a href="#一、try…catch的错误处理" class="headerlink" title="一、try…catch的错误处理"></a>一、try…catch的错误处理</h2><h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><pre><code class="js">try &#123;
-
-  // 代码1...
-
-&#125; catch (err) &#123;
-
-  // 错误捕获
-
-&#125; finally &#123;
-
+        <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><pre><code class="js">function sort(nums, l, r) &#123;
+   if(r - l &lt;= 0) return
+   let pivot = partition1(nums, l, r)
+   console.log(&#39;pivot&#39;, pivot)
+   // left
+   sort(nums, l, pivot -1)
+   // right
+   sort(nums, pivot + 1, r)
+   return nums
 &#125;
-// 代码2</code></pre>
-<p>如果代码不出错，则执行完代码1后执行代码2，如果错误，则可以下catch中捕获，处理异常，然后继续执行代码2</p>
-<h3 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h3><ul>
-<li><p>仅仅对运行时的error生效，代码语法错误是无法捕获的，如：</p>
-<pre><code class="js">try &#123;</code></pre>
-</li>
-</ul>
+
+function partition(nums,l,r) &#123;
+   // 中心位置
+   let center = l
+   // 指针
+   let compare = r
+   while(center != compare) &#123;
+       // 在右边移动指针时
+       if(center &lt; compare) &#123;
+          if(nums[center] &gt; nums[compare]) &#123;
+             let temp = nums[center]
+             nums[center] = nums[compare]
+             nums[compare] = temp
+             let num = compare
+             compare = center
+             center = num
+             compare++
+             continue
+          &#125;
+          compare--
+       &#125;
+       // 在左边移动指针时
+       else &#123;
+           if(nums[center] &lt; nums[compare]) &#123;
+              let temp = nums[center]
+              nums[center] = nums[compare]
+              nums[compare] = temp
+              let num = compare
+              compare = center
+              center = num
+              compare--
+              continue
+          &#125;
+          compare++    
+       &#125;
+   &#125;
+   console.log(nums)
+   return center
+ &#125;
+
+ function partition1 (nums,l,r) &#123;
+    // 保存基准值
+    let pivot = nums[l]
+    while(l!=r) &#123;
+       while(r &gt; l &amp;&amp; nums[r] &gt;= pivot) &#123;
+         r--
+       &#125;
+       nums[l] = nums[r]
+       while(r &gt; l &amp;&amp; nums[l] &lt;= pivot) &#123;
+         l++
+       &#125;
+       nums[r] = nums[l]
+    &#125;
+    nums[l] = pivot
+    return l
+ &#125;
+
+ console.log(sort([45,23,55,12,4,88,1,2,4], 0, 8))</code></pre>
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><pre><code class="js">function sort(nums) &#123;
+   for(let i = 0; i &lt; nums.length; i++) &#123;
+      // 插入的数
+      let insert = nums[i]
+      //j 为排序列表长度
+      let j = i -1
+      for(j ; j &gt;= 0; j--) &#123;
+         if(insert &lt; nums[j]) &#123;
+            // insert往前挪
+            nums[j + 1] = nums[j]
+            nums[j] = insert
+         &#125;
+      &#125;
+   &#125;
+   return nums
+&#125;
+
+function sort2(nums) &#123;
+   for(let i = 0; i &lt; nums.length; i++) &#123;
+      // 插入的数
+      let insert = nums[i]
+      //j 为已排序列表长度
+      let j = i -1
+      while(j&gt;= 0 &amp;&amp; insert &lt; nums[j]) &#123;
+            nums[j + 1] = nums[j]
+            j--z
+      &#125;
+      nums[j + 1] = insert
+   &#125;
+   return nums
+&#125;
+
+
+
+
+ console.log(sort([45,23,55,12,4,88,1,2,4]))
+
+
+</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1249118795@qq.com </span>
